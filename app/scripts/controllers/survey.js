@@ -13,10 +13,10 @@ angular.module('lmisChromeApp').config(function ($stateProvider) {
           return appConfigService.getCurrentAppConfig();
         }
     },
-    controller: function ($stateParams, $state, $scope, surveyFactory, growl, appConfig, i18n, alertFactory) {
+    controller: function ($stateParams, $state, $scope, surveyFactory, growl, appConfig, messages, alertFactory) {
 
       if(!$stateParams.surveyUUID){
-        growl.error(i18n('surveyNotFound'), {persistent: true});
+        growl.error(messages.surveyNotFound, {persistent: true});
         return;
       }
 
@@ -26,7 +26,7 @@ angular.module('lmisChromeApp').config(function ($stateProvider) {
       $scope.responses = {};
 
       if(typeof $scope.survey === 'undefined'){
-        growl.error(i18n('surveyNotFound'), {persistent: true});
+        growl.error(messages.surveyNotFound, {persistent: true});
         return;
       }
 
@@ -56,23 +56,23 @@ angular.module('lmisChromeApp').config(function ($stateProvider) {
 
         if (!surveyResponse.isComplete) {
           $scope.isSaving = false;
-          growl.error(i18n('incompleteSurveyErrorMsg'));
+          growl.error(messages.incompleteSurveyErrorMsg);
           return;
         }
 
         surveyFactory.saveSurveyResponse(surveyResponse)
             .then(function (result) {
               if (result) {
-                var successMsg = i18n('surveySuccessMsg', $scope.survey.name);
+                var successMsg = messages.surveySuccessMsg($scope.survey.name);
                 alertFactory.success(successMsg);
                 $state.go('home.index.home.mainActivity');
                 $scope.isSaving = false;
               } else {
-                growl.error(i18n('surveyFailedMsg'));
+                growl.error(messages.surveyFailedMsg);
                 $scope.isSaving = false;
               }
             }, function () {
-              growl.error(i18n('surveyFailedMsg'));
+              growl.error(messages.surveyFailedMsg);
               $scope.isSaving = false;
             });
       };

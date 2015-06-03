@@ -48,7 +48,7 @@ angular.module('lmisChromeApp')
         }
       });
   })
-  .controller('StockCountHomeCtrl', function($scope, stockCountFactory, growl, i18n, utility, stockCounts, appConfig, $state, mostRecentStockCount, isStockCountDue) {
+  .controller('StockCountHomeCtrl', function($scope, stockCountFactory, growl, messages, utility, stockCounts, appConfig, $state, mostRecentStockCount, isStockCountDue) {
 
     var sortByCreatedDateDesc = function(scA, scB) {
       return -(new Date(scA.created) - new Date(scB.created));
@@ -72,7 +72,7 @@ angular.module('lmisChromeApp')
 
     $scope.showStockCount = function(stockCount) {
       if (!utility.has(stockCount, 'uuid') || !utility.has(stockCount, 'countDate')) {
-        growl.error(i18n('showStockCountFailed'));
+        growl.error(messages.showStockCountFailed);
         return;
       }
       var isEditable = $scope.isEditable(stockCount);
@@ -83,7 +83,7 @@ angular.module('lmisChromeApp')
       }
     };
   })
-  .controller('StockCountFormCtrl', function($scope, stockCountFactory, reminderFactory, $state, growl, alertFactory, $stateParams, appConfig, appConfigService, cacheService, syncService, utility, $rootScope, i18n, mostRecentStockCount, geolocationFactory) {
+  .controller('StockCountFormCtrl', function($scope, stockCountFactory, reminderFactory, $state, growl, alertFactory, $stateParams, appConfig, appConfigService, cacheService, syncService, utility, $rootScope, messages, mostRecentStockCount, geolocationFactory) {
 
     var scInterval = appConfig.facility.stockCountInterval;
     var reminderDay = appConfig.facility.reminderDay;
@@ -182,7 +182,7 @@ angular.module('lmisChromeApp')
 
     var syncStockCount = function(stockCountUUID) {
       var db = stockCountFactory.STOCK_COUNT_DB;
-      var msg = i18n('stockCountSuccessMsg');
+      var msg = messages.stockCountSuccessMsg;
       $scope.stockCount.uuid = stockCountUUID;
       /*
        * FIXME: why stock count returns empty array when redirect is called
@@ -218,7 +218,7 @@ angular.module('lmisChromeApp')
           }
         })
         .catch(function(reason) {
-          var msg = i18n('stockCountSavingFailed');
+          var msg = messages.stockCountSavingFailed;
           growl.error(msg);
           console.error(reason);
         });

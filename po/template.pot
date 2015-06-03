@@ -3,3 +3,263 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
+
+#: app/scripts/services/messages.js:96
+msgid "A stock count is due today!"
+msgstr ""
+
+#: app/scripts/services/messages.js:11
+msgid "Application configuration failed, please contact support"
+msgstr ""
+
+#: app/scripts/services/messages.js:8
+msgid "Application configuration saved"
+msgstr ""
+
+#: app/scripts/services/messages.js:193
+msgid "Application configurations has been updated."
+msgstr ""
+
+#: app/scripts/services/messages.js:211
+msgid "Applying application update"
+msgstr ""
+
+#: app/scripts/services/messages.js:196
+msgid "Below buffer"
+msgstr ""
+
+#: app/scripts/services/messages.js:199
+msgid "Buffer"
+msgstr ""
+
+#: app/scripts/services/messages.js:99
+msgid "Buffer stock"
+msgstr ""
+
+#: app/scripts/services/messages.js:93
+msgid "CCU breakdown report failed, please contact support"
+msgstr ""
+
+#: app/scripts/services/messages.js:90
+msgid "CCU breakdown report sent successfully!"
+msgstr ""
+
+#: app/scripts/services/messages.js:70
+msgid "Clear Storage"
+msgstr ""
+
+#: app/scripts/services/messages.js:67
+msgid "Clear storage failed, contact support."
+msgstr ""
+
+#: app/scripts/services/messages.js:208
+msgid "Confirm stock-out broadcast for the following:"
+msgstr ""
+
+#: app/scripts/services/messages.js:83
+msgid "Confirm {{ccuID}} breakdown report"
+msgstr ""
+
+#: app/scripts/services/messages.js:163
+msgid "Confirm {{productType}} stock-out broadcast"
+msgstr ""
+
+#: app/scripts/services/messages.js:119
+msgid "Could not save settings, please contact support"
+msgstr ""
+
+#: app/scripts/services/messages.js:147
+msgid "Could not show Stock Count form, please contact support."
+msgstr ""
+
+#: app/scripts/services/messages.js:5
+msgid "Data migration failed. Please contact support."
+msgstr ""
+
+#: app/scripts/services/messages.js:217
+msgid "Discard stock count"
+msgstr ""
+
+#: app/scripts/services/messages.js:186
+msgid "Enter quantity in {{unit}}"
+msgstr ""
+
+#: app/scripts/services/messages.js:25
+msgid "Incoming Delivery"
+msgstr ""
+
+#: app/scripts/services/messages.js:61
+msgid "Incoming Delivery logged successfully."
+msgstr ""
+
+#: app/scripts/services/messages.js:128
+msgid "Incoming success"
+msgstr ""
+
+#: app/scripts/services/messages.js:19
+msgid "LGA update failed, internet connection needed to update LGA list."
+msgstr ""
+
+#: app/scripts/services/messages.js:15
+msgid "Last updated: {{date}}"
+msgstr ""
+
+#: app/scripts/services/messages.js:141
+msgid "Local"
+msgstr ""
+
+#: app/scripts/services/messages.js:205
+msgid "Max"
+msgstr ""
+
+#: app/scripts/services/messages.js:79
+msgid "No"
+msgstr ""
+
+#: app/scripts/services/messages.js:125
+msgid "Offline"
+msgstr ""
+
+#: app/scripts/services/messages.js:122
+msgid "Online"
+msgstr ""
+
+#: app/scripts/services/messages.js:40
+msgid "Outgoing Delivery"
+msgstr ""
+
+#: app/scripts/services/messages.js:64
+msgid "Outgoing Delivery logged successfully."
+msgstr ""
+
+#: app/scripts/services/messages.js:22
+msgid "Please specify if its receiving or sending"
+msgstr ""
+
+#: app/scripts/services/messages.js:28
+msgid "Received From"
+msgstr ""
+
+#: app/scripts/services/messages.js:144
+msgid "Remote"
+msgstr ""
+
+#: app/scripts/services/messages.js:202
+msgid "Safety Stock"
+msgstr ""
+
+#: app/scripts/services/messages.js:46
+msgid "Select Receiving Facility"
+msgstr ""
+
+#: app/scripts/services/messages.js:34
+msgid "Select Receiving LGA"
+msgstr ""
+
+#: app/scripts/services/messages.js:52
+msgid "Select Receiving Ward"
+msgstr ""
+
+#: app/scripts/services/messages.js:31
+msgid "Select Sending Facility"
+msgstr ""
+
+#: app/scripts/services/messages.js:49
+msgid "Select Sending LGA"
+msgstr ""
+
+#: app/scripts/services/messages.js:37
+msgid "Select Sending Ward"
+msgstr ""
+
+#: app/scripts/services/messages.js:58
+msgid "Selected facility does not exist."
+msgstr ""
+
+#: app/scripts/services/messages.js:43
+msgid "Sent To"
+msgstr ""
+
+#: app/scripts/services/messages.js:116
+msgid "Settings saved"
+msgstr ""
+
+#: app/scripts/services/messages.js:102
+msgid "Stock"
+msgstr ""
+
+#: app/scripts/services/messages.js:153
+msgid "Stock count saving failed"
+msgstr ""
+
+#: app/scripts/services/messages.js:159
+msgid "Stock-out alert failed, please contact support"
+msgstr ""
+
+#: app/scripts/services/messages.js:156
+msgid "Stock-out alert sent successfully!"
+msgstr ""
+
+#: app/scripts/services/messages.js:137
+msgid "Successfully syncronised {{source}}"
+msgstr ""
+
+#: app/scripts/services/messages.js:169
+msgid "Survey not found!"
+msgstr ""
+
+#: app/scripts/services/messages.js:182
+msgid "Survey not saved, try again!"
+msgstr ""
+
+#: app/scripts/services/messages.js:132
+msgid "Syncronising from {{source}}…"
+msgstr ""
+
+#: app/scripts/services/messages.js:55
+msgid "Unknown bundle type"
+msgstr ""
+
+#: app/scripts/services/messages.js:76
+msgid "Yes"
+msgstr ""
+
+#: app/scripts/services/messages.js:150
+msgid "You have completed stock count successfully!"
+msgstr ""
+
+#: app/scripts/services/messages.js:87
+msgid "are you sure?"
+msgstr ""
+
+#: app/scripts/services/messages.js:172
+msgid "complete survey before saving!"
+msgstr ""
+
+#: app/scripts/services/messages.js:106
+msgid "item"
+msgid_plural "items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/scripts/services/messages.js:214
+msgid "stock count value is invalid, at least enter zero (0) to proceed"
+msgstr ""
+
+#: app/scripts/services/messages.js:73
+msgid ""
+"this will erase all data on this phone. You will need to set it up again while online. \n"
+"Are you ABSOLUTELY sure?"
+msgstr ""
+
+#: app/scripts/services/messages.js:190
+msgid "waste count saved successfully"
+msgstr ""
+
+#: app/scripts/services/messages.js:109
+msgid "{{productQuantity}} {{itemName}} low on stock, press to send alert"
+msgstr ""
+
+#: app/scripts/services/messages.js:176
+msgid "{{surveyName}} was submitted successfully!"
+msgstr ""

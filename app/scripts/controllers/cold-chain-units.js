@@ -20,7 +20,7 @@ angular.module('lmisChromeApp')
       controller: 'ReportCcuBreakdownCtrl'
     });
   })
-  .controller('ReportCcuBreakdownCtrl', function($scope, appConfig, $modal, i18n, $log, notificationService, ccuBreakdownFactory, $state, growl, alertFactory, breakdowns) {
+  .controller('ReportCcuBreakdownCtrl', function($scope, appConfig, $modal, messages, $log, notificationService, ccuBreakdownFactory, $state, growl, alertFactory, breakdowns) {
 
     $scope.facilityCcuList = appConfig.selectedCcuProfiles;
     $scope.breakdowns = [];
@@ -87,9 +87,9 @@ angular.module('lmisChromeApp')
       };
 
       var ccuProfileInfo = ccuBreakdownReport.ccuProfile.Manufacturer + ' ' + ccuBreakdownReport.ccuProfile.ModelName;
-      var confirmationTitle = i18n('confirmCcuBreakdownReportHeader', ccuProfileInfo);
-      var confirmationQuestion = i18n('dialogConfirmationQuestion');
-      var buttonLabels = [i18n('yes'), i18n('no')];
+      var confirmationTitle = messages.confirmCcuBreakdownReportHeader(ccuProfileInfo);
+      var confirmationQuestion = messages.dialogConfirmationQuestion;
+      var buttonLabels = [messages.yes, messages.no];
 
       notificationService.getConfirmDialog(confirmationTitle, confirmationQuestion, buttonLabels)
         .then(function(isConfirmed) {
@@ -98,14 +98,14 @@ angular.module('lmisChromeApp')
             ccuBreakdownFactory.save($scope.activeCCE) //ccuBreakdownReport
               .then(function(result) {
                 //move to home page send alert in the background
-                alertFactory.success(i18n('ccuBreakdownReportSuccessMsg'));
+                alertFactory.success(messages.ccuBreakdownReportSuccessMsg);
                 ccuBreakdownFactory.broadcast(result)
                   .finally(function() {
                     $state.go('home.index.home.mainActivity');
                   });
               })
               .catch(function(reason) {
-                growl.error(i18n('ccuBreakdownReportFailedMsg'));
+                growl.error(messages.ccuBreakdownReportFailedMsg);
                 $scope.isSaving = false;
                 $log.info(reason);
               });
@@ -130,7 +130,7 @@ angular.module('lmisChromeApp')
         .then(function(savedData){
           ccuBreakdownFactory.broadcast(savedData)
             .finally(function(){
-              alertFactory.success(i18n('ccuBreakdownReportSuccessMsg'));
+              alertFactory.success(messages.ccuBreakdownReportSuccessMsg);
             })
         })
     }

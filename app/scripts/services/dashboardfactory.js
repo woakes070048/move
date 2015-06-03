@@ -1,27 +1,27 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .factory('dashboardfactory', function(i18n, inventoryRulesFactory, utility) {
+  .factory('dashboardfactory', function(messages, inventoryRulesFactory, utility) {
     var keys = [
       {
         key: 'below',
         color: 'red',
-        label: i18n('belowBuffer')
+        label: messages.belowBuffer
       },
       {
         key: 'buffer',
         color: 'yellow',
-        label: i18n('buffer')
+        label: messages.buffer
       },
       {
         key: 'safety',
         color: 'black',
-        label: i18n('safetyStock')
+        label: messages.safetyStock
       },
       {
         key: 'max',
         color: 'grey',
-        label: i18n('max')
+        label: messages.max
       }
     ];
 

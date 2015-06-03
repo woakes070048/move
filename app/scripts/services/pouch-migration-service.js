@@ -2,7 +2,7 @@
 
 // TODO: remove. See item:751
 angular.module('lmisChromeApp')
-  .service('pouchMigrationService', function($q, $log, growl, i18n, chromeStorageApi, storageService, utility, $state) {
+  .service('pouchMigrationService', function($q, $log, growl, messages, chromeStorageApi, storageService, utility, $state) {
     var migrationFlag = '_hasMigrated';
 
     function setMigratedFlag() {
@@ -22,7 +22,7 @@ angular.module('lmisChromeApp')
     }
 
     function migrationRequired() {
-      var msg = i18n('migrationRequired');
+      var msg = messages.migrationRequired;
       $log.info(msg);
       growl.info(msg);
     }

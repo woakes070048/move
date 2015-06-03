@@ -12,7 +12,7 @@ angular.module('lmisChromeApp', [
     'db',
     'gettext'
   ])
-  .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, growl, utility, pouchMigrationService, $log, i18n, analyticsSyncService) {
+  .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, growl, utility, pouchMigrationService, $log, messages, analyticsSyncService) {
 
     function navigateToHome() {
       $state.go('home.index.home.mainActivity');
@@ -94,7 +94,7 @@ angular.module('lmisChromeApp', [
     }
 
     function migrationErrorHandler(err) {
-      var msg = i18n('migrationFailed');
+      var msg = messages('migrationFailed');
       growl.error(msg);
       $log.error(err);
     }

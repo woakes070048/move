@@ -200,12 +200,6 @@
   "orderPlacedSuccess": {
     "message": "Order placed successfully"
   },
-  "online": {
-    "message": "Online"
-  },
-  "offline": {
-    "message": "Offline"
-  },
   "toggleNavigation": {
     "message": "Toggle navigation"
   },
@@ -254,12 +248,6 @@
   "save": {
     "message": "Save"
   },
-  "settingsSaved": {
-    "message": "Settings saved"
-  },
-  "settingsFailed": {
-    "message": "Could not save settings, please contact support"
-  },
   "products": {
     "message": "Products"
   },
@@ -268,27 +256,6 @@
   },
   "inventorySettings": {
     "message": "inventory settings"
-  },
-  "incomingDeliverySuccessMessage": {
-    "message": "Incoming Delivery logged successfully."
-  },
-  "outgoingDeliverySuccessMessage": {
-    "message": "Outgoing Delivery logged successfully."
-  },
-  "belowBuffer": {
-    "message": "Below buffer"
-  },
-  "buffer": {
-    "message": "Buffer"
-  },
-  "safetyStock": {
-    "message": "Safety Stock"
-  },
-  "max": {
-    "message": "Max"
-  },
-  "actual": {
-    "message": "Actual"
   },
   "inventoryRules": {
     "message": "Inventory Rules"
@@ -314,23 +281,11 @@
   "discrepancyThreshold": {
     "message": "Discrepancy Threshold"
   },
-  "stockCountErrorMsg": {
-    "message": "stock count value is invalid, at least enter Zero '0' to proceed"
-  },
   "wasteErrorMsg": {
     "message": "please fix errors in reason selection"
   },
   "stockCountSaved": {
     "message": "Stock count saved"
-  },
-  "syncSuccess": {
-    "message": "Successfully syncronised $source$",
-    "placeholders": {
-      "source": {
-        "content": "$1",
-        "example": "local"
-      }
-    }
   },
   "syncStockCount": {
     "message": "Sync"
@@ -367,12 +322,6 @@
   },
   "selectFacilityProductProfiles": {
     "message": "Select facility stock list"
-  },
-  "appConfigFailedMsg": {
-    "message": "Application configuration failed, please contact support"
-  },
-  "appConfigSuccessMsg": {
-    "message": "Application configuration saved"
   },
   "compare": {
     "message": "Compare"
@@ -434,23 +383,8 @@
   "productType": {
     "message": "Product type"
   },
-  "stockOutBroadcastSuccessMsg": {
-    "message": "Stock-out alert sent successfully!"
-  },
-  "stockOutBroadcastFailedMsg": {
-    "message": "Stock-out alert failed, please contact support"
-  },
   "send": {
     "message": "Send"
-  },
-  "syncing": {
-    "message": "Syncronising from $source$…",
-    "placeholders": {
-      "source": {
-        "content": "$1",
-        "example": "local"
-      }
-    }
   },
   "emailConfiguration": {
     "message": "Email Configuration"
@@ -461,40 +395,6 @@
   "profileLoadingErrorMsg": {
     "message": "Profile does not exist, please make sure you entered the correct email address and check your internet connection"
   },
-  "confirmStockOutHeader": {
-    "message": "Confirm '$productType$' stock-out broadcast",
-    "placeholders": {
-      "productType": {
-        "content": "$1"
-      }
-    }
-  },
-  "confirmStockOutHeader2": {
-    "message": "Confirm stock-out broadcast for the following:"
-  },
-  "item": {
-    "message": "item"
-  },
-  "items": {
-    "message": "items"
-  },
-  "stockOutWarningMsg": {
-    "message": " $productQuantity$ $itemName$ low on stock, press to send alert",
-    "placeholders": {
-      "productQuantity": {
-        "content": "$1"
-      },
-      "itemName": {
-        "content": "$2"
-      }
-    }
-  },
-  "yes": {
-    "message": "Yes"
-  },
-  "no": {
-    "message": "No"
-  },
   "more": {
     "message": "More"
   },
@@ -504,25 +404,11 @@
   "saving": {
     "message": "Saving..."
   },
-  "stockCountReminderMsg": {
-    "message": "A stock count is due today!"
-  },
   "wasteCountReminderMsg": {
     "message": "Waste count is due today!"
   },
-  "wasteCountSaved": {
-    "message": "waste count saved successfully"
-  },
   "selectWasteReason": {
     "message": "Select Waste Reason"
-  },
-  "enterQuantity": {
-    "message": "Enter Quantity in $Quantity$s",
-    "placeholders": {
-      "Quantity": {
-        "content": "$1"
-      }
-    }
   },
   "back": {
     "message": "Back"
@@ -532,29 +418,6 @@
   },
   "facilitySurvey": {
     "message": "Facility survey"
-  },
-  "stockAbove": {
-    "message": "Stock"
-  },
-  "stockBelow": {
-    "message": "Buffer stock"
-  },
-  "surveySuccessMsg": {
-    "message": "$surveyName$ was submitted successfully!",
-    "placeholders": {
-      "surveyName": {
-        "content": "$1"
-      }
-    }
-  },
-  "surveyFailedMsg": {
-    "message": "Survey not saved, try again!"
-  },
-  "incompleteSurveyErrorMsg": {
-    "message": "complete survey before saving!"
-  },
-  "surveyNotFound": {
-    "message": "Survey not found!"
   },
   "sending": {
     "message": "Sending ..."
@@ -601,23 +464,6 @@
   "selectCcu": {
     "message": "Select CCU"
   },
-  "confirmCcuBreakdownReportHeader": {
-    "message": "Confirm '$ccuIdentifier$' breakdown report",
-    "placeholders": {
-      "ccuIdentifier": {
-        "content": "$1"
-      }
-    }
-  },
-  "dialogConfirmationQuestion": {
-    "message": "are you sure?"
-  },
-  "ccuBreakdownReportSuccessMsg": {
-    "message": "CCU breakdown report sent successfully!"
-  },
-  "ccuBreakdownReportFailedMsg": {
-    "message": "CCU breakdown report failed, please contact support"
-  },
   "stockCountHistory": {
     "message": "Stock Count History"
   },
@@ -630,28 +476,8 @@
   "date": {
     "message": "Date"
   },
-  "stockCountSuccessMsg": {
-    "message": "You have completed stock count successfully!"
-  },
-  "remoteAppConfigUpdateMsg": {
-    "message": "Application configurations has been updated."
-  },
   "stockLevel": {
     "message": "Stock Levels"
-  },
-  "clearStorageTitle": {
-    "message": "Clear Storage"
-  },
-  "clearStorageConfirmationMsg": {
-    "message": "this will erase all data on this phone. You will need to set it up again while online. \nAre you ABSOLUTELY sure?"
-  },
-  "lastUpdated": {
-    "message": "Last updated: $dateUpdated$",
-    "placeholders": {
-      "dateUpdated": {
-        "content": "$1"
-      }
-    }
   },
   "loadingAppConfigFailed": {
     "message": "loading of App. Config. failed, please contact support."
@@ -662,20 +488,8 @@
   "localDbAndMemorySetFailed": {
     "message": "Local databases and memory storage setup failed, contact support."
   },
-  "clearStorageFailed": {
-    "message": "Clear storage failed, contact support."
-  },
-  "stockCountSavingFailed": {
-    "message": "Stock count saving failed"
-  },
   "getStockCountByDateError": {
     "message": "Get stock count by date failed. contact support."
-  },
-  "migrationRequired": {
-    "message": "Applying application update"
-  },
-  "migrationFailed": {
-    "message": "Data migration failed. Please contact support."
   },
   "migrating": {
     "message": "Your app is updating."
@@ -683,62 +497,17 @@
   "add": {
     "message": "Add"
   },
-  "showStockCountFailed": {
-    "message": "Could not show Stock Count form, please contact support."
-  },
   "selectNearbyLgas": {
     "message": "Select Nearby LGAs"
   },
-  "incomingDelivery": {
-    "message": "Incoming Delivery"
-  },
-  "outGoingDelivery": {
-    "message": "Outgoing Delivery"
-  },
   "addStockItem": {
     "message": "Add Another Stock Item"
-  },
-  "receivedFrom": {
-    "message": "Received From"
-  },
-  "sentTo": {
-    "message": "Sent To"
-  },
-  "sendTo": {
-    "message": "Send To"
-  },
-  "selectSender": {
-    "message": "Select Sending Facility"
-  },
-  "selectReceiver": {
-    "message": "Select Receiving Facility"
-  },
-  "selectReceivingLga": {
-    "message": "Select Receiving LGA"
-  },
-  "selectReceivingWard": {
-    "message": "Select Receiving Ward"
-  },
-  "selectSendingLga": {
-    "message": "Select Sending LGA"
-  },
-  "selectSendingWard": {
-    "message": "Select Sending Ward"
-  },
-  "lgaUpdateFailed": {
-    "message": "LGA update failed, internet connection needed to update LGA list."
   },
   "addNewFacility": {
     "message": "Add New Facility"
   },
   "selectFacilityError": {
     "message": "Please, select facility"
-  },
-  "selectedFacilityNotFound":{
-    "message": "Selected facility does not exist."
-  },
-  "specifyBundleType":{
-    "message": "Please specify if its receiving or sending"
   },
   "CcuBreakdown": {
     "message": "Cold Chain Unit Breakdown"

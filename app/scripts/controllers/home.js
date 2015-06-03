@@ -19,7 +19,7 @@ angular.module('lmisChromeApp')
           }
         }
       },
-      controller: function(appConfig, $state, $scope, isStockCountReminderDue, $rootScope, reminderFactory, i18n) {
+      controller: function(appConfig, $state, $scope, isStockCountReminderDue, $rootScope, reminderFactory, messages) {
         if (typeof appConfig === 'undefined') {
           $state.go('appConfigWelcome');
         } else {
@@ -28,7 +28,7 @@ angular.module('lmisChromeApp')
             //FIXME: move stock count reminder object to a factory function, stock count?? or reminderFactory.
             reminderFactory.warning({
               id: reminderFactory.STOCK_COUNT_REMINDER_ID,
-              text: i18n('stockCountReminderMsg'),
+              text: messages.stockCountReminderMsg,
               link: 'stockCountForm',
               icon: 'views/reminder/partial/stock-count-icon.html'
             });
@@ -71,7 +71,7 @@ angular.module('lmisChromeApp')
         views: {
           'activities': {
             templateUrl: 'views/home/main-activity.html',
-            controller: function($stateParams, i18n, growl, alertFactory, $scope) {
+            controller: function($stateParams, messages, growl, alertFactory, $scope) {
 
               var alertQueue = alertFactory.getAll();
               for (var i in alertQueue) {
@@ -94,17 +94,17 @@ angular.module('lmisChromeApp')
                 return stockCountFactory.getLatestCompleteStockCount();
               }
             },
-            controller: function($q, $log, mostRecentCount, productProfileFactory, $scope, $window, i18n, storageService, dashboardfactory, inventoryRulesFactory, productTypeFactory, appConfig, appConfigService, cacheService, stockOutList, utility, $rootScope, isStockCountReminderDue, stockCountFactory) {
+            controller: function($q, $log, mostRecentCount, productProfileFactory, $scope, $window, messages, storageService, dashboardfactory, inventoryRulesFactory, productTypeFactory, appConfig, appConfigService, cacheService, stockOutList, utility, $rootScope, isStockCountReminderDue, stockCountFactory) {
 
               var keys = [
                 {
                   key: 'stockBelowReorder',
-                  label: i18n('stockBelow'),
+                  label: messages.stockBelow,
                   color: '#ff7518'
                 },
                 {
                   key: 'stockAboveReorder',
-                  label: i18n('stockAbove'),
+                  label: messages.stockAbove,
                   color: '#666666'
                 }
               ];
@@ -214,8 +214,8 @@ angular.module('lmisChromeApp')
                     }
 
                     $scope.stockOutWarning = stockOutWarning;
-                    var items = stockOutWarning.length > 1 ? i18n('items') : i18n('item');
-                    $scope.stockOutWarningMsg = i18n('stockOutWarningMsg', [stockOutWarning.length.toString(), items]);
+                    var items = messages.items(stockOutWarning.length);
+                    $scope.stockOutWarningMsg = messages.stockOutWarningMsg(stockOutWarning.length.toString(), items);
                     $scope.roundLegend = function() {
                       return function(d) {
                         return $window.d3.round(d);
@@ -304,7 +304,7 @@ angular.module('lmisChromeApp')
             return settingsService.load();
           }
         },
-        controller: function($scope, settings, settingsService, growl, i18n, utility) {
+        controller: function($scope, settings, settingsService, growl, messages, utility) {
           var fields = ['facility', 'inventory'];
           for (var i = fields.length - 1; i >= 0; i--) {
             if (!utility.has(settings, fields[i])) {
@@ -316,10 +316,10 @@ angular.module('lmisChromeApp')
           $scope.save = function(settings) {
             settingsService.save(settings)
               .then(function() {
-                growl.success(i18n('settingsSaved'));
+                growl.success(messages.settingsSaved);
               })
               .catch(function() {
-                growl.success(i18n('settingsFailed'));
+                growl.success(messages.settingsFailed);
               });
           };
         }

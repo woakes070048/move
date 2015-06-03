@@ -12,11 +12,11 @@ angular.module('lmisChromeApp')
         views: {
           'header': {
             templateUrl: 'views/index/header.html',
-            controller: function($scope, $window, i18n, appConfigService, deviceInfoFactory, backgroundSyncService, analyticsSyncService) {
+            controller: function($scope, $window, messages, appConfigService, deviceInfoFactory, backgroundSyncService, analyticsSyncService) {
 
               $scope.states = {
-                online: i18n('online'),
-                offline: i18n('offline')
+                online: messages.online,
+                offline: messages.offline
               };
 
               $scope.status = {
