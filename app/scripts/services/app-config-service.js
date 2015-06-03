@@ -78,7 +78,7 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
        key + '%22&endkey=%22' + key + '%22';
      return  $http.get(url)
         .then(function (result) {
-          return result.rows.forEach(function (row) {
+          return result.data.rows.forEach(function (row) {
             storageService.save(storageService.FACILITY, row.doc);
           });
         })
