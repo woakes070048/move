@@ -73,18 +73,13 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
     return appConfig;
   };
   this.getSelectedFacility = function(key, e){
-
     if(e.target.checked) {
-      var mapFunction = 'function(doc) {' +
-        'if(doc.lgaUUID === "' + key + '"){' +
-        ' emit(null, doc);' +
-        '}}';
-     return  $http.post(config.api.url + '/facilities/_temp_view?include_docs=false', {
-        'map': mapFunction
-      })
+     var url = config.api.url + '/facilities/_design/facilities/_view/by_lga?include_docs=true&startkey=%22' +
+       key + '%22&endkey=%22' + key + '%22';
+     return  $http.get(url)
         .then(function (result) {
           return result.data.rows.forEach(function (row) {
-            storageService.save(storageService.FACILITY, row.value);
+            storageService.save(storageService.FACILITY, row.doc);
           });
         })
     }else{
