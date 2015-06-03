@@ -54,6 +54,18 @@ module.exports = function(grunt) {
       fixtures: {
         files: ['<%= yeoman.app %>/scripts/fixtures/*.json'],
         tasks: ['fixtures']
+      },
+      translations: {
+        files: ['po/*.po'],
+        tasks: ['nggettext_compile']
+      },
+      extractTranslations: {
+        files: [
+          '<%= yeoman.app %>/*.html',
+          '<%= yeoman.app %>/{views,templates}/**/*.html',
+          '<%= yeoman.app %>/scripts/**/*.js'
+        ],
+        tasks: ['nggettext_extract']
       }
     },
 
@@ -451,6 +463,19 @@ module.exports = function(grunt) {
           src: '<%= yeoman.app %>/scripts/fixtures/*.json'
         }]
       }
+    },
+
+    /*eslint-disable camelcase */
+    nggettext_extract: {
+    /*eslint-enable camelcase */
+      pot: {
+        files: {
+          'po/template.pot': [
+            'app/{views,templates}/{,**/}*.html',
+            'app/scripts/{,**/}*.js'
+          ]
+        }
+      }
     }
   });
 
@@ -464,6 +489,7 @@ module.exports = function(grunt) {
       'wiredep',
       'ngconstant:development',
       'fixtures',
+      'nggettext_compile',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -481,6 +507,7 @@ module.exports = function(grunt) {
 
     grunt.task.run([
       'clean:server',
+      'nggettext_compile',
       'concurrent:test',
       'autoprefixer',
       'connect:test',
