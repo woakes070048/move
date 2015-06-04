@@ -474,6 +474,19 @@ module.exports = function(grunt) {
           ]
         }
       }
+    },
+
+    /*eslint-disable camelcase */
+    nggettext_compile: {
+    /*eslint-enable camelcase */
+      all: {
+        options: {
+          module: 'lmisChromeApp'
+        },
+        files: {
+          'app/scripts/translations.js': ['po/*.po']
+        }
+      }
     }
   });
 
