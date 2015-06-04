@@ -65,7 +65,7 @@ angular.module('lmisChromeApp')
         $scope.previewFacilityLabel = messages.receivedFrom;
         $scope.selectFacility = messages.selectSender;
         $scope.LGALabel = messages.selectSendingLga;
-        $scope.WardLabel = message.selectSendingWard;
+        $scope.WardLabel = messages.selectSendingWard;
       } else if ($stateParams.type === logOutgoing) {
         $scope.logBundleTitle = messages.outgoingDelivery;
         $scope.facilityHeader = messages.sentTo;
