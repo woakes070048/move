@@ -3,7 +3,7 @@
 describe('Device info factory', function() {
 
   it('should be defined', function() {
-    module('lmisChromeApp', 'i18nMocks');
+    module('lmisChromeApp');
     inject(function(deviceInfoFactory) {
       expect(deviceInfoFactory).toBeDefined();
     });
@@ -12,7 +12,7 @@ describe('Device info factory', function() {
   describe('without Cordova support', function() {
 
     it('should reject with a reason', function() {
-      module('lmisChromeApp', 'i18nMocks');
+      module('lmisChromeApp');
       inject(function(deviceInfoFactory) {
 
         runs(function() {
@@ -28,7 +28,7 @@ describe('Device info factory', function() {
   });
 
   describe('with Cordova support', function() {
-    beforeEach(module('lmisChromeApp', 'deviceInfoMocks', 'i18nMocks'));
+    beforeEach(module('lmisChromeApp', 'deviceInfoMocks'));
 
     var deviceInfoFactory, deviceInfoMocks;
     beforeEach(inject(function(_deviceInfoFactory_, _deviceInfoMocks_) {

@@ -195,8 +195,8 @@
                       <table class="table table-bordered">
                         <thead>
                         <tr>
-                          <th i18n="stockItem"></th>
-                          <th i18n="count"></th>
+                          <th translate>Stock Item</th>
+                          <th translate>Count</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -237,8 +237,8 @@
                             </div>
                         <div class="btn-group">
                           <button ng-click="finalSave()" class="btn btn-success btn-lg" ng-disabled="isSaving">
-                            <span i18n="confirm" ng-show="!isSaving"></span>
-                            <span ng-show="isSaving">Saving</span>
+                            <span translate ng-show="!isSaving">Confirm</span>
+                            <span ng-show="isSaving" translate>Saving</span>
                             <span><i class="fa " ng-class="{'fa-save':!isSaving, 'fa-spinner fa-spin': isSaving}"></i></span>
                           </button>
                         </div>

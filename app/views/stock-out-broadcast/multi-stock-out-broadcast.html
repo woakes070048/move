@@ -2,7 +2,7 @@
   <div class="col-sm-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title" i18n="stockOutBroadcast"></h4>
+        <h4 class="panel-title" translate>Stock-out Alert</h4>
       </div>
       <div class="panel-body">
         <form name="stockOutBroadcastForm" ng-submit="stockOutBroadcastForm.$valid && save()" novalidate>
@@ -27,16 +27,16 @@
                     </table>
 
                   <span class="alert-danger form-control" ng-show="((stockOutBroadcastForm.productType).$error).required
-                      && stockOutForm.isSubmitted" i18n="selectProductType"></span>
+                      && stockOutForm.isSubmitted" translate>Select product type</span>
                   </div>
                   <div class="row">
                     <div class="panel-body"></div>
                     <div class="col-md-4 center-block">
                       <button type="submit" id="send" name="send" class="btn btn-lg btn-danger"
                               ng-click="stockOutForm.isSubmitted = true" ng-disabled="isSaving">
-                        <span ng-show="!isSaving" i18n="send"></span>
+                        <span ng-show="!isSaving" translate>Send</span>
                         <span ng-show="!isSaving"><i class="fa fa-bullhorn"></i></span>
-                        <span ng-show="isSaving" i18n="sending"></span>
+                        <span ng-show="isSaving" translate>Sending</span>
                         <span ng-show="isSaving"><i class="fa fa-spinner fa-spin"></i></span>
                       </button>
                     </div>

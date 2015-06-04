@@ -3,7 +3,7 @@
 describe('Factory: productProfileFactory', function () {
 
   // load the service's module
-  beforeEach(module('lmisChromeApp', 'i18nMocks', 'memoryStoreMocks'));
+  beforeEach(module('lmisChromeApp', 'memoryStoreMocks'));
 
   // instantiate dependencies
   var productProfileFactory;

@@ -55,9 +55,6 @@ angular.module('seriesMocks', [])
           clear: function() {},
           remove: function() {}
         }
-      },
-      i18n: {
-        getMessage: function() {}
       }
     }
   });

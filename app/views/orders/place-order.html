@@ -2,7 +2,7 @@
   <div class="col-sm-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title" i18n="incomingPlace"></h4>
+        <h4 class="panel-title" translate>Place an order</h4>
       </div>
       <div class="panel-body">
         <form ng-submit="save()">
@@ -10,7 +10,7 @@
             <div class="col-sm-12">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h4 class="panel-title">Order detail</h4>
+                  <h4 class="panel-title" translate>Order detail</h4>
                 </div>
                 <div class="panel-body">
                   <div class="row">
@@ -18,10 +18,10 @@
 
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="sendingFacility" i18n="sendingFacility"></label>
+                          <label for="sendingFacility" translate>Sending Facility</label>
                           <select id="sendingFacility" ga-click="facility_select" class="form-control" ng-model="order.sending_facility"
                                   required>
-                            <option value="" i18n="selectSendingFacility"></option>
+                            <option value="" translate>Select sending facility</option>
                             <option ng-repeat="facility in storage.facilities" value="{{ facility.uuid }}"
                                     ng-bind="facility.name"></option>
                           </select>
@@ -30,7 +30,7 @@
 
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="receivingFacility" i18n="receivingFacility"></label>
+                          <label for="receivingFacility" translate>Receiving Facility</label>
                           <input class="form-control" type="text" name="receivingFacility" id="receivingFacility"
                                  ng-model="(storage.receiving_facility).name" ng-disabled="true"/>
                         </div>
@@ -38,7 +38,7 @@
 
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="orderNo" i18n="orderNumber"></label>
+                          <label for="orderNo" translate>Order Number</label>
                           <input class="form-control" type="text" name="orderNo" id="orderNo" ng-disabled="true"
                                  ng-model="order.order_no"/>
                         </div>
@@ -46,7 +46,7 @@
 
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label for="orderDate" i18n="orderDate"></label>
+                          <label for="orderDate" translate>Order Date</label>
                           <input ng-model="order.date" class="form-control" type="date" name="orderDate"
                                  id="orderDate" required=""/>
                         </div>
@@ -74,17 +74,17 @@
                         <table class="table table-condensed table-hover table-bordered">
                           <tr>
                             <th>#</th>
-                            <th class="text-titlecase" i18n="productTypes"></th>
-                            <th class="text-titlecase" i18n="program"></th>
-                            <th class="text-titlecase" i18n="quantity"></th>
-                            <th class="text-titlecase" i18n="uom"></th>
-                            <th class="text-titlecase" i18n="remove"></th>
+                            <th class="text-titlecase" translate>Product Types</th>
+                            <th class="text-titlecase" translate>Program</th>
+                            <th class="text-titlecase" translate>Quantity</th>
+                            <th class="text-titlecase" translate>Unit of measurement</th>
+                            <th class="text-titlecase" translate>Remove</th>
                           </tr>
                           <tr ng-repeat="orderLine in order.order_lines">
                             <td ng-bind="($index + 1)"></td>
                             <td>
                               <select ng-model="orderLine.productType" ga-click="orderline_product_type" class="form-control" required="">
-                                <option value="" i18n="selectProductType"></option>
+                                <option value="" translate>Select product type</option>
                                 <option ng-repeat="type in storage.productTypes" value="{{ type.uuid }}"
                                         ng-selected="{{ (orderLine.productType).uuid === type.uuid}}"
                                         ng-bind="type.name">
@@ -93,7 +93,7 @@
                             </td>
                             <td>
                               <select ng-model="orderLine.program" ga-click="orderline_program" class="form-control" required>
-                                <option value="" i18n="selectProgram"></option>
+                                <option value="" translate>Select program</option>
                                 <option ng-repeat="program in storage.programs" value="{{ program.uuid }}"
                                         ng-selected="{{ order.program === program.uuid}}"
                                         ng-bind="program.name"></option>
@@ -105,7 +105,7 @@
                             </td>
                             <td>
                               <select class="form-control" ga-click="UOM_select" ng-model="orderLine.uom" required>
-                                <option value="" i18n="selectUOM"></option>
+                                <option value="" translate>Select unit of measurement</option>
                                 <option ng-repeat="uom in storage.uomList" value="{{ uom.uuid }}" ng-bind="uom.name"
                                         ng-selected="{{ (orderLine.uom).uuid === uom.uuid }}"></option>
                               </select>
@@ -138,9 +138,9 @@
               <div class="col-md-4 pull-right">
                 <button type="button" id="authorize" name="authorize" class="btn btn-default"
                         ng-disabled="order.authorized"
-                        i18n="authorize" ng-click="order.authorized =true"></button>
+                        translate ng-click="order.authorized =true">Authorize</button>
                 <button id="submit" name="submit" class="btn btn-success"
-                        i18n="submit" ng-disabled="!order.authorized"></button>
+                        translate ng-disabled="!order.authorized">Submit</button>
               </div>
             </div>
           </div>

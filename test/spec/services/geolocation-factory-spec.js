@@ -2,7 +2,7 @@
 
 describe('Geo-Locations factory', function() {
 
-  beforeEach(module('lmisChromeApp', 'i18nMocks'));
+  beforeEach(module('lmisChromeApp'));
 
   var geolocationFactory;
 

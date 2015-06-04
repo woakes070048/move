@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title" i18n="facilitySurvey"></h4>
+        <h4 class="panel-title" translate>Facility survey</h4>
       </div>
 
       <div class="list-group">
@@ -28,14 +28,14 @@
           <div class="btn-group">
             <button type="button" ga-click="facility_survey" class="btn btn-default btn-lg btn-left" ng-click="moveTo(STEP_FOUR)">
               <span><i class="fa fa-arrow-circle-left"></i></span>
-              <span i18n="back"></span>
+              <span translate>Back</span>
             </button>
           </div>
           <div class="btn-group">
             <button type="submit" ga-click="sequence_map" class="btn btn-success btn-lg btn-right" ng-click="save()" ng-disabled="isSaving">
-              <span ng-if="!isSaving" i18n="save"></span>
+              <span ng-if="!isSaving" translate>Save</span>
               <span ng-if="!isSaving"><i class="fa fa-floppy-o"></i></i></span>
-              <span ng-if="isSaving" i18n="saving"></span>
+              <span ng-if="isSaving" translate>Saving</span>
               <span ng-if="isSaving"><i class="fa fa-spinner fa-spin"></i></span>
             </button>
           </div>

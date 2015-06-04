@@ -3,7 +3,7 @@
 describe('Factory: ccuBreakdownFactory', function() {
 
   // load the service's module
-  beforeEach(module('lmisChromeApp', 'i18nMocks'));
+  beforeEach(module('lmisChromeApp'));
 
   // instantiate factory
   var ccuBreakdownFactory, storageService, ccuBreakdownReport, syncService;

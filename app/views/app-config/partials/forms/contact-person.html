@@ -3,24 +3,28 @@
     <div class="col-sm-6">
       <div class="form-group" ng-class="{ 'has-error': ((editAppConfigForm.contactPersonName).$error).required
                       && isSubmitted }">
-        <label for="contactPerson" i18n="name"></label>
+        <label for="contactPerson" translate>Name</label>
         <input type="text" class="form-control" ng-model="(appConfig.contactPerson).name"
                name="contactPersonName" id="contactPerson" ng-disabled="!developerMode" required/>
-                      <span class="alert-danger form-control" i18n="contactPersonNameErrorMsg"
-                            ng-show="((editAppConfigForm.contactPersonName).$error).required && isSubmitted">
-                      </span>
+               <span
+                 class="alert-danger form-control"
+                 translate
+                 ng-show="((editAppConfigForm.contactPersonName).$error).required && isSubmitted"
+               >Please enter contact person name</span>
       </div>
     </div>
 
     <div class="col-sm-6">
       <div class="form-group"
            ng-class="{ 'has-error': (editAppConfigForm.contactPhoneNo).$invalid && isSubmitted }">
-        <label for="contactPhoneNo" i18n="phoneNo"></label>
+        <label for="contactPhoneNo" translate>Phone no</label>
         <input type="tel" class="form-control" ng-model="(appConfig.contactPerson).phoneNo"
                name="contactPhoneNo" id="contactPhoneNo" ng-disabled="!developerMode" required/>
-                  <span class="alert-danger form-control" i18n="contactPersonPhoneNoErrorMsg"
-                        ng-show="(editAppConfigForm.contactPhoneNo).$invalid && isSubmitted">
-                  </span>
+               <span
+                 class="alert-danger form-control"
+                 translate
+                 ng-show="(editAppConfigForm.contactPhoneNo).$invalid && isSubmitted"
+               >Please enter contact person's phone no</span>
       </div>
     </div>
   </div>

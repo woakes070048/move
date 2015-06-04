@@ -1,13 +1,13 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h1 class="panel-title" i18n="stockCountHistory"></h1>
+    <h1 class="panel-title" translate>Stock Count History</h1>
   </div>
   <div class="panel-body">
     <div class="row" ng-hide="detailView">
       <div class="col-sm-12">
         <a class="btn btn-default" ui-sref="stockCountForm({newStockCount: true})" ng-disabled="disableAddButton()">
             <i class="fa fa-plus"></i>
-            <span i18n="add"></span>
+            <span translate>Add</span>
         </a>
       </div>
     </div>
@@ -17,9 +17,9 @@
           <thead>
           <tr>
             <th>#</th>
-            <th i18n="date"></th>
-            <th i18n="done"></th>
-            <th i18n="synced"></th>
+            <th translate>Date</th>
+            <th translate>Done</th>
+            <th translate>Synced</th>
           </tr>
           </thead>
           <tbody>

@@ -9,7 +9,7 @@
         <div class="col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title" i18n="facilityInfo"></h4>
+                    <h4 class="panel-title" translate>Facility Info</h4>
                 </div>
                 <div class="panel-body">
                     <div ng-include="'views/app-config/partials/forms/facility-info.html'"></div>
@@ -20,7 +20,7 @@
         <div class="col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4 class="panel-title" i18n="contactPersonInfo"></h4>
+                    <h4 class="panel-title" translate>Contact person info</h4>
                 </div>
                 <div class="panel-body">
                     <div ng-include="'views/app-config/partials/forms/contact-person.html'"></div>
@@ -44,9 +44,9 @@
                     <button type="submit" ga-click="save" id="save" name="save" class="btn btn-success btn-lg"
                             ng-click="isSubmitted = true"
                             ng-disabled="isSaving || !developerMode">
-                        <span ng-show="!isSaving" i18n="save"></span>
+                        <span ng-show="!isSaving" translate>Save</span>
                         <span ng-show="!isSaving"><i class="fa fa-floppy-o"></i></i></span>
-                        <span ng-show="isSaving" i18n="saving"></span>
+                        <span ng-show="isSaving" translate>Saving…</span>
                         <span ng-show="isSaving"><i class="fa fa-spinner fa-spin"></i></span>
                     </button>
                 </div>

@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4 class="panel-title" i18n="CcuBreakdown"></h4>
+                <h4 class="panel-title" translate>Cold Chain Unit Breakdown</h4>
             </div>
             <br/>
 
@@ -76,7 +76,7 @@
             </div>
             <div class="panel panel-default" ng-show="inView === 2">
                 <div class="panel-heading">
-                    <h4 class="panel-title" i18n="reportCcuBreakdown"></h4>
+                    <h4 class="panel-title" translate>Report CCU breakdown</h4>
                 </div>
                 <div class="panel-body">
                     <form name="reportCCUBreakdownForm" ng-submit="reportCCUBreakdownForm.$valid && save()" novalidate>
@@ -88,11 +88,11 @@
 
                                         <div class="form-group" ng-class="{ 'has-error': ((reportCCUBreakdownForm.ccuProfile).$error).required
                           && ccuBreakdown.isSubmitted }">
-                                            <label for="ccuProfile" i18n="selectCcu"></label>
+                                            <label for="ccuProfile" translate>Select CCU</label>
                                             <select id="ccuProfile" ga-click="ccu_selection" name="ccuProfile"
                                                     class="form-control" ng-model="selectedProfile"
                                                     required>
-                                                <option value="" i18n="selectFacultyCcu"></option>
+                                                <option value="" translate>Select faulty CCU</option>
                                                 <option ng-repeat="ccuProfile in facilityCcuList"
                                                         value="{{ ccuProfile }}" required>
                                                     {{ ccuProfile.Manufacturer }} - {{ ccuProfile.ModelName }}
@@ -100,7 +100,7 @@
                                             </select>
                                             <span class="alert-danger form-control"
                                                   ng-show="((reportCCUBreakdownForm.ccuProfile).$error).required && ccuBreakdown.isSubmitted"
-                                                  i18n="selectFacultyCcu"></span>
+                                                  translate>Select faulty CCU</span>
                                         </div>
                                         <div class="form-group">
                                             <label>Breakdown Reason</label>
@@ -120,9 +120,9 @@
                                                         class="btn btn-lg btn-danger"
                                                         ng-click="ccuBreakdown.isSubmitted = true"
                                                         ng-disabled="isSaving">
-                                                    <span ng-show="!isSaving" i18n="send"></span>
+                                                    <span ng-show="!isSaving" translate>Send</span>
                                                     <span ng-show="!isSaving"><i class="fa fa-bullhorn"></i></span>
-                                                    <span ng-show="isSaving" i18n="sending"></span>
+                                                    <span ng-show="isSaving" translate>Sending</span>
                                                     <span ng-show="isSaving"><i class="fa fa-spinner fa-spin"></i></span>
                                                 </button>
                                             </div>

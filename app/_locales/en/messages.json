@@ -6,7 +6,7 @@
     "message": "LoMIS"
   },
   "appAuthor": {
-    "message": "eHealth Systems Africa Foundation"
+    "message": ""
   },
   "incoming": {
     "message": "Incoming"
@@ -252,7 +252,7 @@
     "message": "Products"
   },
   "productsUnset": {
-    "message": "Product settings are unset, please define them"
+    "message": ""
   },
   "inventorySettings": {
     "message": "inventory settings"
@@ -315,13 +315,13 @@
     "message": "Phone no"
   },
   "stockCountInterval": {
-    "message": "Stock count interval"
+    "message": ""
   },
   "email": {
     "message": "E-mail"
   },
   "selectFacilityProductProfiles": {
-    "message": "Select facility stock list"
+    "message": ""
   },
   "compare": {
     "message": "Compare"
@@ -330,7 +330,7 @@
     "message": "Selected facility stock list"
   },
   "selectStockCountInterval": {
-    "message": "Select stock count interval"
+    "message": ""
   },
   "selectFacility": {
     "message": "Select facility"
@@ -348,7 +348,7 @@
     "message": "Welcome to LoMIS"
   },
   "welcomeMsgBody": {
-    "message": "Please take a few minutes to tell us about your facility."
+    "message": ""
   },
   "facilityInfo": {
     "message": "Facility info"
@@ -357,7 +357,7 @@
     "message": "Please select facility"
   },
   "appConfigStockCountErrorMsg": {
-    "message": "select facility stock count interval"
+    "message": ""
   },
   "contactPersonNameErrorMsg": {
     "message": "Please enter contact person name"
@@ -366,7 +366,7 @@
     "message": "Please enter contact person's phone no"
   },
   "contactPersonEmailErrorMsg": {
-    "message": "Please enter valid email address"
+    "message": ""
   },
   "syncLater": {
     "message": "Please try resyncing later. If problem persists contact support."
@@ -387,13 +387,13 @@
     "message": "Send"
   },
   "emailConfiguration": {
-    "message": "Email Configuration"
+    "message": ""
   },
   "loading": {
     "message": "Loading..."
   },
   "profileLoadingErrorMsg": {
-    "message": "Profile does not exist, please make sure you entered the correct email address and check your internet connection"
+    "message": ""
   },
   "more": {
     "message": "More"
@@ -429,10 +429,10 @@
     "message": "Select stock reminder day"
   },
   "stockCountReminderDay": {
-    "message": "Stock count reminder day"
+    "message": ""
   },
   "appConfigReminderDayErrorMsg": {
-    "message": "select stock count reminder day"
+    "message": ""
   },
   "count": {
     "message": "Count"
@@ -498,19 +498,19 @@
     "message": "Add"
   },
   "selectNearbyLgas": {
-    "message": "Select Nearby LGAs"
+    "message": ""
   },
   "addStockItem": {
-    "message": "Add Another Stock Item"
+    "message": ""
   },
   "addNewFacility": {
     "message": "Add New Facility"
   },
   "selectFacilityError": {
-    "message": "Please, select facility"
+    "message": ""
   },
   "CcuBreakdown": {
-    "message": "Cold Chain Unit Breakdown"
+    "message": ""
   },
   "selectZones":{
     "message": "Select Zones"

@@ -1,7 +1,6 @@
 describe('ClearStorage', function() {
   var scope;
   var clearStorageCtrl;
-  var i18n;
   var notificationService;
   var $q;
   var $state;
@@ -13,7 +12,7 @@ describe('ClearStorage', function() {
   var memoryStorageService;
   var fixtureLoaderService;
 
-  beforeEach(module('lmisChromeApp', 'i18nMocks'));
+  beforeEach(module('lmisChromeApp'));
 
   beforeEach(inject(function($templateCache) {
     // Mock each template used by the state
@@ -39,10 +38,9 @@ describe('ClearStorage', function() {
 
   }));
 
-  beforeEach(inject(function($controller, _storageService_, _i18n_, _$state_, _notificationService_, _backgroundSyncService_, _cacheService_, _$q_, _memoryStorageService_, _growl_, _fixtureLoaderService_, _alertFactory_) {
+  beforeEach(inject(function($controller, _storageService_, _$state_, _notificationService_, _backgroundSyncService_, _cacheService_, _$q_, _memoryStorageService_, _growl_, _fixtureLoaderService_, _alertFactory_) {
     scope = {};
     storageService = _storageService_
-    i18n = _i18n_;
     $state = _$state_;
     notificationService = _notificationService_;
     backgroundSyncService = _backgroundSyncService_;
@@ -56,7 +54,6 @@ describe('ClearStorage', function() {
     clearStorageCtrl = $controller('ClearStorage', {
       $scope: scope,
       storageService: storageService,
-      i18n: i18n,
       $state: $state,
       notificationService: notificationService,
       backgroundSyncService: backgroundSyncService,

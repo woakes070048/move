@@ -8,7 +8,7 @@ describe('Tests Counter Directive', function () {
   var notificationService;
 
   // Load the LMIS module
-  beforeEach(module('lmisChromeApp', 'i18nMocks', 'fixtureLoaderMocks'));
+  beforeEach(module('lmisChromeApp', 'fixtureLoaderMocks'));
   beforeEach(module('views/templates/counter.html'));
 
  // Initialize the state

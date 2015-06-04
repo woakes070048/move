@@ -3,7 +3,7 @@
 describe('Factory: reminder-factory', function () {
 
   // load the service's module
-  beforeEach(module('lmisChromeApp', 'i18nMocks'));
+  beforeEach(module('lmisChromeApp'));
 
   // instantiate factory
   var reminderFactory, $filter, utility, testEventObj, dateKey,

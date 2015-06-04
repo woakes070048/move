@@ -2,7 +2,7 @@
 
 describe('Home controller', function () {
   // Load the controller's module
-  beforeEach(module('lmisChromeApp', 'i18nMocks'));
+  beforeEach(module('lmisChromeApp'));
 
   // Initialize the state
   beforeEach(inject(function ($templateCache) {
