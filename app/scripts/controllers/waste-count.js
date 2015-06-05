@@ -67,7 +67,7 @@ angular.module('lmisChromeApp')
  */
 
   .controller('wasteCountFormCtrl', function($scope, wasteCountFactory, $state, growl, $stateParams, appConfig,
-                                              i18n, syncService, alertFactory){
+                                              messages, syncService, alertFactory){
 
     $scope.wasteCountModel = {};
     $scope.wasteCountModel.reason = {};
@@ -114,7 +114,7 @@ angular.module('lmisChromeApp')
       initReason();
       $scope.reasonQuantity = $scope.wasteCountModel.reason[$scope.productKey][$scope.selectedReason];
       var uom = $scope.productKey !== ''?$scope.facilityProducts[$scope.productKey].presentation.uom.symbol : '';
-      $scope.enterQuantityLabel = i18n('enterQuantity', uom);
+      $scope.enterQuantityLabel = messages.enterQuantity(uom);
     };
 
     $scope.save = function(type){
@@ -133,7 +133,7 @@ angular.module('lmisChromeApp')
             syncService.syncUpRecord(wasteCountFactory.DB_NAME, $scope.wasteCount)
               .finally(function(){
                 $scope.isSaving = false;
-                alertFactory.success(i18n('wasteCountSaved'));
+                alertFactory.success(messages.wasteCountSaved);
                 $state.go('home.index.home.mainActivity');
               });
           })

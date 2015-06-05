@@ -1,0 +1,947 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: app/scripts/services/messages.js:96
+#: app/views/home/partials/stock-count-reminder.html:5
+msgid "A stock count is due today!"
+msgstr ""
+
+#: app/views/home/dashboard/table.html:10
+msgid "Actual"
+msgstr ""
+
+#: app/views/bundles/index.html:11
+#: app/views/stock-count/index.html:10
+#: app/views/waste-count/waste-count.html:10
+msgid "Add"
+msgstr ""
+
+#: app/views/bundles/log-incoming.html:21
+msgid "Add Another Stock Item"
+msgstr ""
+
+#: app/views/bundles/partials/facility/select-recent-facility.html:18
+msgid "Add New Facility"
+msgstr ""
+
+#: app/views/inventory/index.html:6
+msgid "Add New Inventory"
+msgstr ""
+
+#: app/views/orders/forms/place.html:80
+msgid "Add Product"
+msgstr ""
+
+#: app/views/product-types/product-types-list.html:5
+msgid "Add Product Type"
+msgstr ""
+
+#: app/views/home/control-panel.html:12
+msgid "Add batch"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-inventory-line.html:70
+#: app/views/inventory/partials/add-inventory-line.html:72
+msgid "Add to storage unit"
+msgstr ""
+
+#: app/views/home/main-activity.html:61
+msgid "App Config"
+msgstr ""
+
+#: app/scripts/services/messages.js:11
+msgid "Application configuration failed, please contact support"
+msgstr ""
+
+#: app/scripts/services/messages.js:8
+msgid "Application configuration saved"
+msgstr ""
+
+#: app/scripts/services/messages.js:193
+msgid "Application configurations has been updated."
+msgstr ""
+
+#: app/scripts/services/messages.js:211
+msgid "Applying application update"
+msgstr ""
+
+#: app/views/orders/forms/place.html:86
+#: app/views/orders/place-order.html:139
+msgid "Authorize"
+msgstr ""
+
+#: app/views/app-config/wizard/partials/email-setup.html:36
+#: app/views/app-config/wizard/partials/facility-cce-profile-setup.html:13
+#: app/views/app-config/wizard/partials/facility-contact-person.html:21
+#: app/views/app-config/wizard/partials/facility-info.html:20
+#: app/views/app-config/wizard/partials/facility-product-profile.html:12
+#: app/views/app-config/wizard/partials/facility-survey.html:31
+#: app/views/app-config/wizard/partials/nearby-lga-setup.html:12
+#: app/views/bundles/partials/preview-log-bundle.html:52
+#: app/views/bundles/partials/preview-log-bundle.html:69
+#: app/views/inventory/partials/preview-add-inventory.html:71
+msgid "Back"
+msgstr ""
+
+#: app/views/bundles/partials/bundle-line.html:25
+#: app/views/inventory/forms/partials/add-inventory-line.html:24
+#: app/views/inventory/partials/add-inventory-line.html:24
+#: app/views/inventory/partials/preview-inventory-line.html:17
+msgid "Batch No"
+msgstr ""
+
+#: app/views/batches/index.html:34
+msgid "Batches"
+msgstr ""
+
+#: app/scripts/services/messages.js:196
+msgid "Below buffer"
+msgstr ""
+
+#: app/scripts/services/messages.js:199
+msgid "Buffer"
+msgstr ""
+
+#: app/views/home/dashboard/table.html:26
+msgid "Buffer Stock"
+msgstr ""
+
+#: app/scripts/services/messages.js:99
+msgid "Buffer stock"
+msgstr ""
+
+#: app/views/inventory/partials/preview-add-inventory.html:31
+msgid "Bundle No"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-form.html:38
+msgid "Bundle No."
+msgstr ""
+
+#: app/views/home/main-activity.html:32
+msgid "CCU Breakdown"
+msgstr ""
+
+#: app/scripts/services/messages.js:93
+msgid "CCU breakdown report failed, please contact support"
+msgstr ""
+
+#: app/scripts/services/messages.js:90
+msgid "CCU breakdown report sent successfully!"
+msgstr ""
+
+#: app/views/home/control-panel.html:42
+msgid "Calculate routes"
+msgstr ""
+
+#: app/views/orders/forms/place.html:16
+msgid "Child Facility Code"
+msgstr ""
+
+#: app/views/survey/take-survey.html:33
+msgid "Clear"
+msgstr ""
+
+#: app/scripts/services/messages.js:70
+#: app/views/home/main-activity.html:68
+msgid "Clear Storage"
+msgstr ""
+
+#: app/scripts/services/messages.js:67
+msgid "Clear storage failed, contact support."
+msgstr ""
+
+#: app/views/cold-chain-units/report-ccu-breakdown.html:5
+msgid "Cold Chain Unit Breakdown"
+msgstr ""
+
+#: app/views/stock-count/sync/status.html:53
+msgid "Compare"
+msgstr ""
+
+#: app/views/bundles/partials/preview-log-bundle.html:57
+#: app/views/inventory/partials/preview-add-inventory.html:77
+#: app/views/stock-count/stock-count-form.html:240
+msgid "Confirm"
+msgstr ""
+
+#: app/scripts/services/messages.js:208
+#: app/views/notification-service/confirm-dialog.html:4
+msgid "Confirm stock-out broadcast for the following:"
+msgstr ""
+
+#: app/scripts/services/messages.js:83
+msgid "Confirm {{ccuID}} breakdown report"
+msgstr ""
+
+#: app/scripts/services/messages.js:163
+msgid "Confirm {{productType}} stock-out broadcast"
+msgstr ""
+
+#: app/views/app-config/edit-configuration.html:23
+#: app/views/app-config/wizard/partials/facility-contact-person.html:3
+msgid "Contact person info"
+msgstr ""
+
+#: app/views/index/footer.html:9
+msgid "Contact us"
+msgstr ""
+
+#: app/views/app-config/welcome-page.html:16
+#: app/views/app-config/wizard/partials/email-setup.html:41
+#: app/views/app-config/wizard/partials/facility-cce-profile-setup.html:19
+#: app/views/app-config/wizard/partials/facility-contact-person.html:26
+#: app/views/app-config/wizard/partials/facility-info.html:25
+#: app/views/app-config/wizard/partials/facility-product-profile.html:17
+msgid "Continue"
+msgstr ""
+
+#: app/scripts/services/messages.js:119
+msgid "Could not save settings, please contact support"
+msgstr ""
+
+#: app/scripts/services/messages.js:147
+msgid "Could not show Stock Count form, please contact support."
+msgstr ""
+
+#: app/views/stock-count/stock-count-form.html:199
+msgid "Count"
+msgstr ""
+
+#: app/scripts/services/messages.js:5
+msgid "Data migration failed. Please contact support."
+msgstr ""
+
+#: app/views/bundles/index.html:23
+#: app/views/stock-count/index.html:20
+msgid "Date"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-form.html:46
+#: app/views/inventory/partials/preview-add-inventory.html:38
+msgid "Date Received"
+msgstr ""
+
+#: app/views/home/partials/discard-count-reminder.html:5
+msgid "Discard count"
+msgstr ""
+
+#: app/scripts/services/messages.js:217
+msgid "Discard stock count"
+msgstr ""
+
+#: app/views/home/dashboard/table.html:30
+msgid "Discrepancy Threshold"
+msgstr ""
+
+#: app/views/stock-count/index.html:21
+msgid "Done"
+msgstr ""
+
+#: app/views/app-config/wizard/partials/email-setup.html:21
+msgid "Email"
+msgstr ""
+
+#: app/views/app-config/wizard/partials/email-setup.html:11
+msgid "Email Configuration"
+msgstr ""
+
+#: app/views/app-config/wizard.html:4
+msgid "Enter email to load facility profile for this device, then confirm or edit and save."
+msgstr ""
+
+#: app/scripts/services/messages.js:186
+msgid "Enter quantity in {{unit}}"
+msgstr ""
+
+#: app/views/app-config/partials/forms/facility-info.html:6
+#: app/views/home/settings.html:4
+msgid "Facility"
+msgstr ""
+
+#: app/views/app-config/edit-configuration.html:12
+msgid "Facility Info"
+msgstr ""
+
+#: app/views/app-config/wizard/partials/facility-info.html:3
+msgid "Facility info"
+msgstr ""
+
+#: app/views/app-config/wizard/partials/facility-survey.html:5
+msgid "Facility survey"
+msgstr ""
+
+#: app/views/home/settings/inventory.html:6
+msgid "Forecasting Interval"
+msgstr ""
+
+#: app/views/home/control-panel.html:19
+msgid "Incoming"
+msgstr ""
+
+#: app/scripts/services/messages.js:25
+#: app/views/home/main-activity.html:39
+msgid "Incoming Delivery"
+msgstr ""
+
+#: app/scripts/services/messages.js:61
+msgid "Incoming Delivery logged successfully."
+msgstr ""
+
+#: app/scripts/services/messages.js:128
+msgid "Incoming success"
+msgstr ""
+
+#: app/views/home/control-panel.html:52
+#: app/views/home/settings.html:7
+msgid "Inventory"
+msgstr ""
+
+#: app/views/home/dashboard/table.html:22
+msgid "Inventory Performance"
+msgstr ""
+
+#: app/views/home/dashboard/table.html:14
+msgid "Inventory Rules"
+msgstr ""
+
+#: app/views/home/dashboard.html:4
+msgid "Inventory settings"
+msgstr ""
+
+#: app/scripts/services/messages.js:19
+msgid "LGA update failed, internet connection needed to update LGA list."
+msgstr ""
+
+#: app/scripts/services/messages.js:15
+msgid "Last updated: {{date}}"
+msgstr ""
+
+#: app/views/home/dashboard/table.html:24
+msgid "Lead-time Consumption"
+msgstr ""
+
+#: app/views/app-config/welcome-page.html:18
+#: app/views/app-config/wizard/partials/email-setup.html:43
+#: app/views/index/loading-fixture-screen.html:21
+msgid "Loading"
+msgstr ""
+
+#: app/scripts/services/messages.js:141
+#: app/views/stock-count/sync/stats.html:8
+msgid "Local"
+msgstr ""
+
+#: app/views/home/control-panel.html:22
+#: app/views/inventory/index.html:12
+msgid "Log an incoming bundle"
+msgstr ""
+
+#: app/views/home/main-activity.html:5
+msgid "Main Activities"
+msgstr ""
+
+#: app/views/home/control-panel.html:55
+msgid "Manage Inventory"
+msgstr ""
+
+#: app/views/home/control-panel.html:11
+msgid "Manage unit of measurement"
+msgstr ""
+
+#: app/scripts/services/messages.js:205
+msgid "Max"
+msgstr ""
+
+#: app/views/home/settings/inventory.html:33
+msgid "Maximum"
+msgstr ""
+
+#: app/views/home/control-panel.html:27
+msgid "Modify an order"
+msgstr ""
+
+#: app/views/home/main-activity.html:55
+msgid "More"
+msgstr ""
+
+#: app/views/app-config/partials/forms/contact-person.html:6
+msgid "Name"
+msgstr ""
+
+#: app/scripts/services/messages.js:79
+#: app/views/survey/take-survey.html:22
+msgid "No"
+msgstr ""
+
+#: app/views/orders/forms/partials/product.html:27
+msgid "Number of doses"
+msgstr ""
+
+#: app/scripts/services/messages.js:125
+msgid "Offline"
+msgstr ""
+
+#: app/scripts/services/messages.js:122
+msgid "Online"
+msgstr ""
+
+#: app/views/orders/forms/place.html:61
+#: app/views/orders/place-order.html:49
+msgid "Order Date"
+msgstr ""
+
+#: app/views/orders/forms/place.html:53
+#: app/views/orders/place-order.html:41
+msgid "Order Number"
+msgstr ""
+
+#: app/views/orders/place-order.html:13
+msgid "Order detail"
+msgstr ""
+
+#: app/views/home/control-panel.html:37
+msgid "Outgoing"
+msgstr ""
+
+#: app/scripts/services/messages.js:40
+#: app/views/home/main-activity.html:46
+msgid "Outgoing Delivery"
+msgstr ""
+
+#: app/scripts/services/messages.js:64
+msgid "Outgoing Delivery logged successfully."
+msgstr ""
+
+#: app/views/orders/forms/place.html:36
+msgid "Parent Facility Code"
+msgstr ""
+
+#: app/views/orders/forms/place.html:25
+msgid "Parent Facility Name"
+msgstr ""
+
+#: app/views/app-config/partials/forms/contact-person.html:20
+msgid "Phone no"
+msgstr ""
+
+#: app/views/home/control-panel.html:24
+#: app/views/orders/place-order.html:5
+msgid "Place an order"
+msgstr ""
+
+#: app/views/app-config/partials/forms/contact-person.html:9
+msgid "Please enter contact person name"
+msgstr ""
+
+#: app/views/app-config/partials/forms/contact-person.html:23
+msgid "Please enter contact person's phone no"
+msgstr ""
+
+#: app/views/app-config/wizard/partials/email-setup.html:24
+msgid "Please enter valid email address"
+msgstr ""
+
+#: app/scripts/services/messages.js:22
+msgid "Please specify if its receiving or sending"
+msgstr ""
+
+#: app/views/app-config/welcome-page.html:8
+msgid "Please take a few minutes to tell us about your facility."
+msgstr ""
+
+#: app/views/bundles/partials/facility/add-new-facility.html:34
+#: app/views/bundles/partials/facility/select-recent-facility.html:20
+msgid "Please, select facility"
+msgstr ""
+
+#: app/views/home/control-panel.html:40
+msgid "Process an order"
+msgstr ""
+
+#: app/views/home/control-panel.html:6
+msgid "Product"
+msgstr ""
+
+#: app/views/orders/forms/partials/product.html:2
+msgid "Product Category"
+msgstr ""
+
+#: app/views/orders/forms/place.html:71
+msgid "Product ID"
+msgstr ""
+
+#: app/views/orders/forms/partials/product.html:13
+msgid "Product Profile"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-inventory-line.html:12
+#: app/views/inventory/partials/add-inventory-line.html:12
+#: app/views/inventory/partials/preview-inventory-line.html:12
+#: app/views/orders/place-order.html:77
+#: app/views/product-types/product-types-list.html:22
+msgid "Product Types"
+msgstr ""
+
+#: app/views/home/dashboard.html:3
+msgid "Product settings are unset, please define them"
+msgstr ""
+
+#: app/views/home/settings/inventory.html:23
+msgid "Products"
+msgstr ""
+
+#: app/views/app-config/wizard/partials/email-setup.html:4
+msgid "Profile does not exist, please make sure you entered the correct email address and check your internet connection"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-inventory-line.html:40
+#: app/views/inventory/partials/add-inventory-line.html:40
+#: app/views/inventory/partials/preview-inventory-line.html:22
+#: app/views/orders/forms/partials/product.html:32
+#: app/views/orders/place-order.html:78
+msgid "Program"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-inventory-line.html:63
+#: app/views/inventory/partials/add-inventory-line.html:54
+#: app/views/inventory/partials/preview-inventory-line.html:31
+#: app/views/orders/forms/partials/product.html:24
+#: app/views/orders/place-order.html:79
+msgid "Quantity"
+msgstr ""
+
+#: app/scripts/services/messages.js:28
+msgid "Received From"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-form.html:30
+#: app/views/inventory/partials/preview-add-inventory.html:24
+#: app/views/orders/place-order.html:33
+msgid "Receiving Facility"
+msgstr ""
+
+#: app/views/orders/forms/place.html:5
+msgid "Receiving Facility Name"
+msgstr ""
+
+#: app/views/stock-count/sync/stats.html:6
+#: app/views/stock-count/sync/status.html:3
+msgid "Records"
+msgstr ""
+
+#: app/scripts/services/messages.js:144
+#: app/views/stock-count/sync/stats.html:10
+msgid "Remote"
+msgstr ""
+
+#: app/views/orders/place-order.html:81
+msgid "Remove"
+msgstr ""
+
+#: app/views/home/dashboard/table.html:28
+msgid "Reorder Point"
+msgstr ""
+
+#: app/views/cold-chain-units/report-ccu-breakdown.html:79
+msgid "Report CCU breakdown"
+msgstr ""
+
+#: app/views/home/settings.html:14
+msgid "Reset"
+msgstr ""
+
+#: app/views/home/control-panel.html:41
+msgid "Return a shipment"
+msgstr ""
+
+#: app/scripts/services/messages.js:202
+msgid "Safety Stock"
+msgstr ""
+
+#: app/views/app-config/edit-configuration.html:47
+#: app/views/app-config/wizard/partials/facility-survey.html:36
+#: app/views/app-config/wizard/partials/nearby-lga-setup.html:17
+#: app/views/bundles/log-incoming.html:31
+#: app/views/inventory/forms/partials/add-form.html:86
+#: app/views/survey/take-survey.html:39
+msgid "Save"
+msgstr ""
+
+#: app/views/app-config/wizard/partials/facility-survey.html:38
+#: app/views/app-config/wizard/partials/nearby-lga-setup.html:19
+#: app/views/stock-count/stock-count-form.html:241
+#: app/views/survey/take-survey.html:41
+msgid "Saving"
+msgstr ""
+
+#: app/views/app-config/edit-configuration.html:49
+msgid "Saving…"
+msgstr ""
+
+#: app/views/cold-chain-units/report-ccu-breakdown.html:91
+msgid "Select CCU"
+msgstr ""
+
+#: app/views/app-config/partials/forms/lga-profile.html:27
+msgid "Select Nearby LGAs"
+msgstr ""
+
+#: app/scripts/services/messages.js:46
+msgid "Select Receiving Facility"
+msgstr ""
+
+#: app/scripts/services/messages.js:34
+msgid "Select Receiving LGA"
+msgstr ""
+
+#: app/scripts/services/messages.js:52
+msgid "Select Receiving Ward"
+msgstr ""
+
+#: app/scripts/services/messages.js:31
+msgid "Select Sending Facility"
+msgstr ""
+
+#: app/scripts/services/messages.js:49
+msgid "Select Sending LGA"
+msgstr ""
+
+#: app/scripts/services/messages.js:37
+msgid "Select Sending Ward"
+msgstr ""
+
+#: app/views/waste-count/waste-count-form2.html:88
+#: app/views/waste-count/waste-count-form2.html:90
+msgid "Select Waste Reason"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-inventory-line.html:29
+#: app/views/inventory/partials/add-inventory-line.html:29
+msgid "Select batch"
+msgstr ""
+
+#: app/views/app-config/partials/forms/ccu-profile.html:5
+msgid "Select facility cold chain units"
+msgstr ""
+
+#: app/views/app-config/partials/forms/facility-info.html:24
+msgid "Select facility stock count interval"
+msgstr ""
+
+#: app/views/app-config/partials/forms/product-profile.html:5
+msgid "Select facility stock list"
+msgstr ""
+
+#: app/views/cold-chain-units/report-ccu-breakdown.html:101
+#: app/views/cold-chain-units/report-ccu-breakdown.html:95
+msgid "Select faulty CCU"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-inventory-line.html:15
+#: app/views/inventory/partials/add-inventory-line.html:15
+#: app/views/orders/place-order.html:87
+#: app/views/stock-out-broadcast/multi-stock-out-broadcast.html:29
+#: app/views/stock-out-broadcast/stock-out-broadcast.html:17
+#: app/views/stock-out-broadcast/stock-out-broadcast.html:20
+#: app/views/stock-out-broadcast/stock-out-broadcast.html:25
+#: app/views/waste-count/waste-count-form2.html:80
+#: app/views/waste-count/waste-count-form2.html:82
+msgid "Select product type"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-inventory-line.html:42
+#: app/views/inventory/partials/add-inventory-line.html:42
+#: app/views/orders/place-order.html:96
+msgid "Select program"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-form.html:21
+#: app/views/orders/place-order.html:24
+msgid "Select sending facility"
+msgstr ""
+
+#: app/views/app-config/partials/forms/facility-info.html:18
+msgid "Select stock count interval"
+msgstr ""
+
+#: app/views/app-config/partials/forms/facility-info.html:36
+#: app/views/app-config/partials/forms/facility-info.html:42
+msgid "Select stock count reminder day"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-inventory-line.html:56
+#: app/views/inventory/partials/add-inventory-line.html:63
+#: app/views/orders/place-order.html:108
+msgid "Select unit of measurement"
+msgstr ""
+
+#: app/views/app-config/partials/forms/lga-profile.html:4
+#: app/views/app-config/partials/forms/zone-profile.html:4
+msgid "Select zones"
+msgstr ""
+
+#: app/scripts/services/messages.js:58
+msgid "Selected facility does not exist."
+msgstr ""
+
+#: app/views/cold-chain-units/report-ccu-breakdown.html:123
+#: app/views/stock-out-broadcast/multi-stock-out-broadcast.html:37
+#: app/views/stock-out-broadcast/stock-out-broadcast.html:33
+msgid "Send"
+msgstr ""
+
+#: app/views/cold-chain-units/report-ccu-breakdown.html:125
+#: app/views/stock-out-broadcast/multi-stock-out-broadcast.html:39
+#: app/views/stock-out-broadcast/stock-out-broadcast.html:35
+msgid "Sending"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-form.html:18
+#: app/views/inventory/partials/preview-add-inventory.html:17
+#: app/views/orders/place-order.html:21
+msgid "Sending Facility"
+msgstr ""
+
+#: app/scripts/services/messages.js:43
+msgid "Sent To"
+msgstr ""
+
+#: app/views/home/settings/inventory.html:13
+#: app/views/home/settings/inventory.html:38
+msgid "Service Level"
+msgstr ""
+
+#: app/views/home/dashboard/table.html:18
+msgid "Set Maximum Level"
+msgstr ""
+
+#: app/views/home/dashboard/table.html:16
+msgid "Set Service Level"
+msgstr ""
+
+#: app/scripts/services/messages.js:116
+msgid "Settings saved"
+msgstr ""
+
+#: app/scripts/services/messages.js:102
+msgid "Stock"
+msgstr ""
+
+#: app/views/home/main-activity.html:11
+#: app/views/stock-count/sync/stats.html:3
+msgid "Stock Count"
+msgstr ""
+
+#: app/views/stock-count/index.html:3
+msgid "Stock Count History"
+msgstr ""
+
+#: app/views/stock-count/stock-count-form.html:198
+msgid "Stock Item"
+msgstr ""
+
+#: app/views/dashboard/dashboard.html:6
+msgid "Stock Levels"
+msgstr ""
+
+#: app/views/app-config/partials/forms/facility-info.html:15
+msgid "Stock count interval"
+msgstr ""
+
+#: app/views/app-config/partials/forms/facility-info.html:33
+msgid "Stock count reminder day"
+msgstr ""
+
+#: app/scripts/services/messages.js:153
+msgid "Stock count saving failed"
+msgstr ""
+
+#: app/views/home/main-activity.html:25
+#: app/views/stock-out-broadcast/multi-stock-out-broadcast.html:5
+#: app/views/stock-out-broadcast/stock-out-broadcast.html:5
+msgid "Stock-out Alert"
+msgstr ""
+
+#: app/scripts/services/messages.js:159
+msgid "Stock-out alert failed, please contact support"
+msgstr ""
+
+#: app/scripts/services/messages.js:156
+msgid "Stock-out alert sent successfully!"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-inventory-line.html:68
+#: app/views/inventory/partials/preview-inventory-line.html:41
+msgid "Storage Unit"
+msgstr ""
+
+#: app/views/inventory/partials/add-inventory-line.html:70
+msgid "Storage unit"
+msgstr ""
+
+#: app/views/home/settings.html:15
+#: app/views/orders/forms/place.html:89
+#: app/views/orders/place-order.html:142
+msgid "Submit"
+msgstr ""
+
+#: app/views/stock-count/sync/status.html:41
+msgid "Successfully syncronised"
+msgstr ""
+
+#: app/scripts/services/messages.js:137
+msgid "Successfully syncronised {{source}}"
+msgstr ""
+
+#: app/scripts/services/messages.js:169
+msgid "Survey not found!"
+msgstr ""
+
+#: app/scripts/services/messages.js:182
+msgid "Survey not saved, try again!"
+msgstr ""
+
+#: app/views/stock-count/sync/stats.html:29
+msgid "Sync"
+msgstr ""
+
+#: app/views/bundles/index.html:24
+#: app/views/stock-count/index.html:22
+msgid "Synced"
+msgstr ""
+
+#: app/scripts/services/messages.js:132
+msgid "Syncronising from {{source}}…"
+msgstr ""
+
+#: app/views/home/control-panel.html:29
+msgid "Track incoming orders"
+msgstr ""
+
+#: app/views/home/control-panel.html:44
+msgid "Track outgoing shipments"
+msgstr ""
+
+#: app/views/home/control-panel.html:28
+msgid "Track pending orders"
+msgstr ""
+
+#: app/views/home/control-panel.html:43
+msgid "Track pending shipments"
+msgstr ""
+
+#: app/views/home/control-panel.html:57
+msgid "Track performance"
+msgstr ""
+
+#: app/views/inventory/forms/partials/add-inventory-line.html:54
+#: app/views/inventory/partials/add-inventory-line.html:61
+#: app/views/inventory/partials/preview-inventory-line.html:36
+#: app/views/orders/place-order.html:80
+msgid "Unit of measurement"
+msgstr ""
+
+#: app/scripts/services/messages.js:55
+msgid "Unknown bundle type"
+msgstr ""
+
+#: app/views/orders/forms/place.html:45
+msgid "User Code"
+msgstr ""
+
+#: app/views/home/control-panel.html:58
+msgid "View Stock Count"
+msgstr ""
+
+#: app/views/home/control-panel.html:9
+msgid "View batch list"
+msgstr ""
+
+#: app/views/home/control-panel.html:45
+msgid "View delivered shipments"
+msgstr ""
+
+#: app/views/home/control-panel.html:56
+msgid "View forecasts"
+msgstr ""
+
+#: app/views/home/control-panel.html:10
+msgid "View product types"
+msgstr ""
+
+#: app/views/home/control-panel.html:30
+msgid "View received orders"
+msgstr ""
+
+#: app/views/home/control-panel.html:60
+msgid "View sub-facility forecasts"
+msgstr ""
+
+#: app/views/home/control-panel.html:59
+msgid "View sub-facility inventories"
+msgstr ""
+
+#: app/views/home/control-panel.html:61
+msgid "View sub-facility reports"
+msgstr ""
+
+#: app/views/home/main-activity.html:18
+msgid "Waste Count"
+msgstr ""
+
+#: app/views/app-config/welcome-page.html:3
+msgid "Welcome to LoMIS"
+msgstr ""
+
+#: app/scripts/services/messages.js:76
+#: app/views/survey/take-survey.html:17
+msgid "Yes"
+msgstr ""
+
+#: app/scripts/services/messages.js:150
+msgid "You have completed stock count successfully!"
+msgstr ""
+
+#: app/views/index/migration-screen.html:21
+msgid "Your app is updating."
+msgstr ""
+
+#: app/scripts/services/messages.js:87
+msgid "are you sure?"
+msgstr ""
+
+#: app/scripts/services/messages.js:172
+msgid "complete survey before saving!"
+msgstr ""
+
+#: app/scripts/services/messages.js:106
+msgid "item"
+msgid_plural "items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/scripts/services/messages.js:214
+msgid "stock count value is invalid, at least enter zero (0) to proceed"
+msgstr ""
+
+#: app/scripts/services/messages.js:73
+msgid ""
+"this will erase all data on this phone. You will need to set it up again while online. \n"
+"Are you ABSOLUTELY sure?"
+msgstr ""
+
+#: app/scripts/services/messages.js:190
+msgid "waste count saved successfully"
+msgstr ""
+
+#: app/scripts/services/messages.js:109
+msgid "{{productQuantity}} {{itemName}} low on stock, press to send alert"
+msgstr ""
+
+#: app/scripts/services/messages.js:176
+msgid "{{surveyName}} was submitted successfully!"
+msgstr ""

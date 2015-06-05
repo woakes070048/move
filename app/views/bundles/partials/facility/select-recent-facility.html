@@ -15,9 +15,9 @@
                 ng-selected="placeholder.selectedFacility === facility.uuid">
             {{ facility.name }}
         </option>
-        <option value="-1" i18n="addNewFacility"></option>
+        <option value="-1" translate>Add New Facility</option>
     </select>
     <span  ng-show="selectFacilityError == true"
-           class="help-block custom-error" i18n="selectFacilityError"></span>
+           class="help-block custom-error" translate>Please, select facility</span>
     <br/>
 </div>

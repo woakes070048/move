@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lmisChromeApp').service('notificationService', function($modal, $q, i18n, $window, utility) {
+angular.module('lmisChromeApp').service('notificationService', function($modal, $q, messages, $window, utility) {
 
   var noSmsSupportMsg = 'SMS support not available!';
   this.NO_SMS_SUPPORT = noSmsSupportMsg;
@@ -67,7 +67,7 @@ angular.module('lmisChromeApp').service('notificationService', function($modal, 
   var getMobileConfirmDialog = function(title, bodyText, buttonLabels) {
     var deferred = $q.defer();
     bodyText = angular.isArray(title) ? title.join('\n') + '\n\n' + bodyText : bodyText;
-    title = angular.isArray(title) ? i18n('confirmStockOutHeader2') : title;
+    title = angular.isArray(title) ? messages.confirmStockOut : title;
     if (isMobileDialogAvailable()) {
       navigator.notification.confirm(bodyText, function(index) {
         var YES_INDEX = 1; //position in buttonLabels text + 1.
@@ -84,7 +84,7 @@ angular.module('lmisChromeApp').service('notificationService', function($modal, 
   };
 
   this.getConfirmDialog = function(title, bodyText, buttonLabels) {
-    buttonLabels = buttonLabels || [i18n('yes'), i18n('no')];
+    buttonLabels = buttonLabels || [messages.yes, messages.no];
     if (isMobileDialogAvailable()) {
       return getMobileConfirmDialog(title, bodyText, buttonLabels);
     }

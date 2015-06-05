@@ -7,12 +7,11 @@ describe('Controller: StockCountFormCtrl', function() {
   var stockCount;
   var appConfig;
   var productType;
-  var _i18n;
   var $controller;
   var mostRecentStockCount = {};
   var stockCountFactory;
 
-  beforeEach(module('lmisChromeApp', 'appConfigMocks', 'stockCountMocks', 'i18nMocks', 'productWithCategoryMocks', 'fixtureLoaderMocks', function($provide) {
+  beforeEach(module('lmisChromeApp', 'appConfigMocks', 'stockCountMocks', 'productWithCategoryMocks', 'fixtureLoaderMocks', function($provide) {
     //$provide.value('appConfig',{});
     $provide.value('productType', {});
   }));
@@ -44,11 +43,10 @@ describe('Controller: StockCountFormCtrl', function() {
     });
   }));
 
-  beforeEach(inject(function(_$controller_, $state, _stockCountFactory_, _productType_, appConfigMock, stockData, i18n, productWithCategoryMock) {
+  beforeEach(inject(function(_$controller_, $state, _stockCountFactory_, _productType_, appConfigMock, stockData, productWithCategoryMock) {
     $controller = _$controller_;
     stockCountFactory = _stockCountFactory_;
     scope = {};
-    _i18n = i18n;
     stockCount = stockData;
     state = $state;
     productType = _productType_;

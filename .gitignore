@@ -8,6 +8,7 @@ npm-debug.log
 test/bower_components
 coverage
 app/scripts/config.js
+app/scripts/translations.js
 build
 nbproject/private/
 .android

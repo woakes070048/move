@@ -1,8 +1,8 @@
 describe('multiStockOutBroadcast', function(){
-  var scope, ctrl, state, stateParams, appConfig, _i18n, stockOutBroadcastFactory,
+  var scope, ctrl, state, stateParams, appConfig, stockOutBroadcastFactory,
       notificationService, $q;
 
-  beforeEach(module('lmisChromeApp', 'appConfigMocks', 'i18nMocks', 'productTypeMocks', function($provide){
+  beforeEach(module('lmisChromeApp', 'appConfigMocks', 'productTypeMocks', function($provide){
     //$provide.value('facilityStockListProductTypes', []);
   }));
 
@@ -29,14 +29,13 @@ describe('multiStockOutBroadcast', function(){
     });
   }));
 
-  beforeEach(inject(function($controller, $state, $stateParams, productTypeMock, appConfigMock, i18n,
+  beforeEach(inject(function($controller, $state, $stateParams, productTypeMock, appConfigMock,
       _stockOutBroadcastFactory_, _notificationService_, _$q_){
     scope = {};
     state = $state;
     $q = _$q_;
     notificationService = _notificationService_;
     appConfig = appConfigMock;
-    _i18n = i18n;
     stockOutBroadcastFactory = _stockOutBroadcastFactory_;
     stateParams = $stateParams;
     stateParams.productList = '0930b906-4802-4a65-8516-057bd839db3e,939d5e05-2aa4-4883-9246-35c60dfa06a5';
@@ -45,7 +44,6 @@ describe('multiStockOutBroadcast', function(){
       $scope: scope,
       $state: state,
       appConfig: appConfig,
-      i18n: _i18n,
       stateParams: stateParams,
       stockOutBroadcastFactory: stockOutBroadcastFactory,
       facilityStockListProductTypes: productTypeMock,

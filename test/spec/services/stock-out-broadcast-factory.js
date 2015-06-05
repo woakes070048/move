@@ -2,7 +2,7 @@
 
 describe('StockOutBroadcast Factory', function () {
   // Load the controller's module
-  beforeEach(module('lmisChromeApp', 'i18nMocks', 'memoryStoreMocks'));
+  beforeEach(module('lmisChromeApp', 'memoryStoreMocks'));
 
   var stockOutBroadcastFactory, storageService, syncService, notificationService, stockOut, $q, inventoryRulesFactory;
 

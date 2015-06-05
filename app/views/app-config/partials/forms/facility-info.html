@@ -3,7 +3,7 @@
     <div class="col-sm-6">
       <div class="form-group"
            ng-class="{ 'has-error': (editAppConfigForm.appFacility).$invalid && isSubmitted }">
-        <label i18n="facility"></label>
+        <label translate>Facility</label>
         <input type="text" class="form-control" ng-model="(appConfig.facility).name"
                name="facilityName" id="facilityName"  ng-disabled="true"/>
       </div>
@@ -12,36 +12,36 @@
     <div class="col-sm-6">
       <div class="form-group"
            ng-class="{ 'has-error': (editAppConfigForm.stockCountInterval).$invalid && isSubmitted }">
-        <label for="stockCountInterval" i18n="stockCountInterval"></label>
+        <label for="stockCountInterval" translate>Stock count interval</label>
         <select id="stockCountInterval" class="form-control" ng-model="(appConfig.facility).stockCountInterval"
                 name="stockCountInterval" ng-disabled="!developerMode" required>
-          <option value="" i18n="selectStockCountInterval"></option>
+          <option value="" translate>Select stock count interval</option>
           <option ng-repeat="interval in stockCountIntervals" value="{{ interval.value }}"
                   ng-selected="interval.value === (appConfig.facility).stockCountInterval"
                   ng-bind="interval.name" required>
           </option>
         </select>
-        <span class="alert-danger form-control" i18n="appConfigStockCountErrorMsg"
-              ng-show="(editAppConfigForm.stockCountInterval).$invalid && isSubmitted">
-        </span>
+        <span class="alert-danger form-control" translate
+          ng-show="(editAppConfigForm.stockCountInterval).$invalid && isSubmitted"
+        >Select facility stock count interval</span>
       </div>
     </div>
 
     <div class="col-sm-6">
       <div class="form-group"
            ng-class="{ 'has-error': (editAppConfigForm.stockCountReminderDay).$invalid && isSubmitted }">
-        <label for="stockCountReminderDay" i18n="stockCountReminderDay"></label>
+        <label for="stockCountReminderDay" translate>Stock count reminder day</label>
         <select id="stockCountReminderDay" class="form-control" ng-model="(appConfig.facility).reminderDay"
                 name="stockCountReminderDay" ng-disabled="!developerMode" required>
-          <option value="" i18n="selectStockCountReminderDay"></option>
+          <option value="" translate>Select stock count reminder day</option>
           <option ng-repeat="day in weekDays" value="{{ $index }}"
                   ng-selected="$index === (appConfig.facility).reminderDay"
                   ng-bind="day" required>
           </option>
         </select>
-        <span class="alert-danger form-control" i18n="appConfigReminderDayErrorMsg"
-              ng-show="(editAppConfigForm.stockCountReminderDay).$invalid && isSubmitted">
-        </span>
+        <span class="alert-danger form-control" translate
+          ng-show="(editAppConfigForm.stockCountReminderDay).$invalid && isSubmitted"
+        >Select stock count reminder day</span>
       </div>
     </div>
   </div>

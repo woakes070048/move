@@ -38,7 +38,7 @@ angular.module('lmisChromeApp')
         }
       });
   })
-  .controller('LogBundleHomeCtrl', function($scope, appConfig, locationService, facilityFactory, $stateParams, bundleService, bundles, $state, utility, productProfileFactory, growl, i18n,productCategoryFactory) {
+  .controller('LogBundleHomeCtrl', function($scope, appConfig, locationService, facilityFactory, $stateParams, bundleService, bundles, $state, utility, productProfileFactory, growl, messages,productCategoryFactory) {
 
     var logIncoming = bundleService.INCOMING;
     var logOutgoing = bundleService.OUTGOING;
@@ -54,27 +54,27 @@ angular.module('lmisChromeApp')
 
     if ($stateParams.type !== logIncoming && $stateParams.type !== logOutgoing) {
       $state.go('home.index.home.mainActivity');
-      growl.error(i18n('specifyBundleType'));
+      growl.error(messages.specifyBundleType);
       return;
     }
 
     function setUITexts(type) {
       if ($stateParams.type === logIncoming) {
-        $scope.logBundleTitle = i18n('IncomingDelivery');
-        $scope.facilityHeader = i18n('receivedFrom');
-        $scope.previewFacilityLabel = i18n('receivedFrom');
-        $scope.selectFacility = i18n('selectSender');
-        $scope.LGALabel = i18n('selectSendingLga');
-        $scope.WardLabel = i18n('selectSendingWard');
+        $scope.logBundleTitle = messages.incomingDelivery;
+        $scope.facilityHeader = messages.receivedFrom;
+        $scope.previewFacilityLabel = messages.receivedFrom;
+        $scope.selectFacility = messages.selectSender;
+        $scope.LGALabel = messages.selectSendingLga;
+        $scope.WardLabel = messages.selectSendingWard;
       } else if ($stateParams.type === logOutgoing) {
-        $scope.logBundleTitle = i18n('OutgoingDelivery');
-        $scope.facilityHeader = i18n('sentTo');
-        $scope.selectFacility = i18n('selectReceiver');
-        $scope.previewFacilityLabel = i18n('sentTo');
-        $scope.LGALabel = i18n('selectReceivingLga');
-        $scope.WardLabel = i18n('selectReceivingWard');
+        $scope.logBundleTitle = messages.outgoingDelivery;
+        $scope.facilityHeader = messages.sentTo;
+        $scope.selectFacility = messages.selectReceiver;
+        $scope.previewFacilityLabel = messages.sentTo;
+        $scope.LGALabel = messages.selectReceivingLga;
+        $scope.WardLabel = messages.selectReceivingWard;
       } else {
-        $scope.logFormTitle = i18n('unknownBundleType');
+        $scope.logFormTitle = messages.unknownBundleType;
       }
     }
 
@@ -180,7 +180,7 @@ angular.module('lmisChromeApp')
     }
 
   })
-  .controller('LogBundleCtrl', function($scope, batchStore, utility, batchService, appConfig, i18n, productProfileFactory, bundleService, growl, $state, alertFactory, syncService, $stateParams, $filter, locationService, facilityFactory,appConfigService,productCategoryFactory, VVM_OPTIONS) {
+  .controller('LogBundleCtrl', function($scope, batchStore, utility, batchService, appConfig, messages, productProfileFactory, bundleService, growl, $state, alertFactory, syncService, $stateParams, $filter, locationService, facilityFactory,appConfigService,productCategoryFactory, VVM_OPTIONS) {
 
     var logIncoming = bundleService.INCOMING;
     var logOutgoing = bundleService.OUTGOING;
@@ -236,13 +236,13 @@ angular.module('lmisChromeApp')
             $scope.bundle.receivingFacility = facility;
             $scope.bundle.sendingFacility = appConfig.facility;
           } else {
-            growl.error(i18n('unknownBundleType'));
+            growl.error(messages.unknownBundleType);
           }
         })
         .catch(function(err){
           console.error(err);
           $state.go('logBundleHome', { type: $stateParams.type });
-          growl.error(i18n('selectedFacilityNotFound'));
+          growl.error(messages.selectedFacilityNotFound);
         });
     };
     setFacility();
@@ -262,7 +262,7 @@ angular.module('lmisChromeApp')
       $scope.lgas = appConfig.facility.selectedLgas;
     };
     getLGAs();
-          
+
     $scope.getWards = function(lga) {
       locationService.getWards(lga)
         .then(function(wards) {
@@ -284,7 +284,7 @@ angular.module('lmisChromeApp')
 
     if ($stateParams.type !== logIncoming && $stateParams.type !== logOutgoing) {
       $state.go('home.index.home.mainActivity');
-      growl.error(i18n('specifyBundleType'));
+      growl.error(messages.specifyBundleType);
       return;
     }
     $scope.placeholder = {
@@ -295,19 +295,19 @@ angular.module('lmisChromeApp')
     function setUIText(type) {
       var today = $filter('date')(new Date(), 'dd MMM, yyyy')
       if ($stateParams.type === logIncoming) {
-        $scope.logBundleTitle = [i18n('IncomingDelivery'), '-', today].join(' ');
-        $scope.selectFacility = i18n('selectSender');
-        $scope.previewFacilityLabel = i18n('receivedFrom');
-        $scope.LGALabel = i18n('selectSendingLga');
-        $scope.WardLabel = i18n('selectSendingWard');
+        $scope.logBundleTitle = [messages.incomingDelivery, '-', today].join(' ');
+        $scope.selectFacility = messages.selectSender;
+        $scope.previewFacilityLabel = messages.receivedFrom;
+        $scope.LGALabel = messages.selectSendingLga;
+        $scope.WardLabel = messages.selectSendingWard;
       } else if ($stateParams.type === logOutgoing) {
-        $scope.logBundleTitle = [i18n('OutgoingDelivery'), '-', today].join(' ');
-        $scope.selectFacility = i18n('selectReceiver');
-        $scope.previewFacilityLabel = i18n('sendTo');
-        $scope.LGALabel = i18n('selectReceivingLga');
-        $scope.WardLabel = i18n('selectReceivingWard');
+        $scope.logBundleTitle = [messages.outgoingDelivery, '-', today].join(' ');
+        $scope.selectFacility = messages.selectReceiver;
+        $scope.previewFacilityLabel = messages.sendTo;
+        $scope.LGALabel = messages.selectReceivingLga;
+        $scope.WardLabel = messages.selectReceivingWard;
       } else {
-        $scope.logFormTitle = i18n('unknownBundleType');
+        $scope.logFormTitle = messages.unknownBundleType;
       }
     }
 
@@ -415,7 +415,7 @@ angular.module('lmisChromeApp')
         $scope.bundle.receivingFacility = JSON.parse(selectedFacility);
         $scope.bundle.sendingFacility = appConfig.facility;
       } else {
-        growl.error(i18n('unknownBundleType'));
+        growl.error(messages.unknownBundleType);
       }
     };
 
@@ -432,10 +432,10 @@ angular.module('lmisChromeApp')
       $scope.isSaving = true;
       var successMsg = '';
       if ($stateParams.type === logIncoming) {
-        successMsg = i18n('incomingDeliverySuccessMessage');
+        successMsg = messages.incomingDeliverySuccessMessage;
         bundle.facilityName = bundle.sendingFacility.name;
       } else {
-        successMsg = i18n('outgoingDeliverySuccessMessage');
+        successMsg = messages.outgoingDeliverySuccessMessage;
         bundle.facilityName = bundle.receivingFacility.name;
       }
       var newProductProfiles = [];

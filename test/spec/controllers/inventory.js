@@ -2,7 +2,7 @@
 
 describe('Inventory controller', function () {
   // Load the controller's module
-  beforeEach(module('lmisChromeApp', 'i18nMocks'));
+  beforeEach(module('lmisChromeApp'));
 
   beforeEach(inject(function ($templateCache) {
     // Mock each template used by the state

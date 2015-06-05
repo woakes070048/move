@@ -2,7 +2,7 @@
 
 describe('Service: pouchMigrationService', function() {
 
-  beforeEach(module('lmisChromeApp', 'i18nMocks'));
+  beforeEach(module('lmisChromeApp'));
 
   var pouchMigrationService;
   beforeEach(inject(function(_pouchMigrationService_) {

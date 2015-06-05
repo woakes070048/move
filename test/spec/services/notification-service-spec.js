@@ -3,7 +3,7 @@
 describe('Service: notificationService ', function () {
 
   // load the service's module
-  beforeEach(module('lmisChromeApp', 'i18nMocks'));
+  beforeEach(module('lmisChromeApp'));
 
   // instantiate service
   var notificationService, $q;

@@ -35,7 +35,7 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
       },
       controller: 'MultiStockOutBroadcastCtrl'
     });
-}).controller('MultiStockOutBroadcastCtrl',function($scope, appConfig, notificationService, $log, stockOutBroadcastFactory, $state, growl, i18n, facilityStockListProductTypes, $stateParams, inventoryRulesFactory, $q, alertFactory) {
+}).controller('MultiStockOutBroadcastCtrl',function($scope, appConfig, notificationService, $log, stockOutBroadcastFactory, $state, growl, messages, facilityStockListProductTypes, $stateParams, inventoryRulesFactory, $q, alertFactory) {
 
     $scope.urlParams = ($stateParams.productList !== null) ? ($stateParams.productList).split(',') : $stateParams.productList;
     var stockOutProductTypes = facilityStockListProductTypes.filter(function(element) {
@@ -85,11 +85,11 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
         addNextStockLevelAndSave(productList, productList.length)
           .then(function(result) {
             $scope.isSaving = false;
-            alertFactory.success(i18n('stockOutBroadcastSuccessMsg'));
+            alertFactory.success(messages.stockOutBroadcastSuccessMsg);
             $state.go('home.index.home.mainActivity');
           })
           .catch(function(reason) {
-            growl.error(i18n('stockOutBroadcastFailedMsg'));
+            growl.error(messages.stockOutBroadcastFailedMsg);
             $log.error(reason);
           });
       };
@@ -100,8 +100,8 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
       }
 
       var confirmationTitle = title;
-      var confirmationQuestion = i18n('dialogConfirmationQuestion');
-      var buttonLabels = [i18n('yes'), i18n('no')];
+      var confirmationQuestion = messages.dialogConfirmationQuestion;
+      var buttonLabels = [messages.yes, messages.no];
 
       notificationService.getConfirmDialog(confirmationTitle, confirmationQuestion, buttonLabels)
         .then(function(isConfirmed) {
@@ -115,7 +115,7 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
         });
     };
 
-  }).controller('StockOutBroadcastCtrl', function($scope, appConfig, $log, stockOutBroadcastFactory, $state, growl, alertFactory, $modal, i18n, facilityStockListProductTypes, notificationService) {
+  }).controller('StockOutBroadcastCtrl', function($scope, appConfig, $log, stockOutBroadcastFactory, $state, growl, alertFactory, $modal, messages, facilityStockListProductTypes, notificationService) {
 
     $scope.productTypes = facilityStockListProductTypes;
     //used to hold stock out form data
@@ -129,9 +129,9 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
     $scope.save = function() {
       $scope.isSaving = true;
       var productType = JSON.parse($scope.stockOutForm.productType);
-      var confirmationTitle = i18n('confirmStockOutHeader', productType.code);
-      var confirmationQuestion = i18n('dialogConfirmationQuestion');
-      var buttonLabels = [i18n('yes'), i18n('no')];
+      var confirmationTitle = messages.confirmStockOutHeader(productType.code);
+      var confirmationQuestion = messages.dialogConfirmationQuestion;
+      var buttonLabels = [messages.yes, messages.no];
 
       var stockOut = {
         productType: productType,
@@ -144,7 +144,7 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
             stockOutBroadcastFactory.addStockLevelAndSave(stockOut)
               .then(function(result) {
                 if (typeof result !== 'undefined') {
-                  alertFactory.success(i18n('stockOutBroadcastSuccessMsg'));
+                  alertFactory.success(messages.stockOutBroadcastSuccessMsg);
                   stockOutBroadcastFactory.broadcast(result)
                     .then(function(result) {
                       $log.info('stock-out broad-casted: ' + result);
@@ -155,12 +155,12 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
                       $state.go('home.index.home.mainActivity');
                     });
                 } else {
-                  growl.error(i18n('stockOutBroadcastFailedMsg'));
+                  growl.error(messages.stockOutBroadcastFailedMsg);
                   $scope.isSaving = false;
                 }
               })
               .catch(function(reason) {
-                growl.error(i18n('stockOutBroadcastFailedMsg'));
+                growl.error(messages.stockOutBroadcastFailedMsg);
                 $scope.isSaving = false;
                 $log.error(reason);
               });

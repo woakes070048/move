@@ -11,7 +11,7 @@ describe('storageService', function () {
   var $q;
   var $window;
 
-  beforeEach(module('lmisChromeApp', 'i18nMocks', 'fixtureLoaderMocks', 'idbServiceMocks'));
+  beforeEach(module('lmisChromeApp', 'fixtureLoaderMocks', 'idbServiceMocks'));
 
     // Initialize the state
   beforeEach(inject(function($templateCache, fixtureLoaderMock) {

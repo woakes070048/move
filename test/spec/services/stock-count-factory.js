@@ -1,12 +1,11 @@
 'use strict';
 
 describe('Service stockCountFactory', function () {
-  beforeEach(module('lmisChromeApp', 'stockCountMocks', 'i18nMocks', 'fixtureLoaderMocks'));
+  beforeEach(module('lmisChromeApp', 'stockCountMocks', 'fixtureLoaderMocks'));
 
   var stockCountFactory;
   var stockCount;
   var scope;
-  var _i18n;
   var storageService;
   var $q;
   var reminderFactory;
@@ -39,11 +38,10 @@ describe('Service stockCountFactory', function () {
 
   }));
 
-  beforeEach(inject(function (_stockCountFactory_, $rootScope, stockData, _$q_, i18n, _storageService_, _reminderFactory_, _utility_) {
+  beforeEach(inject(function (_stockCountFactory_, $rootScope, stockData, _$q_, _storageService_, _reminderFactory_, _utility_) {
     stockCountFactory = _stockCountFactory_;
     scope = $rootScope.$new();
     stockCount = stockData;
-    _i18n = i18n;
     storageService = _storageService_;
     $q = _$q_;
     reminderFactory = _reminderFactory_;

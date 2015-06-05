@@ -9,7 +9,7 @@ angular.module('lmisChromeApp')
         controller: 'ClearStorage'
       });
   })
-  .controller('ClearStorage', function($scope, storageService, $state, backgroundSyncService, cacheService, $q, alertFactory, notificationService, i18n, memoryStorageService, fixtureLoaderService, growl) {
+  .controller('ClearStorage', function($scope, storageService, $state, backgroundSyncService, cacheService, $q, alertFactory, notificationService, messages, memoryStorageService, fixtureLoaderService, growl) {
     $scope.clearAndLoadFixture = function() {
       var deferred = $q.defer();
       backgroundSyncService.cancel();
@@ -28,15 +28,15 @@ angular.module('lmisChromeApp')
             });
         })
         .catch(function(reason) {
-          growl.error(i18n('clearStorageFailed'), {ttl: -1});
+          growl.error(messages.clearStorageFailed, {ttl: -1});
           console.error(reason);
         });
       return deferred.promise;
     };
 
-    var confirmationTitle = i18n('clearStorageTitle');
-    var confirmationQuestion = i18n('clearStorageConfirmationMsg');
-    var buttonLabels = [i18n('yes'), i18n('no')];
+    var confirmationTitle = messages.clearStorageTitle;
+    var confirmationQuestion = messages.clearStorageConfirmationMsg;
+    var buttonLabels = [messages.yes, messages.no];
     notificationService.getConfirmDialog(confirmationTitle, confirmationQuestion, buttonLabels)
       .then(function(isConfirmed) {
         if (isConfirmed === true) {

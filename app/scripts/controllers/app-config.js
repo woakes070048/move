@@ -66,7 +66,7 @@ angular.module('lmisChromeApp')
       });
 
   })
-  .controller('AppConfigWizard', function($scope, locationService, fixtureLoaderService, appConfigService, growl, $state, alertFactory, i18n, deviceEmail, $log, ccuProfilesGroupedByCategory, productProfilesGroupedByCategory, utility) {
+  .controller('AppConfigWizard', function($scope, locationService, fixtureLoaderService, appConfigService, growl, $state, alertFactory, messages, deviceEmail, $log, ccuProfilesGroupedByCategory, productProfilesGroupedByCategory, utility) {
     $scope.spaceOutUpperCaseWords = utility.spaceOutUpperCaseWords;
     $scope.isSubmitted = false;
     $scope.preSelectProductProfileCheckBox = {};
@@ -196,20 +196,20 @@ angular.module('lmisChromeApp')
             .then(function(result) {
               if (typeof result !== 'undefined') {
                 $scope.appConfig = result;
-                alertFactory.success(i18n('appConfigSuccessMsg'));
+                alertFactory.success(messages.appConfigSuccessMsg);
                 $state.go('home.index.home.mainActivity');
               } else {
-                growl.error(i18n('appConfigFailedMsg'));
+                growl.error(messages.appConfigFailedMsg);
               }
             }).catch(function() {
-              growl.error(i18n('appConfigFailedMsg'));
+              growl.error(messages.appConfigFailedMsg);
             }).finally(function() {
               $scope.isSaving = false;
             });
         });
     };
   })
-  .controller('EditAppConfigCtrl', function($scope, fixtureLoaderService, locationService, $rootScope, appConfigService, growl, $log, i18n, $state, appConfig, ccuProfilesGroupedByCategory, productProfilesGroupedByCategory, utility, alertFactory, $filter) {
+  .controller('EditAppConfigCtrl', function($scope, fixtureLoaderService, locationService, $rootScope, appConfigService, growl, $log, messages, $state, appConfig, ccuProfilesGroupedByCategory, productProfilesGroupedByCategory, utility, alertFactory, $filter) {
 
     $scope.spaceOutUpperCaseWords = utility.spaceOutUpperCaseWords;
     var oldLgas = [];
@@ -268,9 +268,9 @@ angular.module('lmisChromeApp')
     var setAppConfigLastUpdatedViewInfo = function(appConfig) {
       if (utility.has(appConfig, 'lastUpdated')) {
         var updatedDate = $filter('date')(new Date(appConfig.lastUpdated), 'yyyy-MM-dd HH:mm:ss');
-        $scope.lastUpdated = i18n('lastUpdated', updatedDate);
+        $scope.lastUpdated = messages.lastUpdated(updatedDate);
       } else {
-        $scope.lastUpdated = i18n('lastUpdated', 'N/A');
+        $scope.lastUpdated = messages.lastUpdated('N/A');
       }
     };
     function preLoadConfigForm(appConfig) {
@@ -291,7 +291,7 @@ angular.module('lmisChromeApp')
       $scope.preSelectCcuProfiles = utility.castArrayToObject(appConfig.selectedCcuProfiles, 'dhis2_modelid');
       $scope.preSelectProductProfileCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedProductProfiles, 'uuid');
     }
-   
+
     //pre-load edit app facility profile config form with existing config.
     preLoadConfigForm(appConfig);
     //TODO: load state id dynamically.
@@ -357,19 +357,19 @@ angular.module('lmisChromeApp')
         .then(function(result) {
           if (typeof result !== 'undefined') {
             $scope.appConfig = result;
-            alertFactory.success(i18n('appConfigSuccessMsg'));
+            alertFactory.success(messages.appConfigSuccessMsg);
             $state.go('home.index.home.mainActivity');
           } else {
-            growl.error(i18n('appConfigFailedMsg'));
+            growl.error(messages.appConfigFailedMsg);
           }
         })
         .catch(function(reason) {
           if (utility.has(reason, 'type') && reason.type === 'SAVED_NOT_SYNCED') {
-            alertFactory.success(i18n('appConfigSuccessMsg'));
+            alertFactory.success(messages.appConfigSuccessMsg);
             $state.go('home.index.home.mainActivity');
             console.info('not synced');
           } else {
-            growl.error(i18n('appConfigFailedMsg'));
+            growl.error(messages.appConfigFailedMsg);
             console.error(reason);
           }
         })
@@ -394,7 +394,7 @@ angular.module('lmisChromeApp')
             saveAppConfig();
           })
           .catch(function(err) {
-            growl.error(i18n('lgaUpdateFailed'));
+            growl.error(messages.lgaUpdateFailed);
             $scope.isSaving = false;
           });
       }

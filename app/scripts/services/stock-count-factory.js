@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .factory('stockCountFactory', function ($q, storageService, $http, $filter, utility, syncService, i18n, reminderFactory) {
+  .factory('stockCountFactory', function ($q, storageService, $http, $filter, utility, syncService, messages, reminderFactory) {
 
     var STOCK_COUNT_DB = storageService.STOCK_COUNT;
 
@@ -112,10 +112,10 @@ angular.module('lmisChromeApp')
       errorAlert: function(scope, error){
         if (error === 1) {
           scope.productError = true;
-          scope.productErrorMsg = i18n('stockCountErrorMsg');
+          scope.productErrorMsg = messages.stockCountErrorMsg;
         } else if (error === 2) {
           scope.productError = true;
-          scope.productErrorMsg = i18n('discardErrorMsg');
+          scope.productErrorMsg = messages.discardErrorMsg;
         } else {
           scope.productError = false;
           scope.productErrorMsg = '';

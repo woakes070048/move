@@ -8,6 +8,7 @@
     "change-case": "^2.1.1",
     "eslint-no-exclusive-tests": "^0.1.0",
     "grunt": "^0.4.5",
+    "grunt-angular-gettext": "^2.1.0",
     "grunt-autoprefixer": "^1.0.0",
     "grunt-bump": "^0.0.15",
     "grunt-bump-cca": "^0.1.1",

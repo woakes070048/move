@@ -46,7 +46,6 @@ module.exports = function(grunt) {
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.app %>/views/**/*.html',
           '<%= yeoman.app %>/manifest.json',
-          '<%= yeoman.app %>/_locales/{,*/}*.json',
           '<%= yeoman.app %>/scripts/{,*/}*.js',
           '<%= yeoman.app %>/scripts/fixtures/*.json'
         ]
@@ -54,6 +53,18 @@ module.exports = function(grunt) {
       fixtures: {
         files: ['<%= yeoman.app %>/scripts/fixtures/*.json'],
         tasks: ['fixtures']
+      },
+      translations: {
+        files: ['po/*.po'],
+        tasks: ['nggettext_compile']
+      },
+      extractTranslations: {
+        files: [
+          '<%= yeoman.app %>/*.html',
+          '<%= yeoman.app %>/{views,templates}/**/*.html',
+          '<%= yeoman.app %>/scripts/**/*.js'
+        ],
+        tasks: ['nggettext_extract']
       }
     },
 
@@ -264,7 +275,6 @@ module.exports = function(grunt) {
               '*.html',
               'views/**/*.html',
               'images/{,*/}*.{webp}',
-              '_locales/{,*/}*.json',
               'media/*',
               'scripts/fixtures/*.json',
               'manifest.mobile.json'
@@ -451,6 +461,32 @@ module.exports = function(grunt) {
           src: '<%= yeoman.app %>/scripts/fixtures/*.json'
         }]
       }
+    },
+
+    /*eslint-disable camelcase */
+    nggettext_extract: {
+    /*eslint-enable camelcase */
+      pot: {
+        files: {
+          'po/template.pot': [
+            'app/{views,templates}/{,**/}*.html',
+            'app/scripts/{,**/}*.js'
+          ]
+        }
+      }
+    },
+
+    /*eslint-disable camelcase */
+    nggettext_compile: {
+    /*eslint-enable camelcase */
+      all: {
+        options: {
+          module: 'lmisChromeApp'
+        },
+        files: {
+          'app/scripts/translations.js': ['po/*.po']
+        }
+      }
     }
   });
 
@@ -464,6 +500,7 @@ module.exports = function(grunt) {
       'wiredep',
       'ngconstant:development',
       'fixtures',
+      'nggettext_compile',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -481,6 +518,7 @@ module.exports = function(grunt) {
 
     grunt.task.run([
       'clean:server',
+      'nggettext_compile',
       'concurrent:test',
       'autoprefixer',
       'connect:test',
