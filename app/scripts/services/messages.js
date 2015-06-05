@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Translatable strings used directly in JS, for example, in Growls.
+ * See: https://angular-gettext.rocketeer.be/dev-guide/annotate-js/
+ */
 angular.module('lmisChromeApp')
   .service('messages', function(gettextCatalog) {
     this.migrationFailed = gettextCatalog.getString(
