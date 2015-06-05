@@ -84,7 +84,7 @@ angular.module('lmisChromeApp')
     $scope.productProfilesGroupedByCategory = productProfilesGroupedByCategory;
     $scope.productProfileCheckBoxes = [];//used to productProfile models for checkbox
     $scope.ccuProfileCheckBoxes = [];
-    $scope.lgaCheckBoxes = [];
+    $scope.lgaCheckBoxes = {};
     $scope.zoneCheckBoxes = [];
     $scope.preSelectLgaCheckBox = {};
     $scope.preSelectZoneCheckBox = {};
@@ -169,11 +169,19 @@ angular.module('lmisChromeApp')
     };
 
     $scope.onLgaSelection = function(lga){
+      var uuid = lga.uuid;
+      var added = !!$scope.lgaCheckBoxes[uuid];
+      appConfigService.getSelectedFacility(uuid, added);
 
-      appConfigService.getSelectedFacility((JSON.parse(lga)).uuid);
-      $scope.appConfig.facility.selectedLgas =
-        utility.addObjectToCollection(lga, $scope.appConfig.facility.selectedLgas, '_id');
-      $scope.preSelectLgaCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedLgas, '_id');
+      if(added) {
+        $scope.appConfig.facility.selectedLgas.push(lga);
+      } else {
+        $scope.appConfig.facility.selectedLgas = $scope.appConfig.facility.selectedLgas.filter(function(item) {
+          return item.uuid !== uuid;
+        });
+      }
+
+      $scope.preSelectLgaCheckBox[uuid] = true;
     };
     $scope.onZoneSelection = function(zone){
       console.log($scope.appConfig.facility);
@@ -285,7 +293,11 @@ angular.module('lmisChromeApp')
       $scope.appConfig.selectedCcuProfiles = appConfig.selectedCcuProfiles || [];
       $scope.appConfig.facility.selectedLgas = appConfig.facility.selectedLgas || [];
       $scope.appConfig.facility.selectedZones = appConfig.facility.selectedZones || [];
-      $scope.preSelectLgaCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedLgas, '_id');
+      $scope.preSelectLgaCheckBox = $scope.appConfig.facility.selectedLgas.reduce(function(sum, item) {
+        sum[item] = true;
+        return sum;
+      }, {});
+
       $scope.preSelectZoneCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedZones, '_id');
 
       $scope.preSelectCcuProfiles = utility.castArrayToObject(appConfig.selectedCcuProfiles, 'dhis2_modelid');

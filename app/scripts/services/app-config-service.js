@@ -72,23 +72,23 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
     }
     return appConfig;
   };
-  this.getSelectedFacility = function(key, e){
-    if(e.target.checked) {
+  this.getSelectedFacility = function(key, added){
+    if(added) {
      var url = config.api.url + '/facilities/_design/facilities/_view/by_lga?include_docs=true&startkey=%22' +
        key + '%22&endkey=%22' + key + '%22';
-     return  $http.get(url)
+     return $http.get(url)
         .then(function (result) {
           return result.data.rows.forEach(function (row) {
             storageService.save(storageService.FACILITY, row.doc);
           });
         })
     }else{
-       return storageService.where(storageService.FACILITY, function(row){
-         var lgaObj = JSON.parse(e.target.getAttribute('ng-true-value'));
-         if(row.lgaUUID === lgaObj.uuid){
-           storageService.removeRecord(storageService.FACILITY, row.uuid);
-         }
-       })
+      return storageService.where(storageService.FACILITY, function(row){
+        // TODO: Rewrite to a view
+        if(row.lgaUUID === key){
+          storageService.removeRecord(storageService.FACILITY, row.uuid);
+        }
+      });
     }
   };
   this.getAppFacilityProfileByEmail = function(email) {
