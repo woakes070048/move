@@ -19,11 +19,6 @@ angular.module('lmisChromeApp')
       var ccuBreakdown2 = 'ccu_breakdown2';
       var pendingSyncs = 'pending_syncs';
       var locations = 'locations';
-       //analytics
-      var pageviews = 'pageviews';
-      var clicks = 'clicks';
-      var exceptions = 'exceptions';
-      var analyticsLostRecords = 'analytics_lost_records';
 
       var FIXTURE_NAMES = utility.values(collections);
 
@@ -287,10 +282,6 @@ angular.module('lmisChromeApp')
         PENDING_SYNCS: pendingSyncs,
         STOCK_COUNT: stockCount,
         SURVEY_RESPONSE: surveyResponse,
-        PAGE_VIEWS: pageviews,
-        CLICKS: clicks,
-        EXCEPTIONS: exceptions,
-        ANALYTICS_LOST_RECORDS: analyticsLostRecords,
         FIXTURE_NAMES: FIXTURE_NAMES,
         // TODO: remove, see item:751
         _COLLECTIONS: _collections

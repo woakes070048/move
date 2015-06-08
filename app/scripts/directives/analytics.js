@@ -6,7 +6,7 @@ angular.module('lmisChromeApp')
       restrict: 'A',
       link: function(scope, element, attr) {
         element.on('click', function() {
-          trackingService.postEvent('Click', element.text().trim(), attr.gaClick.trim());
+          trackingService.trackEvent('Click', element.text().trim(), attr.gaClick.trim());
         });
       }
     };
