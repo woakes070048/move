@@ -12,18 +12,13 @@ angular.module('lmisChromeApp', [
     'db',
     'gettext'
   ])
-  .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, growl, utility, pouchMigrationService, $log, messages, analyticsSyncService) {
+  .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, growl, utility, pouchMigrationService, $log, messages) {
 
     function navigateToHome() {
       $state.go('home.index.home.mainActivity');
       backgroundSyncService.startBackgroundSync()
         .finally(function() {
           console.log('updateAppConfigAndStartBackgroundSync triggered on start up has been completed!');
-        });
-
-      analyticsSyncService.syncOfflineAnalytics()
-        .finally(function() {
-          console.log('offline reports send to ga server.');
         });
     }
 

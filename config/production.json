@@ -4,9 +4,6 @@
   },
   "analytics": {
     "service": "LoMIS",
-    "propertyID": "UA-52016752-4",
-    "eventsLimit": 8192,
-    "exceptionsLimit": 1024,
-    "pagesLimit": 4096
+    "propertyID": "UA-52016752-4"
   }
 }

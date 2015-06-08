@@ -4,7 +4,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: app/scripts/services/messages.js:96
+#: app/scripts/services/messages.js:100
 #: app/views/home/partials/stock-count-reminder.html:5
 msgid "A stock count is due today!"
 msgstr ""
@@ -52,19 +52,19 @@ msgstr ""
 msgid "App Config"
 msgstr ""
 
-#: app/scripts/services/messages.js:11
+#: app/scripts/services/messages.js:15
 msgid "Application configuration failed, please contact support"
 msgstr ""
 
-#: app/scripts/services/messages.js:8
+#: app/scripts/services/messages.js:12
 msgid "Application configuration saved"
 msgstr ""
 
-#: app/scripts/services/messages.js:193
+#: app/scripts/services/messages.js:197
 msgid "Application configurations has been updated."
 msgstr ""
 
-#: app/scripts/services/messages.js:211
+#: app/scripts/services/messages.js:215
 msgid "Applying application update"
 msgstr ""
 
@@ -97,11 +97,11 @@ msgstr ""
 msgid "Batches"
 msgstr ""
 
-#: app/scripts/services/messages.js:196
+#: app/scripts/services/messages.js:200
 msgid "Below buffer"
 msgstr ""
 
-#: app/scripts/services/messages.js:199
+#: app/scripts/services/messages.js:203
 msgid "Buffer"
 msgstr ""
 
@@ -109,7 +109,7 @@ msgstr ""
 msgid "Buffer Stock"
 msgstr ""
 
-#: app/scripts/services/messages.js:99
+#: app/scripts/services/messages.js:103
 msgid "Buffer stock"
 msgstr ""
 
@@ -125,11 +125,11 @@ msgstr ""
 msgid "CCU Breakdown"
 msgstr ""
 
-#: app/scripts/services/messages.js:93
+#: app/scripts/services/messages.js:97
 msgid "CCU breakdown report failed, please contact support"
 msgstr ""
 
-#: app/scripts/services/messages.js:90
+#: app/scripts/services/messages.js:94
 msgid "CCU breakdown report sent successfully!"
 msgstr ""
 
@@ -145,12 +145,12 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: app/scripts/services/messages.js:70
+#: app/scripts/services/messages.js:74
 #: app/views/home/main-activity.html:68
 msgid "Clear Storage"
 msgstr ""
 
-#: app/scripts/services/messages.js:67
+#: app/scripts/services/messages.js:71
 msgid "Clear storage failed, contact support."
 msgstr ""
 
@@ -168,16 +168,16 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
-#: app/scripts/services/messages.js:208
+#: app/scripts/services/messages.js:212
 #: app/views/notification-service/confirm-dialog.html:4
 msgid "Confirm stock-out broadcast for the following:"
 msgstr ""
 
-#: app/scripts/services/messages.js:83
+#: app/scripts/services/messages.js:87
 msgid "Confirm {{ccuID}} breakdown report"
 msgstr ""
 
-#: app/scripts/services/messages.js:163
+#: app/scripts/services/messages.js:167
 msgid "Confirm {{productType}} stock-out broadcast"
 msgstr ""
 
@@ -199,11 +199,11 @@ msgstr ""
 msgid "Continue"
 msgstr ""
 
-#: app/scripts/services/messages.js:119
+#: app/scripts/services/messages.js:123
 msgid "Could not save settings, please contact support"
 msgstr ""
 
-#: app/scripts/services/messages.js:147
+#: app/scripts/services/messages.js:151
 msgid "Could not show Stock Count form, please contact support."
 msgstr ""
 
@@ -211,7 +211,7 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
-#: app/scripts/services/messages.js:5
+#: app/scripts/services/messages.js:9
 msgid "Data migration failed. Please contact support."
 msgstr ""
 
@@ -229,7 +229,7 @@ msgstr ""
 msgid "Discard count"
 msgstr ""
 
-#: app/scripts/services/messages.js:217
+#: app/scripts/services/messages.js:221
 msgid "Discard stock count"
 msgstr ""
 
@@ -253,7 +253,7 @@ msgstr ""
 msgid "Enter email to load facility profile for this device, then confirm or edit and save."
 msgstr ""
 
-#: app/scripts/services/messages.js:186
+#: app/scripts/services/messages.js:190
 msgid "Enter quantity in {{unit}}"
 msgstr ""
 
@@ -282,16 +282,16 @@ msgstr ""
 msgid "Incoming"
 msgstr ""
 
-#: app/scripts/services/messages.js:25
+#: app/scripts/services/messages.js:29
 #: app/views/home/main-activity.html:39
 msgid "Incoming Delivery"
 msgstr ""
 
-#: app/scripts/services/messages.js:61
+#: app/scripts/services/messages.js:65
 msgid "Incoming Delivery logged successfully."
 msgstr ""
 
-#: app/scripts/services/messages.js:128
+#: app/scripts/services/messages.js:132
 msgid "Incoming success"
 msgstr ""
 
@@ -312,11 +312,11 @@ msgstr ""
 msgid "Inventory settings"
 msgstr ""
 
-#: app/scripts/services/messages.js:19
+#: app/scripts/services/messages.js:23
 msgid "LGA update failed, internet connection needed to update LGA list."
 msgstr ""
 
-#: app/scripts/services/messages.js:15
+#: app/scripts/services/messages.js:19
 msgid "Last updated: {{date}}"
 msgstr ""
 
@@ -330,7 +330,7 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
-#: app/scripts/services/messages.js:141
+#: app/scripts/services/messages.js:145
 #: app/views/stock-count/sync/stats.html:8
 msgid "Local"
 msgstr ""
@@ -352,7 +352,7 @@ msgstr ""
 msgid "Manage unit of measurement"
 msgstr ""
 
-#: app/scripts/services/messages.js:205
+#: app/scripts/services/messages.js:209
 msgid "Max"
 msgstr ""
 
@@ -372,7 +372,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: app/scripts/services/messages.js:79
+#: app/scripts/services/messages.js:83
 #: app/views/survey/take-survey.html:22
 msgid "No"
 msgstr ""
@@ -381,11 +381,11 @@ msgstr ""
 msgid "Number of doses"
 msgstr ""
 
-#: app/scripts/services/messages.js:125
+#: app/scripts/services/messages.js:129
 msgid "Offline"
 msgstr ""
 
-#: app/scripts/services/messages.js:122
+#: app/scripts/services/messages.js:126
 msgid "Online"
 msgstr ""
 
@@ -407,12 +407,12 @@ msgstr ""
 msgid "Outgoing"
 msgstr ""
 
-#: app/scripts/services/messages.js:40
+#: app/scripts/services/messages.js:44
 #: app/views/home/main-activity.html:46
 msgid "Outgoing Delivery"
 msgstr ""
 
-#: app/scripts/services/messages.js:64
+#: app/scripts/services/messages.js:68
 msgid "Outgoing Delivery logged successfully."
 msgstr ""
 
@@ -445,7 +445,7 @@ msgstr ""
 msgid "Please enter valid email address"
 msgstr ""
 
-#: app/scripts/services/messages.js:22
+#: app/scripts/services/messages.js:26
 msgid "Please specify if its receiving or sending"
 msgstr ""
 
@@ -514,7 +514,7 @@ msgstr ""
 msgid "Quantity"
 msgstr ""
 
-#: app/scripts/services/messages.js:28
+#: app/scripts/services/messages.js:32
 msgid "Received From"
 msgstr ""
 
@@ -533,7 +533,7 @@ msgstr ""
 msgid "Records"
 msgstr ""
 
-#: app/scripts/services/messages.js:144
+#: app/scripts/services/messages.js:148
 #: app/views/stock-count/sync/stats.html:10
 msgid "Remote"
 msgstr ""
@@ -558,7 +558,7 @@ msgstr ""
 msgid "Return a shipment"
 msgstr ""
 
-#: app/scripts/services/messages.js:202
+#: app/scripts/services/messages.js:206
 msgid "Safety Stock"
 msgstr ""
 
@@ -590,27 +590,27 @@ msgstr ""
 msgid "Select Nearby LGAs"
 msgstr ""
 
-#: app/scripts/services/messages.js:46
+#: app/scripts/services/messages.js:50
 msgid "Select Receiving Facility"
 msgstr ""
 
-#: app/scripts/services/messages.js:34
+#: app/scripts/services/messages.js:38
 msgid "Select Receiving LGA"
 msgstr ""
 
-#: app/scripts/services/messages.js:52
+#: app/scripts/services/messages.js:56
 msgid "Select Receiving Ward"
 msgstr ""
 
-#: app/scripts/services/messages.js:31
+#: app/scripts/services/messages.js:35
 msgid "Select Sending Facility"
 msgstr ""
 
-#: app/scripts/services/messages.js:49
+#: app/scripts/services/messages.js:53
 msgid "Select Sending LGA"
 msgstr ""
 
-#: app/scripts/services/messages.js:37
+#: app/scripts/services/messages.js:41
 msgid "Select Sending Ward"
 msgstr ""
 
@@ -684,7 +684,7 @@ msgstr ""
 msgid "Select zones"
 msgstr ""
 
-#: app/scripts/services/messages.js:58
+#: app/scripts/services/messages.js:62
 msgid "Selected facility does not exist."
 msgstr ""
 
@@ -706,7 +706,7 @@ msgstr ""
 msgid "Sending Facility"
 msgstr ""
 
-#: app/scripts/services/messages.js:43
+#: app/scripts/services/messages.js:47
 msgid "Sent To"
 msgstr ""
 
@@ -723,11 +723,11 @@ msgstr ""
 msgid "Set Service Level"
 msgstr ""
 
-#: app/scripts/services/messages.js:116
+#: app/scripts/services/messages.js:120
 msgid "Settings saved"
 msgstr ""
 
-#: app/scripts/services/messages.js:102
+#: app/scripts/services/messages.js:106
 msgid "Stock"
 msgstr ""
 
@@ -756,7 +756,7 @@ msgstr ""
 msgid "Stock count reminder day"
 msgstr ""
 
-#: app/scripts/services/messages.js:153
+#: app/scripts/services/messages.js:157
 msgid "Stock count saving failed"
 msgstr ""
 
@@ -766,11 +766,11 @@ msgstr ""
 msgid "Stock-out Alert"
 msgstr ""
 
-#: app/scripts/services/messages.js:159
+#: app/scripts/services/messages.js:163
 msgid "Stock-out alert failed, please contact support"
 msgstr ""
 
-#: app/scripts/services/messages.js:156
+#: app/scripts/services/messages.js:160
 msgid "Stock-out alert sent successfully!"
 msgstr ""
 
@@ -793,15 +793,15 @@ msgstr ""
 msgid "Successfully syncronised"
 msgstr ""
 
-#: app/scripts/services/messages.js:137
+#: app/scripts/services/messages.js:141
 msgid "Successfully syncronised {{source}}"
 msgstr ""
 
-#: app/scripts/services/messages.js:169
+#: app/scripts/services/messages.js:173
 msgid "Survey not found!"
 msgstr ""
 
-#: app/scripts/services/messages.js:182
+#: app/scripts/services/messages.js:186
 msgid "Survey not saved, try again!"
 msgstr ""
 
@@ -814,7 +814,7 @@ msgstr ""
 msgid "Synced"
 msgstr ""
 
-#: app/scripts/services/messages.js:132
+#: app/scripts/services/messages.js:136
 msgid "Syncronising from {{source}}…"
 msgstr ""
 
@@ -845,7 +845,7 @@ msgstr ""
 msgid "Unit of measurement"
 msgstr ""
 
-#: app/scripts/services/messages.js:55
+#: app/scripts/services/messages.js:59
 msgid "Unknown bundle type"
 msgstr ""
 
@@ -897,12 +897,12 @@ msgstr ""
 msgid "Welcome to LoMIS"
 msgstr ""
 
-#: app/scripts/services/messages.js:76
+#: app/scripts/services/messages.js:80
 #: app/views/survey/take-survey.html:17
 msgid "Yes"
 msgstr ""
 
-#: app/scripts/services/messages.js:150
+#: app/scripts/services/messages.js:154
 msgid "You have completed stock count successfully!"
 msgstr ""
 
@@ -910,38 +910,38 @@ msgstr ""
 msgid "Your app is updating."
 msgstr ""
 
-#: app/scripts/services/messages.js:87
+#: app/scripts/services/messages.js:91
 msgid "are you sure?"
 msgstr ""
 
-#: app/scripts/services/messages.js:172
+#: app/scripts/services/messages.js:176
 msgid "complete survey before saving!"
 msgstr ""
 
-#: app/scripts/services/messages.js:106
+#: app/scripts/services/messages.js:110
 msgid "item"
 msgid_plural "items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/scripts/services/messages.js:214
+#: app/scripts/services/messages.js:218
 msgid "stock count value is invalid, at least enter zero (0) to proceed"
 msgstr ""
 
-#: app/scripts/services/messages.js:73
+#: app/scripts/services/messages.js:77
 msgid ""
 "this will erase all data on this phone. You will need to set it up again while online. \n"
 "Are you ABSOLUTELY sure?"
 msgstr ""
 
-#: app/scripts/services/messages.js:190
+#: app/scripts/services/messages.js:194
 msgid "waste count saved successfully"
 msgstr ""
 
-#: app/scripts/services/messages.js:109
+#: app/scripts/services/messages.js:113
 msgid "{{productQuantity}} {{itemName}} low on stock, press to send alert"
 msgstr ""
 
-#: app/scripts/services/messages.js:176
+#: app/scripts/services/messages.js:180
 msgid "{{surveyName}} was submitted successfully!"
 msgstr ""
