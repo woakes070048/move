@@ -906,10 +906,6 @@ msgstr ""
 msgid "You have completed stock count successfully!"
 msgstr ""
 
-#: app/views/index/migration-screen.html:21
-msgid "Your app is updating."
-msgstr ""
-
 #: app/scripts/services/messages.js:91
 msgid "are you sure?"
 msgstr ""
