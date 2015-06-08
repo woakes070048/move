@@ -28,7 +28,9 @@ module.exports = function(grunt) {
       grunt.config('ngconstant.fixtures', {
         options: {
           name: 'db',
-          dest: options.dest
+          dest: options.dest,
+          values: {},
+          constants: {}
         },
         constants: {
           collections: grunt.file.readJSON(options.dest)

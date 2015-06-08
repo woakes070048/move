@@ -54,10 +54,9 @@ angular.module('lmisChromeApp')
           'content': {},
           'footer': {
             templateUrl: 'views/index/footer.html',
-            controller: function($scope, $window) {
-              var manifest = $window.chrome.runtime.getManifest();
+            controller: function($scope, config) {
               $scope.year = new Date().getFullYear();
-              $scope.version = manifest.version;
+              $scope.version = config.version;
             }
           }
         }

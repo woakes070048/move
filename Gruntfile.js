@@ -361,6 +361,11 @@ module.exports = function(grunt) {
         dest: '<%= yeoman.app %>/scripts/config.js',
         serializerOptions: {
           indent: ' '
+        },
+        constants: {
+          config: {
+            version: grunt.file.readJSON('package.json').version
+          }
         }
       },
       // Targets
