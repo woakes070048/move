@@ -433,6 +433,19 @@ module.exports = function(grunt) {
       src: '<%= jshint.all %>'
     },
 
+    html2js: {
+      options: {
+        // custom options, see below
+        base: 'app',
+        module: 'lmisChromeApp.templates',
+        singleModule: true
+      },
+      main: {
+        src: ['app/views/**/*.html', 'app/bower_components/**/*.tpl.html'],
+        dest: '.tmp/templates.js'
+      },
+    },
+
     fixtures: {
       all: {
         options: {

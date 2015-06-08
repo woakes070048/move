@@ -562,7 +562,7 @@ msgstr ""
 msgid "Safety Stock"
 msgstr ""
 
-#: app/views/app-config/edit-configuration.html:47
+#: app/views/app-config/edit-configuration.html:48
 #: app/views/app-config/wizard/partials/facility-survey.html:36
 #: app/views/app-config/wizard/partials/nearby-lga-setup.html:17
 #: app/views/bundles/log-incoming.html:31
@@ -578,7 +578,7 @@ msgstr ""
 msgid "Saving"
 msgstr ""
 
-#: app/views/app-config/edit-configuration.html:49
+#: app/views/app-config/edit-configuration.html:50
 msgid "Saving…"
 msgstr ""
 
@@ -632,7 +632,7 @@ msgstr ""
 msgid "Select facility stock count interval"
 msgstr ""
 
-#: app/views/app-config/partials/forms/product-profile.html:5
+#: app/views/app-config/partials/forms/product-profile.html:4
 msgid "Select facility stock list"
 msgstr ""
 
