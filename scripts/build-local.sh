@@ -38,7 +38,7 @@ grunt build:"$type"
 [[ "$type" == "release" ]] && cp "$keys"/* "$build/$app"
 cd "$build/$app"
 
-cca plugin add $(< "$pwd/scripts/build/cca-plugins.txt")
+"$cca" plugin add $(< "$pwd/scripts/build/cca-plugins.txt")
 
 ccabuild="$cca build android"
 [[ $type == "release" ]] && ccabuild+=" --release"
