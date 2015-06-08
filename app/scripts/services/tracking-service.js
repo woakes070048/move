@@ -23,7 +23,7 @@ angular.module('lmisChromeApp')
       }
 
       function setUUID(config) {
-        if (!config.uuid) {
+        if (!(config && config.uuid)) {
           return logAnonymously();
         }
         $window.analytics.setUserId(config.uuid);
