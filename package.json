@@ -6,6 +6,8 @@
   "devDependencies": {
     "change-case": "^2.1.1",
     "cordova": "^5.0.0",
+    "cordova-android": "^4.0.2",
+    "cordova-icon": "^0.2.0",
     "cordova-plugin-crosswalk-webview": "^1.2.0",
     "cordova-plugin-dialogs": "^1.1.0",
     "cordova-plugin-google-analytics": "^0.7.1",
