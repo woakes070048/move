@@ -469,6 +469,20 @@ module.exports = function(grunt) {
           'app/scripts/translations.js': ['po/*.po']
         }
       }
+    },
+
+    toggleComments: {
+      index: {
+        src: '<%= yeoman.dist %>/index.html',
+        dest: '<%= toggleComments.index.src %>'
+      },
+      dist: {
+        options: {
+          removeCommands: true
+        },
+        src: '<%= toggleComments.index.src %>',
+        dest: '<%= toggleComments.index.src %>'
+      }
     }
   });
 
@@ -524,6 +538,7 @@ module.exports = function(grunt) {
       'removelogging',
       'ngAnnotate',
       'copy:dist',
+      'toggleComments:dist',
       'cssmin',
       'uglify',
       'rev',
@@ -535,7 +550,8 @@ module.exports = function(grunt) {
       'ngconstant:development',
       'autoprefixer',
       'copy:snapshot',
-      'wiredepCopy:snapshot'
+      'wiredepCopy:snapshot',
+      'toggleComments:index'
     ];
 
     if (target === 'release') {
