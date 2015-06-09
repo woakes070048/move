@@ -5,7 +5,7 @@ angular.module('lmisChromeApp')
     $stateProvider.state('reportCcuBreakdown', {
       url: '/report-ccu',
       parent: 'root.index',
-      templateUrl: '/views/cold-chain-units/report-ccu-breakdown.html',
+      templateUrl: 'views/cold-chain-units/report-ccu-breakdown.html',
       data: {
         label: 'Report CCU Breakdown'
       },

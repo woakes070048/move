@@ -2,7 +2,7 @@
 angular.module('lmisChromeApp').config(function ($stateProvider) {
   $stateProvider.state('inventoryListView', {
     url: '/inventory-list',
-    templateUrl: '/views/inventory/index.html',
+    templateUrl: 'views/inventory/index.html',
     controller: 'InventoryListCtrl',
     data: {
       label: "Inventory List"
@@ -15,7 +15,7 @@ angular.module('lmisChromeApp').config(function ($stateProvider) {
   })
       .state('addNewInventory', {
         url: '/add-inventory?bundleNo',
-        templateUrl: '/views/inventory/add-inventory.html',
+        templateUrl: 'views/inventory/add-inventory.html',
         controller: 'AddNewInventoryCtrl',
         data: {
           label: "Add New Inventory"
