@@ -10,5 +10,5 @@
   <content src="index.html"/>
   <access origin="http://lomis.ehealth.org.ng:5984/*"/>
   <access origin="http://dev.lomis.ehealth.org.ng:5984/*"/>
-  <preference name="xwalkversion" value="org.xwalk:xwalk_core_library:12.41.296.9"/>
+  <preference name="xwalkversion" value="org.xwalk:xwalk_core_library:13.42.319.11"/>
 </widget>
