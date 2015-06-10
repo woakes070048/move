@@ -36,13 +36,5 @@
   "private": true,
   "resolutions": {
     "d3": "~3.4.1"
-  },
-  "overrides": {
-    "angular": {
-      "main": [
-        "angular.js",
-        "angular-csp.css"
-      ]
-    }
   }
 }

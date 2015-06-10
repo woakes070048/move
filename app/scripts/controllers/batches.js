@@ -8,7 +8,7 @@ angular.module('lmisChromeApp')
       $stateProvider
           .state('batchListView', {
             url: '/batch-list-view',
-            templateUrl: '/views/batches/index.html',
+            templateUrl: 'views/batches/index.html',
             controller: 'BatchListCtrl',
             data: {
               label: 'Batch List'
@@ -20,7 +20,7 @@ angular.module('lmisChromeApp')
             }
           }).state('addBatchView', {
             url: '/add-batch',
-            templateUrl: '/views/batches/add-batch-form.html',
+            templateUrl: 'views/batches/add-batch-form.html',
             controller: 'AddBatchCtrl',
             data: {
               label: 'Add Batch'

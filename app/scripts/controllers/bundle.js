@@ -6,7 +6,7 @@ angular.module('lmisChromeApp')
       .state('logBundleHome', {
         parent: 'root.index',
         url: '/log-bundle-home?type',
-        templateUrl: '/views/bundles/index.html',
+        templateUrl: 'views/bundles/index.html',
         controller: 'LogBundleHomeCtrl',
         resolve: {
           bundles: function(bundleService) {
@@ -20,7 +20,7 @@ angular.module('lmisChromeApp')
       .state('logBundle', {
         parent: 'root.index',
         url: '/log-bundle?type&preview&uuid&selectedFacility',
-        templateUrl: '/views/bundles/log-incoming.html',
+        templateUrl: 'views/bundles/log-incoming.html',
         controller: 'LogBundleCtrl',
         resolve: {
           appConfig: function(appConfigService) {

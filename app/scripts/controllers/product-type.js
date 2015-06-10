@@ -3,7 +3,7 @@
 angular.module('lmisChromeApp').config(function ($stateProvider) {
   $stateProvider.state('productTypeListView', {
     url: '/product-types-view',
-    templateUrl: '/views/product-types/product-types-list.html',
+    templateUrl: 'views/product-types/product-types-list.html',
     controller: 'ProductTypeListCtrl',
     resolve: {
       productTypes: function (productTypeFactory) {
@@ -16,7 +16,7 @@ angular.module('lmisChromeApp').config(function ($stateProvider) {
   })
       .state('addProductTypeView', {
         url: '/add-product-type',
-        templateUrl: '/views/product-types/add-product-type.html',
+        templateUrl: 'views/product-types/add-product-type.html',
         controller: 'AddProductTypeCtrl',
         data: {
           label: "Add Product Type"

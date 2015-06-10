@@ -45,7 +45,6 @@ module.exports = function(grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.app %>/views/**/*.html',
-          '<%= yeoman.app %>/manifest.json',
           '<%= yeoman.app %>/scripts/{,*/}*.js',
           '<%= yeoman.app %>/scripts/fixtures/*.json'
         ]
@@ -277,7 +276,6 @@ module.exports = function(grunt) {
               'images/{,*/}*.{webp}',
               'media/*',
               'scripts/fixtures/*.json',
-              'manifest.mobile.json'
             ]
           },
           {
@@ -361,6 +359,11 @@ module.exports = function(grunt) {
         dest: '<%= yeoman.app %>/scripts/config.js',
         serializerOptions: {
           indent: ' '
+        },
+        constants: {
+          config: {
+            version: grunt.file.readJSON('package.json').version
+          }
         }
       },
       // Targets
@@ -381,36 +384,15 @@ module.exports = function(grunt) {
       }
     },
 
-    chromeManifest: {
-      dist: {
-        options: {
-          background: {
-            target: 'scripts/main.js',
-            exclude: [
-              'scripts/chromereload.js'
-            ]
-          }
-        },
-        src: '<%= yeoman.app %>',
-        dest: '<%= yeoman.dist %>'
-      }
-    },
-
     bump: {
       options: {
         files: [
           'package.json',
-          'bower.json',
-          'app/manifest.json',
-          'app/manifest.mobile.json'
+          'bower.json'
         ],
         commitFiles: '<%= bump.options.files %>',
         pushTo: 'origin'
       }
-    },
-
-    bumpCCA: {
-      target: {}
     },
 
     wiredepCopy: {
@@ -487,6 +469,20 @@ module.exports = function(grunt) {
           'app/scripts/translations.js': ['po/*.po']
         }
       }
+    },
+
+    toggleComments: {
+      index: {
+        src: '<%= yeoman.dist %>/index.html',
+        dest: '<%= toggleComments.index.src %>'
+      },
+      dist: {
+        options: {
+          removeCommands: true
+        },
+        src: '<%= toggleComments.index.src %>',
+        dest: '<%= toggleComments.index.src %>'
+      }
     }
   });
 
@@ -530,7 +526,6 @@ module.exports = function(grunt) {
     var common = [
       'clean:dist',
       'wiredep',
-      'chromeManifest:dist',
       'fixtures'
     ];
 
@@ -543,6 +538,7 @@ module.exports = function(grunt) {
       'removelogging',
       'ngAnnotate',
       'copy:dist',
+      'toggleComments:dist',
       'cssmin',
       'uglify',
       'rev',
@@ -554,7 +550,8 @@ module.exports = function(grunt) {
       'ngconstant:development',
       'autoprefixer',
       'copy:snapshot',
-      'wiredepCopy:snapshot'
+      'wiredepCopy:snapshot',
+      'toggleComments:index'
     ];
 
     if (target === 'release') {
@@ -581,7 +578,6 @@ module.exports = function(grunt) {
       bump += ':' + versionType;
     }
     grunt.task.run([
-      'bumpCCA',
       bump
     ]);
   });

@@ -90,10 +90,6 @@ angular.module('lmisChromeApp', [
 
     loadAppConfig();
   })
-  .config(function($compileProvider) {
-    // to bypass Chrome app CSP for images.
-    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(chrome-extension):/);
-  })
   .config(function(growlProvider) {
     growlProvider.globalTimeToLive({
       success: 5000,

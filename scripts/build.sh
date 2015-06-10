@@ -3,54 +3,65 @@ set -e
 
 pwd="${PWD##}"
 app="lomis"
-cca="./node_modules/.bin/cca"
+cordova="$pwd/node_modules/.bin/cordova"
+cordovaIcon="$pwd/node_modules/.bin/cordova-icon"
+keys="$pwd/.android"
 build="$pwd/build"
+apks="$build/$app/platforms/android/build/outputs/apk"
 
 have() { command -v "$1" >/dev/null; }
 info() { echo "$0: $1"; }
 error() { info "$1"; exit 1; }
+usage() { echo "usage: $0 snapshot|staging|release [--skip-build]"; }
 
-[[ "$TRAVIS" ]] || error "this script assumes its running within Travis"
+[[ "$1" ]] || { usage; exit 1; }
+[[ "$1" == "--help" || "$1" == "-h" ]] && { usage; exit; }
+[[ "$1" != "snapshot" && "$1" != "staging" && "$1" != "release" ]] && {
+  usage; exit 1
+}
 
-[[ "$TAVIS_TAG" ]] && type="release" || type="snapshot"
-info "Performing $type build"
+type="$1"
 
-[[ "$TRAVIS_TAG" ]] && grunt build:release || grunt build
+[[ "$type" == "release" ]] \
+  && version="v$(git describe --abbrev=0 --tags)" \
+  || version="$(date -u +"%Y%m%d%H%M%S")"
 
-info "Building Mobile Chrome App"
+info "Building $app $version $type build for Android"
 have "android" || error "Android SDK required"
+
+if [[ "$type" != "snapshot" ]]; then
+  [[ -d "$keys" ]] || error "Add android-release keys to $keys and try again"
+fi
 
 [[ -d "$build/$app" ]] && rm -rf "$build/$app"
 mkdir -p "$build" && cd "$build"
 
-cca create "$app" --android --link-to="$pwd/dist"
+[[ "$2" == "--skip-build" ]] || grunt build:"$type"
+"$cordova" create "$app" --android --link-to="$pwd/dist"
+
 cd "$build/$app"
-cca plugin add $(< "$pwd/scripts/build/cca-plugins.txt")
-patch < "$pwd/scripts/build/config.patch"
 
-android="$build/$app/platforms/android"
-releases="build/releases"
-snapshots="build/snapshots"
+cp "$pwd/config.xml" .
+"$cordova" platform add "$pwd/node_modules/cordova-android"
+"$cordova" plugin add \
+  $("$pwd/scripts/cordova-plugins.js" "$pwd/node_modules/") \
+  $(< "$pwd/scripts/build/cca-plugins.txt")
 
-echo -n $id_rsa_{00..30} >> ~/.ssh/id_rsa_base64
-base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
-chmod 600 ~/.ssh/id_rsa
-eha="79.125.119.180"
-echo -e "Host $eha\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+ln -s "www/images/icon.png" .
+$cordovaIcon
 
-if [[ "$TRAVIS_TAG" ]]; then
-  scp -r travisci@$eha:android-keystore/release/\* "$android"
-  cca build --release
-  apk="$android/bin/LoMIS-release.apk"
-  out="$releases/$app-$TRAVIS_TAG.apk"
-else
-  mkdir -p ~/.android
-  scp -r travisci@$eha:android-keystore/debug/\* ~/.android
-  cca build
-  apk="$android/bin/LoMIS-debug.apk"
-  now="$(date -u +"%Y%m%d%H%M%S")"
-  out="$snapshots/$app-$now.apk"
-fi
+cordovabuild="$cordova build android -- --gradle"
+cp "$pwd/build-extras.gradle" "platforms/android"
 
-mkdir -p "$releases" "$snapshots"
-ln -s "$apk" "$out"
+[[ "$type" != "snapshot" ]] && {
+  cordovabuild+=" --release"
+  ln -s "$keys"/* "platforms/android"
+}
+
+$cordovabuild
+
+[[ "$type" == "snapshot" ]] && releasetype="debug" || releasetype="release"
+
+for arch in armv7 x86; do
+  mv "$apks/android-$arch-$releasetype.apk" "$build/$app-$type-$version-$arch.apk"
+done

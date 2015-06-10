@@ -11,7 +11,7 @@ angular.module('lmisChromeApp')
       .state('appConfigWelcome', {
         url: '/app-config-welcome',
         parent: 'root.index',
-        templateUrl: '/views/app-config/welcome-page.html',
+        templateUrl: 'views/app-config/welcome-page.html',
         data: {
           label: 'Welcome'
         }
@@ -19,7 +19,7 @@ angular.module('lmisChromeApp')
       .state('appConfig.wizard', {
         url: '/app-config-wizard',
         parent: 'root.index',
-        templateUrl: '/views/app-config/wizard.html',
+        templateUrl: 'views/app-config/wizard.html',
         resolve: {
           deviceEmail: function($q, deviceInfoFactory) {
             var deferred = $q.defer();
@@ -47,7 +47,7 @@ angular.module('lmisChromeApp')
       .state('appConfig.edit', {
         url: '/edit-app-config',
         parent: 'root.index',
-        templateUrl: '/views/app-config/edit-configuration.html',
+        templateUrl: 'views/app-config/edit-configuration.html',
         resolve: {
           appConfig: function(appConfigService) {
             return appConfigService.getCurrentAppConfig();

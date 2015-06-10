@@ -4,7 +4,7 @@ angular.module('lmisChromeApp').config(function ($stateProvider) {
   $stateProvider.state('takeSurvey', {
     url: '/take-survey?surveyUUID',
     parent: 'root.index',
-    templateUrl: '/views/survey/take-survey.html',
+    templateUrl: 'views/survey/take-survey.html',
     data: {
       label: 'Survey'
     },

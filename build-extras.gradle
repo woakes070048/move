@@ -1,0 +1,7 @@
+// Build architecture-specific (x86/armv7) APKs
+cdvBuildMultipleApks = true
+
+// Release keystore properties from `.android`
+if (file('release-signing.properties').exists()) {
+  cdvReleaseSigningPropertiesFile = 'release-signing.properties'
+}
