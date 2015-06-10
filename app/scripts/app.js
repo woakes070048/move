@@ -12,7 +12,7 @@ angular.module('lmisChromeApp', [
     'db',
     'gettext'
   ])
-  .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, growl, utility, pouchMigrationService, $log, messages) {
+  .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, growl, utility) {
 
     function navigateToHome() {
       $state.go('home.index.home.mainActivity');
@@ -73,7 +73,7 @@ angular.module('lmisChromeApp', [
                   console.error(reason);
                   growl.error('Local databases and memory storage setup failed, contact support.', {ttl: -1});
                 });
-            }
+            };
             storageService.clear()
               .then(loadRemoteFixture)
               .catch(function(error) {
@@ -88,21 +88,7 @@ angular.module('lmisChromeApp', [
         });
     }
 
-    function migrationErrorHandler(err) {
-      var msg = messages('migrationFailed');
-      growl.error(msg);
-      $log.error(err);
-    }
-
-    // TODO: see item:680
-    if (utility.has($window, 'chrome')) {
-      pouchMigrationService.migrate()
-        .then(loadAppConfig)
-        .catch(migrationErrorHandler);
-    } else {
-      loadAppConfig();
-    }
-
+    loadAppConfig();
   })
   .config(function($compileProvider) {
     // to bypass Chrome app CSP for images.
