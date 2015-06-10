@@ -6,11 +6,11 @@ describe('Service: SyncService', function() {
   beforeEach(module('lmisChromeApp'));
 
   // instantiate service
-  var syncService, pouchdb, $q, db, dbName, recordWithoutUuid, storageService, recordWithUuid, $window, deviceInfoFactory;
+  var syncService, pouchDB, $q, db, dbName, recordWithoutUuid, storageService, recordWithUuid, $window, deviceInfoFactory;
 
-  beforeEach(inject(function(_syncService_, _pouchdb_, _$q_, _$window_, _storageService_, _deviceInfoFactory_) {
+  beforeEach(inject(function(_syncService_, _pouchDB_, _$q_, _$window_, _storageService_, _deviceInfoFactory_) {
     syncService = _syncService_;
-    pouchdb = _pouchdb_;
+    pouchDB = _pouchDB_;
     deviceInfoFactory = _deviceInfoFactory_;
     $q = _$q_;
     $window = _$window_;
@@ -33,7 +33,7 @@ describe('Service: SyncService', function() {
       }
     };
     dbName = 'testdb';
-    spyOn(pouchdb, 'create').andCallFake(function() {
+    spyOn(pouchDB).andCallFake(function() {
       return db;
     });
   }));
