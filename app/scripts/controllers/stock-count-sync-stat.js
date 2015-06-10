@@ -14,8 +14,8 @@ angular.module('lmisChromeApp')
           },
           url: '/sync-stock-count',
           resolve: {
-            localDocs: function(pouchdb) {
-              var db = pouchdb.create('stock-count');
+            localDocs: function(pouchDB) {
+              var db = pouchDB('stock-count');
               // XXX: db#info returns incorrect doc_count, see item:333
               return db.allDocs();
             }
@@ -23,7 +23,7 @@ angular.module('lmisChromeApp')
           views: {
             'stats': {
               templateUrl: 'views/stock-count/sync/stats.html',
-              controller: function($q, $log, $scope, messages, config, pouchdb, localDocs, growl) {
+              controller: function($q, $log, $scope, messages, config, pouchDB, localDocs, growl) {
                 var dbName = 'stock-count',
                     remote = config.api.url + '/' + dbName;
 
@@ -34,7 +34,7 @@ angular.module('lmisChromeApp')
                   };
 
                   $scope.remoteSyncing = true;
-                  var _remote = pouchdb.create(remote);
+                  var _remote = pouchDB(remote);
                   _remote.info()
                     .then(function(info) {
                       $scope.remote = info;
@@ -58,7 +58,7 @@ angular.module('lmisChromeApp')
                       deferred.resolve();
                     }
                   };
-                  var db = pouchdb.create(source.from);
+                  var db = pouchDB(source.from);
                   db.replicate.to(source.to, cb);
                   return deferred.promise;
                 };
@@ -86,14 +86,14 @@ angular.module('lmisChromeApp')
             },
             'status': {
               templateUrl: 'views/stock-count/sync/status.html',
-              controller: function($log, $scope, localDocs, config, pouchdb) {
+              controller: function($log, $scope, localDocs, config, pouchDB) {
                 $scope.locals = localDocs.rows.map(function(local) {
                   return local.id;
                 });
 
                 $scope.compare = function() {
                   $scope.syncing = true;
-                  var remote = pouchdb.create(config.api.url + '/stock-count');
+                  var remote = pouchDB(config.api.url + '/stock-count');
                   remote.allDocs()
                     .then(function(remotes) {
                       remotes = remotes.rows.map(function(remote) {

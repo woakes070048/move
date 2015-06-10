@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .service('fixtureLoaderService', function($q, $http, locationService, facilityFactory, $rootScope, memoryStorageService, config, storageService, utility, pouchdb, syncService) {
+  .service('fixtureLoaderService', function($q, $http, locationService, facilityFactory, $rootScope, memoryStorageService, config, storageService, utility, pouchDB, syncService) {
 
     var PATH = 'scripts/fixtures/';
     var REMOTE_URI = config.api.url;
@@ -24,7 +24,7 @@ angular.module('lmisChromeApp')
      */
     var loadDatabaseFromRemote = function(dbName) {
       var dbUrl = [REMOTE_URI, '/', dbName].join('');
-      var db = pouchdb.create(dbUrl);
+      var db = pouchDB(dbUrl);
       var map = function(doc) {
         if (doc) {
           /* globals emit: false */
@@ -261,7 +261,7 @@ angular.module('lmisChromeApp')
     };
 
     var getLgasByState = function(stateId) {
-      var db = pouchdb.create(config.api.url + '/' + storageService.LOCATIONS);
+      var db = pouchDB(config.api.url + '/' + storageService.LOCATIONS);
       var lgaView = 'lga/by_id';
       var options = {
         include_docs: true
@@ -285,7 +285,7 @@ angular.module('lmisChromeApp')
     this.getLgas = getLgasByState;
 
     this.getWardsByLgas = function(lgas) {
-      var db = pouchdb.create(config.api.url + '/' + storageService.LOCATIONS);
+      var db = pouchDB(config.api.url + '/' + storageService.LOCATIONS);
       var lgaView = 'lga/by_id';
       var wardView = 'ward/by_id'
       var options = {
@@ -317,7 +317,7 @@ angular.module('lmisChromeApp')
 
     var getFacilities = function(facilityIds) {
       var view = 'facilities/by_id';
-      var db = pouchdb.create(config.api.url + '/facilities');
+      var db = pouchDB(config.api.url + '/facilities');
       var options = {
         include_docs: true,
         keys: facilityIds
