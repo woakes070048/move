@@ -1,22 +1,19 @@
-<div class="row" ng-show="currentStep === STEP_ONE">
-  <div class="col-sm-12">
+<div class="row" ng-if="currentStep === STEP_ONE">
+  <div class="col-sm-12" data-qa="wizard-one">
     <div class="alert alert-info">
       <span translate>Enter email to load facility profile for this device, then confirm or edit and save.</span>
     </div>
   </div>
 </div>
-<div ng-show="currentStep === STEP_ONE"
+<div ng-if="currentStep === STEP_ONE"
      ng-include="'views/app-config/wizard/partials/email-setup.html'"></div>
-<div ng-show="currentStep === STEP_TWO"
+<div ng-if="currentStep === STEP_TWO"
      ng-include="'views/app-config/wizard/partials/facility-info.html'"></div>
-<div ng-show="currentStep === STEP_THREE"
+<div ng-if="currentStep === STEP_THREE"
      ng-include="'views/app-config/wizard/partials/facility-contact-person.html'"></div>
-<div ng-show="currentStep === STEP_FOUR"
+<div ng-if="currentStep === STEP_FOUR"
      ng-include="'views/app-config/wizard/partials/facility-product-profile.html'"></div>
-<div ng-show="currentStep === STEP_FIVE"
+<div ng-if="currentStep === STEP_FIVE"
      ng-include="'views/app-config/wizard/partials/facility-cce-profile-setup.html'"></div>
-<div ng-show="currentStep === STEP_SIX"
+<div ng-if="currentStep === STEP_SIX"
      ng-include="'views/app-config/wizard/partials/nearby-lga-setup.html'"></div>
-<!--<div ng-show="currentStep === STEP_SIX"
-     ng-include="'views/app-config/wizard/partials/nearby-lga-setup.html'"></div>-->
-

@@ -21,7 +21,7 @@ module.exports = function(config) {
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/{controllers,directives}/*.js',
-      'app/views/templates/*.html'
+      'app/views/**/*.html'
     ]),
 
     // list of files / patterns to exclude
@@ -61,14 +61,15 @@ module.exports = function(config) {
     ],
     preprocessors: {
       'app/scripts/**/*.js': 'coverage',
-      'app/views/templates/*.html': 'ng-html2js'
+      'app/views/**/*.html': 'ng-html2js'
     },
     coverageReporter: {
       type: 'lcov',
       dir: 'coverage'
     },
     ngHtml2JsPreprocessor: {
-      stripPrefix: 'app/'
+      stripPrefix: 'app/',
+      moduleName: 'lmisChromeApp.templates'
     },
     plugins: [
       'karma-*'

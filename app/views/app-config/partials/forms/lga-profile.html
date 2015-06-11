@@ -30,13 +30,11 @@
     <div class="panel-body"></div>
       <div class="list-group" ng-repeat="lga in lgaList | filter:search track by $index">
         <div class="no-padding"
-             ng-class="{'highlight-selected-item': preSelectLgaCheckBox[lga._id], 'list-group-item': true }">
+             ng-class="{'highlight-selected-item': lgaCheckBoxes[lga._id], 'list-group-item': true }">
           <label class="new-line padded-label pointer">
             <input type="checkbox" ng-model="lgaCheckBoxes[lga._id]"
                    ng-disabled="!developerMode"
-                   ng-true-value="{{ lga }}"
-                   ng-false-value="{{ {'_id': lga._id, deSelected: true} }}"
-                   ng-change="onLgaSelection(lgaCheckBoxes[lga._id])"
+                   ng-change="onLgaSelection(lga)"
                    ng-checked="preSelectLgaCheckBox[lga._id]"/>
             {{ lga.name }}
           </label>

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-12" ng-click="enterDeveloperMode()">
+    <div class="col-sm-12" ng-click="enterDeveloperMode()" data-qa="edit-config">
         <div class="alert alert-info">
             <span ng-bind="lastUpdated"></span>
         </div>
@@ -28,13 +28,14 @@
             </div>
         </div>
 
-        <div class="col-sm-15">
+        <div class="col-sm-12">
             <div ng-include="'views/app-config/partials/forms/product-profile.html'"></div>
         </div>
-        <div class="col-sm-15">
+
+        <div class="col-sm-12">
             <div ng-include="'views/app-config/partials/forms/ccu-profile.html'"></div>
         </div>
-        <div class="col-sm-15">
+        <div class="col-sm-12">
             <div ng-include="'views/app-config/partials/forms/lga-profile.html'"></div>
         </div>
         <div class="row">

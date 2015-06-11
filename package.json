@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
+    "balanced-match": "^0.2.0",
     "change-case": "^2.1.1",
+    "concat-map": "0.0.1",
     "cordova": "^5.0.0",
     "cordova-android": "^4.0.2",
     "cordova-icon": "^0.2.0",
@@ -33,7 +35,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^0.6.0",
     "grunt-jsbeautifier": "^0.2.7",
-    "grunt-jscs": "^0.6.2",
+    "grunt-jscs": "^1.8.0",
     "grunt-karma": "^0.8.3",
     "grunt-karma-coveralls": "^2.5.1",
     "grunt-newer": "^0.7.0",

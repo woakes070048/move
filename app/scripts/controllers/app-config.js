@@ -21,22 +21,41 @@ angular.module('lmisChromeApp')
         parent: 'root.index',
         templateUrl: 'views/app-config/wizard.html',
         resolve: {
-          deviceEmail: function($q, deviceInfoFactory) {
-            var deferred = $q.defer();
-            deviceInfoFactory.getDeviceInfo()
+          appConfig: function(deviceInfoFactory) {
+            return deviceInfoFactory.getDeviceInfo()
               .then(function(result) {
-                deferred.resolve(result.mainAccount);
+                return result.mainAccount;
               })
               .catch(function() {
-                deferred.resolve('');
+                return '';
+              })
+              .then(function(email) {
+                return {
+                  uuid: email,
+                  facility: { },
+                  contactPerson: {
+                    name: '',
+                    phoneNo: ''
+                  },
+                  selectedCcuProfiles: [],
+                  dateActivated: undefined
+                };
               });
-            return deferred.promise;
           },
-          ccuProfilesGroupedByCategory: function(ccuProfileFactory, $q) {
-            return $q.when(ccuProfileFactory.getAllGroupedByCategory());
+          ccuProfilesGroupedByCategory: function(ccuProfileFactory) {
+            return ccuProfileFactory.getAllGroupedByCategory();
           },
-          productProfilesGroupedByCategory: function(productProfileFactory, $q) {
-            return $q.when(productProfileFactory.getAllGroupedByCategory());
+          productProfilesGroupedByCategory: function(productProfileFactory) {
+            return productProfileFactory.getAllGroupedByCategory();
+          },
+          zones: function(locationService) {
+            return locationService.getZones('f87ed3e017cf4f8db26836fd910e4cc8');
+          },
+          lgaList: function(locationService) {
+            return locationService.getLgas('f87ed3e017cf4f8db26836fd910e4cc8');
+          },
+          isEdit: function() {
+            return false;
           }
         },
         controller: 'AppConfigWizard',
@@ -52,21 +71,52 @@ angular.module('lmisChromeApp')
           appConfig: function(appConfigService) {
             return appConfigService.getCurrentAppConfig();
           },
-          ccuProfilesGroupedByCategory: function(ccuProfileFactory, $q) {
-            return $q.when(ccuProfileFactory.getAllGroupedByCategory());
+          ccuProfilesGroupedByCategory: function(ccuProfileFactory) {
+            return ccuProfileFactory.getAllGroupedByCategory();
           },
-          productProfilesGroupedByCategory: function(productProfileFactory, $q) {
-            return $q.when(productProfileFactory.getAllGroupedByCategory());
+          productProfilesGroupedByCategory: function(productProfileFactory) {
+            return productProfileFactory.getAllGroupedByCategory();
+          },
+          zones: function(locationService) {
+            return locationService.getZones('f87ed3e017cf4f8db26836fd910e4cc8');
+          },
+          lgaList: function(locationService) {
+            return locationService.getLgas('f87ed3e017cf4f8db26836fd910e4cc8');
+          },
+          isEdit: function() {
+            return true;
           }
         },
-        controller: 'EditAppConfigCtrl',
+        controller: 'AppConfigWizard',
         data: {
           label: 'Settings'
         }
       });
 
   })
-  .controller('AppConfigWizard', function($scope, locationService, fixtureLoaderService, appConfigService, growl, $state, alertFactory, messages, deviceEmail, $log, ccuProfilesGroupedByCategory, productProfilesGroupedByCategory, utility) {
+  .controller('AppConfigWizard', function(
+    $filter,
+    $log,
+    $rootScope,
+    $scope,
+    $state,
+    $q,
+    alertFactory,
+    appConfig,
+    appConfigService,
+    ccuProfilesGroupedByCategory,
+    fixtureLoaderService,
+    growl,
+    isEdit,
+    lgaList,
+    locationService,
+    messages,
+    productProfilesGroupedByCategory,
+    utility,
+    zones
+  ) {
+
+    console.log('got app config');
     $scope.spaceOutUpperCaseWords = utility.spaceOutUpperCaseWords;
     $scope.isSubmitted = false;
     $scope.preSelectProductProfileCheckBox = {};
@@ -84,35 +134,56 @@ angular.module('lmisChromeApp')
     $scope.productProfilesGroupedByCategory = productProfilesGroupedByCategory;
     $scope.productProfileCheckBoxes = [];//used to productProfile models for checkbox
     $scope.ccuProfileCheckBoxes = [];
-    $scope.lgaCheckBoxes = [];
+    $scope.lgaCheckBoxes = {};
     $scope.zoneCheckBoxes = [];
     $scope.preSelectLgaCheckBox = {};
     $scope.preSelectZoneCheckBox = {};
     $scope.preSelectCcuProfiles = {};
     $scope.developerMode = true;
-    $scope.lgaList = [];
-    //TODO: load state id dynamically.
-    locationService.getLgas("f87ed3e017cf4f8db26836fd910e4cc8")
-      .then(function(res) {
-        $scope.lgaList = res;
-      })
-      .catch(function(err) {
-        console.error(err);
-      });
 
+    // Methods used by both 'create' and 'edit'
+    $scope.onCcuSelection = function(ccuProfile) {
+      $scope.appConfig.selectedCcuProfiles =
+        utility.addObjectToCollection(ccuProfile, $scope.appConfig.selectedCcuProfiles, 'dhis2_modelid');
+      $scope.preSelectCcuProfiles = utility.castArrayToObject($scope.appConfig.selectedCcuProfiles, 'dhis2_modelid');
+    };
+
+    $scope.onProductProfileSelection = function(productProfile) {
+      $scope.appConfig.facility.selectedProductProfiles =
+        utility.addObjectToCollection(productProfile, $scope.appConfig.facility.selectedProductProfiles, 'uuid');
+      $scope.preSelectProductProfileCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedProductProfiles, 'uuid');
+    };
+
+    $scope.onLgaSelection = function(lga){
+      var uuid = lga.uuid;
+      var added = !!$scope.lgaCheckBoxes[uuid];
+      appConfigService.getSelectedFacility(uuid, added);
+
+      if(added) {
+        $scope.appConfig.facility.selectedLgas.push(lga);
+      } else {
+        $scope.appConfig.facility.selectedLgas = $scope.appConfig.facility.selectedLgas.filter(function(item) {
+          return item.uuid !== uuid;
+        });
+      }
+
+      $scope.preSelectLgaCheckBox[uuid] = true;
+    };
+    $scope.onZoneSelection = function(zone){
+      $scope.appConfig.facility.selectedZones = utility.addObjectToCollection(zone, $scope.appConfig.facility.selectedZones, '_id');
+      $scope.preSelectZoneCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedZones, '_id');
+    };
+
+    $scope.appConfig = appConfig;
+    // Those 2 are fetched by ui-router
+    $scope.lgaList = lgaList;
+    $scope.zones = zones;
+
+    // Methods dedicated to the Wizard
     $scope.currentStep = $scope.STEP_ONE; //set initial step
     $scope.moveTo = function(step) {
       $scope.currentStep = step;
     };
-
-   $scope.zones = [];
-    locationService.getZones("f87ed3e017cf4f8db26836fd910e4cc8")
-      .then(function(res) {
-        $scope.zones = res;
-      })
-      .catch(function(err) {
-        console.error(err);
-      });
 
     $scope.loadAppFacilityProfile = function(nextStep, isEmailValid) {
       $scope.isSubmitted = true;
@@ -133,6 +204,8 @@ angular.module('lmisChromeApp')
           $scope.appConfig.selectedCcuProfiles = $scope.appConfig.selectedCcuProfiles || [];
 
           $scope.preSelectCcuProfiles = utility.castArrayToObject($scope.appConfig.selectedCcuProfiles, 'dhis2_modelid');
+          // the pre-selected product profiles come either from the document,
+          // or (default) from the _design/config documents 'template' view
           $scope.preSelectProductProfileCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedProductProfiles, 'uuid');
 
           $scope.moveTo(nextStep);
@@ -145,116 +218,49 @@ angular.module('lmisChromeApp')
         });
     };
 
-    $scope.appConfig = {
-      uuid: deviceEmail,
-      facility: { },
-      contactPerson: {
-        name: '',
-        phoneNo: ''
-      },
-      selectedCcuProfiles: [],
-      dateActivated: undefined,
-    };
+    // Methods/Props dedicated to 'Edit Config'
+    function preLoadConfigForm(appConfig) {
+      if (appConfig === undefined) {
+        return;
+      }
 
-    $scope.onCcuSelection = function(ccuProfile) {
-      $scope.appConfig.selectedCcuProfiles =
-        utility.addObjectToCollection(ccuProfile, $scope.appConfig.selectedCcuProfiles, 'dhis2_modelid');
-      $scope.preSelectCcuProfiles = utility.castArrayToObject($scope.appConfig.selectedCcuProfiles, 'dhis2_modelid');
-    };
+      if (utility.has(appConfig, 'lastUpdated')) {
+        var updatedDate = $filter('date')(new Date(appConfig.lastUpdated), 'yyyy-MM-dd HH:mm:ss');
+        $scope.lastUpdated = messages.lastUpdated(updatedDate);
+      } else {
+        $scope.lastUpdated = messages.lastUpdated('N/A');
+      }
 
-    $scope.onProductProfileSelection = function(productProfile) {
-      $scope.appConfig.facility.selectedProductProfiles =
-        utility.addObjectToCollection(productProfile, $scope.appConfig.facility.selectedProductProfiles, 'uuid');
-      $scope.preSelectProductProfileCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedProductProfiles, 'uuid');
-    };
+      $scope.appConfig.facility.selectedProductProfiles = appConfig.facility.selectedProductProfiles || [];
+      $scope.appConfig.selectedCcuProfiles = appConfig.selectedCcuProfiles || [];
+      $scope.appConfig.facility.selectedLgas = appConfig.facility.selectedLgas || [];
+      $scope.appConfig.facility.selectedZones = appConfig.facility.selectedZones || [];
+      $scope.preSelectLgaCheckBox = $scope.appConfig.facility.selectedLgas.reduce(function(sum, item) {
+        sum[item.uuid] = true;
+        return sum;
+      }, {});
+      $scope.lgaCheckBoxes = angular.copy($scope.preSelectLgaCheckBox);
 
-    $scope.onLgaSelection = function(lga){
-
-      appConfigService.getSelectedFacility((JSON.parse(lga)).uuid);
-      $scope.appConfig.facility.selectedLgas =
-        utility.addObjectToCollection(lga, $scope.appConfig.facility.selectedLgas, '_id');
-      $scope.preSelectLgaCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedLgas, '_id');
-    };
-    $scope.onZoneSelection = function(zone){
-      console.log($scope.appConfig.facility);
-      $scope.appConfig.facility.selectedZones = utility.addObjectToCollection(zone, $scope.appConfig.facility.selectedZones, '_id');
       $scope.preSelectZoneCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedZones, '_id');
 
+      $scope.preSelectCcuProfiles = utility.castArrayToObject(appConfig.selectedCcuProfiles, 'dhis2_modelid');
+      $scope.preSelectProductProfileCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedProductProfiles, 'uuid');
     }
-    $scope.save = function() {
-      $scope.isSaving = true;
-      var nearbyLgas = $scope.appConfig.facility.selectedLgas
-        .map(function(lga) {
-          if (lga._id) {
-            return lga._id;
-          }
-        });
-      fixtureLoaderService.setupWardsAndFacilitesByLgas(nearbyLgas)
-        .finally(function() {
 
-          appConfigService.setup($scope.appConfig)
-            .then(function(result) {
-              if (typeof result !== 'undefined') {
-                $scope.appConfig = result;
-                alertFactory.success(messages.appConfigSuccessMsg);
-                $state.go('home.index.home.mainActivity');
-              } else {
-                growl.error(messages.appConfigFailedMsg);
-              }
-            }).catch(function() {
-              growl.error(messages.appConfigFailedMsg);
-            }).finally(function() {
-              $scope.isSaving = false;
-            });
-        });
-    };
-  })
-  .controller('EditAppConfigCtrl', function($scope, fixtureLoaderService, locationService, $rootScope, appConfigService, growl, $log, messages, $state, appConfig, ccuProfilesGroupedByCategory, productProfilesGroupedByCategory, utility, alertFactory, $filter) {
-
-    $scope.spaceOutUpperCaseWords = utility.spaceOutUpperCaseWords;
     var oldLgas = [];
-    //console.log(appConfig);
-    if (utility.has(appConfig.facility, 'selectedLgas')) {
-      oldLgas = angular.copy(appConfig.facility.selectedLgas);
-    }
-    $scope.stockCountIntervals = appConfigService.stockCountIntervals;
-    $scope.weekDays = appConfigService.weekDays;
-    $scope.ccuProfilesCategories = Object.keys(ccuProfilesGroupedByCategory);
-    $scope.ccuProfilesGroupedByCategory = ccuProfilesGroupedByCategory;
-    $scope.productProfileCategories = Object.keys(productProfilesGroupedByCategory);
-    $scope.productProfilesGroupedByCategory = productProfilesGroupedByCategory;
-    //used to hold check box selection for both ccu and product profile
-    $scope.productProfileCheckBoxes = [];
-    $scope.ccuProfileCheckBoxes = [];
-    $scope.preSelectProductProfileCheckBox = {};
-    $scope.isSubmitted = false;
-    //used to hold config form data
-    $scope.appConfig = appConfig;
-    $scope.appConfig.selectedLgas = [];
-    $scope.appConfig.selectedZones = [];
-    $scope.spaceOutUpperCaseWords = utility.spaceOutUpperCaseWords;
-    $scope.isSubmitted = false;
-    $scope.preSelectProductProfileCheckBox = {};
-    $scope.stockCountIntervals = appConfigService.stockCountIntervals;
-    $scope.weekDays = appConfigService.weekDays;
-    $scope.ccuProfilesCategories = Object.keys(ccuProfilesGroupedByCategory);
-    $scope.ccuProfilesGroupedByCategory = ccuProfilesGroupedByCategory;
-    $scope.productProfileCategories = Object.keys(productProfilesGroupedByCategory);
-    $scope.productProfilesGroupedByCategory = productProfilesGroupedByCategory;
-    $scope.productProfileCheckBoxes = [];//used to productProfile models for checkbox
-    $scope.ccuProfileCheckBoxes = [];
-    $scope.lgaCheckBoxes = [];
-    $scope.zoneCheckBoxes = [];
-    $scope.preSelectLgaCheckBox = {};
-    $scope.preSelectZoneCheckBox = {};
-    $scope.preSelectCcuProfiles = {};
-    $scope.developerMode = false;
-    $rootScope.developerMode = false;
-    $scope.lgaList = [];
+    if(isEdit) {
+      //console.log(appConfig);
+      if (utility.has(appConfig.facility, 'selectedLgas')) {
+        oldLgas = angular.copy(appConfig.facility.selectedLgas);
+      }
 
+      preLoadConfigForm(appConfig);
+
+      $scope.developerMode = false;
+      $rootScope.developerMode = false;
+    }
 
     var noOfAttempts = 0;
-
     $scope.enterDeveloperMode = function() {
       var MAX_ATTEMPTS = 5;
       noOfAttempts = noOfAttempts + 1;
@@ -265,76 +271,6 @@ angular.module('lmisChromeApp')
       }
     };
 
-    var setAppConfigLastUpdatedViewInfo = function(appConfig) {
-      if (utility.has(appConfig, 'lastUpdated')) {
-        var updatedDate = $filter('date')(new Date(appConfig.lastUpdated), 'yyyy-MM-dd HH:mm:ss');
-        $scope.lastUpdated = messages.lastUpdated(updatedDate);
-      } else {
-        $scope.lastUpdated = messages.lastUpdated('N/A');
-      }
-    };
-    function preLoadConfigForm(appConfig) {
-      if (appConfig === undefined) {
-        return;
-      }
-      setAppConfigLastUpdatedViewInfo(appConfig);
-
-      $scope.appConfig.contactPerson = appConfig.contactPerson;
-      $scope.appConfig.facility = appConfig.facility;
-      $scope.appConfig.facility.selectedProductProfiles = appConfig.facility.selectedProductProfiles || [];
-      $scope.appConfig.selectedCcuProfiles = appConfig.selectedCcuProfiles || [];
-      $scope.appConfig.facility.selectedLgas = appConfig.facility.selectedLgas || [];
-      $scope.appConfig.facility.selectedZones = appConfig.facility.selectedZones || [];
-      $scope.preSelectLgaCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedLgas, '_id');
-      $scope.preSelectZoneCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedZones, '_id');
-
-      $scope.preSelectCcuProfiles = utility.castArrayToObject(appConfig.selectedCcuProfiles, 'dhis2_modelid');
-      $scope.preSelectProductProfileCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedProductProfiles, 'uuid');
-    }
-
-    //pre-load edit app facility profile config form with existing config.
-    preLoadConfigForm(appConfig);
-    //TODO: load state id dynamically.
-    locationService.getLgas("f87ed3e017cf4f8db26836fd910e4cc8")
-      .then(function(res) {
-        $scope.lgaList = res;
-      })
-      .catch(function(err) {
-        console.error(err);
-      });
-    $scope.zones = [];
-    locationService.getZones("f87ed3e017cf4f8db26836fd910e4cc8")
-      .then(function(res) {
-        $scope.zones = res;
-      })
-      .catch(function(err) {
-        console.error(err);
-      });
-
-    $scope.onCcuSelection = function(ccuProfile) {
-      $scope.appConfig.selectedCcuProfiles =
-        utility.addObjectToCollection(ccuProfile, $scope.appConfig.selectedCcuProfiles, 'dhis2_modelid');
-      $scope.preSelectCcuProfiles = utility.castArrayToObject($scope.appConfig.selectedCcuProfiles, 'dhis2_modelid');
-    };
-
-    $scope.onProductProfileSelection = function(productProfile) {
-      $scope.appConfig.facility.selectedProductProfiles =
-        utility.addObjectToCollection(productProfile, $scope.appConfig.facility.selectedProductProfiles, 'uuid');
-      $scope.preSelectProductProfileCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedProductProfiles, 'uuid');
-    };
-
-    $scope.onLgaSelection = function(lga) {
-
-      appConfigService.getSelectedFacility((JSON.parse(lga).uuid), event);
-      $scope.appConfig.facility.selectedLgas =
-        utility.addObjectToCollection(lga, $scope.appConfig.facility.selectedLgas, '_id');
-      $scope.preSelectLgaCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedLgas, '_id');
-    };
-    $scope.onZoneSelection = function(zone){
-      $scope.appConfig.facility.selectedZones =
-        utility.addObjectToCollection(zone, $scope.appConfig.facility.selectedZones, '_id');
-      $scope.preSelectZoneCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedZones, '_id');
-    }
 
     var isSameLgas = function(old, recent) {
       if (old.length !== recent.length) {
@@ -352,8 +288,28 @@ angular.module('lmisChromeApp')
       return hasOddElem;
     };
 
-    var saveAppConfig = function() {
-      appConfigService.setup($scope.appConfig)
+
+    // Save Methods:
+    $scope.save = function() {
+      $scope.isSaving = true;
+      var nearbyLgas = $scope.appConfig.facility.selectedLgas
+        .map(function(lga) {
+          if (lga._id) {
+            return lga._id;
+          }
+        });
+
+      var loadLga;
+      if(isEdit && isSameLgas(oldLgas, $scope.appConfig.facility.selectedLgas)) {
+        loadLga = $q.when(true);
+      } else {
+        loadLga = fixtureLoaderService.setupWardsAndFacilitesByLgas(nearbyLgas);
+      }
+
+      loadLga
+        .then(function() {
+          return appConfigService.setup($scope.appConfig);
+        })
         .then(function(result) {
           if (typeof result !== 'undefined') {
             $scope.appConfig = result;
@@ -362,8 +318,11 @@ angular.module('lmisChromeApp')
           } else {
             growl.error(messages.appConfigFailedMsg);
           }
-        })
-        .catch(function(reason) {
+        }).catch(function(reason) {
+          if(!isEdit) {
+            return growl.error(messages.appConfigFailedMsg);
+          }
+
           if (utility.has(reason, 'type') && reason.type === 'SAVED_NOT_SYNCED') {
             alertFactory.success(messages.appConfigSuccessMsg);
             $state.go('home.index.home.mainActivity');
@@ -372,32 +331,8 @@ angular.module('lmisChromeApp')
             growl.error(messages.appConfigFailedMsg);
             console.error(reason);
           }
-        })
-        .finally(function() {
+        }).finally(function() {
           $scope.isSaving = false;
         });
     };
-
-    $scope.save = function() {
-      $scope.isSaving = true;
-      if (isSameLgas(oldLgas, $scope.appConfig.facility.selectedLgas)) {
-        saveAppConfig();
-      } else {
-        var nearbyLgas = $scope.appConfig.facility.selectedLgas
-          .map(function(lga) {
-            if (lga._id) {
-              return lga._id;
-            }
-          });
-        fixtureLoaderService.setupWardsAndFacilitesByLgas(nearbyLgas)
-          .then(function(res) {
-            saveAppConfig();
-          })
-          .catch(function(err) {
-            growl.error(messages.lgaUpdateFailed);
-            $scope.isSaving = false;
-          });
-      }
-    };
-
   });
