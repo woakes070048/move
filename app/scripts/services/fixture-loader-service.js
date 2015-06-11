@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .service('fixtureLoaderService', function($q, $http, locationService, facilityFactory, $rootScope, memoryStorageService, config, storageService, utility, pouchDB, syncService) {
+  .service('fixtureLoaderService', function($q, $http, locationService, facilityFactory, $rootScope, memoryStorageService, config, storageService, utility, pouchDB, syncService, ehaRetriable) {
 
     var PATH = 'scripts/fixtures/';
     var REMOTE_URI = config.api.url;
@@ -25,23 +25,15 @@ angular.module('lmisChromeApp')
     var loadDatabaseFromRemote = function(dbName) {
       var dbUrl = [REMOTE_URI, '/', dbName].join('');
       var db = pouchDB(dbUrl);
-      var map = function(doc) {
-        if (doc) {
-          /* globals emit: false */
-          // PouchDB injects this, see:
-          // http://pouchdb.com/api.html#query_database
-          emit(doc);
-        }
-      };
-      console.log('loading', dbName);
+
       return db.info()
         .then(function() {
           // return db.query({map: map}, {reduce: false})
-          return db.allDocs({ include_docs: true })
-            .then(function(res) {
-              var dbRecords = utility.pluck(res.rows, 'doc');
-              return utility.castArrayToObject(dbRecords, 'uuid');
-            });
+          return db.allDocs({ include_docs: true });
+        })
+        .then(function(res) {
+          var dbRecords = utility.pluck(res.rows, 'doc');
+          return utility.castArrayToObject(dbRecords, 'uuid');
         });
     };
 
@@ -52,14 +44,14 @@ angular.module('lmisChromeApp')
      * @param {Array} dbNames - collection of dbNames to be loaded from remote.
      * @returns {Promise}
      */
-    var loadDatabasesFromRemote = function(dbNames) {
+    var loadDatabasesFromRemote = ehaRetriable(function(dbNames) {
       var promises = {};
       for (var i in dbNames) {
         var dbName = dbNames[i];
         promises[dbName] = loadDatabaseFromRemote(dbName);
       }
       return $q.all(promises);
-    };
+    });
 
     /**
      * This saves databases to the local storage.

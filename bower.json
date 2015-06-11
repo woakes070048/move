@@ -13,7 +13,11 @@
     "angularjs-nvd3-directives": "~0.0.7",
     "angular-growl-v2": "~0.6.1",
     "angular-animate": "~1.2.20",
-    "angular-gettext": "~2.1.0"
+    "angular-gettext": "~2.1.0",
+    "localforage": "~1.2.3",
+    "pouchdb-authentication": "~0.4.0",
+    "angular-eha.login-service": "git@github.com:eHealthAfrica/angular-eha.login-service.git#~0.1.0",
+    "angular-eha.retriable": "git@github.com:eHealthAfrica/angular-eha.retriable.git#~0.1.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.20",
@@ -36,6 +40,8 @@
   "private": true,
   "resolutions": {
     "d3": "~3.4.1",
-    "angular": "1.2.28"
+    "angular-pouchdb": "~2.1.0",
+    "angular": "1.2.28",
+    "pouchdb-authentication": "~0.3.6"
   }
 }

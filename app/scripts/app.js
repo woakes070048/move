@@ -10,7 +10,9 @@ angular.module('lmisChromeApp', [
     'angular-growl',
     'ngAnimate',
     'db',
-    'gettext'
+    'gettext',
+    'eha.retriable',
+    'eha.login-service'
   ])
   .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, growl, utility) {
 
@@ -89,6 +91,19 @@ angular.module('lmisChromeApp', [
     }
 
     loadAppConfig();
+  })
+  .run(function(loginDialogService, ehaLoginService) {
+    ehaLoginService.config(loginDialogService);
+  })
+  .config(function(pouchDBProvider, POUCHDB_METHODS) {
+    // expose login method to angular;
+    POUCHDB_METHODS.login = 'qify';
+  })
+  .config(function(ehaLoginServiceProvider, config) {
+    // StockCount is just set as one random database, since the login plugin
+    // wants to connect to a specific DB
+    var url = [config.api.url, '/', 'stockcount'].join('');
+    ehaLoginServiceProvider.config(url);
   })
   .config(function(growlProvider) {
     growlProvider.globalTimeToLive({

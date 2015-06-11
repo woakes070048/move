@@ -23,11 +23,11 @@ angular.module('lmisChromeApp')
           views: {
             'stats': {
               templateUrl: 'views/stock-count/sync/stats.html',
-              controller: function($q, $log, $scope, messages, config, pouchDB, localDocs, growl) {
+              controller: function($q, $log, $scope, messages, config, pouchDB, localDocs, growl, ehaRetriable) {
                 var dbName = 'stock-count',
                     remote = config.api.url + '/' + dbName;
 
-                var updateCounts = function() {
+                var updateCounts = ehaRetriable(function() {
                   $scope.local = {
                     // jshint camelcase: false
                     doc_count: localDocs.total_rows
@@ -43,15 +43,18 @@ angular.module('lmisChromeApp')
                     .catch(function(reason) {
                       $log.error(reason);
                     });
-                };
+                });
 
                 updateCounts();
 
-                var sync = function(source) {
+                var sync = ehaRetriable(function(source) {
                   var deferred = $q.defer();
                   growl.info(messages.syncing(source.label));
                   $scope.syncing = true;
                   var cb = {
+                    error: function(err) {
+                      deferred.reject(err);
+                    },
                     complete: function() {
                       $scope.syncing = false;
                       growl.success(messages.syncSuccess(source.label));
@@ -61,7 +64,7 @@ angular.module('lmisChromeApp')
                   var db = pouchDB(source.from);
                   db.replicate.to(source.to, cb);
                   return deferred.promise;
-                };
+                });
 
                 $scope.sync = function() {
                   var promises = [

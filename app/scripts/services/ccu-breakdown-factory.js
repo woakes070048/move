@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-    .factory('ccuBreakdownFactory', function ($q, storageService, syncService, $window, notificationService,$http) {
+    .factory('ccuBreakdownFactory', function ($q, storageService, syncService, $window, notificationService) {
 
       var saveCcuBreakdownReport = function (ccuBreakdown) {
         var deferred = $q.defer();

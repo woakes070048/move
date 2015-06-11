@@ -137,6 +137,10 @@ msgstr ""
 msgid "Calculate routes"
 msgstr ""
 
+#: app/views/login/login.html:50
+msgid "Cancel"
+msgstr ""
+
 #: app/views/orders/forms/place.html:16
 msgid "Child Facility Code"
 msgstr ""
@@ -340,6 +344,10 @@ msgstr ""
 msgid "Log an incoming bundle"
 msgstr ""
 
+#: app/views/login/login.html:47
+msgid "Login"
+msgstr ""
+
 #: app/views/home/main-activity.html:5
 msgid "Main Activities"
 msgstr ""
@@ -368,6 +376,10 @@ msgstr ""
 msgid "More"
 msgstr ""
 
+#: app/views/login/login.html:3
+msgid "Move · Authentication"
+msgstr ""
+
 #: app/views/app-config/partials/forms/contact-person.html:6
 msgid "Name"
 msgstr ""
@@ -382,6 +394,7 @@ msgid "Number of doses"
 msgstr ""
 
 #: app/scripts/services/messages.js:129
+#: app/views/login/login.html:15
 msgid "Offline"
 msgstr ""
 
@@ -422,6 +435,10 @@ msgstr ""
 
 #: app/views/orders/forms/place.html:25
 msgid "Parent Facility Name"
+msgstr ""
+
+#: app/views/login/login.html:33
+msgid "Password"
 msgstr ""
 
 #: app/views/app-config/partials/forms/contact-person.html:20
@@ -853,6 +870,10 @@ msgstr ""
 msgid "User Code"
 msgstr ""
 
+#: app/views/login/login.html:20
+msgid "Username"
+msgstr ""
+
 #: app/views/home/control-panel.html:58
 msgid "View Stock Count"
 msgstr ""
@@ -897,13 +918,25 @@ msgstr ""
 msgid "Welcome to LoMIS"
 msgstr ""
 
+#: app/views/login/login.html:12
+msgid "Wrong password. If you are sure you entered the correct password, contact support."
+msgstr ""
+
 #: app/scripts/services/messages.js:80
 #: app/views/survey/take-survey.html:17
 msgid "Yes"
 msgstr ""
 
+#: app/views/login/login.html:17
+msgid "You can cancel and continue using the app while offline, too."
+msgstr ""
+
 #: app/scripts/services/messages.js:154
 msgid "You have completed stock count successfully!"
+msgstr ""
+
+#: app/views/login/login.html:16
+msgid "You seem to be offline, so we could not check your password. Please check your connection and try again."
 msgstr ""
 
 #: app/scripts/services/messages.js:91
@@ -920,6 +953,10 @@ msgid_plural "items"
 msgstr[0] ""
 msgstr[1] ""
 
+#: app/scripts/services/login-dialog-service.js:54
+msgid "no"
+msgstr ""
+
 #: app/scripts/services/messages.js:218
 msgid "stock count value is invalid, at least enter zero (0) to proceed"
 msgstr ""
@@ -932,6 +969,10 @@ msgstr ""
 
 #: app/scripts/services/messages.js:194
 msgid "waste count saved successfully"
+msgstr ""
+
+#: app/scripts/services/login-dialog-service.js:53
+msgid "yes"
 msgstr ""
 
 #: app/scripts/services/messages.js:113
