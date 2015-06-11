@@ -8,8 +8,11 @@ angular.module('lmisChromeApp')
       parent: 'root.index',
       templateUrl: 'views/home/index.html',
       resolve: {
-        appConfig: function(appConfigService) {
-          return appConfigService.getCurrentAppConfig();
+        appConfig: function(appConfigService, fixtureLoaderService) {
+          return fixtureLoaderService.loadLocalDatabasesIntoMemory(fixtureLoaderService.REMOTE_FIXTURES)
+            .then(function() {
+              return appConfigService.getCurrentAppConfig();
+            });
         },
         isStockCountReminderDue: function(stockCountFactory, appConfig, $q) {
           if (angular.isObject(appConfig)) {
