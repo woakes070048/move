@@ -188,7 +188,7 @@ angular.module('lmisChromeApp')
       return cache[key];
     };
 
-    var loadRemoteAndUpdateStorageAndMemory = function(dbNames) {
+    var loadRemoteAndUpdateStorageAndMemory = ehaRetriable(function(dbNames) {
       var promises = {};
       //TODO: refactor this later.
       var databases = 'DATABASES';
@@ -205,7 +205,7 @@ angular.module('lmisChromeApp')
               return res;
             });
         });
-    };
+    });
 
     this.loadRemoteAndUpdateStorageAndMemory = function(dbNames) {
       return loadRemoteAndUpdateStorageAndMemory(dbNames);
@@ -265,7 +265,7 @@ angular.module('lmisChromeApp')
       return loadFilesIntoCache(fileNames);
     };
 
-    var getLgasByState = function(stateId) {
+    var getLgasByState = ehaRetriable(function(stateId) {
       var db = pouchDB(config.api.url + '/' + storageService.LOCATIONS);
       var lgaView = 'lga/by_id';
       var options = {
@@ -275,21 +275,20 @@ angular.module('lmisChromeApp')
         .then(function(state) {
           options.keys = state.lgas;
           return db.query(lgaView, options)
-            .then(function(res) {
-              return res.rows
-                .map(function(row) {
-                  var lga = row.value;
-                  if (utility.has(lga, '_id')) {
-                    return lga;
-                  }
-                });
+        })
+        .then(function(res) {
+          return res.rows.map(function(row) {
+              var lga = row.value;
+              if (utility.has(lga, '_id')) {
+                return lga;
+              }
             });
         });
-    };
+    });
 
     this.getLgas = getLgasByState;
 
-    this.getWardsByLgas = function(lgas) {
+    this.getWardsByLgas = ehaRetriable(function(lgas) {
       var db = pouchDB(config.api.url + '/' + storageService.LOCATIONS);
       var lgaView = 'lga/by_id';
       var wardView = 'ward/by_id'
@@ -318,9 +317,9 @@ angular.module('lmisChromeApp')
                 });
             });
         });
-    };
+    });
 
-    var getFacilities = function(facilityIds) {
+    var getFacilities = ehaRetriable(function(facilityIds) {
       var view = 'facilities/by_id';
       var db = pouchDB(config.api.url + '/facilities');
       var options = {
@@ -334,7 +333,7 @@ angular.module('lmisChromeApp')
               return row.value;
             });
         });
-    };
+    });
 
     this.setupWardsAndFacilitesByLgas = function(lgas) {
       return this.getWardsByLgas(lgas)
