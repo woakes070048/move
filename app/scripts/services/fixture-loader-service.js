@@ -169,6 +169,12 @@ angular.module('lmisChromeApp')
      * @param {Array} dbNames - array of strings which are databases names.
      * @returns {Promise|*}
      */
+
+    // The cache is used since this can be
+    // called quite often on navigation
+    // the keys is an array of db's stringified.
+    // It's a little rough, but a simple way of making sure
+    // all the dbNames asked for have been loaded
     var cache = {};
     this.loadLocalDatabasesIntoMemory = function(dbNames) {
       var promises = {};
