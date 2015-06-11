@@ -2,12 +2,11 @@
   "name": "lmis-chrome",
   "version": "0.11.4",
   "private": true,
-  "dependencies": {
-    "concat-map": "0.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "balanced-match": "^0.2.0",
     "change-case": "^2.1.1",
+    "concat-map": "0.0.1",
     "cordova": "^5.0.0",
     "cordova-android": "^4.0.2",
     "cordova-icon": "^0.2.0",
