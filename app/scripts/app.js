@@ -103,9 +103,9 @@ angular.module('lmisChromeApp', [
     POUCHDB_METHODS.login = 'qify';
   })
   .config(function(ehaLoginServiceProvider, config) {
-    // StockCount is just set as one random database, since the login plugin
+    // Use appConfig as 'main' database, since the login plugin
     // wants to connect to a specific DB
-    var url = [config.api.url, '/', 'stockcount'].join('');
+    var url = [config.api.url, '/', 'app_config'].join('');
     ehaLoginServiceProvider.config(url);
   })
   .config(function(growlProvider) {
