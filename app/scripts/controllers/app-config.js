@@ -12,8 +12,28 @@ angular.module('lmisChromeApp')
         url: '/app-config-welcome',
         parent: 'root.index',
         templateUrl: 'views/app-config/welcome-page.html',
+        resolve: {
+          config: function(ehaLoginService, appConfigService) {
+            // From the welcome screen, we try to load an existing app config
+            // if you have set up your facility already, you get taken to the
+            // main screen.
+            return ehaLoginService.getUserName()
+              .then(function(userName) {
+                return appConfigService.loadRemoteConfig(userName);
+              })
+              .catch(function() {
+                return { notFound: true };
+              });
+          }
+        },
         data: {
           label: 'Welcome'
+        },
+        controller: function($scope, config, $state) {
+          // Found config, we're good to go
+          if(!config.notFound) {
+            return $state.go('home.index.home.mainActivity');
+          }
         }
       })
       .state('appConfig.wizard', {
@@ -21,25 +41,42 @@ angular.module('lmisChromeApp')
         parent: 'root.index',
         templateUrl: 'views/app-config/wizard.html',
         resolve: {
-          appConfig: function(deviceInfoFactory) {
-            return deviceInfoFactory.getDeviceInfo()
-              .then(function(result) {
-                return result.mainAccount;
+          appConfig: function(appConfigService, ehaLoginService, growl, messages) {
+            // From the wizard screen, try to load the template for the user,
+            // if found, the 'email' step is skipped,
+            // if not found, the user gets to fill in email address
+            return ehaLoginService.getUserName()
+              .then(function(userName) {
+                return appConfigService.getAppFacilityProfileByEmail(userName)
+                  .then(function(facility) {
+                    // return a doc w/ email as user,
+                    // and facility
+                    return {
+                      preloaded: true,
+                      uuid: userName,
+                      facility: facility,
+                    };
+                  });
               })
-              .catch(function() {
-                return '';
-              })
-              .then(function(email) {
-                return {
-                  uuid: email,
-                  facility: { },
-                  contactPerson: {
-                    name: '',
-                    phoneNo: ''
-                  },
-                  selectedCcuProfiles: [],
-                  dateActivated: undefined
-                };
+              .catch(function(err) {
+                switch(err.status) {
+                  case 404:
+                    return {
+                      preloaded: false,
+                      uuid: '',
+                      facility: { },
+                      contactPerson: {
+                        name: '',
+                        phoneNo: ''
+                      },
+                      selectedCcuProfiles: [],
+                      dateActivated: undefined
+                    };
+                  case 0: // offline
+                    return growl.error(messages.offline);
+                  default:
+                    return growl.error(err.message);
+                }
               });
           },
           ccuProfilesGroupedByCategory: function(ccuProfileFactory) {
@@ -116,7 +153,6 @@ angular.module('lmisChromeApp')
     zones
   ) {
 
-    console.log('got app config');
     $scope.spaceOutUpperCaseWords = utility.spaceOutUpperCaseWords;
     $scope.isSubmitted = false;
     $scope.preSelectProductProfileCheckBox = {};
@@ -180,7 +216,39 @@ angular.module('lmisChromeApp')
     $scope.zones = zones;
 
     // Methods dedicated to the Wizard
-    $scope.currentStep = $scope.STEP_ONE; //set initial step
+    function applyAppConfig(result) {
+      $scope.disableBtn = false;
+      $scope.isSubmitted = false;
+      $scope.profileNotFound = false;
+
+      $scope.appConfig.facility = result;
+      $scope.appConfig.facility.reminderDay = result.reminderDay;
+      $scope.appConfig.facility.stockCountInterval = result.stockCountInterval;
+      $scope.appConfig.facility.selectedLgas = result.selectedLgas || [];
+      $scope.appConfig.facility.selectedZones = result.selectedZones || [];
+      $scope.appConfig.contactPerson = result.contactPerson || {};
+      $scope.appConfig.contactPerson.name = $scope.appConfig.facility.contact.name;
+      $scope.appConfig.contactPerson.phoneNo = $scope.appConfig.facility.contact.oldphone;
+      $scope.appConfig.selectedCcuProfiles = $scope.appConfig.selectedCcuProfiles || [];
+
+      $scope.preSelectCcuProfiles = utility.castArrayToObject($scope.appConfig.selectedCcuProfiles, 'dhis2_modelid');
+      // the pre-selected product profiles come either from the document,
+      // or (default) from the _design/config documents 'template' view
+      $scope.preSelectProductProfileCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedProductProfiles, 'uuid');
+    }
+
+    if(!isEdit) {
+      // We've got a facility config
+      // Update props as if we loaded it
+      if(appConfig.preloaded) {
+        applyAppConfig(appConfig.facility);
+        $scope.currentStep = $scope.STEP_TWO;
+      } else {
+        // No config template found
+        $scope.currentStep = $scope.STEP_ONE; //set initial step
+      }
+    }
+
     $scope.moveTo = function(step) {
       $scope.currentStep = step;
     };
@@ -189,27 +257,9 @@ angular.module('lmisChromeApp')
       $scope.isSubmitted = true;
       $scope.disableBtn = isEmailValid;
       appConfigService.getAppFacilityProfileByEmail($scope.appConfig.uuid)
-        .then(function(result) {
-          $scope.disableBtn = false;
-          $scope.isSubmitted = false;
-          $scope.profileNotFound = false;
-
-          $scope.appConfig.facility = result;
-          $scope.appConfig.facility.reminderDay = result.reminderDay;
-          $scope.appConfig.facility.stockCountInterval = result.stockCountInterval;
-          $scope.appConfig.facility.selectedLgas = result.selectedLgas || [];
-          $scope.appConfig.facility.selectedZones = result.selectedZones || [];
-          $scope.appConfig.contactPerson.name = $scope.appConfig.facility.contact.name;
-          $scope.appConfig.contactPerson.phoneNo = $scope.appConfig.facility.contact.oldphone;
-          $scope.appConfig.selectedCcuProfiles = $scope.appConfig.selectedCcuProfiles || [];
-
-          $scope.preSelectCcuProfiles = utility.castArrayToObject($scope.appConfig.selectedCcuProfiles, 'dhis2_modelid');
-          // the pre-selected product profiles come either from the document,
-          // or (default) from the _design/config documents 'template' view
-          $scope.preSelectProductProfileCheckBox = utility.castArrayToObject($scope.appConfig.facility.selectedProductProfiles, 'uuid');
-
+        .then(applyAppConfig)
+        .then(function() {
           $scope.moveTo(nextStep);
-
         })
         .catch(function() {
           $scope.disableBtn = false;
@@ -249,7 +299,6 @@ angular.module('lmisChromeApp')
 
     var oldLgas = [];
     if(isEdit) {
-      //console.log(appConfig);
       if (utility.has(appConfig.facility, 'selectedLgas')) {
         oldLgas = angular.copy(appConfig.facility.selectedLgas);
       }

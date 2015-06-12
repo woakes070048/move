@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lmisChromeApp').service('appConfigService', function($q, storageService, pouchDB, config, syncService, productProfileFactory, facilityFactory, utility, cacheService, $filter, reminderFactory, growl, messages, $http, memoryStorageService, ehaRetriable) {
+angular.module('lmisChromeApp').service('appConfigService', function($q, storageService, pouchStorageService, config, syncService, productProfileFactory, facilityFactory, utility, cacheService, $filter, reminderFactory, growl, messages, $http, memoryStorageService, ehaRetriable) {
 
   this.APP_CONFIG = storageService.APP_CONFIG;
   this.stockCountIntervals = [
@@ -23,7 +23,7 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
     var appConfigCopy;
     return getAppConfigFromMemoryOrStorage().then(function(existingAppConfig) {
       if (!angular.isObject(existingAppConfig)) {
-        appConfigCopy = appConfig;
+        appConfigCopy = utility.copy({}, appConfig);
       } else {
         //update app config by merging both fields.
         appConfigCopy = utility.copy(appConfig, existingAppConfig);
@@ -32,6 +32,7 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
       if (typeof appConfigCopy.dateActivated === 'undefined') {
         appConfigCopy.dateActivated = new Date().toJSON();
       }
+
       return storageService.save(storageService.APP_CONFIG, appConfigCopy)
         .then(function() {
           //update memory copy.
@@ -104,7 +105,7 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
           facilityProfile.selectedProductProfiles = productProfileFactory.getBatch(facilityProfile.selectedProductProfiles);
           return facilityProfile;
         } else {
-          return $q.reject('profile for given email does not exist.');
+          return $q.reject({ message: 'profile for given email does not exist.', status: 404 });
         }
       });
   });
@@ -180,4 +181,14 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
         return facilityStockListProductTypes;
       });
   };
+
+  // Loads an existing config, and saves it locally if found
+  this.loadRemoteConfig = ehaRetriable(function(email) {
+    var db = pouchStorageService.getRemoteDB(storageService.APP_CONFIG);
+    return db.get(email)
+      .then(function(config) {
+        // save the config locally
+        return saveAppConfig(config);
+      });
+  });
 });
