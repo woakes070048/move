@@ -92,10 +92,12 @@ angular.module('lmisChromeApp')
             return productProfileFactory.getAllGroupedByCategory();
           },
           zones: function(locationService) {
-            return locationService.getZones('f87ed3e017cf4f8db26836fd910e4cc8');
+            // KANO_UUID could be exchanged for a url parameter
+            // when we want to support other zones
+            return locationService.getZones(locationService.KANO_UUID);
           },
           lgaList: function(locationService) {
-            return locationService.getLgas('f87ed3e017cf4f8db26836fd910e4cc8');
+            return locationService.getLgas(locationService.KANO_UUID);
           },
           isEdit: function() {
             return false;
