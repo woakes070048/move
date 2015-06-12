@@ -12,6 +12,8 @@ angular.module('lmisChromeApp')
      */
     var canConnect = function() {
       var deferred = $q.defer();
+      // Note: The Connection Test DB is expected to be un-authed
+      // And shouldn't contain any documents
       var testDb = 'connection_test';
       var counter = 0;
       var reason;
