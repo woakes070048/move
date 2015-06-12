@@ -109,6 +109,8 @@ angular.module('lmisChromeApp')
         return $q.reject('background sync in progress.');
       }
 
+      var result = $q.defer();
+
       sync = $timeout(function() {
         return deviceInfoFactory.canConnect()
           .then(function() {
@@ -129,13 +131,19 @@ angular.module('lmisChromeApp')
                 return storageService.viewCleanups();
               });
           })
+          .then(function() {
+            return result.resolve();
+          })
+          .catch(function(err) {
+            result.reject(err);
+          })
           .finally(function() {
             backgroundSyncInProgress = false;
             $timeout.cancel(sync);
           });
       }, 1);
 
-      return sync;
+      return result.promise;
     };
 
     this.cancel = function() {

@@ -19,8 +19,11 @@ angular.module('lmisChromeApp', [
     function navigateToHome() {
       $state.go('home.index.home.mainActivity');
       backgroundSyncService.startBackgroundSync()
-        .finally(function() {
+        .then(function() {
           console.log('updateAppConfigAndStartBackgroundSync triggered on start up has been completed!');
+        })
+        .catch(function(err) {
+          console.log('updateAppConfigAndStartBackgroundSync triggered on start up failed', err);
         });
     }
 
