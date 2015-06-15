@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('lmisChromeApp').service('appConfigService', function($q, storageService, pouchDB, config, syncService, productProfileFactory, facilityFactory, utility, cacheService, $filter, reminderFactory, growl, messages, $http, memoryStorageService) {
+angular.module('lmisChromeApp').service('appConfigService', function($q, storageService, pouchStorageService, config, syncService, productProfileFactory, facilityFactory, utility, cacheService, $filter, reminderFactory, growl, messages, $http, memoryStorageService, ehaRetriable) {
 
   this.APP_CONFIG = storageService.APP_CONFIG;
   this.stockCountIntervals = [
@@ -23,7 +23,7 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
     var appConfigCopy;
     return getAppConfigFromMemoryOrStorage().then(function(existingAppConfig) {
       if (!angular.isObject(existingAppConfig)) {
-        appConfigCopy = appConfig;
+        appConfigCopy = utility.copy({}, appConfig);
       } else {
         //update app config by merging both fields.
         appConfigCopy = utility.copy(appConfig, existingAppConfig);
@@ -32,6 +32,7 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
       if (typeof appConfigCopy.dateActivated === 'undefined') {
         appConfigCopy.dateActivated = new Date().toJSON();
       }
+
       return storageService.save(storageService.APP_CONFIG, appConfigCopy)
         .then(function() {
           //update memory copy.
@@ -72,17 +73,18 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
     }
     return appConfig;
   };
-  this.getSelectedFacility = function(key, added){
+  this.getSelectedFacility = ehaRetriable(function(key, added){
     if(added) {
      var url = config.api.url + '/facilities/_design/facilities/_view/by_lga?include_docs=true&startkey=%22' +
-       key + '%22&endkey=%22' + key + '%22';
-     return $http.get(url)
+               key + '%22&endkey=%22' + key + '%22';
+    return $http.get(url, { withCredentials: true })
         .then(function (result) {
-          return result.data.rows.forEach(function (row) {
+          result.data.rows.forEach(function (row) {
             storageService.save(storageService.FACILITY, row.doc);
           });
-        })
-    }else{
+          return true;
+        });
+    } else {
       return storageService.where(storageService.FACILITY, function(row){
         // TODO: Rewrite to a view
         if(row.lgaUUID === key){
@@ -90,28 +92,23 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
         }
       });
     }
-  };
-  this.getAppFacilityProfileByEmail = function(email) {
-    var deferred = $q.defer();
+  });
+
+  this.getAppFacilityProfileByEmail = ehaRetriable(function(email) {
     var REMOTE_URI = config.api.url + '/facilities/_design/config/_view/template?key="' + email + '"';
     REMOTE_URI = encodeURI(REMOTE_URI);
-    $http.get(REMOTE_URI)
+    return $http.get(REMOTE_URI, { withCredentials: true })
       .then(function(res) {
         var rows = res.data.rows;
         if (rows.length > 0) {
           var facilityProfile = rows[0].value;//pick the first facility profile.
           facilityProfile.selectedProductProfiles = productProfileFactory.getBatch(facilityProfile.selectedProductProfiles);
-          deferred.resolve(facilityProfile);
+          return facilityProfile;
         } else {
-          deferred.reject('profile for given email does not exist.');
+          return $q.reject({ message: 'profile for given email does not exist.', status: 404 });
         }
-
-      })
-      .catch(function(reason) {
-        deferred.reject(reason);
       });
-    return deferred.promise;
-  };
+  });
 
   var getAppConfigFromStorage = function() {
     var appConfig;
@@ -136,10 +133,6 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
 
   var getAppConfigFromMemoryOrStorage = function() {
     var appConfig = getAppConfigFromMemory();
-    getAppConfigFromStorage()
-      .then(function(result){
-        //console.log(result);
-      })
 
     if (angular.isObject(appConfig)) {
       return $q.when(appConfig);
@@ -188,4 +181,14 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
         return facilityStockListProductTypes;
       });
   };
+
+  // Loads an existing config, and saves it locally if found
+  this.loadRemoteConfig = ehaRetriable(function(email) {
+    var db = pouchStorageService.getRemoteDB(storageService.APP_CONFIG);
+    return db.get(email)
+      .then(function(config) {
+        // save the config locally
+        return saveAppConfig(config);
+      });
+  });
 });

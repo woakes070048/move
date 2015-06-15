@@ -1,0 +1,55 @@
+<div class="modal-header alert-info">
+    <i class="fa fa-lock"></i>
+    <span translate>Move · Authentication</span>
+</div>
+<div class="modal-body">
+  <form
+    role="form"
+    name="login-form"
+    ng-submit="authenticate(username, passkey)">
+  <div class="col-md-15">
+    <div class="alert alert-danger" role="alert" ng-if="wrongPasskey === true">
+        <span translate>Wrong password. If you are sure you entered the correct password, contact support.</span>
+    </div>
+    <div class="alert alert-warning" role="alert" ng-if="cannotReachServer === true || !online">
+        <h4 translate>Offline</h4>
+        <p translate>You seem to be offline, so we could not check your password. Please check your connection and try again.</p>
+        <p translate>You can cancel and continue using the app while offline, too.</p>
+    </div>
+        <div class="form-group">
+            <label translate>Username</label>
+            <input
+              autofocus
+              type="text"
+              class="form-control"
+              placeholder=""
+              ng-model="username"
+              ng-disabled="!online"
+              tab-to-next-input-on-enter
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false">
+            <label translate>Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder=""
+              ng-model="passkey"
+              ng-disabled="!online"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false">
+        </div>
+        <button type="submit" class="btn btn-success" ng-disabled="!online">
+            <i class="fa fa-chevron-circle-right"></i>
+            <span translate>Login</span>
+        </button>
+        <button type="submit" class="btn btn-default" ng-click="cancel()">
+            <span translate>Cancel</span>
+        </button>
+      </div>
+    </form>
+</div>
+

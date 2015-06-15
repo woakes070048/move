@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .service('fixtureLoaderService', function($q, $http, locationService, facilityFactory, $rootScope, memoryStorageService, config, storageService, utility, pouchDB, syncService) {
+  .service('fixtureLoaderService', function($q, $http, locationService, facilityFactory, $rootScope, memoryStorageService, config, storageService, utility, pouchDB, syncService, ehaRetriable) {
 
     var PATH = 'scripts/fixtures/';
     var REMOTE_URI = config.api.url;
@@ -25,23 +25,15 @@ angular.module('lmisChromeApp')
     var loadDatabaseFromRemote = function(dbName) {
       var dbUrl = [REMOTE_URI, '/', dbName].join('');
       var db = pouchDB(dbUrl);
-      var map = function(doc) {
-        if (doc) {
-          /* globals emit: false */
-          // PouchDB injects this, see:
-          // http://pouchdb.com/api.html#query_database
-          emit(doc);
-        }
-      };
-      console.log('loading', dbName);
+
       return db.info()
         .then(function() {
           // return db.query({map: map}, {reduce: false})
-          return db.allDocs({ include_docs: true })
-            .then(function(res) {
-              var dbRecords = utility.pluck(res.rows, 'doc');
-              return utility.castArrayToObject(dbRecords, 'uuid');
-            });
+          return db.allDocs({ include_docs: true });
+        })
+        .then(function(res) {
+          var dbRecords = utility.pluck(res.rows, 'doc');
+          return utility.castArrayToObject(dbRecords, 'uuid');
         });
     };
 
@@ -52,14 +44,14 @@ angular.module('lmisChromeApp')
      * @param {Array} dbNames - collection of dbNames to be loaded from remote.
      * @returns {Promise}
      */
-    var loadDatabasesFromRemote = function(dbNames) {
+    var loadDatabasesFromRemote = ehaRetriable(function(dbNames) {
       var promises = {};
       for (var i in dbNames) {
         var dbName = dbNames[i];
         promises[dbName] = loadDatabaseFromRemote(dbName);
       }
       return $q.all(promises);
-    };
+    });
 
     /**
      * This saves databases to the local storage.
@@ -196,7 +188,7 @@ angular.module('lmisChromeApp')
       return cache[key];
     };
 
-    var loadRemoteAndUpdateStorageAndMemory = function(dbNames) {
+    var loadRemoteAndUpdateStorageAndMemory = ehaRetriable(function(dbNames) {
       var promises = {};
       //TODO: refactor this later.
       var databases = 'DATABASES';
@@ -213,7 +205,7 @@ angular.module('lmisChromeApp')
               return res;
             });
         });
-    };
+    });
 
     this.loadRemoteAndUpdateStorageAndMemory = function(dbNames) {
       return loadRemoteAndUpdateStorageAndMemory(dbNames);
@@ -273,7 +265,7 @@ angular.module('lmisChromeApp')
       return loadFilesIntoCache(fileNames);
     };
 
-    var getLgasByState = function(stateId) {
+    var getLgasByState = ehaRetriable(function(stateId) {
       var db = pouchDB(config.api.url + '/' + storageService.LOCATIONS);
       var lgaView = 'lga/by_id';
       var options = {
@@ -283,21 +275,20 @@ angular.module('lmisChromeApp')
         .then(function(state) {
           options.keys = state.lgas;
           return db.query(lgaView, options)
-            .then(function(res) {
-              return res.rows
-                .map(function(row) {
-                  var lga = row.value;
-                  if (utility.has(lga, '_id')) {
-                    return lga;
-                  }
-                });
+        })
+        .then(function(res) {
+          return res.rows.map(function(row) {
+              var lga = row.value;
+              if (utility.has(lga, '_id')) {
+                return lga;
+              }
             });
         });
-    };
+    });
 
     this.getLgas = getLgasByState;
 
-    this.getWardsByLgas = function(lgas) {
+    this.getWardsByLgas = ehaRetriable(function(lgas) {
       var db = pouchDB(config.api.url + '/' + storageService.LOCATIONS);
       var lgaView = 'lga/by_id';
       var wardView = 'ward/by_id'
@@ -326,9 +317,9 @@ angular.module('lmisChromeApp')
                 });
             });
         });
-    };
+    });
 
-    var getFacilities = function(facilityIds) {
+    var getFacilities = ehaRetriable(function(facilityIds) {
       var view = 'facilities/by_id';
       var db = pouchDB(config.api.url + '/facilities');
       var options = {
@@ -342,7 +333,7 @@ angular.module('lmisChromeApp')
               return row.value;
             });
         });
-    };
+    });
 
     this.setupWardsAndFacilitesByLgas = function(lgas) {
       return this.getWardsByLgas(lgas)

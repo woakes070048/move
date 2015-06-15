@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .service('backgroundSyncService', function($q, storageService, appConfigService, messages, growl, pouchStorageService, syncService, deviceInfoFactory, fixtureLoaderService, $timeout) {
+  .service('backgroundSyncService', function($q, storageService, appConfigService, messages, growl, pouchStorageService, syncService, deviceInfoFactory, fixtureLoaderService, $timeout, ehaRetriable) {
 
     var backgroundSyncInProgress = false;
     var sync;
@@ -66,33 +66,33 @@ angular.module('lmisChromeApp')
       return syncPendingRecords();
     };
 
-    var updateAppConfigFromRemote = function() {
+    var updateAppConfigFromRemote = ehaRetriable(function() {
       return appConfigService.getCurrentAppConfig()
         .then(function(appConfig) {
           if (angular.isObject(appConfig)) {
             var db = pouchStorageService.getRemoteDB(storageService.APP_CONFIG);
-            return db.get(appConfig.uuid)
-              .then(function(remoteAppConfig) {
-                //TODO: should we just update local copy with remote or update only if they are different???.
-                //NB: at this point we already have both remote and local copies.
-                // SEE: item #776
-                remoteAppConfig.lastUpdated = new Date().toJSON();
-                var nearbyLgas = remoteAppConfig.facility.selectedLgas
+            return db.get(appConfig.uuid);
+          }
+
+          return $q.reject('app config is not an object.');
+        })
+        .then(function(remoteAppConfig) {
+          //TODO: should we just update local copy with remote or update only if they are different???.
+          //NB: at this point we already have both remote and local copies.
+          // SEE: item #776
+          remoteAppConfig.lastUpdated = new Date().toJSON();
+          var nearbyLgas = remoteAppConfig.facility.selectedLgas
                   .map(function(lga) {
                     if (lga._id) {
                       return lga._id;
                     }
                   });
-                return fixtureLoaderService.setupWardsAndFacilitesByLgas(nearbyLgas)
-                  .then(function() {
-                    return appConfigService.save(remoteAppConfig);
-                  });
-              });
-          } else {
-            return $q.reject('app config is not an object.');
-          }
+          return fixtureLoaderService.setupWardsAndFacilitesByLgas(nearbyLgas)
+            .then(function() {
+              return appConfigService.save(remoteAppConfig);
+            });
         });
-    };
+    });
 
     /**
      * This does the following:
@@ -105,41 +105,45 @@ angular.module('lmisChromeApp')
      * @returns {*|Promise}
      */
     this.startBackgroundSync = function() {
-      var completedBackgroundSync = true;
       if (backgroundSyncInProgress === true) {
-        var deferred = $q.defer();
-        deferred.reject('background sync in progress.');
-        return deferred.promise;
+        return $q.reject('background sync in progress.');
       }
+
+      var result = $q.defer();
 
       sync = $timeout(function() {
         return deviceInfoFactory.canConnect()
           .then(function() {
             backgroundSyncInProgress = true;
-            return fixtureLoaderService.loadRemoteAndUpdateStorageAndMemory(fixtureLoaderService.REMOTE_FIXTURES)
-              .then(function() {
-                return updateAppConfigFromRemote()
-                  .then(function() {
-                    var TEN_SECS = 10000;
-                    growl.success(messages.remoteAppConfigUpdateMsg, { ttl: TEN_SECS });
-                    return syncPendingRecords()
-                      .finally(function() {
-                        return storageService.compactDatabases();
-                      })
-                      .finally(function() {
-                        return storageService.viewCleanups();
-                      });
-                  });
+            return fixtureLoaderService.loadRemoteAndUpdateStorageAndMemory(fixtureLoaderService.REMOTE_FIXTURES);
+          })
+          .then(function() {
+            return updateAppConfigFromRemote();
+          })
+          .then(function() {
+            var TEN_SECS = 10000;
+            growl.success(messages.remoteAppConfigUpdateMsg, { ttl: TEN_SECS });
+            return syncPendingRecords()
+              .finally(function() {
+                return storageService.compactDatabases();
+              })
+              .finally(function() {
+                return storageService.viewCleanups();
               });
+          })
+          .then(function() {
+            return result.resolve();
+          })
+          .catch(function(err) {
+            result.reject(err);
           })
           .finally(function() {
             backgroundSyncInProgress = false;
             $timeout.cancel(sync);
-            return completedBackgroundSync;
           });
       }, 1);
 
-      return sync;
+      return result.promise;
     };
 
     this.cancel = function() {

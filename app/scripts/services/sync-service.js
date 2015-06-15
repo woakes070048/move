@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .service('syncService', function($q, storageService, pouchStorageService, utility, deviceInfoFactory) {
+  .service('syncService', function($q, storageService, pouchStorageService, utility, deviceInfoFactory, ehaRetriable) {
 
     /**
      * @private
@@ -24,7 +24,7 @@ angular.module('lmisChromeApp')
      * @param {Object} doc - expected to have uuid property.
      * @returns {*}
      */
-    var syncUp = function(dbName, doc) {
+    var syncUp = ehaRetriable(function(dbName, doc) {
       if (typeof doc.uuid !== 'string') {
         throw new Error('document\'s uuid is not a string.');
       }
@@ -41,7 +41,7 @@ angular.module('lmisChromeApp')
         }).catch(function() {
           return db.put(doc, doc.uuid);
         });
-    };
+    });
 
     /**
      * @private

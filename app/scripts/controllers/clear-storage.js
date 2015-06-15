@@ -9,7 +9,7 @@ angular.module('lmisChromeApp')
         controller: 'ClearStorage'
       });
   })
-  .controller('ClearStorage', function($scope, storageService, $state, backgroundSyncService, cacheService, $q, alertFactory, notificationService, messages, memoryStorageService, fixtureLoaderService, growl) {
+  .controller('ClearStorage', function($scope, storageService, $state, backgroundSyncService, cacheService, $q, alertFactory, notificationService, messages, memoryStorageService, fixtureLoaderService, growl, ehaLoginService) {
     $scope.clearAndLoadFixture = function() {
       var deferred = $q.defer();
       backgroundSyncService.cancel();
@@ -18,18 +18,17 @@ angular.module('lmisChromeApp')
       storageService.clear()
         .then(function() {
           //reload fixtures into memory store.
-          fixtureLoaderService.setupLocalAndMemoryStore(fixtureLoaderService.REMOTE_FIXTURES)
-            .then(function() {
-              $state.go('appConfigWelcome');
-            })
-            .catch(function(reason) {
-              console.error(reason);
-              growl.error(reason, {ttl: -1});
-            });
+          return fixtureLoaderService.setupLocalAndMemoryStore(fixtureLoaderService.REMOTE_FIXTURES);
+        })
+        .then(function() {
+          return ehaLoginService.logout();
         })
         .catch(function(reason) {
           growl.error(messages.clearStorageFailed, {ttl: -1});
           console.error(reason);
+        })
+        .finally(function() {
+          $state.go('loadingFixture');
         });
       return deferred.promise;
     };
@@ -41,7 +40,6 @@ angular.module('lmisChromeApp')
       .then(function(isConfirmed) {
         if (isConfirmed === true) {
           $scope.clearAndLoadFixture();
-          $state.go('loadingFixture');
         } else {
           $state.go('home.index.home.mainActivity');
         }
