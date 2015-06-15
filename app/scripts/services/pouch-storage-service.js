@@ -53,16 +53,17 @@ angular.module('lmisChromeApp')
       return db.viewCleanup();
     };
 
-    this.query = function(db, key, value){
+    this.query = function(db, view, options){
       db = pouchDB(db);
-      //TODO: fix to use query i.e map reduce. currently map throw error on pouchdb.
-      return db.allDocs({include_docs: true})
+      return db.query(view, options)
         .then(function(res){
           return res.rows
             .map(function(r){
-              if(r.doc[key] === value && r.doc){
-               return r.doc;
-              }
+               if(options.include_docs) {
+                 return r.doc;
+               } else {
+                 return r.value;
+               }
             });
         });
     };
