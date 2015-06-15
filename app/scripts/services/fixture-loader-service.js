@@ -28,12 +28,11 @@ angular.module('lmisChromeApp')
 
       return db.info()
         .then(function() {
-          // return db.query({map: map}, {reduce: false})
           return db.allDocs({ include_docs: true });
         })
         .then(function(res) {
           var dbRecords = utility.pluck(res.rows, 'doc');
-          return utility.castArrayToObject(dbRecords, 'uuid');
+          return utility.castArrayToObject(dbRecords, '_id');
         });
     };
 
