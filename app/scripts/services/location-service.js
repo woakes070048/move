@@ -24,31 +24,38 @@ angular.module('lmisChromeApp')
       }
     };
     // Put the design doc above
-    pouchStorageService.get(storageService.LOCATIONS, doc._id)
-      .catch(function(err) {
-        if(err.status === 404) {
-          return {};
-        }
-      })
-      .then(function(res) {
-        // return here if view isn't changed,
-        // to avoid re-indexing
-        if(res.views && res.views.by_type.map === doc.views.by_type.map) {
-          return;
-        }
+    // NOTE: do this check when using the view, not on app boot,
+    // storage might be cleared in between
+    var useView = function() {
+      return pouchStorageService.get(storageService.LOCATIONS, doc._id)
+        .catch(function(err) {
+          if(err.status === 404) {
+            return {};
+          }
+        })
+        .then(function(res) {
+          // return here if view isn't changed, to avoid re-indexing
+          // This way, we can call useView() every time we use
+          // this pouchdb view
+          if(res.views && res.views.by_type.map === doc.views.by_type.map) {
+            return true;
+          }
 
-        if(res._rev) {
-          doc._rev = res._rev;
-        }
+          if(res._rev) {
+            doc._rev = res._rev;
+          }
 
-        return pouchStorageService.put(storageService.LOCATIONS, doc);
-      });
+          return pouchStorageService.put(storageService.LOCATIONS, doc);
+        });
+    };
 
     this.getLgas = function(stateId) {
-      return pouchStorageService.query(storageService.LOCATIONS, 'type/by_type', {
-          startkey: ['lga', stateId],
-          endkey: ['lga', stateId],
-          include_docs: true
+      return useView().then(function() {
+          return pouchStorageService.query(storageService.LOCATIONS, 'type/by_type', {
+            startkey: ['lga', stateId],
+            endkey: ['lga', stateId],
+            include_docs: true
+          });
         })
         .then(function(items) {
           return items.sort(sort);
@@ -56,10 +63,12 @@ angular.module('lmisChromeApp')
     };
 
     this.getWards = function(lgaId) {
-      return pouchStorageService.query(storageService.LOCATIONS, 'type/by_type', {
-          startkey: ['ward', lgaId],
-          endkey: ['ward', lgaId],
-          include_docs: true
+      return useView().then(function() {
+          return pouchStorageService.query(storageService.LOCATIONS, 'type/by_type', {
+            startkey: ['ward', lgaId],
+            endkey: ['ward', lgaId],
+            include_docs: true
+          });
         })
         .then(function(items) {
           return items.sort(sort);
@@ -76,7 +85,9 @@ angular.module('lmisChromeApp')
            });
          })
          .then(function(zones) {
-           // save zones
+           // save zones for offline use,
+           // but don't wait for result of that operation
+           // we just pass them back
            service.saveBatch(zones);
            return zones;
          })
@@ -84,11 +95,13 @@ angular.module('lmisChromeApp')
            // check offline status
            if(err.status === 0) {
              // get the ones we have locally
-             return pouchStorageService.query(storageService.LOCATIONS, 'type/by_type', {
+             return useView().then(function() {
+                return pouchStorageService.query(storageService.LOCATIONS, 'type/by_type', {
                   startkey: ['zone', stateId],
                   endkey: ['zone', stateId],
                   include_docs: true
                 });
+             });
            }
 
            // if not rethrow for retriable to catch it
