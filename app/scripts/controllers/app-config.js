@@ -17,7 +17,13 @@ angular.module('lmisChromeApp')
             // From the welcome screen, we try to load an existing app config
             // if you have set up your facility already, you get taken to the
             // main screen.
-            return ehaLoginService.getUserName()
+            //
+            // This function in the login service shows the login screen
+            // if no credentials are stored
+            return ehaLoginService.maybeShowLoginUi()
+              .then(function() {
+                return ehaLoginService.getUserName();
+              })
               .then(function(userName) {
                 return appConfigService.loadRemoteConfig(userName);
               })

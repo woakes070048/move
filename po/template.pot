@@ -953,7 +953,7 @@ msgid_plural "items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/scripts/services/login-dialog-service.js:54
+#: app/scripts/services/login-dialog-service.js:64
 msgid "no"
 msgstr ""
 
@@ -971,7 +971,7 @@ msgstr ""
 msgid "waste count saved successfully"
 msgstr ""
 
-#: app/scripts/services/login-dialog-service.js:53
+#: app/scripts/services/login-dialog-service.js:63
 msgid "yes"
 msgstr ""
 
