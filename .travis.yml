@@ -1,6 +1,12 @@
 language: android
 node_js:
   - '0.10'
+cache:
+  directories:
+    - node_modules
+android:
+  components:
+    - android-22
 before_script:
   - npm install --global bower grunt-cli
   - npm install
@@ -10,19 +16,19 @@ script:
 notifications:
   flowdock: 232485f7661e644ae5878944c2597042
 before_deploy:
-  - ./scripts/build.sh
+  - ./scripts/build-travis.sh
 deploy:
   provider: s3
   access_key_id: AKIAINSUTVOB4CPQYP2A
   secret_access_key:
     secure: rxaf+OKQKnxXefvvyBnPDDh1lRerKdbI5mvXwx1En7BxdTYRnM2T/IhUMo1SXJH1O1T+eP4vskqA/HjCJCygFApoHj8Zqr7M+z5vje65F4Vpl7AFqLohquLg3vanYXAZ73JKo1zQyNbPd3bmMwjdTekK0+lTD8TSMR59dweqGYI=
   bucket: eha-lomis
-  local-dir: build/lomis/build
+  local-dir: build
   skip_cleanup: true
   region: eu-west-1
   on:
     all_branches: true
-    repo: eHealthAfrica/LMIS-Chrome
+    repo: eHealthAfrica/move
 env:
   global:
     - secure: "cgUIcbrv6vY+tCgTVYNr0jIdwy0tuiG4pdRjF8Kf1SkelyJ102o9rUtnsS1AJbPa7ur3yHhCQ5YTKvt/ybBFb7h3A21AIzebGjknDuYMQM1V3mAeU6g9HsjON/mGrgtQFwaHTuh569Ms7TmPG4zV+3IYhUSuCeKoQavWKy2gSTs="
