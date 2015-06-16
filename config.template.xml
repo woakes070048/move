@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  config.xml
+  -
+  this xml file is copied to the cordova project on build
+  when changing, edit the one in project root, not in build dir
+-->
+<widget id="<%= packageName %>"
+    version="<%= version %>"
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name><%= appName %></name>
+  <description>User centered medical supply management</description>
+  <author email="justin.lorentzon@ehealthnigeria.org" href="http://ehealthafrica.org/">eHealth Africa</author>
+  <content src="index.html"/>
+
+  <preference name="android-minSdkVersion" value="14"/>
+  <!-- comes from cca -->
+  <preference name="KeyboardShrinksView" value="true" />
+  <preference name="StatusBarOverlaysWebView" value="false" />
+  <preference name="StatusBarBackgroundColor" value="#000000" />
+  <preference name="iosPersistentFileLocation" value="Library" />
+  <preference name="AndroidPersistentFileLocation" value="Internal" />
+
+  <!--
+  access control needs to be duplicated in the CSP meta tag in index.html
+  see https://github.com/apache/cordova-plugin-whitelist#content-security-policy
+  -->
+  <access origin="http://localhost:5984/*"/>
+  <access origin="http://lomis.ehealth.org.ng:5984/*"/>
+  <access origin="http://dev.lomis.ehealth.org.ng:5984/*"/>
+  <!-- crosswalk version, please see:
+    - https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview
+    - https://download.01.org/crosswalk/releases/crosswalk/android/maven2
+  -->
+  <preference name="xwalkversion" value="org.xwalk:xwalk_core_library:13.42.319.11"/>
+
+  <platform name="android">
+    <icon src="www/images/icon-48.png" width="48" height="48" density="mdpi" />
+    <icon src="www/images/icon-72.png" width="72" height="72" density="hdpi" />
+    <icon src="www/images/icon-96.png" width="96" height="96" density="xhdpi" />
+    <icon src="www/images/icon-144.png" width="144" height="144" density="xxhdpi" />
+    <icon src="www/images/icon-192.png" width="192" height="192" density="xxxhdpi" />
+  </platform>
+
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+</widget>
+
+
+
+

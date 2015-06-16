@@ -505,6 +505,15 @@ module.exports = function(grunt) {
         src: '<%= toggleComments.index.src %>',
         dest: '<%= toggleComments.index.src %>'
       }
+    },
+
+    ehaCordovaBuild: {
+      options: {
+        appdir: 'move',
+        package: 'com.ehealthafrica.lomis',
+        appname: 'Move',
+        buildCmd: 'grunt build:{%= type %}'
+      }
     }
   });
 
