@@ -45,12 +45,6 @@ angular.module('lmisChromeApp')
               }
             }
           },
-          'breadcrumbs': {
-            templateUrl: 'views/index/breadcrumbs.html',
-            controller: function($scope, $state) {
-              $scope.state = $state;
-            }
-          },
           'content': {},
           'footer': {
             templateUrl: 'views/index/footer.html',

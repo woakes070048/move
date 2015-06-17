@@ -17,7 +17,6 @@ describe('Service stockCountFactory', function () {
     var templates = [
       'index/index',
       'index/header',
-      'index/breadcrumbs',
       'index/footer',
       'home/index',
       'home/nav',
