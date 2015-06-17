@@ -12,7 +12,8 @@ angular.module('lmisChromeApp', [
     'db',
     'gettext',
     'eha.retriable',
-    'eha.login-service'
+    'eha.login-service',
+    'eha.online-badge'
   ])
   .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, growl, utility) {
 

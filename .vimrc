@@ -52,6 +52,9 @@ let g:syntastic_html_tidy_ignore_errors = [
   \ , '<nvd3-'
   \ , 'discarding unexpected <nvd3-'
   \ , 'discarding unexpected </nvd3-'
+  \ , '<eha-'
+  \ , 'discarding unexpected <eha-'
+  \ , 'discarding unexpected </eha-'
   \ ]
 
 let g:syntastic_javascript_checkers = ['eslint', 'jshint', 'jscs']

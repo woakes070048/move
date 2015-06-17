@@ -5,20 +5,9 @@
         <span class="fa fa-home"></span>
         <span>LoMIS</span>
       </a>
-      <ul class="nav navbar-nav pull-right">
-        <li>
-          <a ga-click="on_off_line_toggle">
-            <span
-              class="label"
-              ng-class="{
-                'label-success': status.label === states.online,
-                'label-danger': status.label === states.offline
-              }"
-              ng-bind="status.label">
-            </span>
-          </a>
-        </li>
-      </ul>
+      <eha-online-badge
+        class="navbar-text pull-right"
+      ></eha-online-badge>
     </div>
   </div>
 </header>
