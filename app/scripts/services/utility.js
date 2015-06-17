@@ -266,7 +266,6 @@ angular.module('lmisChromeApp')
      */
 
     this.isEmptyObject = function(object) {
-      object = angular.isObject(object) ? object : {};
-      return (Object.keys(object)).length === 0 ;
-    }
+      return angular.isObject(object) && (Object.keys(object)).length === 0;
+    };
   });
