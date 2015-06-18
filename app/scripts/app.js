@@ -3,7 +3,6 @@
 angular.module('lmisChromeApp', [
     'ui.bootstrap',
     'ui.router',
-    'tv.breadcrumbs',
     'pouchdb',
     'config',
     'nvd3ChartDirectives',
