@@ -2,10 +2,9 @@
   "name": "lmis-chrome",
   "version": "0.11.4",
   "private": true,
-  "dependencies": {
-    "grunt-eha-cordova-build": "ehealthafrica/grunt-eha-cordova-build"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "grunt-eha-cordova-build": "ehealthafrica/grunt-eha-cordova-build#2.0.0",
     "balanced-match": "^0.2.0",
     "change-case": "^2.1.1",
     "concat-map": "0.0.1",
@@ -59,6 +58,17 @@
     "load-grunt-tasks": "^0.6.0",
     "time-grunt": "^0.4.0",
     "wiredep": "^1.8.2"
+  },
+  "cordovaPlugins": {
+    "cordova-plugin-crosswalk-webview": "^1.2.0",
+    "cordova-plugin-dialogs": "^1.1.0",
+    "cordova-plugin-google-analytics": "^0.7.1",
+    "cordova-plugin-network-information": "^1.0.0",
+    "cordova-plugin-vibration": "^1.1.0",
+    "cordova-plugin-whitelist": "^1.0.0",
+    "device-information": "https://github.com/vliesaputra/DeviceInformationPlugin",
+    "phonegap-sms": "https://github.com/aharris88/phonegap-sms-plugin.git",
+    "local-notifications": "https://github.com/sapk/cordova-plugin-local-notifications.git"
   },
   "engines": {
     "node": "0.10.x"
