@@ -14,6 +14,15 @@ module.exports = function(grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
+    tx: {
+      'move': [
+        {
+          sourceFile: './po/template.pot',
+          targetFilePath: './po/_lang_._type_',
+          type: 'PO'
+        }
+      ]
+    },
 
     // Project settings
     yeoman: {
