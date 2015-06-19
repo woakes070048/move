@@ -8,11 +8,13 @@ angular.module('lmisChromeApp')
       function trackView(event, state) {
         $window.analytics.trackView(state.name);
       }
-      function trackException(event, state) {
-        $window.analytics.trackException(state.to, false);
+      function trackStateNotFound(event, unfoundState, fromState) {
+        $window.analytics.trackEvent(
+          'stateNotFound', unfoundState.to, fromState
+        );
       }
       $rootScope.$on('$stateChangeSuccess', trackView);
-      $rootScope.$on('$stateNotFound', trackException);
+      $rootScope.$on('$stateNotFound', trackStateNotFound);
     }
 
     function setUserID() {
@@ -35,13 +37,11 @@ angular.module('lmisChromeApp')
     }
 
     this.trackEvent = angular.noop;
-    this.trackException = angular.noop;
 
     if ($window.analytics) {
       $window.analytics.startTrackerWithId(config.analytics.propertyID);
       registerListeners();
       setUserID();
       self.trackEvent = $window.analytics.trackEvent;
-      self.trackException = $window.analytics.trackException;
     }
   });
