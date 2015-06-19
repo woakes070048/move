@@ -1,4 +1,5 @@
 setlocal wildignore+=dist,coverage,build
+setlocal foldlevelstart=2
 
 " Syntastic options
 let g:syntastic_html_tidy_ignore_errors = [

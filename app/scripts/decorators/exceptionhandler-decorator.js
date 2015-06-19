@@ -7,7 +7,9 @@ angular.module('lmisChromeApp')
       return function(exception, cause) {
         $delegate(exception, cause);
         trackingService = trackingService || $injector.get('trackingService');
-        trackingService.trackException(exception.message, false);
+        trackingService.trackEvent(
+          'Exception', exception.message, exception.stack
+        );
       };
     });
   });
