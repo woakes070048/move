@@ -22,10 +22,11 @@ angular.module('lmisChromeApp')
           }
         }
       },
-      controller: function(appConfig, $state, $scope, isStockCountReminderDue, $rootScope, reminderFactory, messages) {
+      controller: function(appConfig, $state, $scope, isStockCountReminderDue, $rootScope, reminderFactory, messages, ehaGoogleAnalytics) {
         if (typeof appConfig === 'undefined') {
           $state.go('appConfigWelcome');
         } else {
+          ehaGoogleAnalytics.setUserId(appConfig.uuid);
           $scope.facility = appConfig.facility.name;
           if (isStockCountReminderDue === true) {
             //FIXME: move stock count reminder object to a factory function, stock count?? or reminderFactory.
@@ -160,7 +161,7 @@ angular.module('lmisChromeApp')
                         })
                         .catch(function() {
                           return res;
-                        })
+                        });
                     });
                 }
 

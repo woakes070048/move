@@ -89,7 +89,7 @@
                                         <div class="form-group" ng-class="{ 'has-error': ((reportCCUBreakdownForm.ccuProfile).$error).required
                           && ccuBreakdown.isSubmitted }">
                                             <label for="ccuProfile" translate>Select CCU</label>
-                                            <select id="ccuProfile" ga-click="ccu_selection" name="ccuProfile"
+                                            <select id="ccuProfile" eha-ga-click="ccu_selection" name="ccuProfile"
                                                     class="form-control" ng-model="selectedProfile"
                                                     required>
                                                 <option value="" translate>Select faulty CCU</option>
@@ -116,7 +116,7 @@
                                         <div class="row">
                                             <div class="panel-body"></div>
                                             <div class="col-md-4 center-block">
-                                                <button type="submit" id="send" ga-click="ccu_send" name="send"
+                                                <button type="submit" id="send" eha-ga-click="ccu_send" name="send"
                                                         class="btn btn-lg btn-danger"
                                                         ng-click="ccuBreakdown.isSubmitted = true"
                                                         ng-disabled="isSaving">

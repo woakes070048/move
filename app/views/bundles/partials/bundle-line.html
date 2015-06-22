@@ -6,7 +6,7 @@
 </div>
 <div class="col-sm-12">
     <label>Product profile</label></label>
-    <select class="form-control" ga-click="product_profile" ng-model="bundleLine.productProfile"
+    <select class="form-control" eha-ga-click="product_profile" ng-model="bundleLine.productProfile"
             ng-change="getUnitQty(bundleLine)" ng-required="true" name="pp$index">
         <option value="">- Select product profile -</option>
         <option ng-repeat="pp in productProfiles" value="{{ pp.uuid }}">{{ pp.name }}</option>

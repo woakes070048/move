@@ -12,7 +12,8 @@ angular.module('lmisChromeApp', [
     'gettext',
     'eha.retriable',
     'eha.login-service',
-    'eha.online-badge'
+    'eha.online-badge',
+    'eha.cordova.google-analytics'
   ])
   .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, growl, utility) {
 
@@ -118,4 +119,7 @@ angular.module('lmisChromeApp', [
       warning: 5000,
       info: 5000
     });
+  })
+  .config(function(ehaGoogleAnalyticsProvider, config) {
+    ehaGoogleAnalyticsProvider.trackingID = config.analytics.propertyID;
   });
