@@ -20,10 +20,7 @@
 2. `git clone https://github.com/eHealthAfrica/LMIS-Chrome.git`
 3. `cd LMIS-Chrome && npm install; bower install`
 4. `grunt serve`
-5. Launch Chrome and browse to [chrome://extensions][]
-6. Check "Developer Mode"
-7. Click "Load unpacked extension…" and select `/path/to/LMIS-Chrome/app`
-8. Under the "LMIS Chrome" extension, click "Launch"
+5. Launch Chrome and browse to http://localhost:9000
 
 [Chrome]: https://www.google.com/intl/en/chrome/
 [Node.js]: http://nodejs.org

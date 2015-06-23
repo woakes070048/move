@@ -8,8 +8,7 @@ describe('Tests Counter Directive', function () {
   var notificationService;
 
   // Load the LMIS module
-  beforeEach(module('lmisChromeApp', 'fixtureLoaderMocks'));
-  beforeEach(module('views/templates/counter.html'));
+  beforeEach(module('lmisChromeApp', 'lmisChromeApp.templates', 'fixtureLoaderMocks'));
 
  // Initialize the state
   beforeEach(inject(function($templateCache, $httpBackend, storageService, fixtureLoaderMock) {
@@ -79,7 +78,7 @@ describe('Tests Counter Directive', function () {
 
   it('i expect count value to be zero when counting down with non-numeric initial count value', function(){
     counterScope.count = '44HJJ56';
-    expect(counterScope.count).not.toBe(0)
+    expect(counterScope.count).not.toBe(0);
     counterScope.count = counterScope.decrementTouch();
     expect(counterScope.count).toBe(0);
   });

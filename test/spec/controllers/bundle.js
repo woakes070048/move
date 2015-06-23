@@ -32,6 +32,6 @@ describe('Inventory controller', function () {
 
   it('logBundleHome state should point to log-bundle-home url', function() {
     var state = $state.get('logBundleHome');
-    expect($state.href(state)).toEqual('#/log-bundle-home');
+    expect($state.href(state)).toEqual('/log-bundle-home');
   });
 });
