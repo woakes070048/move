@@ -15,7 +15,7 @@
     "angular-gettext": "~2.1.0",
     "localforage": "~1.2.3",
     "pouchdb-authentication": "~0.4.0",
-    "angular-eha.login-service": "git@github.com:eHealthAfrica/angular-eha.login-service.git#~0.1.0",
+    "angular-eha.login-service": "~0.1.0",
     "angular-eha.retriable": "git@github.com:eHealthAfrica/angular-eha.retriable.git#~0.1.0",
     "angular-eha.online-badge": "~1.0.0"
   },
