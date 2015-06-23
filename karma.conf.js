@@ -18,6 +18,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: bowerJS.concat([
+      // XXX: workaround nomod errors by sourcing in order
+      'app/scripts/{config,db,app}.js',
+      'app/scripts/services/*.js',
+
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/{controllers,directives}/*.js',
