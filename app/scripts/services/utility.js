@@ -258,4 +258,14 @@ angular.module('lmisChromeApp')
       });
       return picked;
     };
+
+    /**
+     *
+     * @param object
+     * @returns {boolean}
+     */
+
+    this.isEmptyObject = function(object) {
+      return angular.isObject(object) && (Object.keys(object)).length === 0;
+    };
   });
