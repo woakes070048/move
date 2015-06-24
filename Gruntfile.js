@@ -353,15 +353,6 @@ module.exports = function(grunt) {
       }
     },
 
-    coveralls: {
-      options: {
-        force: true,
-        // jshint camelcase: false
-        /*eslint camelcase: 0 */
-        coverage_dir: 'coverage'
-      }
-    },
-
     ngconstant: {
       options: {
         name: 'config',
@@ -596,11 +587,6 @@ module.exports = function(grunt) {
     'newer:jshint',
     'test',
     'build'
-  ]);
-
-  grunt.registerTask('travis', [
-    'test',
-    'coveralls'
   ]);
 
   grunt.registerTask('release', function(versionType) {

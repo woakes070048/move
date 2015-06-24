@@ -1,4 +1,4 @@
-setlocal wildignore+=dist,coverage,build
+setlocal wildignore+=dist,build
 setlocal foldlevelstart=2
 
 " Syntastic options

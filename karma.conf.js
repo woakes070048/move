@@ -58,18 +58,11 @@ module.exports = function(config) {
     // if true, it capture browsers, run tests and exit
     singleRun: true,
 
-    // grunt-karma-coveralls
     reporters: [
-      'progress',
-      'coverage'
+      'progress'
     ],
     preprocessors: {
-      'app/scripts/**/*.js': 'coverage',
       'app/views/**/*.html': 'ng-html2js'
-    },
-    coverageReporter: {
-      type: 'lcov',
-      dir: 'coverage'
     },
     ngHtml2JsPreprocessor: {
       stripPrefix: 'app/',
