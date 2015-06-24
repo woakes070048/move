@@ -14,6 +14,7 @@ addons:
       - libgnome-keyring-dev
 before_script:
   - npm config set spin false --global
+  - npm install --global 'npm@~2.11.0'
   - npm install
   - npm run bower install
 script:
