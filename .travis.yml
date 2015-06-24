@@ -4,6 +4,7 @@ node_js:
 cache:
   directories:
     - node_modules
+    - app/bower_components
 android:
   components:
     - android-22
