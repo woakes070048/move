@@ -4,6 +4,7 @@ node_js:
 cache:
   directories:
     - node_modules
+    - app/bower_components
 android:
   components:
     - android-22
@@ -12,9 +13,9 @@ addons:
     packages:
       - libgnome-keyring-dev
 before_script:
-  - npm install --global bower grunt-cli
+  - npm config set spin false --global
+  - npm install --global 'npm@~2.11.0'
   - npm install
-  - bower install
 script:
   - npm test
 after_success:
