@@ -13,6 +13,7 @@ addons:
     packages:
       - libgnome-keyring-dev
 before_script:
+  - npm config set spin false --global
   - npm install --global bower grunt-cli
   - npm install
   - bower install
