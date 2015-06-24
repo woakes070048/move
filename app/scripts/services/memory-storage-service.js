@@ -63,6 +63,12 @@ angular.module('lmisChromeApp')
      * @param {Object} db
      */
     this.setDatabase = function(dbName, db){
+      // filter design docs, they should not be in memory store
+      Object.keys(db).forEach(function(key) {
+          if(/^_design/.test(key)) {
+            delete db[key];
+          }
+        });
       initMemoryStore();
       $rootScope.memoryStore[dbName] = db;
       cacheService.put(MEMORY_STORE, $rootScope.memoryStore);
