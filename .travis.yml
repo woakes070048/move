@@ -50,7 +50,6 @@ deploy:
     region: eu-west-1
     on:
       tags: true
-      all_branches: true
       repo: eHealthAfrica/move
 env:
   global:
