@@ -68,7 +68,7 @@
     "node": "0.10.x"
   },
   "scripts": {
-    "bower": "bower",
+    "postinstall": "bower install",
     "test": "grunt travis",
     "test-watch": "./node_modules/karma/bin/karma start --autoWatch true --singleRun false"
   },
