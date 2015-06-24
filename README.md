@@ -47,6 +47,21 @@ useful to automatically re-run the tests when a file changes.
 
 2. `grunt test:e2e`
 
-## Author
+## Authors
 
-© 2014 [eHealth Systems Africa](http://ehealthafrica.org)
+* © 2015 Tom Vincent <tom.vincent@ehealthnigeria.org> (https://tlvince.com)
+* © 2015 Jideobi Ofomah <jideobi.ofomah@ehealthnigeria.org>
+* © 2015 Musa Musa <musa.musa@ehealthnigeria.org>
+* © 2015 Justin Lorenzon <justin.lorenzon@ehealthnigeria.org>
+* © 2015 Karl Westin <karl.westin@ehealthnigeria.org>
+* © 2015 Femi Oni <oluwafemi.oni@ehealthnigeria.org>
+
+… and [contributors][].
+
+[contributors]: https://github.com/eHealthAfrica/move/graphs/contributors
+
+## License
+
+Released under the [Apache 2.0 License][license].
+
+[license]: http://www.apache.org/licenses/LICENSE-2.0.html

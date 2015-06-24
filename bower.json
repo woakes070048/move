@@ -25,7 +25,12 @@
   },
   "homepage": "https://github.com/eHealthAfrica/LMIS-Chrome",
   "authors": [
-    "eHealth Africa <http://ehealthafrica.org>"
+    "Tom Vincent <tom.vincent@ehealthnigeria.org> (https://tlvince.com)",
+    "Jideobi Ofomah <jideobi.ofomah@ehealthnigeria.org>",
+    "Musa Musa <musa.musa@ehealthnigeria.org>",
+    "Justin Lorenzon <justin.lorenzon@ehealthnigeria.org>",
+    "Karl Westin <karl.westin@ehealthnigeria.org>",
+    "Femi Oni <oluwafemi.oni@ehealthnigeria.org>"
   ],
   "description": "LMIS Chrome packaged app",
   "main": "app/scripts/main.js",
@@ -35,8 +40,7 @@
     "ehealth",
     "africa"
   ],
-  "license": "ISC",
-  "private": true,
+  "license": "Apache-2.0",
   "resolutions": {
     "angular-pouchdb": "~2.1.1",
     "angular": "~1.4.1",
