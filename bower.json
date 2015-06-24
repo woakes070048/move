@@ -7,7 +7,7 @@
     "font-awesome": "~4.1.0",
     "angular-ui-router": "0.2.10",
     "bootstrap-css-only": "~3.1.0",
-    "angular-pouchdb": "~2.1.0",
+    "angular-pouchdb": "~2.1.1",
     "bootstrap-theme-cosmo": "tlvince/bootstrap-theme-cosmo#4c161a6bf5bebe0ecfbef0771e053c8c5c2698c9",
     "angularjs-nvd3-directives": "~0.0.7",
     "angular-growl-v2": "~0.6.1",
@@ -37,9 +37,9 @@
   "license": "ISC",
   "private": true,
   "resolutions": {
+    "angular-pouchdb": "~2.1.1",
+    "angular": "~1.4.1",
     "d3": "~3.4.1",
-    "angular-pouchdb": "~2.1.0",
-    "angular": "1.4.1",
-    "pouchdb-authentication": "~0.3.6"
+    "pouchdb": "~3.6.0"
   }
 }
