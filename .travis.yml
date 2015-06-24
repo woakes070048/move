@@ -25,33 +25,33 @@ notifications:
 before_deploy:
   - ./scripts/build-travis.sh
 deploy:
-  # snapshots
-  provider: s3
-  access_key_id: AKIAJJE2IH3G7K5ZRZWQ
-  secret_access_key:
-    secure: who37ATPHOwXVusY8i5kiCkN5qPv2MrF1MVwz4mmoweCrCTAmCOvY76n4KB3DpLl3vQPAathFvOTAcLCAczo7+sTmwZ5v0D4WVIRNYnnSEdriEoc9UiTjhJqwrvWMDbNwKZs/DELlX8icXCJleLOQ6BxF4Nva455vbAIurW/u5A2TmSpMfipz7wm9DWylc4lfHtkesqkj49c0VxDOKGMk5Fp8of1QAaLrWydS90t/XmgMKUVoQUPAw7WeHB9j2Uc13IPxoSUdahw4SoeS1978neGZAy1aSih1oLYKKrSPqe0iHp6jX3q5vkeltK4OXt0tx/O9WVKjRoYbILIg+9AIjYSe1l+onrLeDmQ8df8EWKOlNcqv964wlBvJdl+wuEx7pxnEygD0DnFyU4dMCLEuFzD5tY5PtYlNoCabGBVhg+0q82bHGYzNAOM6UjaAiB0diUNn4j+X9oQuXzexnga4HDLnKVUiSmOnQYxl/phTKyOTZr03mwYbtk8s5NCl+3aMJQP2vmNJZvBJ0XrNkT663IyWoB3m8O5iHR/k5haBqr8rpPM7ucQpShoqED5oGlw6l245MNg+nYmcdwIULxTf7IE6DNrNQw5kuPjs9C3iVNq8hsyFMYvEUNYselZE6YLH290FEiOp522D1BPyM5C4FSQoBRKUGKb7V2Bvdmb6PM=
-  bucket: eha-move
-  local-dir: build
-  skip_cleanup: true
-  upload-dir: snapshots
-  region: eu-west-1
-  on:
-    branch: develop
-    repo: eHealthAfrica/move
+  # snapshot versions
+  - provider: s3
+    access_key_id: AKIAJJE2IH3G7K5ZRZWQ
+    secret_access_key:
+      secure: who37ATPHOwXVusY8i5kiCkN5qPv2MrF1MVwz4mmoweCrCTAmCOvY76n4KB3DpLl3vQPAathFvOTAcLCAczo7+sTmwZ5v0D4WVIRNYnnSEdriEoc9UiTjhJqwrvWMDbNwKZs/DELlX8icXCJleLOQ6BxF4Nva455vbAIurW/u5A2TmSpMfipz7wm9DWylc4lfHtkesqkj49c0VxDOKGMk5Fp8of1QAaLrWydS90t/XmgMKUVoQUPAw7WeHB9j2Uc13IPxoSUdahw4SoeS1978neGZAy1aSih1oLYKKrSPqe0iHp6jX3q5vkeltK4OXt0tx/O9WVKjRoYbILIg+9AIjYSe1l+onrLeDmQ8df8EWKOlNcqv964wlBvJdl+wuEx7pxnEygD0DnFyU4dMCLEuFzD5tY5PtYlNoCabGBVhg+0q82bHGYzNAOM6UjaAiB0diUNn4j+X9oQuXzexnga4HDLnKVUiSmOnQYxl/phTKyOTZr03mwYbtk8s5NCl+3aMJQP2vmNJZvBJ0XrNkT663IyWoB3m8O5iHR/k5haBqr8rpPM7ucQpShoqED5oGlw6l245MNg+nYmcdwIULxTf7IE6DNrNQw5kuPjs9C3iVNq8hsyFMYvEUNYselZE6YLH290FEiOp522D1BPyM5C4FSQoBRKUGKb7V2Bvdmb6PM=
+    bucket: eha-move
+    local-dir: build
+    skip_cleanup: true
+    upload-dir: snapshots
+    region: eu-west-1
+    on:
+      branch: develop
+      repo: eHealthAfrica/move
   # release versions
-  provider: s3
-  access_key_id: AKIAJJE2IH3G7K5ZRZWQ
-  secret_access_key:
-    secure: who37ATPHOwXVusY8i5kiCkN5qPv2MrF1MVwz4mmoweCrCTAmCOvY76n4KB3DpLl3vQPAathFvOTAcLCAczo7+sTmwZ5v0D4WVIRNYnnSEdriEoc9UiTjhJqwrvWMDbNwKZs/DELlX8icXCJleLOQ6BxF4Nva455vbAIurW/u5A2TmSpMfipz7wm9DWylc4lfHtkesqkj49c0VxDOKGMk5Fp8of1QAaLrWydS90t/XmgMKUVoQUPAw7WeHB9j2Uc13IPxoSUdahw4SoeS1978neGZAy1aSih1oLYKKrSPqe0iHp6jX3q5vkeltK4OXt0tx/O9WVKjRoYbILIg+9AIjYSe1l+onrLeDmQ8df8EWKOlNcqv964wlBvJdl+wuEx7pxnEygD0DnFyU4dMCLEuFzD5tY5PtYlNoCabGBVhg+0q82bHGYzNAOM6UjaAiB0diUNn4j+X9oQuXzexnga4HDLnKVUiSmOnQYxl/phTKyOTZr03mwYbtk8s5NCl+3aMJQP2vmNJZvBJ0XrNkT663IyWoB3m8O5iHR/k5haBqr8rpPM7ucQpShoqED5oGlw6l245MNg+nYmcdwIULxTf7IE6DNrNQw5kuPjs9C3iVNq8hsyFMYvEUNYselZE6YLH290FEiOp522D1BPyM5C4FSQoBRKUGKb7V2Bvdmb6PM=
-  bucket: eha-move
-  local-dir: build
-  upload-dir: releases
-  skip_cleanup: true
-  region: eu-west-1
-  on:
-    tags: true
-    all_branches: true
-    repo: eHealthAfrica/move
+  - provider: s3
+    access_key_id: AKIAJJE2IH3G7K5ZRZWQ
+    secret_access_key:
+      secure: who37ATPHOwXVusY8i5kiCkN5qPv2MrF1MVwz4mmoweCrCTAmCOvY76n4KB3DpLl3vQPAathFvOTAcLCAczo7+sTmwZ5v0D4WVIRNYnnSEdriEoc9UiTjhJqwrvWMDbNwKZs/DELlX8icXCJleLOQ6BxF4Nva455vbAIurW/u5A2TmSpMfipz7wm9DWylc4lfHtkesqkj49c0VxDOKGMk5Fp8of1QAaLrWydS90t/XmgMKUVoQUPAw7WeHB9j2Uc13IPxoSUdahw4SoeS1978neGZAy1aSih1oLYKKrSPqe0iHp6jX3q5vkeltK4OXt0tx/O9WVKjRoYbILIg+9AIjYSe1l+onrLeDmQ8df8EWKOlNcqv964wlBvJdl+wuEx7pxnEygD0DnFyU4dMCLEuFzD5tY5PtYlNoCabGBVhg+0q82bHGYzNAOM6UjaAiB0diUNn4j+X9oQuXzexnga4HDLnKVUiSmOnQYxl/phTKyOTZr03mwYbtk8s5NCl+3aMJQP2vmNJZvBJ0XrNkT663IyWoB3m8O5iHR/k5haBqr8rpPM7ucQpShoqED5oGlw6l245MNg+nYmcdwIULxTf7IE6DNrNQw5kuPjs9C3iVNq8hsyFMYvEUNYselZE6YLH290FEiOp522D1BPyM5C4FSQoBRKUGKb7V2Bvdmb6PM=
+    bucket: eha-move
+    local-dir: build
+    upload-dir: releases
+    skip_cleanup: true
+    region: eu-west-1
+    on:
+      tags: true
+      all_branches: true
+      repo: eHealthAfrica/move
 env:
   global:
     # grunt-angular-gettext-transifex
