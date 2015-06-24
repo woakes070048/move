@@ -589,10 +589,6 @@ module.exports = function(grunt) {
     'build'
   ]);
 
-  grunt.registerTask('travis', [
-    'test'
-  ]);
-
   grunt.registerTask('release', function(versionType) {
     var bump = 'bump';
     if (versionType) {
