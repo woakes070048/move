@@ -89,16 +89,8 @@
               <div class="row">
                 <div class="col-sm-12">
                   <h3 class="center-text">{{ facilityProducts[productKey].name }}</h3>
-                  <h3 class="center-text bold-text" ng-show="countValue[productKey] === undefined">
-                    {{ (((productProfileUom).presentation).uom).symbol }}s
-                  </h3>
-                  <h3 class="center-text bold-text" ng-show="countValue[productKey] >= 0">
-                    <ng-pluralize count="countValue[productKey]"
-                                  when="
-                      {
-                      '1': '{{ (((productProfileUom).presentation).uom).symbol }}',
-                      'other': '{{ (((productProfileUom).presentation).uom).symbol }}s'}">
-                    </ng-pluralize>
+                  <h3 class="center-text bold-text">
+                    <span ng-bind="productProfileUom.presentation.uom.symbol"></span><span ng-if="countValue[productKey] !== 1">s</span>
                   </h3>
                 </div>
                 <div class="row">
@@ -112,21 +104,12 @@
                           <div ng-show="productError" class="custom-error text-center">{{ productErrorMsg }}</div>
 
                           <!-- conversion view starts here -->
-
                           <div class="no-bold text-center">
                             <h3>
-                               <span ng-show="countValue[productKey] === undefined">
-                                0 {{ (((productProfileUom).product).base_uom).symbol }}s
-                               </span>
-                              <span ng-hide="countValue[productKey] === undefined">{{ countValue[productKey] * ((productProfileUom).presentation).value }}</span>
-                              <span>
-                                <ng-pluralize count="countValue[productKey] * ((productProfileUom).presentation).value"
-                                    when="{
-                                            '1': '{{ (((productProfileUom).product).base_uom).symbol }}',
-                                            'other': '{{ (((productProfileUom).product).base_uom).symbol }}s'
-                                          }">
-                                </ng-pluralize>
-                              </span>
+                              <span ng-bind="countValue[productKey] * productProfileUom.presentation.value || 0"></span>
+                              <span ng-bind="productProfileUom.product.base_uom.symbol"></span><span
+                                ng-if="countValue[productKey] * productProfileUom.presentation.value !== 1"
+                              >s</span>
                             </h3>
                         </div>
                         </div>
@@ -203,18 +186,12 @@
                         <tr ng-repeat="productProfile in selectedProductProfiles" ng-click="edit(productProfile.uuid)">
                           <td ng-bind="productProfile.name"></td>
                           <td>
-                            <span ng-bind="stockCount.unopened[productProfile.uuid]"></span>
-              <span>
-                <ng-pluralize count="stockCount.unopened[productProfile.uuid]"
-                              when="
-                      {
-                      '1': '{{ (((productProfile).product).base_uom).symbol }}',
-                      'other': '{{ (((productProfile).product).base_uom).symbol }}s'}">
-                </ng-pluralize>
-              </span>
+                            <span ng-if="stockCount.unopened[productProfile.uuid]">
+                              <span ng-bind="stockCount.unopened[productProfile.uuid]"></span>
+                              <span ng-bind="productProfile.product.base_uom.symbol"></span><span ng-if="stockCount.unopened[productProfile.uuid] !== 1">s</span>
+                            </span>
                           </td>
                         </tr>
-
                         </tbody>
                       </table>
                     </div>
