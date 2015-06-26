@@ -199,6 +199,12 @@ angular.module('lmisChromeApp')
       return syncService.syncUpRecord(db, $scope.stockCount)
         .catch(function(reason) {
           console.error(reason);
+          var smsMsg = genSMS($scope.stockCount);
+          notificationService.sendSms(notificationService.alertRecipient, smsMsg.scInfo, storageService.STOCK_COUNT);
+          smsMsg.products.forEach(function(pp){
+            notificationService.sendSms(notificationService.alertRecipient, pp, storageService.STOCK_COUNT);
+          });
+          return $q.reject(reason);
         })
         .finally(function() {
           $scope.isSaving = false;
@@ -206,6 +212,24 @@ angular.module('lmisChromeApp')
           $state.go('home.index.home.mainActivity');
         });
     };
+    function genSMS(stockCount) {
+      var newObj = {
+        scInfo: {
+          cd: stockCount.countDate,
+          facility: stockCount.facility,
+          uuid: stockCount.uuid,
+          created: stockCount.created,
+          ppLen: Object.keys(stockCount.unopened).length
+        },
+        products: []
+      };
+      Object.keys(stockCount.unopened)
+        .forEach(function (r) {
+          var p = { ppId: r, qty: stockCount.unopened[r], uuid: stockCount.uuid };
+          newObj.products.push(p);
+        });
+      return newObj;
+    }
 
     $scope.save = function() {
       $scope.stockCount.facility = $scope.facilityObject.uuid;
