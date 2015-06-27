@@ -3,7 +3,6 @@ angular.module('db', [])
 .constant('collections', {
  ADDRESS: 'address',
  APP_FACILITY_PROFILE: 'app_facility_profile',
- BATCHES: 'batches',
  BUNDLE: 'bundle',
  BUNDLE_LINES: 'bundle_lines',
  BUNDLE_RECEIPT_LINES: 'bundle_receipt_lines',

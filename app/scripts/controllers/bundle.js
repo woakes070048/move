@@ -131,6 +131,7 @@ angular.module('lmisChromeApp')
     };
 
     $scope.showLogBundleForm = function () {
+      console.log($scope.placeholder.selectedFacility);
       if ($scope.placeholder.selectedFacility === '-1' || $scope.placeholder.selectedFacility === '') {
         $scope.selectFacilityError = true;
         return;
