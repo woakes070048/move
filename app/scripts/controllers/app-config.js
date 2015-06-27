@@ -374,7 +374,6 @@ angular.module('lmisChromeApp')
         })
         .then(function(result) {
           if (typeof result !== 'undefined') {
-            $scope.appConfig = result;
             afterSave(forSerial);
           } else {
             growl.error(messages.appConfigFailedMsg);
@@ -460,7 +459,8 @@ angular.module('lmisChromeApp')
       }
 
       if ($scope.ccuProfileCheckBoxes[ccuProfile.dhis2_modelid]) {
-        var selectedCCU = JSON.parse($scope.ccuProfileCheckBoxes[ccuProfile.dhis2_modelid]);
+        var selectedProfile = $scope.ccuProfileCheckBoxes[ccuProfile.dhis2_modelid];
+        var selectedCCU = angular.isObject(selectedProfile) ? selectedProfile : JSON.parse(selectedProfile);
         if (selectedCCU.deSelected) {
           resetRowState();
         }
@@ -472,7 +472,6 @@ angular.module('lmisChromeApp')
         growl.success(messages.appConfigSuccessMsg);
       }
       if (!forSerial) {
-        $scope.appConfig = result;
         alertFactory.success(messages.appConfigSuccessMsg);
         $state.go('home.index.home.mainActivity');
       }
