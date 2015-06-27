@@ -118,7 +118,7 @@ angular.module('lmisChromeApp')
     };
 
     this.addObjectToCollection = function (obj, collections, key) {
-      var _obj = JSON.parse(obj);
+      var _obj = angular.isObject(obj) ? obj : JSON.parse(obj);
       if (_obj.deSelected === undefined) {
         collections.push(_obj);
         return collections;
