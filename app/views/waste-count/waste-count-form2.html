@@ -88,7 +88,7 @@
           <label translate>Select Waste Reason</label>
           <select ng-change="loadSelected()" ng-model="selectedReason" class="form-control">
             <option value="" translate>Select Waste Reason</option>
-            <option value="{{ $index }}" ng-repeat="reason in wasteReasons"> {{ reason }}</option>
+            <option value="{{ $index }}" ng-repeat="(key, reason) in wasteReasons"> {{ reason }}</option>
           </select>
         </div>
 
