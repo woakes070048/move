@@ -19,6 +19,7 @@ angular.module('lmisChromeApp')
       var ccuBreakdown2 = 'ccu_breakdown2';
       var pendingSyncs = 'pending_syncs';
       var locations = 'locations';
+      var batches = 'batches';
 
       var FIXTURE_NAMES = utility.values(collections);
 
@@ -284,7 +285,8 @@ angular.module('lmisChromeApp')
         SURVEY_RESPONSE: surveyResponse,
         FIXTURE_NAMES: FIXTURE_NAMES,
         // TODO: remove, see item:751
-        _COLLECTIONS: _collections
+        _COLLECTIONS: _collections,
+        BATCHES: batches
       };
 
       return angular.extend(api, collections);

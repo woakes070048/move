@@ -4,15 +4,16 @@ angular.module('lmisChromeApp')
   .factory('wasteCountFactory', function ($filter, storageService, utility, $q, syncService) {
 
     var DB_NAME = storageService.DISCARD_COUNT;
-    var wasteReasons = [
-      'VVM Stage 3',
-      'Broken Vial',
-      'Label Missing',
-      'Unopened Expiry',
-      'Opened Expiry',
-      'Suspected Freezing',
-      'Other'
-    ];
+    var wasteReasons = {
+      "0" : 'VVM Stage 3',
+      "1" : 'VVM Stage 4',
+      "2" : 'Broken Vial',
+      "3" : 'Label Missing',
+      "4" : 'Unopened Expiry',
+      "5" : 'Opened Expiry',
+      "6" : 'Suspected Freezing',
+      "7" : 'Other'
+    };
 
     var isoDate = function(_date){
       var date = (angular.isDefined(_date)) ? new Date(_date) : new Date();
