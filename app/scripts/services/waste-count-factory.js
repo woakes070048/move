@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .factory('wasteCountFactory', function ($filter, storageService, utility, $q, syncService) {
+  .factory('wasteCountFactory', function ($filter, storageService, utility, $q, syncService, reminderFactory) {
 
     var DB_NAME = storageService.DISCARD_COUNT;
     var wasteReasons = {
@@ -42,8 +42,6 @@ angular.module('lmisChromeApp')
         storageService.save(storageService.DISCARD_COUNT, object)
             .then(function(uuid){
               deferred.resolve(uuid);
-            }, function(reason){
-              deferred.reject(reason);
             })
             .catch(function(reason){
               deferred.reject(reason);
@@ -142,12 +140,83 @@ angular.module('lmisChromeApp')
         return name;
       }
     };
+
+    function wasteCounterFilter(interval, reminderDay) {
+      interval = parseInt(interval);
+      var dateInfo = utility.getWeekRangeByDate(new Date(), reminderDay);
+      switch (interval) {
+        case reminderFactory.DAILY:
+          return function filterForDaily(row) {
+            return utility.getFullDate(row.created) === utility.getFullDate(new Date());
+          };
+          break;
+        case reminderFactory.WEEKLY || reminderFactory.BI_WEEKLY || reminderFactory.MONTHLY:
+          return function filterForWeekly(row) {
+            return utility.getFullDate(row.created) > utility.getFullDate(dateInfo.first) &&
+              utility.getFullDate(row.created) < utility.getFullDate(dateInfo.last);
+          };
+          break;
+        default:
+          throw 'unknown stock count interval.';
+      }
+    }
+
+    function getWasteCountWithinDueDate(reminderDay, interval, selectedProducts) {
+      var deferred = $q.defer();
+      load.allWasteCount()
+        .then(function(wasteCounts) {
+          deferred.resolve({
+            wasteCounts: wasteCounts.filter(wasteCounterFilter(interval, reminderDay)),
+            selectedProducts: selectedProducts
+          });
+        })
+        .catch(function(reason) {
+          deferred.reject(reason);
+        });
+
+      return deferred.promise;
+    }
+
+    function computeWastCounts(response) {
+      var deferred = $q.defer();
+      var wasteCounts = response.wasteCounts;
+      var selectedProducts = angular.isObject(selectedProducts) ? response.selectedProducts : utility.castArrayToObject(response.selectedProducts, 'uuid');
+      var productTypes = {};
+      for (var i = 0; i < wasteCounts.length; i++) {
+        var products = Object.keys(wasteCounts[i].reason);
+        for (var j = 0; j < products.length; j++ ) {
+          var pUUID = selectedProducts[products[j]].product.uuid;
+          var presentation = selectedProducts[products[j]].presentation.value;
+          if (!productTypes[pUUID]) {
+            productTypes[pUUID] = 0;
+            (Object.keys(wasteCounts[i].reason[products[j]]))
+              .forEach(function(key) {
+                productTypes[pUUID] += (wasteCounts[i].reason[products[j]][key] * presentation);
+              })
+          } else {
+            (Object.keys(wasteCounts[i].reason[products[j]]))
+              .forEach(function(key) {
+                productTypes[pUUID] += (wasteCounts[i].reason[products[j]][key] * presentation);
+              })
+          }
+        }
+      }
+      deferred.resolve(productTypes);
+      return deferred.promise;
+    }
+
+    function getWastedStockLevel(reminderDay, interval, selectedProducts) {
+      return getWasteCountWithinDueDate(reminderDay, interval, selectedProducts)
+        .then(computeWastCounts);
+    }
+
     return {
 
       wasteReasons: wasteReasons,
       add: addRecord,
       get:load,
       getWasteCountByDate: getWasteCountByDate,
+      getWastedStockLevel: getWastedStockLevel,
       DB_NAME: DB_NAME
     };
   });
