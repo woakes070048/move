@@ -54,9 +54,7 @@ angular.module('lmisChromeApp')
                   return -(new Date(a.created).getTime() - new Date(b.created).getTime());
                 });
               var mostRecent = stockCounts[0];
-              if (Object.keys(mostRecent.unopened).length === 0 ) {
-                console.info('culprit');
-              }
+
               if (typeof mostRecent !== 'undefined') {
                 count = Object.keys(mostRecent.unopened)
                   .filter(function(ppid) {
