@@ -141,9 +141,12 @@ angular.module('lmisChromeApp')
       }
     };
 
-    function wasteCounterFilter(interval, reminderDay) {
+    function wasteCounterFilter(interval, mostRecentCountDate) {
       interval = parseInt(interval);
-      var dateInfo = utility.getWeekRangeByDate(new Date(), reminderDay);
+      if (interval !== reminderFactory.DAILY) {
+        var dateObject = new Date(mostRecentCountDate);
+        var previousDate = new Date(dateObject.setDate(dateObject.getDate() - interval));
+      }
       switch (interval) {
         case reminderFactory.DAILY:
           return function filterForDaily(row) {
@@ -151,9 +154,10 @@ angular.module('lmisChromeApp')
           };
           break;
         case reminderFactory.WEEKLY || reminderFactory.BI_WEEKLY || reminderFactory.MONTHLY:
+
           return function filterForWeekly(row) {
-            return utility.getFullDate(row.created) > utility.getFullDate(dateInfo.first) &&
-              utility.getFullDate(row.created) < utility.getFullDate(dateInfo.last);
+            return utility.getFullDate(row.created) >= utility.getFullDate(previousDate) &&
+              utility.getFullDate(row.created) <= utility.getFullDate(mostRecentCountDate);
           };
           break;
         default:
@@ -161,12 +165,12 @@ angular.module('lmisChromeApp')
       }
     }
 
-    function getWasteCountWithinDueDate(reminderDay, interval, selectedProducts) {
+    function getWasteCountWithinDueDate(interval, selectedProducts, mostRecentCountDate) {
       var deferred = $q.defer();
       load.allWasteCount()
         .then(function(wasteCounts) {
           deferred.resolve({
-            wasteCounts: wasteCounts.filter(wasteCounterFilter(interval, reminderDay)),
+            wasteCounts: wasteCounts.filter(wasteCounterFilter(interval, mostRecentCountDate)),
             selectedProducts: selectedProducts
           });
         })
@@ -180,24 +184,21 @@ angular.module('lmisChromeApp')
     function computeWastCounts(response) {
       var deferred = $q.defer();
       var wasteCounts = response.wasteCounts;
-      var selectedProducts = angular.isObject(selectedProducts) ? response.selectedProducts : utility.castArrayToObject(response.selectedProducts, 'uuid');
+      var selectedProducts = utility.castArrayToObject(response.selectedProducts, 'uuid');
       var productTypes = {};
       for (var i = 0; i < wasteCounts.length; i++) {
         var products = Object.keys(wasteCounts[i].reason);
         for (var j = 0; j < products.length; j++ ) {
-          var pUUID = selectedProducts[products[j]].product.uuid;
-          var presentation = selectedProducts[products[j]].presentation.value;
-          if (!productTypes[pUUID]) {
+          if (selectedProducts[products[j]]) {
+            var pUUID = selectedProducts[products[j]].product.uuid;
+            var presentation = selectedProducts[products[j]].presentation.value;
+            var wasteCount = wasteCounts[i].reason[products[j]];
             productTypes[pUUID] = 0;
-            (Object.keys(wasteCounts[i].reason[products[j]]))
-              .forEach(function(key) {
+            for (var key in wasteCount) {
+              if (wasteCount.hasOwnProperty(key)) {
                 productTypes[pUUID] += (wasteCounts[i].reason[products[j]][key] * presentation);
-              })
-          } else {
-            (Object.keys(wasteCounts[i].reason[products[j]]))
-              .forEach(function(key) {
-                productTypes[pUUID] += (wasteCounts[i].reason[products[j]][key] * presentation);
-              })
+              }
+            }
           }
         }
       }
@@ -205,8 +206,8 @@ angular.module('lmisChromeApp')
       return deferred.promise;
     }
 
-    function getWastedStockLevel(reminderDay, interval, selectedProducts) {
-      return getWasteCountWithinDueDate(reminderDay, interval, selectedProducts)
+    function getWastedStockLevel(interval, selectedProducts, mostRecentCountDate) {
+      return getWasteCountWithinDueDate(interval, selectedProducts, mostRecentCountDate)
         .then(computeWastCounts);
     }
 
