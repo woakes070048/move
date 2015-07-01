@@ -152,7 +152,8 @@ angular.module('lmisChromeApp')
                         wasteCountFactory.getWastedStockLevel(
                           appConfig.facility.reminderDay,
                           appConfig.facility.stockCountInterval,
-                          appConfig.facility.selectedProductProfiles
+                          appConfig.facility.selectedProductProfiles,
+                          mostRecentCount.countDate
                         )
                       ])
                         .then(function(response) {

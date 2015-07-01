@@ -141,9 +141,9 @@ angular.module('lmisChromeApp')
       }
     };
 
-    function wasteCounterFilter(interval, reminderDay) {
+    function wasteCounterFilter(interval, reminderDay, countDate) {
       interval = parseInt(interval);
-      var dateInfo = utility.getWeekRangeByDate(new Date(), reminderDay);
+      var dateInfo = utility.getWeekRangeByDate(new Date(countDate), reminderDay);
       switch (interval) {
         case reminderFactory.DAILY:
           return function filterForDaily(row) {
@@ -161,12 +161,12 @@ angular.module('lmisChromeApp')
       }
     }
 
-    function getWasteCountWithinDueDate(reminderDay, interval, selectedProducts) {
+    function getWasteCountWithinDueDate(reminderDay, interval, selectedProducts, countDate) {
       var deferred = $q.defer();
       load.allWasteCount()
         .then(function(wasteCounts) {
           deferred.resolve({
-            wasteCounts: wasteCounts.filter(wasteCounterFilter(interval, reminderDay)),
+            wasteCounts: wasteCounts.filter(wasteCounterFilter(interval, reminderDay, countDate)),
             selectedProducts: selectedProducts
           });
         })
@@ -205,8 +205,8 @@ angular.module('lmisChromeApp')
       return deferred.promise;
     }
 
-    function getWastedStockLevel(reminderDay, interval, selectedProducts) {
-      return getWasteCountWithinDueDate(reminderDay, interval, selectedProducts)
+    function getWastedStockLevel(reminderDay, interval, selectedProducts, countDate) {
+      return getWasteCountWithinDueDate(reminderDay, interval, selectedProducts, countDate)
         .then(computeWastCounts);
     }
 
