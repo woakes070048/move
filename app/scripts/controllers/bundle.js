@@ -210,7 +210,7 @@ angular.module('lmisChromeApp')
         batch = batchStore[bundleLine.batchNo];
         if (angular.isObject(batch)) {
           bundleLine.productProfile = batch.profile;
-          bundleLine.expiryDate = batch.expiryDate;
+          bundleLine.expiryDate = utility.getFullDate(batch.expiryDate);
           $scope.getUnitQty(bundleLine);
         }
       }

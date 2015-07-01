@@ -43,7 +43,13 @@
 <br/>
 <div class="col-sm-12" ng-class="">
     <label>Expiry date <i class="fa fa-calendar"></i></label></label>
-    <input ng-model="bundleLine.expiryDate" class="form-control" type="date" name="expiryDate$index" required />
+    <input
+        ng-model="bundleLine.expiryDate"
+        class="form-control"
+        type="date"
+        name="expiryDate$index"
+        required
+        />
     <em><small><span  class="text-danger small" ng-show="expiredProductAlert(bundleLineForm.expiryDate$index.$modelValue)">
         <i class="fa fa-exclamation-circle"></i>
         This product is expired
@@ -61,15 +67,15 @@
 <div class="col-sm-12"
      ng-if="productIsVaccine(selectedProduct[bundleLine.id],bundleLine)">
     <label>VVM Status <i class="fa fa-sort-amount-desc"></i></label></label>
-    <span class="dropdown">
-      <a href class="dropdown-toggle form-control clearfix">
+    <span class="dropdown" dropdown>
+      <a  class="dropdown-toggle form-control clearfix" dropdown-toggle>
           <span ng-if="bundleLine.VVMStatus" class="pull-left">
               <span ng-if="bundleLine.VVMStatus.value === VVMStatus.NoVVM">No VVM Status</span>
               <span ng-if="bundleLine.VVMStatus.value !== VVMStatus.NoVVM"><img ng-src="images/vvm-icons/{{bundleLine.VVMStatus.imageSrc}}" class="vvm-icon-sm" /></span>
           </span>
           <span class="pull-right"><i class="caret"></i></span>
       </a>
-      <ul class="dropdown-menu vvm-icon-dropdown">
+      <ul class="dropdown-menu vvm-icon-dropdown" dropdown-menu>
        <li ng-repeat="vvm in vvmOptions">
           <a href ng-click="selectVVMOption(bundleLine, {value: vvm.value, imageSrc: vvm.imageSrc})" class="dropdown-toggle">
             <span ng-if="vvm.value === VVMStatus.NoVVM" ng-bind="vvm.imageSrc"></span>
