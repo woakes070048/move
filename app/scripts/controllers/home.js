@@ -150,7 +150,6 @@ angular.module('lmisChromeApp')
                       return $q.all([
                         inventoryRulesFactory.getStockBalance(facility.uuid, mostRecentCount.modified),
                         wasteCountFactory.getWastedStockLevel(
-                          appConfig.facility.stockCountInterval,
                           appConfig.facility.selectedProductProfiles,
                           mostRecentCount.modified
                         )

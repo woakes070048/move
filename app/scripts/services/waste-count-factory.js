@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .factory('wasteCountFactory', function ($filter, storageService, utility, $q, syncService, reminderFactory) {
+  .factory('wasteCountFactory', function ($filter, storageService, utility, $q, syncService) {
 
     var DB_NAME = storageService.DISCARD_COUNT;
     var wasteReasons = {
@@ -141,36 +141,18 @@ angular.module('lmisChromeApp')
       }
     };
 
-    function wasteCounterFilter(interval, mostRecentCountDate) {
-      interval = parseInt(interval);
-      if (interval !== reminderFactory.DAILY) {
-        var dateObject = new Date(mostRecentCountDate);
-        var previousDate = new Date(dateObject.setDate(dateObject.getDate() - interval));
-      }
-      switch (interval) {
-        case reminderFactory.DAILY:
-          return function filterForDaily(row) {
-            return utility.getFullDate(row.created) === utility.getFullDate(new Date());
-          };
-          break;
-        case reminderFactory.WEEKLY || reminderFactory.BI_WEEKLY || reminderFactory.MONTHLY:
-
-          return function filterForWeekly(row) {
-            return utility.getFullDate(row.created) >= utility.getFullDate(previousDate) &&
-              utility.getFullDate(row.created) <= utility.getFullDate(mostRecentCountDate);
-          };
-          break;
-        default:
-          throw 'unknown stock count interval.';
-      }
+    function wasteCounterFilter(mostRecentCountDate) {
+      return function (row) {
+        return utility.getFullDate(row.created) >= utility.getFullDate(mostRecentCountDate);
+      };
     }
 
-    function getWasteCountWithinDueDate(interval, selectedProducts, mostRecentCountDate) {
+    function getWasteCountWithinDueDate(selectedProducts, mostRecentCountDate) {
       var deferred = $q.defer();
       load.allWasteCount()
         .then(function(wasteCounts) {
           deferred.resolve({
-            wasteCounts: wasteCounts.filter(wasteCounterFilter(interval, mostRecentCountDate)),
+            wasteCounts: wasteCounts.filter(wasteCounterFilter(mostRecentCountDate)),
             selectedProducts: selectedProducts
           });
         })
@@ -206,8 +188,8 @@ angular.module('lmisChromeApp')
       return deferred.promise;
     }
 
-    function getWastedStockLevel(interval, selectedProducts, mostRecentCountDate) {
-      return getWasteCountWithinDueDate(interval, selectedProducts, mostRecentCountDate)
+    function getWastedStockLevel(selectedProducts, mostRecentCountDate) {
+      return getWasteCountWithinDueDate(selectedProducts, mostRecentCountDate)
         .then(computeWastCounts);
     }
 
