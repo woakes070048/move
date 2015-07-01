@@ -158,7 +158,7 @@ angular.module('lmisChromeApp')
                         .then(function(response) {
                           var pTypesLedgerBal = response[0];
                           var wasted = response[1];
-                          console.log(wasted);
+
                           var ledgerBal = 0;
                           for (var ptUuid in res) {
                             if (wasted[ptUuid]) {
