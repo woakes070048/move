@@ -150,26 +150,24 @@ angular.module('lmisChromeApp')
                       return $q.all([
                         inventoryRulesFactory.getStockBalance(facility.uuid, mostRecentCount.modified),
                         wasteCountFactory.getWastedStockLevel(
-                          appConfig.facility.reminderDay,
                           appConfig.facility.stockCountInterval,
-                          appConfig.facility.selectedProductProfiles
+                          appConfig.facility.selectedProductProfiles,
+                          mostRecentCount.modified
                         )
                       ])
                         .then(function(response) {
                           var pTypesLedgerBal = response[0];
                           var wasted = response[1];
-
+                          console.log(wasted);
                           var ledgerBal = 0;
-                          var pUUID = Object.keys(res);
-                          for (var ii = 0; ii < pUUID.length; ii++) {
-                            if (wasted[pUUID[ii]]) {
-                              res[pUUID[ii]].stockLevel -= wasted[pUUID[ii]];
+                          for (var ptUuid in res) {
+                            if (wasted[ptUuid]) {
+                              res[ptUuid].stockLevel -= wasted[ptUuid];
                             }
-                            if (!isNaN(pTypesLedgerBal[pUUID[ii]])) {
-                              ledgerBal = pTypesLedgerBal[pUUID[ii]];
-                              res[pUUID[ii]].stockLevel += ledgerBal;
+                            if (!isNaN(pTypesLedgerBal[ptUuid])) {
+                              ledgerBal = pTypesLedgerBal[ptUuid];
+                              res[ptUuid].stockLevel += ledgerBal;
                             }
-
                           }
                           return res;
                         })
