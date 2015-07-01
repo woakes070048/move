@@ -148,19 +148,13 @@ angular.module('lmisChromeApp')
     }
 
     function getWasteCountWithinDueDate(selectedProducts, mostRecentCountDate) {
-      var deferred = $q.defer();
-      load.allWasteCount()
+      return load.allWasteCount()
         .then(function(wasteCounts) {
-          deferred.resolve({
+          return {
             wasteCounts: wasteCounts.filter(wasteCounterFilter(mostRecentCountDate)),
             selectedProducts: selectedProducts
-          });
-        })
-        .catch(function(reason) {
-          deferred.reject(reason);
+          };
         });
-
-      return deferred.promise;
     }
 
     function computeWastCounts(response) {
