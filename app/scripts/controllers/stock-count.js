@@ -83,7 +83,7 @@ angular.module('lmisChromeApp')
       }
     };
   })
-  .controller('StockCountFormCtrl', function($scope, stockCountFactory, reminderFactory, $state, growl, alertFactory, $stateParams, appConfig, appConfigService, cacheService, syncService, utility, $rootScope, messages, mostRecentStockCount, geolocationFactory) {
+  .controller('StockCountFormCtrl', function($scope, $q, stockCountFactory, reminderFactory, notificationService, $state, growl, alertFactory, $stateParams, appConfig, appConfigService, cacheService, syncService, utility, $rootScope, messages, mostRecentStockCount, geolocationFactory) {
 
     var scInterval = appConfig.facility.stockCountInterval;
     var reminderDay = appConfig.facility.reminderDay;
@@ -199,6 +199,12 @@ angular.module('lmisChromeApp')
       return syncService.syncUpRecord(db, $scope.stockCount)
         .catch(function(reason) {
           console.error(reason);
+          var smsMsg = genSMS($scope.stockCount);
+          notificationService.sendSms(notificationService.alertRecipient, smsMsg.scInfo, stockCountFactory.STOCK_COUNT_DB);
+          smsMsg.products.forEach(function(pp){
+            notificationService.sendSms(notificationService.alertRecipient, pp, stockCountFactory.STOCK_COUNT_DB);
+          });
+          return $q.reject(reason);
         })
         .finally(function() {
           $scope.isSaving = false;
@@ -206,6 +212,24 @@ angular.module('lmisChromeApp')
           $state.go('home.index.home.mainActivity');
         });
     };
+    function genSMS(stockCount) {
+      var newObj = {
+        scInfo: {
+          cd: stockCount.countDate,
+          facility: stockCount.facility,
+          uuid: stockCount.uuid,
+          created: stockCount.created,
+          ppLen: Object.keys(stockCount.unopened).length
+        },
+        products: []
+      };
+      Object.keys(stockCount.unopened)
+        .forEach(function (r) {
+          var p = { ppId: r, qty: stockCount.unopened[r], uuid: stockCount.uuid };
+          newObj.products.push(p);
+        });
+      return newObj;
+    }
 
     $scope.save = function() {
       $scope.stockCount.facility = $scope.facilityObject.uuid;

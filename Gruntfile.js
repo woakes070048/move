@@ -506,7 +506,7 @@ module.exports = function(grunt) {
       'wiredep',
       'ngconstant:development',
       'fixtures',
-      'nggettext_compile',
+      //'nggettext_compile',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
