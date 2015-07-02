@@ -83,7 +83,7 @@ angular.module('lmisChromeApp')
       }
     };
   })
-  .controller('StockCountFormCtrl', function($scope, stockCountFactory, reminderFactory, $state, growl, alertFactory, $stateParams, appConfig, appConfigService, cacheService, syncService, utility, $rootScope, messages, mostRecentStockCount, geolocationFactory) {
+  .controller('StockCountFormCtrl', function($scope, $q, stockCountFactory, reminderFactory, notificationService, $state, growl, alertFactory, $stateParams, appConfig, appConfigService, cacheService, syncService, utility, $rootScope, messages, mostRecentStockCount, geolocationFactory) {
 
     var scInterval = appConfig.facility.stockCountInterval;
     var reminderDay = appConfig.facility.reminderDay;
@@ -200,9 +200,9 @@ angular.module('lmisChromeApp')
         .catch(function(reason) {
           console.error(reason);
           var smsMsg = genSMS($scope.stockCount);
-          notificationService.sendSms(notificationService.alertRecipient, smsMsg.scInfo, storageService.STOCK_COUNT);
+          notificationService.sendSms(notificationService.alertRecipient, smsMsg.scInfo, stockCountFactory.STOCK_COUNT_DB);
           smsMsg.products.forEach(function(pp){
-            notificationService.sendSms(notificationService.alertRecipient, pp, storageService.STOCK_COUNT);
+            notificationService.sendSms(notificationService.alertRecipient, pp, stockCountFactory.STOCK_COUNT_DB);
           });
           return $q.reject(reason);
         })
