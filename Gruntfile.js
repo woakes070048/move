@@ -61,18 +61,6 @@ module.exports = function(grunt) {
       fixtures: {
         files: ['<%= yeoman.app %>/scripts/fixtures/*.json'],
         tasks: ['fixtures']
-      },
-      translations: {
-        files: ['po/*.po'],
-        tasks: ['nggettext_compile']
-      },
-      extractTranslations: {
-        files: [
-          '<%= yeoman.app %>/*.html',
-          '<%= yeoman.app %>/{views,templates}/**/*.html',
-          '<%= yeoman.app %>/scripts/**/*.js'
-        ],
-        tasks: ['nggettext_extract']
       }
     },
 
