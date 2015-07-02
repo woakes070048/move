@@ -42,8 +42,6 @@ angular.module('lmisChromeApp')
         storageService.save(storageService.DISCARD_COUNT, object)
             .then(function(uuid){
               deferred.resolve(uuid);
-            }, function(reason){
-              deferred.reject(reason);
             })
             .catch(function(reason){
               deferred.reject(reason);
@@ -142,12 +140,60 @@ angular.module('lmisChromeApp')
         return name;
       }
     };
+
+    function wasteCounterFilter(mostRecentCountDate) {
+      return function (row) {
+        return utility.getFullDate(row.created) >= utility.getFullDate(mostRecentCountDate);
+      };
+    }
+
+    function getWasteCountWithinDueDate(selectedProducts, mostRecentCountDate) {
+      return load.allWasteCount()
+        .then(function(wasteCounts) {
+          return {
+            wasteCounts: wasteCounts.filter(wasteCounterFilter(mostRecentCountDate)),
+            selectedProducts: selectedProducts
+          };
+        });
+    }
+
+    function computeWastCounts(response) {
+      var deferred = $q.defer();
+      var wasteCounts = response.wasteCounts;
+      var selectedProducts = utility.castArrayToObject(response.selectedProducts, 'uuid');
+      var productTypes = {};
+      for (var i = 0; i < wasteCounts.length; i++) {
+        var products = Object.keys(wasteCounts[i].reason);
+        for (var j = 0; j < products.length; j++ ) {
+          if (selectedProducts[products[j]]) {
+            var pUUID = selectedProducts[products[j]].product.uuid;
+            var presentation = selectedProducts[products[j]].presentation.value;
+            var wasteCount = wasteCounts[i].reason[products[j]];
+            productTypes[pUUID] = 0;
+            for (var key in wasteCount) {
+              if (wasteCount.hasOwnProperty(key)) {
+                productTypes[pUUID] += (wasteCounts[i].reason[products[j]][key] * presentation);
+              }
+            }
+          }
+        }
+      }
+      deferred.resolve(productTypes);
+      return deferred.promise;
+    }
+
+    function getWastedStockLevel(selectedProducts, mostRecentCountDate) {
+      return getWasteCountWithinDueDate(selectedProducts, mostRecentCountDate)
+        .then(computeWastCounts);
+    }
+
     return {
 
       wasteReasons: wasteReasons,
       add: addRecord,
       get:load,
       getWasteCountByDate: getWasteCountByDate,
+      getWastedStockLevel: getWastedStockLevel,
       DB_NAME: DB_NAME
     };
   });

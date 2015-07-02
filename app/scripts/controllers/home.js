@@ -98,7 +98,7 @@ angular.module('lmisChromeApp')
                 return stockCountFactory.getLatestCompleteStockCount();
               }
             },
-            controller: function($q, $log, mostRecentCount, productProfileFactory, $scope, $window, messages, storageService, dashboardfactory, inventoryRulesFactory, productTypeFactory, appConfig, appConfigService, cacheService, stockOutList, utility, $rootScope, isStockCountReminderDue, stockCountFactory) {
+            controller: function($q, $log, mostRecentCount, productProfileFactory, $scope, $window, messages, storageService, dashboardfactory, inventoryRulesFactory, productTypeFactory, appConfig, appConfigService, cacheService, stockOutList, utility, $rootScope, isStockCountReminderDue, stockCountFactory, wasteCountFactory) {
 
               var keys = [
                 {
@@ -131,12 +131,11 @@ angular.module('lmisChromeApp')
                   };
                   return $q.all(promises)
                     .then(function(res) {
-                      var productTypeInfo = {
+                      return {
                         name: productType.code,
                         stockLevel: res[stockLevel],
                         bufferStock: res[bufferStock]
                       };
-                      return productTypeInfo;
                     });
                 };
 
@@ -148,10 +147,22 @@ angular.module('lmisChromeApp')
                   }
                   return $q.all(promises)
                     .then(function(res) {
-                      return inventoryRulesFactory.getStockBalance(facility.uuid, mostRecentCount.modified)
-                        .then(function(pTypesLedgerBal) {
+                      return $q.all([
+                        inventoryRulesFactory.getStockBalance(facility.uuid, mostRecentCount.modified),
+                        wasteCountFactory.getWastedStockLevel(
+                          appConfig.facility.selectedProductProfiles,
+                          mostRecentCount.modified
+                        )
+                      ])
+                        .then(function(response) {
+                          var pTypesLedgerBal = response[0];
+                          var wasted = response[1];
+
                           var ledgerBal = 0;
                           for (var ptUuid in res) {
+                            if (wasted[ptUuid]) {
+                              res[ptUuid].stockLevel -= wasted[ptUuid];
+                            }
                             if (!isNaN(pTypesLedgerBal[ptUuid])) {
                               ledgerBal = pTypesLedgerBal[ptUuid];
                               res[ptUuid].stockLevel += ledgerBal;
