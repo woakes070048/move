@@ -73,26 +73,6 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
     }
     return appConfig;
   };
-  this.getSelectedFacility = ehaRetriable(function(key, added){
-    if(added) {
-     var url = config.api.url + '/facilities/_design/facilities/_view/by_lga?include_docs=true&startkey=%22' +
-               key + '%22&endkey=%22' + key + '%22';
-    return $http.get(url, { withCredentials: true })
-        .then(function (result) {
-          result.data.rows.forEach(function (row) {
-            storageService.save(storageService.FACILITY, row.doc);
-          });
-          return true;
-        });
-    } else {
-      return storageService.where(storageService.FACILITY, function(row){
-        // TODO: Rewrite to a view
-        if(row.lgaUUID === key){
-          storageService.removeRecord(storageService.FACILITY, row.uuid);
-        }
-      });
-    }
-  });
 
   this.getAppFacilityProfileByEmail = ehaRetriable(function(email) {
     var REMOTE_URI = config.api.url + '/facilities/_design/config/_view/template?key="' + email + '"';
