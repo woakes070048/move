@@ -125,7 +125,7 @@ angular.module('lmisChromeApp').service('appConfigService', function($q, storage
   this.getCurrentAppConfig = function() {
     return getAppConfigFromMemoryOrStorage()
         .then(function(appConfig){
-          if(appConfig.facility && angular.isArray(appConfig.facility.selectedLgas)){
+          if(appConfig && appConfig.facility && angular.isArray(appConfig.facility.selectedLgas)){
             var selectedIds = [];
             appConfig.facility.selectedLgas = appConfig.facility.selectedLgas
                 .filter(function(lga){
