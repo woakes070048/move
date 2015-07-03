@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .service('locationService', function(storageService, $http, ehaRetriable, config, pouchStorageService) {
+  .service('locationService', function(storageService, $http, ehaRetriable, config, pouchStorageService, facilityFactory) {
     var service = this;
     this.KANO_UUID = 'f87ed3e017cf4f8db26836fd910e4cc8';
 
@@ -108,6 +108,7 @@ angular.module('lmisChromeApp')
            throw err;
          });
     });
+
     this.saveBatch = function(locations) {
       return storageService.setDatabase(storageService.LOCATIONS, locations);
     };
@@ -123,5 +124,31 @@ angular.module('lmisChromeApp')
         return 0;
       }
     };
+
+      service.getFacilitiesUnderLga = ehaRetriable(function(lgaIds){
+        var remoteFacilityDB =  'facilities';
+        var params = {
+          keys: lgaIds,
+          include_docs: true
+        };
+        var view = 'facilities/by_lga';
+        var db = pouchStorageService.getRemoteDB(remoteFacilityDB);
+        return db.query(view, params)
+            .then(function(res){
+              var facilities = res.rows
+                  .map(function(row) {
+                    return row.doc;
+                  });
+              return facilityFactory.saveBatch(facilities);
+            });
+      });
+
+      service.extractIds = function (list) {
+        return list.map(function (elem) {
+          if (elem._id) {
+            return elem._id;
+          }
+        });
+      };
 
   });
