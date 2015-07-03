@@ -6,7 +6,7 @@ angular.module('lmisChromeApp')
       .state('appConfig', {
         parent: 'root.index',
         abstract: true,
-        templateUrl: 'views/home/index.html',
+        templateUrl: 'views/home/index.html'
       })
       .state('appConfigWelcome', {
         url: '/app-config-welcome',
@@ -35,10 +35,19 @@ angular.module('lmisChromeApp')
         data: {
           label: 'Welcome'
         },
-        controller: function($scope, config, $state) {
+        controller: function($scope, config, $state, fixtureLoaderService, messages, locationService, appConfigService, growl) {
           // Found config, we're good to go
-          if(!config.notFound) {
-            return $state.go('home.index.home.mainActivity');
+          if(config.notFound !== true) {
+            if(config.facility && angular.isArray(config.facility.selectedLgas)) {
+              var nearbyLgaIds = locationService.extractIds(config.facility.selectedLgas);
+              fixtureLoaderService.setupWardsAndFacilitesByLgas(nearbyLgaIds)
+                  .catch(function(){
+                    growl.error(messages.lgaFacilityListFailed);
+                  })
+                  .finally(function(){
+                    $state.go('home.index.home.mainActivity');
+                  });
+            }
           }
         }
       })
@@ -60,7 +69,7 @@ angular.module('lmisChromeApp')
                     return {
                       preloaded: true,
                       uuid: userName,
-                      facility: facility,
+                      facility: facility
                     };
                   });
               })
@@ -205,8 +214,6 @@ angular.module('lmisChromeApp')
     $scope.onLgaSelection = function(lga){
       var uuid = lga.uuid;
       var added = !!$scope.lgaCheckBoxes[uuid];
-      appConfigService.getSelectedFacility(uuid, added);
-
       if(added) {
         $scope.appConfig.facility.selectedLgas.push(lga);
       } else {
@@ -354,22 +361,22 @@ angular.module('lmisChromeApp')
     // Save Methods:
     $scope.save = function(forSerial) {
       $scope.isSaving = true;
-      var nearbyLgas = $scope.appConfig.facility.selectedLgas
-        .map(function(lga) {
-          if (lga._id) {
-            return lga._id;
-          }
-        });
-
+      var nearbyLgaIds = locationService.extractIds($scope.appConfig.facility.selectedLgas);
       var loadLga;
-      if(isEdit && isSameLgas(oldLgas, $scope.appConfig.facility.selectedLgas)) {
+      if(isSameLgas(oldLgas, $scope.appConfig.facility.selectedLgas)) {
         loadLga = $q.when(true);
       } else {
-        loadLga = fixtureLoaderService.setupWardsAndFacilitesByLgas(nearbyLgas);
+        loadLga = fixtureLoaderService.setupWardsAndFacilitesByLgas(nearbyLgaIds);
       }
 
       loadLga
-        .then(function() {
+          .catch(function(err){
+            //set selectedLga to previous selection since fetching of update fromm server failed
+            $scope.appConfig.facility.selectedLgas = oldLgas;
+            growl.error(messages.lgaFacilityListFailed);
+            return err;
+          })
+        .then(function(res) {
           return appConfigService.setup($scope.appConfig);
         })
         .then(function(result) {
@@ -385,13 +392,16 @@ angular.module('lmisChromeApp')
 
           if (utility.has(reason, 'type') && reason.type === 'SAVED_NOT_SYNCED') {
             afterSave(forSerial);
-            console.info('not synced');
           } else {
             growl.error(messages.appConfigFailedMsg);
-            console.error(reason);
           }
         }).finally(function() {
-          $scope.isSaving = false;
+            $scope.isSaving = false;
+            var facilityLgaIds = oldLgas.filter(function (lga) {
+              return (lga._id && nearbyLgaIds.indexOf(lga._id) !== -1);
+            });
+            locationService.removeByLgaIds(facilityLgaIds);
+
         });
     };
 

@@ -339,16 +339,7 @@ angular.module('lmisChromeApp')
         .then(function(wards) {
           return locationService.saveBatch(wards)
             .then(function() {
-              var wardFacilityIds = [];
-              wards.forEach(function(w) {
-                if (angular.isArray(w.facilities)) {
-                  wardFacilityIds = wardFacilityIds.concat(w.facilities);
-                }
-              });
-              return getFacilities(wardFacilityIds)
-                .then(function(facilities){
-                  return facilityFactory.saveBatch(facilities);
-                });
+                return locationService.getFacilitiesUnderLga(lgas);
             });
         });
     };

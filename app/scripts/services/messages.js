@@ -9,6 +9,9 @@ angular.module('lmisChromeApp')
     this.migrationFailed = gettextCatalog.getString(
       'Data migration failed. Please contact support.'
     );
+    this.lgaFacilityListFailed = gettextCatalog.getString(
+        'LGA facility list update failed, internet connection is needed to update it'
+    );
     this.appConfigSuccessMsg = gettextCatalog.getString(
       'Application configuration saved'
     );
