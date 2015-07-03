@@ -23,6 +23,8 @@ after_success:
 notifications:
   flowdock: 232485f7661e644ae5878944c2597042
 before_deploy:
+  - openssl aes-256-cbc -K $encrypted_07e96be3e0d9_key -iv $encrypted_07e96be3e0d9_iv -in .android/release-files.tar.enc -out .android/release-files.tar -d
+  - tar xvf .android/release-files.tar -C .android
   - ./scripts/build-travis.sh
 deploy:
   # snapshot versions
@@ -33,6 +35,7 @@ deploy:
     bucket: eha-move
     local-dir: build
     skip_cleanup: true
+    acl: public_read
     upload-dir: snapshots
     region: eu-west-1
     on:
@@ -46,6 +49,7 @@ deploy:
     bucket: eha-move
     local-dir: build
     upload-dir: releases
+    acl: public_read
     skip_cleanup: true
     region: eu-west-1
     on:
