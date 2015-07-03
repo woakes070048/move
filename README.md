@@ -25,6 +25,13 @@
 [Git]: http://git-scm.com
 [chrome://extensions]: chrome://extensions
 
+## Build for release
+
+1. Update version number in package.json
+2. Create a tag here on github [in the releases tab](https://github.com/eHealthAfrica/move/releases)
+3. Travis will now create a signed build for that tag. Go here [https://travis-ci.org/eHealthAfrica](https://travis-ci.org/eHealthAfrica) and watch it proceed
+4. When the build is green, the build can be downloaded from **https://eha-move.s3.amazonaws.com/releases/move-armv7-release-latest.apk**
+
 ## Testing
 
 Use `grunt test` for the complete test suite. `npm test` is reserved for our
