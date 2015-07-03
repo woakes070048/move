@@ -27,7 +27,7 @@
                 <td class="text-center" >{{line.batchNo}}</td>
                  <td class="text-center" ><img ng-if="line.VVMStatus !== ''" src="images/vvm-icons/{{line.VVMStatus.imageSrc}}" class="vvm-icon-sm"/></td>
                 <td class="text-center">
-                    {{ line.expiryDate | date:'MMM, yy' }}
+                    {{ line.expiryDate | date:'MMM, yyyy' }}
                     <span ng-show="expiredProductAlert(line.expiryDate,previewBundle.receivedOn)" class="text-danger">
                        * <!--<small> <i class="fa fa-question-circle" tooltip="Expired Product"></i></small>-->
                     </span>
