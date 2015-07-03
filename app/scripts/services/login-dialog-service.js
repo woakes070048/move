@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .controller('LoginCtrl', function($scope, $modalInstance, modalParams, ehaLoginService)  {
+  .controller('LoginCtrl', function($scope, $modalInstance, modalParams, ehaLoginService, deviceInfoFactory)  {
     $scope.headerMessage = !angular.isArray(modalParams.title) ? modalParams.title : '';
     $scope.headerMessage2 = modalParams.title;
     $scope.bodyMessage = modalParams.bodyText;
@@ -11,8 +11,11 @@ angular.module('lmisChromeApp')
     $scope.cancel = $modalInstance.dismiss;
     $scope.wrongPasskey = false;
     $scope.dismissMessage = 'Cancel confirm dialog';
-
     $scope.online = true;
+    deviceInfoFactory.getDeviceInfo()
+        .then(function (result) {
+          $scope.username = result.mainAccount;
+        });
 
     $scope.authenticate = function(username, passkey) {
       $scope.wrongPasskey = false;
