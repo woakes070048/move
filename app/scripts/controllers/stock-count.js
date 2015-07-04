@@ -198,7 +198,6 @@ angular.module('lmisChromeApp')
        */
       return syncService.syncUpRecord(db, $scope.stockCount)
         .catch(function(reason) {
-          console.error(reason);
           var smsMsg = genSMS($scope.stockCount);
           notificationService.sendSms(notificationService.alertRecipient, smsMsg.scInfo, stockCountFactory.STOCK_COUNT_DB);
           smsMsg.products.forEach(function(pp){
@@ -235,17 +234,22 @@ angular.module('lmisChromeApp')
       $scope.stockCount.facility = $scope.facilityObject.uuid;
       $scope.stockCount.countDate = $scope.stockCountDate;
 
-      stockCountFactory.save.stock($scope.stockCount)
-        .then(function(stockCountUUID) {
-          if ($scope.redirect) {
-            return syncStockCount(stockCountUUID);
-          }
-        })
-        .catch(function(reason) {
-          var msg = messages.stockCountSavingFailed;
-          growl.error(msg);
-          console.error(reason);
-        });
+      stockCountFactory.save
+          .stock($scope.stockCount)
+          .then(function (stockCountUUID) {
+            if ($scope.redirect) {
+              return syncStockCount(stockCountUUID)
+                  .catch(function(err) {
+                    growl.error(messages.stockSyncFailed);
+                    return err;
+                  });
+            }
+          })
+          .catch(function (reason) {
+            var msg = messages.stockCountSavingFailed;
+            growl.error(msg);
+            console.error(reason);
+          });
     };
 
     $scope.edit = function(key) {

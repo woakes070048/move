@@ -6,6 +6,9 @@
  */
 angular.module('lmisChromeApp')
   .service('messages', function(gettextCatalog) {
+    this.stockSyncFailed =  gettextCatalog.getString(
+        'Stock count sync failed, it will be synced via SMS.'
+    );
     this.migrationFailed = gettextCatalog.getString(
       'Data migration failed. Please contact support.'
     );
