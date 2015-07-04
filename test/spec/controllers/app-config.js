@@ -128,9 +128,12 @@ describe('Controller: AppConfig', function() {
       var template = $templateCache.get('views/app-config/edit-configuration.html');
       // this returns an angular element
       var $element = $compile(template)(scope);
-      element = $element[0];
-      document.body.appendChild(element);
+      element = document.createElement('div');
+      for(var i = 0; i < $element.length; i++) {
+        element.appendChild($element[i]);
+      }
 
+      document.body.appendChild(element);
       scope.$digest();
     }));
 
