@@ -215,7 +215,7 @@ angular.module('lmisChromeApp')
         batch = batchStore[bundleLine.batchNo];
         if (angular.isObject(batch)) {
           bundleLine.productProfile = batch.profile;
-          bundleLine.expiryDate = utility.getFullDate(batch.expiryDate);
+          bundleLine.expiryDate = new Date(batch.expiryDate);
           $scope.getUnitQty(bundleLine);
         }
       }
@@ -298,7 +298,7 @@ angular.module('lmisChromeApp')
     $scope.previewFacilityLabel = '';
 
     function setUIText(type) {
-      var today = $filter('date')(new Date(), 'dd MMM, yyyy')
+      var today = $filter('date')(new Date(), 'dd MMM, yyyy');
       if ($stateParams.type === logIncoming) {
         $scope.logBundleTitle = [messages.incomingDelivery, '-', today].join(' ');
         $scope.selectFacility = messages.selectSender;
@@ -492,8 +492,8 @@ angular.module('lmisChromeApp')
           var oldBatch = batchStore[b.batchNo];
           if (oldBatch) {
             b._id = oldBatch._id;
-            b._rev = oldBatch._rev
-            b.uuid = oldBatch.uuid
+            b._rev = oldBatch._rev;
+            b.uuid = oldBatch.uuid;
           }
           return b;
         });
@@ -501,9 +501,9 @@ angular.module('lmisChromeApp')
         .catch(function(err) {
           console.error(err);
         });
-    }
-    function validateBundle(bundleLine){
+    };
 
+    function validateBundle(bundleLine){
       var indicator = 0;
 
       $scope.bundle.bundleLines.filter(function(bundleLine){
@@ -530,7 +530,7 @@ angular.module('lmisChromeApp')
             $scope.err[bundleLine.id].vvmstatus = true;
           }
         }
-      })
+      });
       return (indicator === 0);
     }
     $scope.getCategoryColor = productCategoryFactory.getCategoryColor;

@@ -105,6 +105,7 @@
          <span class="fa fa-1.5x text-center"><ng-pluralize
                  count="bundleLine.quantity"
                  when="{
+                        'NaN': '{{selectedProductBaseUOM[bundleLine.id]}}',
                         '0' : '{{bundleLine.quantity}} {{selectedProductBaseUOM[bundleLine.id]}}s',
                         '1' :'{{bundleLine.quantity}} {{selectedProductBaseUOM[bundleLine.id]}}',
                         'other':'{{bundleLine.quantity}} {{selectedProductBaseUOM[bundleLine.id]}}s'
