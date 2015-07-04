@@ -104,7 +104,7 @@ angular.module('lmisChromeApp')
      *
      * @returns {*|Promise}
      */
-    this.startBackgroundSync = function() {
+    this.startBackgroundSync = ehaRetriable(function() {
       if (backgroundSyncInProgress === true) {
         return $q.reject('background sync in progress.');
       }
@@ -144,7 +144,7 @@ angular.module('lmisChromeApp')
       }, 1);
 
       return result.promise;
-    };
+    });
 
     this.cancel = function() {
       $timeout.cancel(sync);
