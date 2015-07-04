@@ -28,16 +28,12 @@ angular.module('lmisChromeApp')
       return getAllFacilities()
         .then(function(r){
           return filter(r);
-        })
-        .catch(function(err){
-          console.log(err);
-        })
+        });
     };
 
     var removeFacilityUnderLgaId = function(lgaIds) {
       return getAllFacilities()
           .then(function(res){
-            console.warn(res);
             var toBeRemoved = [];
             var facility;
             for(var i = 0; i < res.rows; i++){
@@ -51,13 +47,23 @@ angular.module('lmisChromeApp')
           })
     };
 
+    var getFacilityByType = function(type){
+      return getAllFacilities()
+          .then(function (facilities) {
+            return facilities.filter(function (facility) {
+                  return facility.doc_type === type;
+                });
+          });
+    };
+
     return {
       getAll: getAllFacilities,
       get: getByUUID,
       saveBatch: saveBatch,
       getFacilities: getFacilities,
       find: find,
-      removeByLgaIds: removeFacilityUnderLgaId
+      removeByLgaIds: removeFacilityUnderLgaId,
+      getByType: getFacilityByType
     };
 
   });

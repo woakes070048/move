@@ -14,6 +14,13 @@ angular.module('lmisChromeApp')
           },
           appConfig: function(appConfigService) {
             return appConfigService.getCurrentAppConfig();
+          },
+          lgaFacilities: function(facilityFactory) {
+            var lgaFacilityType = 'cco';
+            return facilityFactory.getByType(lgaFacilityType)
+                .catch(function(){
+                  return [];
+                });
           }
         }
       })
@@ -38,19 +45,19 @@ angular.module('lmisChromeApp')
         }
       });
   })
-  .controller('LogBundleHomeCtrl', function($scope, appConfig, locationService, facilityFactory, $stateParams, bundleService, bundles, $state, utility, productProfileFactory, growl, messages,productCategoryFactory) {
+  .controller('LogBundleHomeCtrl', function($scope, appConfig, locationService, lgaFacilities, facilityFactory, $stateParams, bundleService, bundles, $state, utility, productProfileFactory, growl, messages,productCategoryFactory) {
 
     var logIncoming = bundleService.INCOMING;
     var logOutgoing = bundleService.OUTGOING;
     $scope.lgas = appConfig.facility.selectedLgas;
     $scope.wards = [];
+    $scope.ccoFacilities = lgaFacilities;
     $scope.selectedLGA = '';
     $scope.selectedWard = '';
     $scope.selectFacilityError = false;
     $scope.facilities = [];
     $scope.placeholder = { selectedFacility: '' };
     $scope.stateColdStore = {'uuid': '3e1275f1599f695322aaecdafe0c933a', 'name': 'Kano State Cold Store'};
-    var nearbyLgas = locationService.extractIds(appConfig.facility.selectedLgas);
 
     if ($stateParams.type !== logIncoming && $stateParams.type !== logOutgoing) {
       $state.go('home.index.home.mainActivity');
@@ -82,7 +89,11 @@ angular.module('lmisChromeApp')
 
     bundleService.getRecentFacilityIds($stateParams.type)
       .then(function (res) {
-        facilityFactory.getFacilities(res)
+        var lgaFacilityIds = utility.castArrayToObject($scope.ccoFacilities, '_id');
+          var uniqueIds = res.filter(function(id){
+            return angular.isUndefined(lgaFacilityIds[id]);
+          });
+        facilityFactory.getFacilities(uniqueIds)
           .then(function (facilities) {
             $scope.recentFacilities = facilities;
           })
@@ -113,15 +124,6 @@ angular.module('lmisChromeApp')
         });
       });
     };
-
-    $scope.ccoFacilities = [];
-    facilityFactory.find(function (result) {
-      result.forEach(function (row) {
-        if (row.doc_type === 'cco' && nearbyLgas.indexOf(row.lgaUUID) !== -1) {
-          $scope.ccoFacilities.push(row);
-        }
-      });
-    });
 
     $scope.setFacility = function () {
       if ($scope.placeholder.selectedFacility === '-1') {

@@ -1,59 +1,56 @@
-<div class="row">
-    <div class="col-sm-12" ng-click="enterDeveloperMode()" data-qa="edit-config">
-        <div class="alert alert-info">
-            <span ng-bind="lastUpdated"></span>
-        </div>
+<div class="col-sm-12" ng-click="enterDeveloperMode()" data-qa="edit-config">
+  <div class="alert alert-info">
+    <span ng-bind="lastUpdated"></span>
+  </div>
+</div>
+<form name="editAppConfigForm" ng-submit="editAppConfigForm.$valid && save()" novalidate>
+
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title" translate>Facility Info</h4>
+      </div>
+      <div class="panel-body">
+        <div ng-include="'views/app-config/partials/forms/facility-info.html'"></div>
+      </div>
     </div>
-    <form name="editAppConfigForm" ng-submit="editAppConfigForm.$valid && save()" novalidate>
+  </div>
 
-        <div class="col-sm-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title" translate>Facility Info</h4>
-                </div>
-                <div class="panel-body">
-                    <div ng-include="'views/app-config/partials/forms/facility-info.html'"></div>
-                </div>
-            </div>
-        </div>
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title" translate>Contact person info</h4>
+      </div>
+      <div class="panel-body">
+        <div ng-include="'views/app-config/partials/forms/contact-person.html'"></div>
+      </div>
+    </div>
+  </div>
 
-        <div class="col-sm-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title" translate>Contact person info</h4>
-                </div>
-                <div class="panel-body">
-                    <div ng-include="'views/app-config/partials/forms/contact-person.html'"></div>
-                </div>
-            </div>
-        </div>
+  <div class="col-sm-12">
+    <div ng-include="'views/app-config/partials/forms/product-profile.html'"></div>
+  </div>
 
-        <div class="col-sm-12">
-            <div ng-include="'views/app-config/partials/forms/product-profile.html'"></div>
-        </div>
+  <div class="col-sm-12">
+    <div ng-include="'views/app-config/partials/forms/ccu-profile.html'"></div>
+  </div>
+  <div class="col-sm-12">
+    <div ng-include="'views/app-config/partials/forms/lga-profile.html'"></div>
+  </div>
 
-        <div class="col-sm-12">
-            <div ng-include="'views/app-config/partials/forms/ccu-profile.html'"></div>
-        </div>
-        <div class="col-sm-12">
-            <div ng-include="'views/app-config/partials/forms/lga-profile.html'"></div>
-        </div>
-        <div class="row">
-            <div class="panel-body"></div>
-            <div class="col-sm-12">
-                <div class="col-md-4 pull-left">
-                    <button type="submit" eha-ga-click="save" id="save" name="save" class="btn btn-success btn-lg"
-                            ng-click="isSubmitted = true"
-                            ng-disabled="isSaving || !developerMode">
-                        <span ng-show="!isSaving" translate>Save</span>
-                        <span ng-show="!isSaving"><i class="fa fa-floppy-o"></i></i></span>
-                        <span ng-show="isSaving" translate>Saving…</span>
-                        <span ng-show="isSaving"><i class="fa fa-spinner fa-spin"></i></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body"></div>
-    </form>
+  <div class="panel-body"></div>
+  <div class="col-sm-12">
+    <button type="submit" eha-ga-click="save" id="save" name="save"
+            class="btn btn-block btn-success btn-lg"
+            ng-click="isSubmitted = true"
+            ng-disabled="isSaving || !developerMode">
+      <span ng-show="!isSaving" translate>Save</span>
+      <span ng-show="!isSaving"><i class="fa fa-floppy-o"></i></i></span>
+      <span ng-show="isSaving" translate>Saving…</span>
+      <span ng-show="isSaving"><i class="fa fa-spinner fa-spin"></i></span>
+    </button>
+  </div>
+  <div class="panel-body"></div>
+</form>
 </div>
 
