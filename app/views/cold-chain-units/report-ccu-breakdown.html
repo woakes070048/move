@@ -33,7 +33,7 @@
                               <th>Date Reported</th>
                             </thead>
                             <tbody>
-                               <tr ng-repeat="item in breakdowns" ng-click="showCcuHistory(item);toggleInView(3)">
+                               <tr ng-repeat="item in breakdowns track by $index" ng-click="showCcuHistory(item);toggleInView(3)">
                                  <td>{{$index + 1}}</td>
                                  <td>{{ item.ccuProfile.Manufacturer }} - {{ item.ccuProfile.ModelName }}</td>
                                  <td>{{item.created | date:'MMM d, yyyy'}}</td>
@@ -55,7 +55,7 @@
                         </th>
                         <th>Status</th>
                     </thead>
-                    <tr ng-repeat="row in previewCcuProfile.ccuStatus">
+                    <tr ng-repeat="row in previewCcuProfile.ccuStatus track by $index">
                         <td>{{$index + 1}}</td>
                         <td>{{faults[row.fault]}}</td>
                         <td>{{row.created | date:'MMM d, yyyy'}}</td>

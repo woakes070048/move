@@ -24,6 +24,7 @@ angular.module('lmisChromeApp')
 
     $scope.facilityCcuList = appConfig.selectedCcuProfiles;
     $scope.breakdowns = [];
+    $scope.selectedProfile = '';
     $scope.faults = [
       'Leaking',
       'Broken Seal',
@@ -45,7 +46,8 @@ angular.module('lmisChromeApp')
         });
         $scope.faultSortDate = 'desc';
       }
-    }
+    };
+
     $scope.breakdowns = breakdowns;
     var c;
     $scope.ccuBreakdown = {
@@ -64,7 +66,7 @@ angular.module('lmisChromeApp')
           fault:'',
           status: 0,
           created: new Date().getTime()
-         }
+         };
 
     $scope.switchActiveCCE = function(){
       $scope.breakdowns.forEach(function(ccuBreakdown){
@@ -73,13 +75,11 @@ angular.module('lmisChromeApp')
         }
       });
       $scope.activeCCE.ccuStatus.push($scope.formVal);
-    }
+    };
 
     $scope.save = function() {
       $scope.isSaving = true;
        $scope.activeCCE.ccuProfile = JSON.parse($scope.selectedProfile);
-      $scope.switchActiveCCE();
-
 
       var ccuBreakdownReport = {
         ccuProfile: $scope.activeCCE.ccuProfile,
@@ -94,7 +94,7 @@ angular.module('lmisChromeApp')
       notificationService.getConfirmDialog(confirmationTitle, confirmationQuestion, buttonLabels)
         .then(function(isConfirmed) {
           if (isConfirmed === true) {
-
+            $scope.switchActiveCCE();
             ccuBreakdownFactory.save($scope.activeCCE) //ccuBreakdownReport
               .then(function(result) {
                 //move to home page send alert in the background
@@ -109,6 +109,8 @@ angular.module('lmisChromeApp')
                 $scope.isSaving = false;
                 $log.info(reason);
               });
+          } else {
+
           }
         })
         .catch(function(reason) {
@@ -121,9 +123,11 @@ angular.module('lmisChromeApp')
     $scope.toggleInView = function(viewId){
       $scope.inView = viewId;
     };
+
     $scope.showCcuHistory = function(ccu){
         $scope.previewCcuProfile = ccu;
-    }
+    };
+
     $scope.toggleCCEStatus = function(breakdown){
       breakdown.status = 1;
       ccuBreakdownFactory.save($scope.previewCcuProfile)
