@@ -12,7 +12,7 @@ angular.module('lmisChromeApp')
     };
 
     var saveBatch = function(facilities) {
-      return storageService.setDatabase(storageService.FACILITY, facilities);
+      return storageService.insertBatch(storageService.FACILITY, facilities);
     };
 
     var getFacilities = function(facilityIds) {
@@ -33,18 +33,18 @@ angular.module('lmisChromeApp')
 
     var removeFacilityUnderLgaId = function(lgaIds) {
       return getAllFacilities()
-          .then(function(res){
+          .then(function(rows){
             var toBeRemoved = [];
             var facility;
-            for(var i = 0; i < res.rows; i++){
-              facility = res.rows[i].doc;
-              if(lgaIds.indexOf(facility.lgaUUID)){
+            for(var i = 0; i < rows.length; i++){
+              facility = rows[i];
+              if(lgaIds.indexOf(facility.lgaUUID) !== -1){
                 facility._deleted = true;//mark for deletion
                 toBeRemoved.push(facility);
               }
             }
             return saveBatch(toBeRemoved);
-          })
+          });
     };
 
     var getFacilityByType = function(type){
