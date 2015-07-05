@@ -163,6 +163,7 @@ angular.module('lmisChromeApp')
     growl,
     isEdit,
     lgaList,
+    facilityFactory,
     locationService,
     messages,
     productProfilesGroupedByCategory,
@@ -397,11 +398,12 @@ angular.module('lmisChromeApp')
           }
         }).finally(function() {
             $scope.isSaving = false;
-            var facilityLgaIds = oldLgas.filter(function (lga) {
-              return (lga._id && nearbyLgaIds.indexOf(lga._id) !== -1);
+            var facilityLgaIds = lgaList.filter(function (lga) {
+              return (lga._id && nearbyLgaIds.indexOf(lga._id) === -1);
+            }).map(function(lga){
+              return lga._id;
             });
-            locationService.removeByLgaIds(facilityLgaIds);
-
+            facilityFactory.removeByLgaIds(facilityLgaIds);
         });
     };
 
