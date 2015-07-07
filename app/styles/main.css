@@ -292,3 +292,12 @@ tr.disabled, tr.disabled span.text-info{
 .pb10{
   padding-bottom: 10px;
 }
+.btn-disabled {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  cursor: not-allowed;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
