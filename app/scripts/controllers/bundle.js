@@ -412,7 +412,6 @@ angular.module('lmisChromeApp')
       } else {
         growl.error('Form still have missing data');
       }
-      console.log();
     };
 
     $scope.setFacility = function() {
