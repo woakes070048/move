@@ -186,7 +186,7 @@
                         <tr ng-repeat="productProfile in selectedProductProfiles" ng-click="edit(productProfile.uuid)">
                           <td ng-bind="productProfile.name"></td>
                           <td>
-                            <span ng-if="stockCount.unopened[productProfile.uuid]">
+                            <span ng-if="stockCount.unopened[productProfile.uuid] !== undefined">
                               <span ng-bind="stockCount.unopened[productProfile.uuid]"></span>
                               <span ng-bind="productProfile.product.base_uom.symbol"></span><span ng-if="stockCount.unopened[productProfile.uuid] !== 1">s</span>
                             </span>
