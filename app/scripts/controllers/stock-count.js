@@ -117,7 +117,6 @@ angular.module('lmisChromeApp')
     $scope.editOff = ($stateParams.editOff === 'true');
     $scope.countValue = {};
     $scope.showHistory = ($stateParams.showHistory === 'true');
-    console.log($stateParams.showHistory);
     $scope.stockCount = {};
     $scope.stockCount.unopened = {};
     $scope.facilityProducts = utility.castArrayToObject($scope.selectedProductProfiles, 'uuid');
@@ -131,6 +130,8 @@ angular.module('lmisChromeApp')
     } else {
       $scope.maxStep = 0;
     }
+
+
 
     function getPreviewButtonState() {
       var editState = ($scope.editOn && $scope.step !== $scope.maxStep && $scope.stockCount.isComplete);
@@ -173,7 +174,12 @@ angular.module('lmisChromeApp')
           $scope.dateInfo = $scope.stockCount.created;
           $scope.editOn = true; // enable edit mode
           if (angular.isUndefined($scope.stockCount.lastPosition)) {
-            $scope.stockCount.lastPosition = 0;
+            $scope.step = $scope.stockCount.lastPosition = 0;
+          }
+          if (!stockCount.isComplete && !$scope.editOff) {
+            $scope.step = $scope.stockCount.lastPosition;
+            $scope.productKey = $scope.facilityProductsKeys[$scope.step];
+            $scope.preview = $scope.detailView = false;
           }
           updateUIModel();
           updateCountValue();
