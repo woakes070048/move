@@ -395,17 +395,23 @@ angular.module('lmisChromeApp')
       return bundle;
     };
 
-    $scope.preview = function() {
+    $scope.preview = function(invalidForm) {
+
       //TODO: Validate bundle obj and show preview if valid.
       //TODO: create new facility obj for preview from uuid, hence no need to track currently selected facility.
-      $scope.previewForm = true;
-      $scope.previewBundle = angular.copy($scope.bundle);
-      if ($stateParams.type === logIncoming) {
-        $scope.previewBundle.facilityName = $scope.bundle.sendingFacility.name;
-      } else if ($stateParams.type === logOutgoing) {
-        $scope.previewBundle.facilityName = $scope.bundle.receivingFacility.name;
+      validateBundle();
+      if (!invalidForm) {
+        $scope.previewForm = true;
+        $scope.previewBundle = angular.copy($scope.bundle);
+        if ($stateParams.type === logIncoming) {
+          $scope.previewBundle.facilityName = $scope.bundle.sendingFacility.name;
+        } else if ($stateParams.type === logOutgoing) {
+          $scope.previewBundle.facilityName = $scope.bundle.receivingFacility.name;
+        }
+        updateBundleLines($scope.previewBundle);
+      } else {
+        growl.error('Form still have missing data');
       }
-      updateBundleLines($scope.previewBundle);
     };
 
     $scope.setFacility = function() {
@@ -524,7 +530,7 @@ angular.module('lmisChromeApp')
           indicator = 1;
           $scope.err[bundleLine.id].quantity = true;
         }
-        if(bundleLine.VVMStatus === ''){
+        if(bundleLine.VVMStatus === '' && $scope.selectedProduct[bundleLine.id]){
           if($scope.selectedProduct[bundleLine.id].category.name === 'cold-store-vaccines') {
             indicator = 1;
             $scope.err[bundleLine.id].vvmstatus = true;
@@ -543,6 +549,6 @@ angular.module('lmisChromeApp')
       }
       bundleLine.VVMStatus ='';
       return false;
-    }
+    };
   });
 
