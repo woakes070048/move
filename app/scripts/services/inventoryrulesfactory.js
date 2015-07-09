@@ -380,7 +380,12 @@ angular.module('lmisChromeApp')
           '939d5e05-2aa4-4883-9246-35c60dfa06a5': { popFactor: 0.75, usageFactor: 0.25}, //tt
           //TODO: wrong penta: 'f96946be-7dac-438e-9220-efc386276481': { popFactor: 0.75, usageFactor: 0.75}, //penta
           '0930b906-4802-4a65-8516-057bd839db3e': { popFactor: 0.75, usageFactor: 0.25},  //hbv
-          '1203c362-b7a8-499a-b7ba-b842bace7920': { popFactor: 0.75, usageFactor: 0.75} //correct penta
+          '1203c362-b7a8-499a-b7ba-b842bace7920': { popFactor: 0.75, usageFactor: 0.75}, //correct penta
+          'ipv': { popFactor: 0.75, usageFactor: 0.75},
+          '2fee31f0-7757-4f06-9914-d16c5ca9cc5f': { popFactor: 0.75, usageFactor: 0.75},
+          '111fbb51-0c5a-492a-97f6-2c7664e23d01': { popFactor: 0.75, usageFactor: 0.75},
+          'abe41e88-ab4a-4c6f-b7a4-4549e13fb758': { popFactor: 0.75, usageFactor: 0.75},
+          'f7675c7e-856a-45e8-b2af-d50f42950ac1': { popFactor: 0.75, usageFactor: 0.75}
         };
         //don't need a promise using rule-based hacks but will for proper adaptive rules
         var factor = factors[productTypeUuid];
@@ -421,12 +426,12 @@ angular.module('lmisChromeApp')
     var stockAboveReorder = function(stockLevel, bufferStock) {
       var above = (stockLevel - bufferStock).clamp(0, stockLevel);
       return Math.floor(above);
-    }
+    };
 
     var stockBelowReorder = function(stockLevel, bufferStock) {
       var below = stockLevel.clamp(0, bufferStock);
       return Math.floor(below);
-    }
+    };
 
     return {
       leadTime: leadTime,
