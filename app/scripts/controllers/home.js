@@ -203,11 +203,6 @@ angular.module('lmisChromeApp')
                     for (var uuid in productTypeCounts) {
                       product = productTypeCounts[uuid];
 
-                      //skip prods where we don't have inventory rule information
-                      if (product.bufferStock < 0) {
-                        continue;
-                      }
-
                       //filter out stock count with no reference to stock out broadcast since the last stock count
                       var filtered = filterStockCountWithNoStockOutRef(stockOutList, uuid);
 
@@ -215,6 +210,10 @@ angular.module('lmisChromeApp')
                       //TODO: gather those below reorder point and send background alert, if (product.stockLevel <= product.bufferStock && filtered.length === 0) {
                       if (product.stockLevel <= 0 && filtered.length === 0) {
                         stockOutWarning.push(uuid);
+                      }
+                      //skip prods where we don't have inventory rule information
+                      if (product.bufferStock < 0) {
+                        continue;
                       }
 
                       values.push({
