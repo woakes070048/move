@@ -35,7 +35,6 @@ deploy:
     bucket: eha-move
     local-dir: build
     skip_cleanup: true
-    acl: public_read
     upload-dir: staging
     region: eu-west-1
     on:
@@ -49,7 +48,6 @@ deploy:
     bucket: eha-move
     local-dir: build
     skip_cleanup: true
-    acl: public_read
     upload-dir: snapshots
     region: eu-west-1
     on:
@@ -63,7 +61,6 @@ deploy:
     bucket: eha-move
     local-dir: build
     upload-dir: releases
-    acl: public_read
     skip_cleanup: true
     region: eu-west-1
     on:
