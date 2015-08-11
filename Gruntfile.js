@@ -365,6 +365,11 @@ module.exports = function(grunt) {
           config: grunt.file.readJSON('config/development.json')
         }
       },
+      staging: {
+        constants: {
+          config: grunt.file.readJSON('config/staging.json')
+        }
+      },
       production: {
         constants: {
           config: grunt.file.readJSON('config/production.json')
@@ -540,7 +545,6 @@ module.exports = function(grunt) {
     ];
 
     var release = [
-      'ngconstant:production',
       'useminPrepare',
       'concurrent:dist',
       'autoprefixer',
@@ -564,11 +568,23 @@ module.exports = function(grunt) {
       'toggleComments:index'
     ];
 
+    var staging = [
+      'ngconstant:staging'
+    ];
+
+    var production = [
+      'ngconstant:production'
+    ];
+
     if (target === 'release') {
-      grunt.task.run(common.concat(release));
-    } else {
-      grunt.task.run(common.concat(snapshot));
+      return grunt.task.run(common.concat(production, release));
     }
+
+    if (target === 'staging') {
+      return grunt.task.run(common.concat(staging, release));
+    }
+
+    grunt.task.run(common.concat(snapshot));
   });
 
   grunt.registerTask('default', [

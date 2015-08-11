@@ -1,0 +1,8 @@
+{
+  "api": {
+    "url": "http://lomis-stage.ehealth.org.ng:5984"
+  },
+  "analytics": {
+    "propertyID": "UA-52016752-10"
+  }
+}
