@@ -26,9 +26,9 @@ Fixed a bug, done some refactoring or wrote a new feature? Awesome! File a
 Otherwise, confirm the issue is reproducible, create a [reduced test
 case][] and file a [new issue][] with as much detail as possible.
 
-[GitHub issue tracker]: https://github.com/eHealthAfrica/LMIS-Chrome/search?type=Issues
+[GitHub issue tracker]: https://github.com/eHealthAfrica/move/search?type=Issues
 [reduced test case]: http://css-tricks.com/reduced-test-cases
-[new issue]: https://github.com/eHealthAfrica/LMIS-Chrome/issues/new
+[new issue]: https://github.com/eHealthAfrica/move/issues/new
 
 ## Pull requests
 
@@ -39,8 +39,8 @@ the same)
 1. Clone and fork the project
 
     ```bash
-    git clone eHealthAfrica/LMIS-Chrome
-    cd LMIS-Chrome
+    git clone eHealthAfrica/move
+    cd move
     git fork
     ```
 
@@ -80,7 +80,7 @@ the same)
 A member of [the team][] will review the request and merge it into `develop` if
 it looks good and/or discuss with you accordingly.
 
-[the repo]: https://github.com/eHealthAfrica/LMIS-Chrome
+[the repo]: https://github.com/eHealthAfrica/move
 [hub]: http://hub.github.com
 [git-extras]: https://github.com/visionmedia/git-extras
 [the team]: https://github.com/orgs/eHealthAfrica/teams/lmis

@@ -1,13 +1,13 @@
-# LMIS-Chrome
+# move
 
 [![Build Status][travis-image]][travis-url] [![devDependency Status][daviddm-image]][daviddm-url] [![Code Climate][codeclimate-image]][codeclimate-url]
 
-[travis-url]: https://travis-ci.org/eHealthAfrica/LMIS-Chrome
-[travis-image]: https://travis-ci.org/eHealthAfrica/LMIS-Chrome.png?branch=master
-[daviddm-url]: https://david-dm.org/eHealthAfrica/LMIS-Chrome#info=devDependencies
-[daviddm-image]: https://david-dm.org/eHealthAfrica/LMIS-Chrome/dev-status.png?theme=shields.io
-[codeclimate-url]: https://codeclimate.com/github/eHealthAfrica/LMIS-Chrome
-[codeclimate-image]: https://codeclimate.com/github/eHealthAfrica/LMIS-Chrome.png
+[travis-url]: https://travis-ci.org/eHealthAfrica/move
+[travis-image]: https://travis-ci.org/eHealthAfrica/move.png?branch=master
+[daviddm-url]: https://david-dm.org/eHealthAfrica/move#info=devDependencies
+[daviddm-image]: https://david-dm.org/eHealthAfrica/move/dev-status.png?theme=shields.io
+[codeclimate-url]: https://codeclimate.com/github/eHealthAfrica/move
+[codeclimate-image]: https://codeclimate.com/github/eHealthAfrica/move.png
 
 > User centered medical supply management
 
@@ -15,8 +15,8 @@
 
 0. Install [Chrome][] [Node.js][] and [Git][]
 1. `npm install -g karma grunt-cli bower`
-2. `git clone https://github.com/eHealthAfrica/LMIS-Chrome.git`
-3. `cd LMIS-Chrome && npm install; bower install`
+2. `git clone https://github.com/eHealthAfrica/move.git`
+3. `cd move && npm install; bower install`
 4. `grunt serve`
 5. Launch Chrome and browse to http://localhost:9000
 
