@@ -29,6 +29,7 @@
   -->
   <access origin="http://localhost:5984/*"/>
   <access origin="http://lomis.ehealth.org.ng:5984/*"/>
+  <access origin="http://lomis-stage.ehealth.org.ng:5984/*"/>
   <access origin="http://dev.lomis.ehealth.org.ng:5984/*"/>
   <!-- crosswalk version, please see:
     - https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview
@@ -47,7 +48,3 @@
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 </widget>
-
-
-
-
