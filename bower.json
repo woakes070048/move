@@ -23,7 +23,7 @@
     "jasmine-as-promised": "~0.0.8",
     "es5-shim": "~3.4.0"
   },
-  "homepage": "https://github.com/eHealthAfrica/LMIS-Chrome",
+  "homepage": "https://github.com/eHealthAfrica/move",
   "authors": [
     "Tom Vincent <tom.vincent@ehealthnigeria.org> (https://tlvince.com)",
     "Jideobi Ofomah <jideobi.ofomah@ehealthnigeria.org>",
