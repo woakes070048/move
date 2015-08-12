@@ -51,7 +51,6 @@ describe('Service: inventoryRulesFactory', function() {
         // Whitespace separator is invalid here; should be 'T'
         created: '2014-03-04 12:30:30',
         // Just the date component is valid ISO 8601
-        // jshint camelcase: false
         date_receipt: '2014-03-08',
       };
 
@@ -61,7 +60,6 @@ describe('Service: inventoryRulesFactory', function() {
     });
 
     it('should fail if the order has not been received', function() {
-      // jshint camelcase: false
       var orders = [
         {created: '2014-03-04T12:30:30'},
         {created: '2014-03-04T12:30:30', date_receipt: ''}
@@ -76,7 +74,6 @@ describe('Service: inventoryRulesFactory', function() {
     it('should throw if created before received', function() {
       var order = {
         created: '2014-03-04T12:30:30Z',
-        // jshint camelcase: false
         date_receipt: '2014-03-04',
       };
       expect(function() {

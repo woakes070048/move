@@ -58,7 +58,8 @@ let g:syntastic_html_tidy_ignore_errors = [
   \ , 'discarding unexpected </eha-'
   \ ]
 
-let g:syntastic_javascript_checkers = ['eslint', 'jshint', 'jscs']
+let $PATH = './node_modules/.bin:' . $PATH
+let g:syntastic_javascript_checkers = ['eslint']
 autocmd BufNewFile,BufEnter .eslintrc setlocal filetype=yaml
 
 " javascript-libraries-syntax.vim

@@ -62,7 +62,6 @@ angular.module('lmisChromeApp')
         }
       };
 
-      // jshint newcap: false
       $scope.batches = new ngTableParams(params, resolver);
     })
 /**

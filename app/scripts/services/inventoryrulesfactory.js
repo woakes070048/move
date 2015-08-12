@@ -278,7 +278,6 @@ angular.module('lmisChromeApp')
       };
 
       var created = new Date(order.created);
-      // jshint camelcase: false
       var received = new Date(order.date_receipt);
 
       isValidDate(created);
@@ -300,7 +299,6 @@ angular.module('lmisChromeApp')
      * @param {Object} facility The facility object.
      * @return {Number} the consumption level.
      */
-    // jshint unused: false
     var consumption = function(facility) {
       // FIXME: Awaiting discussion, see #222
       return 10;

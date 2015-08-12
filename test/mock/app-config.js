@@ -1,5 +1,4 @@
 angular.module('appConfigMocks', [])
-  // jshint camelcase: false
   .value('appConfigMock', {
     "_id": "lomis.test@ehealthnigeria.org",
     "_rev": "449-72280fa1326abc09ab487a77a8088085",

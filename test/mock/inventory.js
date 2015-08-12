@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('inventoriesMocks', [])
-  // jshint camelcase: false
   .value('inventoriesMock', [
     {
       created: '2014-02-12T09:17:08Z',

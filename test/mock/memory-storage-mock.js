@@ -1,4 +1,3 @@
-/* jshint quotmark: false */
 'use strict';
 
 angular.module('memoryStoreMocks', [])

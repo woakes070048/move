@@ -10,7 +10,6 @@ angular.module('lmisChromeApp')
     this.allDocs = function(db) {
       db = pouchDB(db);
       return db.allDocs({
-        // jshint camelcase: false
         include_docs: true
       })
         .then(function(result) {

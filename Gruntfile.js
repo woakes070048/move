@@ -1,4 +1,4 @@
-// Generated on 2014-03-02 using generator-angular 0.7.1
+/*eslint-env node */
 'use strict';
 
 module.exports = function(grunt) {
@@ -94,24 +94,6 @@ module.exports = function(grunt) {
         options: {
           base: '<%= yeoman.dist %>'
         }
-      }
-    },
-
-    // Make sure code styles are up to par and there are no obvious mistakes
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
-      },
-      all: [
-        'Gruntfile.js',
-        '<%= yeoman.app %>/scripts/**/*.js'
-      ],
-      test: {
-        options: {
-          jshintrc: 'test/.jshintrc'
-        },
-        src: ['test/**/*.js']
       }
     },
 
@@ -398,34 +380,6 @@ module.exports = function(grunt) {
       }
     },
 
-    eslint: {
-      options: {
-        config: '.eslintrc',
-        rulesdir: [
-          'node_modules/eslint-no-exclusive-tests/lib/rules'
-        ]
-      },
-      all: '<%= jshint.all %>',
-      test: {
-        options: {
-          config: 'test/.eslintrc'
-        },
-        src: '<%= jshint.test.src %>'
-      }
-    },
-
-    jsbeautifier: {
-      options: {
-        mode: 'VERIFY_ONLY',
-        jsbeautifyrc: true
-      },
-      src: '<%= jshint.all %>'
-    },
-
-    jscs: {
-      src: '<%= jshint.all %>'
-    },
-
     html2js: {
       options: {
         // custom options, see below
@@ -588,7 +542,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', [
-    'newer:jshint',
     'test',
     'build'
   ]);
@@ -602,11 +555,4 @@ module.exports = function(grunt) {
       bump
     ]);
   });
-
-  grunt.registerTask('checkstyle', [
-    'jshint',
-    'eslint',
-    'jscs',
-    'jsbeautifier'
-  ]);
 };

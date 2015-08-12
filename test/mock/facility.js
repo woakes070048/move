@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('facilitiesMocks', [])
-  // jshint camelcase: false
   .value('facilitiesMock', [
     {
       created_by: 2,

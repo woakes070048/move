@@ -115,7 +115,6 @@ describe('Service: utility', function () {
     });
 
     it('should function even if hasOwnProperty was overridden', function () {
-      // jshint -W001
       var mock = {hasOwnProperty: ''};
       expect(utility.has(mock, 'constructor')).toBe(false);
     });
