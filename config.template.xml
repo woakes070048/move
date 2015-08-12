@@ -35,7 +35,7 @@
     - https://github.com/crosswalk-project/cordova-plugin-crosswalk-webview
     - https://download.01.org/crosswalk/releases/crosswalk/android/maven2
   -->
-  <preference name="xwalkversion" value="org.xwalk:xwalk_core_library:13.42.319.11"/>
+  <preference name="xwalkversion" value="org.xwalk:xwalk_core_library:14.43.343.17"/>
 
   <platform name="android">
     <icon src="www/images/icon-48.png" width="48" height="48" density="mdpi" />
