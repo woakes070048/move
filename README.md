@@ -1,13 +1,9 @@
 # move
 
-[![Build Status][travis-image]][travis-url] [![devDependency Status][daviddm-image]][daviddm-url] [![Code Climate][codeclimate-image]][codeclimate-url]
+[![Build Status][travis-image]][travis-url]
 
 [travis-url]: https://travis-ci.org/eHealthAfrica/move
-[travis-image]: https://travis-ci.org/eHealthAfrica/move.png?branch=master
-[daviddm-url]: https://david-dm.org/eHealthAfrica/move#info=devDependencies
-[daviddm-image]: https://david-dm.org/eHealthAfrica/move/dev-status.png?theme=shields.io
-[codeclimate-url]: https://codeclimate.com/github/eHealthAfrica/move
-[codeclimate-image]: https://codeclimate.com/github/eHealthAfrica/move.png
+[travis-image]: https://img.shields.io/travis/eHealthAfrica/move/develop.svg
 
 > User centered medical supply management
 
