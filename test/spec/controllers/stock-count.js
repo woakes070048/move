@@ -30,7 +30,6 @@ describe('Controller: StockCountFormCtrl', function() {
       'home/index',
       'home/nav',
       'home/sidebar',
-      'home/control-panel',
       'home/main-activity',
       'home/home',
       'dashboard/dashboard',
