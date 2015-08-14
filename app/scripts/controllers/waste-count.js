@@ -131,7 +131,7 @@ angular.module('lmisChromeApp')
               .finally(function(){
                 $scope.isSaving = false;
                 alertFactory.success(messages.wasteCountSaved);
-                $state.go('home.index.home.mainActivity');
+                $state.go('home.mainActivity');
               });
           })
           .catch(function(reason){

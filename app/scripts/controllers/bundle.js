@@ -60,7 +60,7 @@ angular.module('lmisChromeApp')
     $scope.stateColdStore = {'uuid': '3e1275f1599f695322aaecdafe0c933a', 'name': 'Kano State Cold Store'};
 
     if ($stateParams.type !== logIncoming && $stateParams.type !== logOutgoing) {
-      $state.go('home.index.home.mainActivity');
+      $state.go('home.mainActivity');
       growl.error(messages.specifyBundleType);
       return;
     }
@@ -276,7 +276,7 @@ angular.module('lmisChromeApp')
     };
 
     if ($stateParams.type !== logIncoming && $stateParams.type !== logOutgoing) {
-      $state.go('home.index.home.mainActivity');
+      $state.go('home.mainActivity');
       growl.error(messages.specifyBundleType);
       return;
     }
@@ -467,7 +467,7 @@ angular.module('lmisChromeApp')
           syncService.syncUpRecord(bundleService.BUNDLE_DB, bundle)
             .finally(function() {
               alertFactory.success(successMsg);
-              $state.go('home.index.home.mainActivity');
+              $state.go('home.mainActivity');
               $scope.isSaving = false;
               updateBatchInfo(bundle.bundleLines);
             });

@@ -41,11 +41,11 @@ angular.module('lmisChromeApp')
         if (isConfirmed === true) {
           $scope.clearAndLoadFixture();
         } else {
-          $state.go('home.index.home.mainActivity');
+          $state.go('home.mainActivity');
         }
       })
       .catch(function(reason) {
         console.error(reason);
-        $state.go('home.index.home.mainActivity');
+        $state.go('home.mainActivity');
       });
   });

@@ -80,7 +80,7 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
           .then(function(result) {
             $scope.isSaving = false;
             alertFactory.success(messages.stockOutBroadcastSuccessMsg);
-            $state.go('home.index.home.mainActivity');
+            $state.go('home.mainActivity');
           })
           .catch(function(reason) {
             growl.error(messages.stockOutBroadcastFailedMsg);
@@ -146,7 +146,7 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
                       console.error(reason);
                     })
                     .finally(function() {
-                      $state.go('home.index.home.mainActivity');
+                      $state.go('home.mainActivity');
                     });
                 } else {
                   growl.error(messages.stockOutBroadcastFailedMsg);

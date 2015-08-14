@@ -37,7 +37,7 @@ angular.module('lmisChromeApp')
                     growl.error(messages.lgaFacilityListFailed);
                   })
                   .finally(function(){
-                    $state.go('home.index.home.mainActivity');
+                    $state.go('home.mainActivity');
                   });
             }
           }

@@ -98,7 +98,7 @@ angular.module('lmisChromeApp')
                 alertFactory.success(messages.ccuBreakdownReportSuccessMsg);
                 ccuBreakdownFactory.broadcast(result)
                   .finally(function() {
-                    $state.go('home.index.home.mainActivity');
+                    $state.go('home.mainActivity');
                   });
               })
               .catch(function(reason) {

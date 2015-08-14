@@ -31,7 +31,7 @@ describe('Home controller', function () {
     $state = _$state_;
   }));
 
-  var state = 'home.index.home.mainActivity';
+  var state = 'home.mainActivity';
   it('should respond to URL', function () {
     expect($state.href(state)).toEqual('/main-activity');
   });

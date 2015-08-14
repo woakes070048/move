@@ -3,7 +3,7 @@
 angular.module('lmisChromeApp')
   .config(function($stateProvider) {
     $stateProvider
-      .state('home.index.home.mainActivity', {
+      .state('home.mainActivity', {
         url: '/main-activity',
         views: {
           'activities': {

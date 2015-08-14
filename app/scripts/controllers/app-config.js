@@ -338,7 +338,7 @@ angular.module('lmisChromeApp')
       }
       if (!forSerial) {
         alertFactory.success(messages.appConfigSuccessMsg);
-        $state.go('home.index.home.mainActivity');
+        $state.go('home.mainActivity');
       }
     }
 

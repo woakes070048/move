@@ -18,7 +18,7 @@ angular.module('lmisChromeApp', [
   .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, growl, utility) {
 
     function navigateToHome() {
-      $state.go('home.index.home.mainActivity');
+      $state.go('home.mainActivity');
       backgroundSyncService.startBackgroundSync()
         .then(function() {
           console.log('updateAppConfigAndStartBackgroundSync triggered on start up has been completed!');
@@ -36,7 +36,7 @@ angular.module('lmisChromeApp', [
       appConfigService.getCurrentAppConfig()
         .then(function(cfg) {
           if (angular.isObject(cfg) && !angular.isArray(cfg)) {
-            $state.go('home.index.home.mainActivity');
+            $state.go('home.mainActivity');
           } else {
             $state.go('appConfigWelcome');
           }

@@ -208,7 +208,7 @@ angular.module('lmisChromeApp')
         .finally(function() {
           $scope.isSaving = false;
           alertFactory.success(msg);
-          $state.go('home.index.home.mainActivity');
+          $state.go('home.mainActivity');
         });
     };
     function genSMS(stockCount) {
