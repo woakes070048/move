@@ -83,7 +83,7 @@ angular.module('lmisChromeApp')
       }
     };
   })
-  .controller('StockCountFormCtrl', function($scope, $q, stockCountFactory, reminderFactory, notificationService, $state, growl, alertFactory, $stateParams, appConfig, appConfigService, cacheService, syncService, utility, $rootScope, messages, mostRecentStockCount, geolocationFactory) {
+  .controller('StockCountFormCtrl', function($scope, $q, stockCountFactory, reminderFactory, notificationService, $state, growl, alertFactory, $stateParams, appConfig, appConfigService, cacheService, syncService, utility, $rootScope, messages, mostRecentStockCount, geolocationFactory, productCategoryFactory) {
 
     var scInterval = appConfig.facility.stockCountInterval;
     var reminderDay = appConfig.facility.reminderDay;
@@ -91,10 +91,10 @@ angular.module('lmisChromeApp')
 
     //TODO: refactor entire stock count controller to simpler more readable controller
     $scope.getCategoryColor = function(categoryName) {
-      if (!categoryName || $scope.preview) {
+      if ($scope.preview) {
         return;
       }
-      return categoryName.split(' ').join('-').toLowerCase();
+      return productCategoryFactory.getCategoryColor(categoryName);
     };
     $scope.isNew = ($stateParams.newStockCount === 'true');
 
