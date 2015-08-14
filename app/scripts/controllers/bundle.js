@@ -541,13 +541,14 @@ angular.module('lmisChromeApp')
     }
     $scope.getCategoryColor = productCategoryFactory.getCategoryColor;
     $scope.expiredProductAlert = productProfileFactory.compareDates;
-    $scope.productIsVaccine = function(product,bundleLine){
-      if(!angular.isUndefined(product)) {
-        if ((productCategoryFactory.getCategoryColor(product.category.name)) === 'cold-store-vaccines') {
-          return true;
-        }
+    $scope.productIsVaccine = function(product, bundleLine) {
+      if (!(product && product.category && product.category.name)) {
+        return false;
       }
-      bundleLine.VVMStatus ='';
+      if (productCategoryFactory.getCategoryColor(product.category.name) === 'cold-store-vaccines') {
+        return true;
+      }
+      bundleLine.VVMStatus = '';
       return false;
     };
   });
