@@ -6,9 +6,6 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
     parent: 'root.index',
     templateUrl: 'views/stock-out-broadcast/stock-out-broadcast.html',
     controller: 'StockOutBroadcastCtrl',
-    data: {
-      label: 'Broadcast stock-out'
-    },
     resolve: {
       appConfig: function(appConfigService) {
         return appConfigService.getCurrentAppConfig();
@@ -22,9 +19,6 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
       url: '/multiStockOutBroadcast?productList',
       parent: 'root.index',
       templateUrl: 'views/stock-out-broadcast/multi-stock-out-broadcast.html',
-      data: {
-        label: 'Broadcast Multiple Stock Out'
-      },
       resolve: {
         appConfig: function(appConfigService) {
           return appConfigService.getCurrentAppConfig();

@@ -27,9 +27,6 @@ angular.module('lmisChromeApp')
               });
           }
         },
-        data: {
-          label: 'Welcome'
-        },
         controller: function($scope, config, $state, fixtureLoaderService, messages, locationService, appConfigService, growl) {
           // Found config, we're good to go
           if(config.notFound !== true) {

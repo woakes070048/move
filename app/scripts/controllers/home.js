@@ -62,9 +62,6 @@ angular.module('lmisChromeApp')
       })
       .state('home.index.home.mainActivity', {
         url: '/main-activity',
-        data: {
-          label: 'Home'
-        },
         views: {
           'activities': {
             templateUrl: 'views/home/main-activity.html',

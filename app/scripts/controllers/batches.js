@@ -10,9 +10,6 @@ angular.module('lmisChromeApp')
             url: '/batch-list-view',
             templateUrl: 'views/batches/index.html',
             controller: 'BatchListCtrl',
-            data: {
-              label: 'Batch List'
-            },
             resolve: {
               batchList: function (batchFactory) {
                 return batchFactory.getAll();
@@ -21,10 +18,7 @@ angular.module('lmisChromeApp')
           }).state('addBatchView', {
             url: '/add-batch',
             templateUrl: 'views/batches/add-batch-form.html',
-            controller: 'AddBatchCtrl',
-            data: {
-              label: 'Add Batch'
-            }
+            controller: 'AddBatchCtrl'
           });
     })
 /**

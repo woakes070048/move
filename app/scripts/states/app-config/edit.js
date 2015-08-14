@@ -27,9 +27,6 @@ angular.module('lmisChromeApp')
             return true;
           }
         },
-        controller: 'AppConfigWizard',
-        data: {
-          label: 'Settings'
-        }
+        controller: 'AppConfigWizard'
       });
   });

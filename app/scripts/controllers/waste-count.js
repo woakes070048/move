@@ -6,9 +6,6 @@ angular.module('lmisChromeApp')
       .state('wasteCountHome', {
         parent: 'root.index',
         url: '/wasteCountHome',
-        data: {
-          label: 'Waste Count Home'
-        },
         templateUrl: 'views/waste-count/waste-count.html',
         resolve: {
           appConfig: function(appConfigService){

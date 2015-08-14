@@ -64,9 +64,6 @@ angular.module('lmisChromeApp')
             return false;
           }
         },
-        controller: 'AppConfigWizard',
-        data: {
-          label: 'Configuration wizard'
-        }
+        controller: 'AppConfigWizard'
       });
   });

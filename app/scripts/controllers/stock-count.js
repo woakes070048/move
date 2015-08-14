@@ -6,9 +6,6 @@ angular.module('lmisChromeApp')
       .state('stockCountHome', {
         parent: 'root.index',
         url: '/stockCountHome',
-        data: {
-          label: 'Stock Count Home'
-        },
         templateUrl: 'views/stock-count/index.html',
         resolve: {
           appConfig: function(appConfigService) {
@@ -32,9 +29,6 @@ angular.module('lmisChromeApp')
       })
       .state('stockCountForm', {
         parent: 'root.index',
-        data: {
-          label: 'Stock Count Form'
-        },
         url: '/stockCountForm?newStockCount&facility&reportMonth&reportYear&reportDay&uuid&productKey&detailView&editOff&showHistory',
         templateUrl: 'views/stock-count/stock-count-form.html',
         controller: 'StockCountFormCtrl',
