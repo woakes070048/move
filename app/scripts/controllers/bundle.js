@@ -172,18 +172,6 @@ angular.module('lmisChromeApp')
       $scope.preview = false;
     };
     $scope.expiredProductAlert = productProfileFactory.compareDates;
-    $scope.VVMStatus = {
-      freshLevel1: '1.1',
-      freshLevel2: '1.2',
-      freshLevel3: '1.3',
-      freshLevel4: '1.4',
-      freshLevel5: '1.5',
-      expired1: '2.1',
-      expired2: '2.2',
-      expired3: '2.3',
-      NoVVM : '3'
-    }
-
   })
   .controller('LogBundleCtrl', function($scope, batchStore, utility, batchService, appConfig, messages, productProfileFactory, bundleService, growl, $state, alertFactory, syncService, $stateParams, $filter, locationService, facilityFactory,appConfigService,productCategoryFactory, VVM_OPTIONS) {
 
@@ -200,7 +188,7 @@ angular.module('lmisChromeApp')
     $scope.batchNos = Object.keys(batchStore);
 
     $scope.vvmOptions = VVM_OPTIONS;
-    $scope.selectVVMOption = function(bundleLine,option){
+    $scope.selectVVMOption = function(bundleLine, option) {
       $scope.toggleIsopen = false;
       bundleLine.VVMStatus = option;
     };
