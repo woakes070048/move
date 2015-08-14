@@ -1,8 +1,6 @@
-<div ng-show="stockOutWarning.length">
-  <a ui-sref="multiStockOutBroadcast({productList: stockOutWarning.join(',')})" eha-ga-click="stock_out">
-    <div class="col-md-12 alert alert-danger">
-      <img src="images/dashboard-icons/stock-out-warning.png" >
-      <strong><span>{{ stockOutWarningMsg }}</span></strong>
-    </div>
-  </a>
-</div>
+<a ui-sref="multiStockOutBroadcast({productList: stockOutWarning.join(',')})" eha-ga-click="stock_out">
+  <div class="col-md-12 alert alert-danger">
+    <img src="images/dashboard-icons/stock-out-warning.png" >
+    <strong><span>{{ stockOutWarningMsg }}</span></strong>
+  </div>
+</a>

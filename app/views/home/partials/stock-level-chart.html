@@ -1,5 +1,8 @@
 <div ng-show="showChart">
-  <div ng-include="'views/home/partials/stock-out-warning.html'"></div>
+  <div
+    ng-if="stockOutWarning.length"
+    ng-include="'views/home/partials/stock-out-warning.html'"
+  ></div>
   <div class="panel panel-default">
     <div class="container-fluid">
         <div class="product-chart">
