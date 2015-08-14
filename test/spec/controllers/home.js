@@ -12,11 +12,8 @@ describe('Home controller', function () {
       'index/header',
       'index/footer',
       'home/index',
-      'home/nav',
-      'home/sidebar',
       'home/main-activity',
       'home/home',
-      'dashboard/dashboard',
       'index/loading-fixture-screen'
     ];
 
