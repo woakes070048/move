@@ -152,7 +152,7 @@ angular.module('lmisChromeApp')
     }
 
     $scope.convertToPresentationUom = function() {
-      if (angular.isDefined($scope.countValue[$scope.productKey])) {
+      if ($scope.countValue[$scope.productKey] && $scope.facilityProducts[$scope.productKey]) {
         var value = $scope.facilityProducts[$scope.productKey].presentation.value;
         $scope.stockCount.unopened[$scope.productKey] = $scope.countValue[$scope.productKey] * value;
       }
