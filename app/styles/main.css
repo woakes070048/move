@@ -277,6 +277,9 @@ tr.disabled, tr.disabled span.text-info{
     border-left: 4px solid #6eca97 !important;
     border-right: 4px solid #6eca97 !important;
 }
+.vvm-icon-dropdown > li > a:hover {
+  color: inherit;
+}
 .serial-list{
   position: relative;
   display: block;
