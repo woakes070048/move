@@ -22,7 +22,7 @@ angular.module('lmisChromeApp')
             }
           },
           'charts': {
-            templateUrl: 'views/dashboard/dashboard.html',
+            templateUrl: 'views/home/partials/stock-level-chart.html',
             resolve: {
               stockOutList: function(stockOutBroadcastFactory) {
                 return stockOutBroadcastFactory.getAll();
