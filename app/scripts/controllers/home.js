@@ -56,13 +56,6 @@ angular.module('lmisChromeApp')
           }
         }
       })
-      .state('home.index.controlPanel', {
-        url: '/control-panel',
-        templateUrl: 'views/home/control-panel.html',
-        data: {
-          label: 'Home'
-        }
-      })
       .state('home.index.home', {
         abstract: true,
         templateUrl: 'views/home/home.html'
