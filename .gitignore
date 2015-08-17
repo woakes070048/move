@@ -11,3 +11,4 @@ app/scripts/translations.js
 build
 nbproject/private/
 po/template.pot
+.android/
