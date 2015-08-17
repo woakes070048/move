@@ -15,6 +15,11 @@ type="snapshot"
 [[ "$TRAVIS_TAG" ]] && type="release"
 [[ "$TRAVIS_BRANCH" == "staging" ]] && type="staging"
 
+[[ "$type" != "snapshot" ]] && {
+  openssl aes-256-cbc -K $encrypted_07e96be3e0d9_key -iv $encrypted_07e96be3e0d9_iv -in .android/release-files.tar.enc -out .android/release-files.tar -d
+  tar xvf .android/release-files.tar -C .android
+}
+
 grunt ehaCordovaBuild:"$type"
 # Deploy only the resulting APK(s), not the interim artefacts
 rm -rf build/move
