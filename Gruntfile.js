@@ -136,19 +136,17 @@ module.exports = function(grunt) {
     },
 
     // Renames files for browser caching purposes
-    rev: {
+    filerev: {
       dist: {
-        files: {
-          src: [
-            '<%= yeoman.dist %>/scripts/{,*/}*.js',
-            '<%= yeoman.dist %>/styles/{,*/}*.css',
-            '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-            '<%= yeoman.dist %>/styles/fonts/*',
-            '!<%= yeoman.dist %>/scripts/main*.js',
-            '!<%= yeoman.dist %>/images/icon{,-*}.png',
-            '!<%= yeoman.dist %>/images/vvm-icons/*'
-          ]
-        }
+        src: [
+          '<%= yeoman.dist %>/scripts/{,*/}*.js',
+          '<%= yeoman.dist %>/styles/{,*/}*.css',
+          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= yeoman.dist %>/styles/fonts/*',
+          '!<%= yeoman.dist %>/scripts/main*.js',
+          '!<%= yeoman.dist %>/images/icon{,-*}.png',
+          '!<%= yeoman.dist %>/images/vvm-icons/*'
+        ]
       }
     },
 
@@ -516,7 +514,7 @@ module.exports = function(grunt) {
       'toggleComments:dist',
       'cssmin',
       'uglify',
-      'rev',
+      'filerev',
       'usemin',
       'htmlmin'
     ];
