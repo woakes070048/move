@@ -24,7 +24,7 @@
     "grunt-contrib-cssmin": "^0.10.0",
     "grunt-contrib-htmlmin": "^0.3.0",
     "grunt-contrib-imagemin": "^0.7.1",
-    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eha-cordova-build": "^2.3.0",
     "grunt-karma": "^0.8.3",
