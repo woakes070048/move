@@ -452,6 +452,13 @@ module.exports = function(grunt) {
         appname: 'Move',
         buildCmd: 'grunt build:{%= type %}'
       }
+    },
+
+    uglify: {
+      options: {
+        sourceMap: true,
+        sourceMapIncludeSources: true
+      }
     }
   });
 
