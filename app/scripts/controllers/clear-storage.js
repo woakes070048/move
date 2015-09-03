@@ -9,7 +9,7 @@ angular.module('lmisChromeApp')
         controller: 'ClearStorage'
       });
   })
-  .controller('ClearStorage', function($scope, storageService, $state, backgroundSyncService, cacheService, $q, alertFactory, notificationService, messages, memoryStorageService, fixtureLoaderService, growl, ehaLoginService) {
+  .controller('ClearStorage', function($scope, storageService, $state, backgroundSyncService, cacheService, $q, alertFactory, notificationService, messages, memoryStorageService, fixtureLoaderService, toastr, ehaLoginService) {
     $scope.clearAndLoadFixture = function() {
       var deferred = $q.defer();
       backgroundSyncService.cancel();
@@ -24,7 +24,7 @@ angular.module('lmisChromeApp')
           return ehaLoginService.logout();
         })
         .catch(function(reason) {
-          growl.error(messages.clearStorageFailed, {ttl: -1});
+          toastr.error(messages.clearStorageFailed, {ttl: -1});
           console.error(reason);
         })
         .finally(function() {

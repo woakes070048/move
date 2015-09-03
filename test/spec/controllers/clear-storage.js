@@ -6,7 +6,7 @@ describe('ClearStorage', function() {
   var $state;
   var storageService;
   var cacheService;
-  var growl;
+  var toastr;
   var alertFactory;
   var backgroundSyncService;
   var memoryStorageService;
@@ -33,7 +33,7 @@ describe('ClearStorage', function() {
 
   }));
 
-  beforeEach(inject(function($controller, _storageService_, _$state_, _notificationService_, _backgroundSyncService_, _cacheService_, _$q_, _memoryStorageService_, _growl_, _fixtureLoaderService_, _alertFactory_) {
+  beforeEach(inject(function($controller, _storageService_, _$state_, _notificationService_, _backgroundSyncService_, _cacheService_, _$q_, _memoryStorageService_, _toastr_, _fixtureLoaderService_, _alertFactory_) {
     scope = {};
     storageService = _storageService_
     $state = _$state_;
@@ -42,7 +42,7 @@ describe('ClearStorage', function() {
     cacheService = _cacheService_;
     $q = _$q_;
     memoryStorageService = _memoryStorageService_;
-    growl = _growl_;
+    toastr = _toastr_;
     fixtureLoaderService = _fixtureLoaderService_;
     alertFactory = _alertFactory_;
 
@@ -55,7 +55,7 @@ describe('ClearStorage', function() {
       cacheService: cacheService,
       $q: $q,
       memoryStorageService: memoryStorageService,
-      growl: growl,
+      toastr: toastr,
       fixtureLoaderService: fixtureLoaderService,
       alertFactory: alertFactory
     });

@@ -63,7 +63,7 @@ angular.module('lmisChromeApp')
  * waste count form 2
  */
 
-  .controller('wasteCountFormCtrl', function($scope, wasteCountFactory, $state, growl, $stateParams, appConfig,
+  .controller('wasteCountFormCtrl', function($scope, wasteCountFactory, $state, toastr, $stateParams, appConfig,
                                               messages, syncService, alertFactory){
 
     $scope.wasteCountModel = {};
@@ -136,7 +136,7 @@ angular.module('lmisChromeApp')
           })
           .catch(function(reason){
             console.error(reason);
-            growl.error(reason);
+            toastr.error(reason);
           });
     };
 

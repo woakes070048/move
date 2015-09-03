@@ -8,12 +8,12 @@ angular.module('lmisChromeApp')
         views: {
           'activities': {
             templateUrl: 'views/home/main-activity.html',
-            controller: function($stateParams, messages, growl, alertFactory, $scope) {
+            controller: function($stateParams, messages, toastr, alertFactory, $scope) {
 
               var alertQueue = alertFactory.getAll();
               for (var i in alertQueue) {
                 var alert = alertQueue[i];
-                growl.success(alert.msg);
+                toastr.success(alert.msg);
                 alertFactory.remove(alert.id);
               }
 

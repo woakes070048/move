@@ -250,10 +250,6 @@ tr.disabled, tr.disabled span.text-info{
   border-color: #8B4A09;
   font-weight: bold;
 }
-.growl-container.growl-fixed {
-  width: 90%;
-  max-width: 400px;
-}
 .padded-label{
     padding: 10px 15px;
 }

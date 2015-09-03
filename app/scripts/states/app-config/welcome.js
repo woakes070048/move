@@ -27,14 +27,14 @@ angular.module('lmisChromeApp')
               });
           }
         },
-        controller: function($scope, config, $state, fixtureLoaderService, messages, locationService, appConfigService, growl) {
+        controller: function($scope, config, $state, fixtureLoaderService, messages, locationService, appConfigService, toastr) {
           // Found config, we're good to go
           if(config.notFound !== true) {
             if(config.facility && angular.isArray(config.facility.selectedLgas)) {
               var nearbyLgaIds = locationService.extractIds(config.facility.selectedLgas);
               fixtureLoaderService.setupWardsAndFacilitesByLgas(nearbyLgaIds)
                   .catch(function(){
-                    growl.error(messages.lgaFacilityListFailed);
+                    toastr.error(messages.lgaFacilityListFailed);
                   })
                   .finally(function(){
                     $state.go('home.mainActivity');

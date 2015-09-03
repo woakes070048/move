@@ -42,7 +42,7 @@ angular.module('lmisChromeApp')
         }
       });
   })
-  .controller('StockCountHomeCtrl', function($scope, stockCountFactory, growl, messages, utility, stockCounts, appConfig, $state, mostRecentStockCount, isStockCountDue) {
+  .controller('StockCountHomeCtrl', function($scope, stockCountFactory, toastr, messages, utility, stockCounts, appConfig, $state, mostRecentStockCount, isStockCountDue) {
 
     var sortByCreatedDateDesc = function(scA, scB) {
       return -(new Date(scA.created) - new Date(scB.created));
@@ -66,7 +66,7 @@ angular.module('lmisChromeApp')
 
     $scope.showStockCount = function(stockCount) {
       if (!utility.has(stockCount, 'uuid') || !utility.has(stockCount, 'countDate')) {
-        growl.error(messages.showStockCountFailed);
+        toastr.error(messages.showStockCountFailed);
         return;
       }
       var isEditable = $scope.isEditable(stockCount);
@@ -77,7 +77,7 @@ angular.module('lmisChromeApp')
       }
     };
   })
-  .controller('StockCountFormCtrl', function($scope, $q, stockCountFactory, reminderFactory, notificationService, $state, growl, alertFactory, $stateParams, appConfig, appConfigService, cacheService, syncService, utility, $rootScope, messages, mostRecentStockCount, geolocationFactory, productCategoryFactory) {
+  .controller('StockCountFormCtrl', function($scope, $q, stockCountFactory, reminderFactory, notificationService, $state, toastr, alertFactory, $stateParams, appConfig, appConfigService, cacheService, syncService, utility, $rootScope, messages, mostRecentStockCount, geolocationFactory, productCategoryFactory) {
 
     var scInterval = appConfig.facility.stockCountInterval;
     var reminderDay = appConfig.facility.reminderDay;
@@ -240,14 +240,14 @@ angular.module('lmisChromeApp')
             if ($scope.redirect) {
               return syncStockCount(stockCountUUID)
                   .catch(function(err) {
-                    growl.error(messages.stockSyncFailed);
+                    toastr.error(messages.stockSyncFailed);
                     return err;
                   });
             }
           })
           .catch(function (reason) {
             var msg = messages.stockCountSavingFailed;
-            growl.error(msg);
+            toastr.error(msg);
             console.error(reason);
           });
     };

@@ -17,7 +17,7 @@ angular.module('lmisChromeApp')
       controller: 'ReportCcuBreakdownCtrl'
     });
   })
-  .controller('ReportCcuBreakdownCtrl', function($scope, appConfig, $modal, messages, $log, notificationService, ccuBreakdownFactory, $state, growl, alertFactory, breakdowns) {
+  .controller('ReportCcuBreakdownCtrl', function($scope, appConfig, $modal, messages, $log, notificationService, ccuBreakdownFactory, $state, toastr, alertFactory, breakdowns) {
 
     $scope.facilityCcuList = appConfig.selectedCcuProfiles;
     $scope.breakdowns = [];
@@ -102,7 +102,7 @@ angular.module('lmisChromeApp')
                   });
               })
               .catch(function(reason) {
-                growl.error(messages.ccuBreakdownReportFailedMsg);
+                toastr.error(messages.ccuBreakdownReportFailedMsg);
                 $scope.isSaving = false;
                 $log.info(reason);
               });

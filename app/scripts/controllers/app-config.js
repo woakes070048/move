@@ -13,7 +13,7 @@ angular.module('lmisChromeApp')
     appConfigService,
     ccuProfilesGroupedByCategory,
     fixtureLoaderService,
-    growl,
+    toastr,
     isEdit,
     lgaList,
     facilityFactory,
@@ -227,7 +227,7 @@ angular.module('lmisChromeApp')
           .catch(function(err){
             //set selectedLga to previous selection since fetching of update fromm server failed
             $scope.appConfig.facility.selectedLgas = oldLgas;
-            growl.error(messages.lgaFacilityListFailed);
+            toastr.error(messages.lgaFacilityListFailed);
             return err;
           })
         .then(function(res) {
@@ -237,17 +237,17 @@ angular.module('lmisChromeApp')
           if (typeof result !== 'undefined') {
             afterSave(forSerial);
           } else {
-            growl.error(messages.appConfigFailedMsg);
+            toastr.error(messages.appConfigFailedMsg);
           }
         }).catch(function(reason) {
           if(!isEdit) {
-            return growl.error(messages.appConfigFailedMsg);
+            return toastr.error(messages.appConfigFailedMsg);
           }
 
           if (utility.has(reason, 'type') && reason.type === 'SAVED_NOT_SYNCED') {
             afterSave(forSerial);
           } else {
-            growl.error(messages.appConfigFailedMsg);
+            toastr.error(messages.appConfigFailedMsg);
           }
         }).finally(function() {
             $scope.isSaving = false;
@@ -273,7 +273,7 @@ angular.module('lmisChromeApp')
 
       if ($scope.serialNumber[ccuItemID] === '' || angular.isUndefined($scope.serialNumber[ccuItemID]) ||
         ccuProfile.serialNumbers.indexOf($scope.serialNumber[ccuItemID]) !== -1) {
-        growl.error('enter a value to add');
+        toastr.error('enter a value to add');
         return;
       }
 
@@ -311,7 +311,7 @@ angular.module('lmisChromeApp')
       }
 
       if (!$scope.preSelectCcuProfiles[ccuProfile.dhis2_modelid]) {
-        growl.error('Equipment need to be selected to add serial number');
+        toastr.error('Equipment need to be selected to add serial number');
       }
 
       if (utility.isEmptyObject($scope.selectedCCEItem)) {
@@ -334,7 +334,7 @@ angular.module('lmisChromeApp')
 
     function afterSave(forSerial) {
       if (forSerial) {
-        growl.success(messages.appConfigSuccessMsg);
+        toastr.success(messages.appConfigSuccessMsg);
       }
       if (!forSerial) {
         alertFactory.success(messages.appConfigSuccessMsg);

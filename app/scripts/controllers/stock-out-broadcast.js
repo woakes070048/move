@@ -29,7 +29,7 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
       },
       controller: 'MultiStockOutBroadcastCtrl'
     });
-}).controller('MultiStockOutBroadcastCtrl',function($scope, appConfig, notificationService, $log, stockOutBroadcastFactory, $state, growl, messages, facilityStockListProductTypes, $stateParams, inventoryRulesFactory, $q, alertFactory) {
+}).controller('MultiStockOutBroadcastCtrl',function($scope, appConfig, notificationService, $log, stockOutBroadcastFactory, $state, toastr, messages, facilityStockListProductTypes, $stateParams, inventoryRulesFactory, $q, alertFactory) {
 
     $scope.urlParams = ($stateParams.productList !== null) ? ($stateParams.productList).split(',') : $stateParams.productList;
     var stockOutProductTypes = facilityStockListProductTypes.filter(function(element) {
@@ -83,7 +83,7 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
             $state.go('home.mainActivity');
           })
           .catch(function(reason) {
-            growl.error(messages.stockOutBroadcastFailedMsg);
+            toastr.error(messages.stockOutBroadcastFailedMsg);
             $log.error(reason);
           });
       };
@@ -109,7 +109,7 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
         });
     };
 
-  }).controller('StockOutBroadcastCtrl', function($scope, appConfig, $log, stockOutBroadcastFactory, $state, growl, alertFactory, $modal, messages, facilityStockListProductTypes, notificationService) {
+  }).controller('StockOutBroadcastCtrl', function($scope, appConfig, $log, stockOutBroadcastFactory, $state, toastr, alertFactory, $modal, messages, facilityStockListProductTypes, notificationService) {
 
     $scope.productTypes = facilityStockListProductTypes;
     //used to hold stock out form data
@@ -149,12 +149,12 @@ angular.module('lmisChromeApp').config(function($stateProvider) {
                       $state.go('home.mainActivity');
                     });
                 } else {
-                  growl.error(messages.stockOutBroadcastFailedMsg);
+                  toastr.error(messages.stockOutBroadcastFailedMsg);
                   $scope.isSaving = false;
                 }
               })
               .catch(function(reason) {
-                growl.error(messages.stockOutBroadcastFailedMsg);
+                toastr.error(messages.stockOutBroadcastFailedMsg);
                 $scope.isSaving = false;
                 $log.error(reason);
               });

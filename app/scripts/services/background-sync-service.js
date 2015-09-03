@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('lmisChromeApp')
-  .service('backgroundSyncService', function($q, storageService, appConfigService, messages, growl, pouchStorageService, syncService, deviceInfoFactory, fixtureLoaderService, $timeout, ehaRetriable) {
+  .service('backgroundSyncService', function($q, storageService, appConfigService, messages, toastr, pouchStorageService, syncService, deviceInfoFactory, fixtureLoaderService, $timeout, ehaRetriable) {
 
     var backgroundSyncInProgress = false;
     var sync;
@@ -122,7 +122,7 @@ angular.module('lmisChromeApp')
           })
           .then(function() {
             var TEN_SECS = 10000;
-            growl.success(messages.remoteAppConfigUpdateMsg, { ttl: TEN_SECS });
+            toastr.success(messages.remoteAppConfigUpdateMsg, { ttl: TEN_SECS });
             return syncPendingRecords()
               .finally(function() {
                 return storageService.compactDatabases();

@@ -45,7 +45,7 @@ angular.module('lmisChromeApp')
         }
       });
   })
-  .controller('LogBundleHomeCtrl', function($scope, appConfig, locationService, lgaFacilities, facilityFactory, $stateParams, bundleService, bundles, $state, utility, productProfileFactory, growl, messages,productCategoryFactory) {
+  .controller('LogBundleHomeCtrl', function($scope, appConfig, locationService, lgaFacilities, facilityFactory, $stateParams, bundleService, bundles, $state, utility, productProfileFactory, toastr, messages,productCategoryFactory) {
 
     var logIncoming = bundleService.INCOMING;
     var logOutgoing = bundleService.OUTGOING;
@@ -61,7 +61,7 @@ angular.module('lmisChromeApp')
 
     if ($stateParams.type !== logIncoming && $stateParams.type !== logOutgoing) {
       $state.go('home.mainActivity');
-      growl.error(messages.specifyBundleType);
+      toastr.error(messages.specifyBundleType);
       return;
     }
 
@@ -173,7 +173,7 @@ angular.module('lmisChromeApp')
     };
     $scope.expiredProductAlert = productProfileFactory.compareDates;
   })
-  .controller('LogBundleCtrl', function($scope, batchStore, utility, batchService, appConfig, messages, productProfileFactory, bundleService, growl, $state, alertFactory, syncService, $stateParams, $filter, locationService, facilityFactory,appConfigService,productCategoryFactory, VVM_OPTIONS) {
+  .controller('LogBundleCtrl', function($scope, batchStore, utility, batchService, appConfig, messages, productProfileFactory, bundleService, toastr, $state, alertFactory, syncService, $stateParams, $filter, locationService, facilityFactory,appConfigService,productCategoryFactory, VVM_OPTIONS) {
 
     var logIncoming = bundleService.INCOMING;
     var logOutgoing = bundleService.OUTGOING;
@@ -229,13 +229,13 @@ angular.module('lmisChromeApp')
             $scope.bundle.receivingFacility = facility;
             $scope.bundle.sendingFacility = appConfig.facility;
           } else {
-            growl.error(messages.unknownBundleType);
+            toastr.error(messages.unknownBundleType);
           }
         })
         .catch(function(err){
           console.error(err);
           $state.go('logBundleHome', { type: $stateParams.type });
-          growl.error(messages.selectedFacilityNotFound);
+          toastr.error(messages.selectedFacilityNotFound);
         });
     };
     setFacility();
@@ -277,7 +277,7 @@ angular.module('lmisChromeApp')
 
     if ($stateParams.type !== logIncoming && $stateParams.type !== logOutgoing) {
       $state.go('home.mainActivity');
-      growl.error(messages.specifyBundleType);
+      toastr.error(messages.specifyBundleType);
       return;
     }
     $scope.placeholder = {
@@ -398,7 +398,7 @@ angular.module('lmisChromeApp')
         }
         updateBundleLines($scope.previewBundle);
       } else {
-        growl.error('Form still have missing data');
+        toastr.error('Form still have missing data');
       }
     };
 
@@ -414,7 +414,7 @@ angular.module('lmisChromeApp')
         $scope.bundle.receivingFacility = JSON.parse(selectedFacility);
         $scope.bundle.sendingFacility = appConfig.facility;
       } else {
-        growl.error(messages.unknownBundleType);
+        toastr.error(messages.unknownBundleType);
       }
     };
 
@@ -474,7 +474,7 @@ angular.module('lmisChromeApp')
         })
         .catch(function(error) {
           console.error(error);
-          growl.error('Save incoming bundle failed, contact support.');
+          toastr.error('Save incoming bundle failed, contact support.');
           $scope.isSaving = false;
         });
     };

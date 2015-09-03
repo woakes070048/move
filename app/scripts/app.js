@@ -6,7 +6,7 @@ angular.module('lmisChromeApp', [
     'pouchdb',
     'config',
     'nvd3ChartDirectives',
-    'angular-growl',
+    'toastr',
     'ngAnimate',
     'db',
     'gettext',
@@ -15,7 +15,7 @@ angular.module('lmisChromeApp', [
     'eha.online-badge',
     'eha.cordova.google-analytics'
   ])
-  .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, growl, utility) {
+  .run(function(storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, toastr, utility) {
 
     function navigateToHome() {
       $state.go('home.mainActivity');
@@ -42,7 +42,7 @@ angular.module('lmisChromeApp', [
           }
         })
         .catch(function(reason) {
-          growl.error('loading of App. Config. failed, please contact support.');
+          toastr.error('loading of App. Config. failed, please contact support.');
           console.error(reason);
         });
     };
@@ -70,26 +70,26 @@ angular.module('lmisChromeApp', [
               })
               .catch(function(reason) {
                 console.error(reason);
-                growl.error('loading storage into memory failed, contact support.', {ttl: -1});
+                toastr.error('loading storage into memory failed, contact support.', {ttl: -1});
               });
           } else {
             var loadRemoteFixture = function() {
               return fixtureLoaderService.setupLocalAndMemoryStore(fixtureLoaderService.REMOTE_FIXTURES)
                 .catch(function(reason) {
                   console.error(reason);
-                  growl.error('Local databases and memory storage setup failed, contact support.', {ttl: -1});
+                  toastr.error('Local databases and memory storage setup failed, contact support.', {ttl: -1});
                 });
             };
             storageService.clear()
               .then(loadRemoteFixture)
               .catch(function(error) {
-                growl.error('Fresh install setup failed, please contact support.', {ttl: -1});
+                toastr.error('Fresh install setup failed, please contact support.', {ttl: -1});
                 console.error(error);
               });
           }
         })
         .catch(function(error) {
-          growl.error('loading of App. Config. failed, please contact support.', {ttl: -1});
+          toastr.error('loading of App. Config. failed, please contact support.', {ttl: -1});
           console.error(error);
         });
     }

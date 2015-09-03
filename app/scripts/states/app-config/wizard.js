@@ -8,7 +8,7 @@ angular.module('lmisChromeApp')
         parent: 'root.index',
         templateUrl: 'views/app-config/wizard.html',
         resolve: {
-          appConfig: function(appConfigService, ehaLoginService, growl, messages) {
+          appConfig: function(appConfigService, ehaLoginService, toastr, messages) {
             // From the wizard screen, try to load the template for the user,
             // if found, the 'email' step is skipped,
             // if not found, the user gets to fill in email address
@@ -40,9 +40,9 @@ angular.module('lmisChromeApp')
                       dateActivated: undefined
                     };
                   case 0: // offline
-                    return growl.error(messages.offline);
+                    return toastr.error(messages.offline);
                   default:
-                    return growl.error(err.message);
+                    return toastr.error(err.message);
                 }
               });
           },
