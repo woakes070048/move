@@ -497,35 +497,43 @@ angular.module('lmisChromeApp')
         });
     };
 
-    function validateBundle(bundleLine) {
-      var indicator = true;
+    function validateBundle() {
+      var valid = true;
 
-      $scope.bundle.bundleLines.filter(function(bundleLine){
+      function isValid(bundleLine) {
         $scope.err[bundleLine.id].reset();
-        if(bundleLine.productProfile === ''){
-          indicator = false;
+        var selectedProduct = $scope.selectedProduct[bundleLine.id];
+
+        if (bundleLine.productProfile === '') {
+          valid = false;
           $scope.err[bundleLine.id].pp = true;
         }
-        if(bundleLine.batchNo === ''){
-          indicator = false;
+
+        if (bundleLine.batchNo === '') {
+          valid = false;
           $scope.err[bundleLine.id].batchNo = true;
         }
-        if(typeof bundleLine.expiryDate === "undefined"){
-          indicator = false;
+
+        if (angular.isUndefined(bundleLine.expiryDate)) {
+          valid = false;
           $scope.err[bundleLine.id].expiry = true;
         }
-        if(bundleLine.quantity === '' || (isNaN(bundleLine.quantity))){
-          indicator = false;
+
+        if (bundleLine.quantity === '' || isNaN(bundleLine.quantity)) {
+          valid = false;
           $scope.err[bundleLine.id].quantity = true;
         }
-        if(bundleLine.VVMStatus === '' && $scope.selectedProduct[bundleLine.id]){
-          if($scope.selectedProduct[bundleLine.id].category.name === 'cold-store-vaccines') {
-            indicator = false;
+
+        if (bundleLine.VVMStatus === '' && selectedProduct) {
+          if (selectedProduct && selectedProduct.category.name === 'cold-store-vaccines') {
+            valid = false;
             $scope.err[bundleLine.id].vvmstatus = true;
           }
         }
-      });
-      return indicator;
+      }
+
+      $scope.bundle.bundleLines.forEach(isValid);
+      return valid;
     }
 
     $scope.getCategoryColor = productCategoryFactory.getCategoryColor;
