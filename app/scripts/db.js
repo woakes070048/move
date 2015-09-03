@@ -14,8 +14,6 @@ angular.module('db', [])
  CCU_TYPE: 'ccu_type',
  COMPANY: 'company',
  COMPANY_CATEGORY: 'company_category',
- EMPLOYEE: 'employee',
- EMPLOYEE_CATEGORY: 'employee_category',
  FACILITY: 'facility',
  FACILITY_TYPE: 'facility_type',
  INVENTORY: 'inventory',
