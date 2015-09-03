@@ -12,8 +12,6 @@ angular.module('db', [])
  CCU_PROBLEMS: 'ccu_problems',
  CCU_TEMP_LOG: 'ccu_temp_log',
  CCU_TYPE: 'ccu_type',
- COMPANY: 'company',
- COMPANY_CATEGORY: 'company_category',
  FACILITY: 'facility',
  FACILITY_TYPE: 'facility_type',
  INVENTORY: 'inventory',

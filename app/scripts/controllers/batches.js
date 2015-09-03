@@ -73,10 +73,6 @@ angular.module('lmisChromeApp')
         $scope.presentations = presentationList;
       });
 
-      storageService.get(storageService.COMPANY).then(function (companyList) {
-        $scope.companies = companyList;
-      });
-
       storageService.get(storageService.CURRENCIES).then(function (currencyList) {
         $scope.currencies = currencyList;
       });
