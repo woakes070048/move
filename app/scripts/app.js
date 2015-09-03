@@ -101,25 +101,4 @@ angular.module('lmisChromeApp', [
   })
   .run(function(loginDialogService, ehaLoginService) {
     ehaLoginService.config(loginDialogService);
-  })
-  .config(function(pouchDBProvider, POUCHDB_METHODS) {
-    // expose login method to angular;
-    POUCHDB_METHODS.login = 'qify';
-  })
-  .config(function(ehaLoginServiceProvider, config) {
-    // Use appConfig as 'main' database, since the login plugin
-    // wants to connect to a specific DB
-    var url = [config.api.url, '/', 'app_config'].join('');
-    ehaLoginServiceProvider.config(url);
-  })
-  .config(function(growlProvider) {
-    growlProvider.globalTimeToLive({
-      success: 5000,
-      error: 5000,
-      warning: 5000,
-      info: 5000
-    });
-  })
-  .config(function(ehaGoogleAnalyticsProvider, config) {
-    ehaGoogleAnalyticsProvider.trackingID = config.analytics.propertyID;
   });
