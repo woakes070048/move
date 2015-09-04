@@ -75,7 +75,7 @@ module.exports = function(grunt) {
           '<%= yeoman.app %>/scripts/fixtures/*.json'
         ],
         tasks: [
-          'fixtures'
+          'ehaFixtures'
         ]
       }
     },
@@ -434,7 +434,7 @@ module.exports = function(grunt) {
       }
     },
 
-    fixtures: {
+    ehaFixtures: {
       all: {
         options: {
           dest: '<%= yeoman.app %>/scripts/db.js'
@@ -519,7 +519,7 @@ module.exports = function(grunt) {
       'clean:server',
       'wiredep',
       'ngconstant:development',
-      'fixtures',
+      'ehaFixtures',
       'nggettext_compile',
       'concurrent:server',
       'autoprefixer',
@@ -556,7 +556,7 @@ module.exports = function(grunt) {
     var common = [
       'clean:dist',
       'wiredep',
-      'fixtures'
+      'ehaFixtures'
     ];
 
     var release = [

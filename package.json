@@ -5,12 +5,12 @@
   "devDependencies": {
     "balanced-match": "^0.2.0",
     "bower": "^1.4.1",
-    "change-case": "^2.1.1",
     "concat-map": "0.0.1",
     "cordova-android": "^4.0.2",
     "eslint": "^0.24.1",
     "eslint-config-tlvince": "^1.2.0",
     "grunt": "^0.4.5",
+    "grunt-angular-eha-fixtures": "^1.0.0",
     "grunt-angular-gettext-transifex": "^1.1.0",
     "grunt-autoprefixer": "^1.0.0",
     "grunt-bump": "^0.0.15",
