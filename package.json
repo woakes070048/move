@@ -33,7 +33,6 @@
     "grunt-ng-annotate": "^0.3.2",
     "grunt-ng-constant": "^1.0.0",
     "grunt-protractor-runner": "^1.1.0",
-    "grunt-remove-logging": "^0.2.0",
     "grunt-svgmin": "^0.4.0",
     "grunt-usemin": "^2.3.0",
     "grunt-wiredep": "^1.8.0",

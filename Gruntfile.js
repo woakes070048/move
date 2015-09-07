@@ -240,19 +240,6 @@ module.exports = function (grunt) {
       }
     },
 
-    removelogging: {
-      dist: {
-        src: '.tmp/concat/scripts/scripts.js',
-        options: {
-          namespace: [
-            'console',
-            'window.console',
-            '\\$log'
-          ]
-        }
-      }
-    },
-
     // Allow the use of non-minsafe AngularJS files. Automatically makes it
     // minsafe compatible so Uglify does not destroy the ng references
     ngAnnotate: {
@@ -556,7 +543,6 @@ module.exports = function (grunt) {
       'concurrent:dist',
       'autoprefixer',
       'concat',
-      'removelogging',
       'ngAnnotate',
       'copy:dist',
       'toggleComments:dist',
