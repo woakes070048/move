@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 angular.module('settingsMocks', [])
   .value('settingsMock', {
@@ -7,4 +7,4 @@ angular.module('settingsMocks', [])
       serviceLevel: 90,
       products: {}
     }
-  });
+  })

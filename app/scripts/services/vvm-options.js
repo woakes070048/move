@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 angular.module('lmisChromeApp')
   .constant('VVM_OPTIONS', {
@@ -37,4 +37,4 @@ angular.module('lmisChromeApp')
     noStatus: {
       value: '3'
     }
-  });
+  })

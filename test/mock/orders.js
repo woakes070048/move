@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 angular.module('ordersMocks', [])
   .value('ordersMock', [
@@ -10,4 +10,4 @@ angular.module('ordersMocks', [])
       created: '2012-01-02',
       date_receipt: '2012-02-07'
     }
-  ]);
+  ])

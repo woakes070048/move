@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 angular.module('facilitiesMocks', [])
   .value('facilitiesMock', [
@@ -37,4 +37,4 @@ angular.module('facilitiesMocks', [])
       level: 0,
       facility_operators: []
     }
-  ]);
+  ])

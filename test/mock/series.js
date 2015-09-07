@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 angular.module('seriesMocks', [])
   .value('seriesKeysMock', [
@@ -50,11 +50,11 @@ angular.module('seriesMocks', [])
     chrome: {
       storage: {
         local: {
-          get: function() {},
-          set: function() {},
-          clear: function() {},
-          remove: function() {}
+          get: function () {},
+          set: function () {},
+          clear: function () {},
+          remove: function () {}
         }
       }
     }
-  });
+  })

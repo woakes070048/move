@@ -1,9 +1,7 @@
-
-'use strict';
+'use strict'
 
 angular.module('lmisChromeApp')
-  .service('syncService', function($q, storageService, pouchStorageService, utility, deviceInfoFactory, ehaRetriable) {
-
+  .service('syncService', function ($q, storageService, pouchStorageService, utility, deviceInfoFactory, ehaRetriable) {
     /**
      * @private
      * @param {String} dbName
@@ -11,12 +9,12 @@ angular.module('lmisChromeApp')
      * @param {Object} syncResult - sync response object that has _id and _rev property.
      * @returns {*|Progress}
      */
-    var updateLocalRecordAfterSync = function(dbName, item, syncResult) {
-      item._id = syncResult.id;
-      item._rev = syncResult.rev;
-      var shouldUpdateModifiedDate = false;
-      return storageService.update(dbName, item, shouldUpdateModifiedDate);
-    };
+    var updateLocalRecordAfterSync = function (dbName, item, syncResult) {
+      item._id = syncResult.id
+      item._rev = syncResult.rev
+      var shouldUpdateModifiedDate = false
+      return storageService.update(dbName, item, shouldUpdateModifiedDate)
+    }
 
     /**
      * @private
@@ -24,24 +22,24 @@ angular.module('lmisChromeApp')
      * @param {Object} doc - expected to have uuid property.
      * @returns {*}
      */
-    var syncUp = ehaRetriable(function(dbName, doc) {
+    var syncUp = ehaRetriable(function (dbName, doc) {
       if (typeof doc.uuid !== 'string') {
-        throw new Error('document\'s uuid is not a string.');
+        throw new Error("document's uuid is not a string.")
       }
       if (typeof dbName !== 'string') {
-        throw new Error('database name is not a string.');
+        throw new Error('database name is not a string.')
       }
-      doc.dateSynced = new Date().toJSON();//update sync date
-      var db = pouchStorageService.getRemoteDB(dbName);
+      doc.dateSynced = new Date().toJSON() // update sync date
+      var db = pouchStorageService.getRemoteDB(dbName)
       return db.get(doc.uuid)
-        .then(function(response) {
-          doc._id = response._id;
-          doc._rev = response._rev;
-          return db.put(doc, response._id, response._rev);
-        }).catch(function() {
-          return db.put(doc, doc.uuid);
-        });
-    });
+        .then(function (response) {
+          doc._id = response._id
+          doc._rev = response._rev
+          return db.put(doc, response._id, response._rev)
+        }).catch(function () {
+        return db.put(doc, doc.uuid)
+      })
+    })
 
     /**
      * @private
@@ -49,22 +47,22 @@ angular.module('lmisChromeApp')
      * @param {Object} doc
      * @returns {*|Promise|Promise|!Promise.<R>}
      */
-    var syncUpAndUpdateLocal = function(dbName, doc) {
+    var syncUpAndUpdateLocal = function (dbName, doc) {
       return syncUp(dbName, doc)
-        .then(function(syncResult) {
-          return updateLocalRecordAfterSync(dbName, doc, syncResult);
-        });
-    };
+        .then(function (syncResult) {
+          return updateLocalRecordAfterSync(dbName, doc, syncResult)
+        })
+    }
 
-    var addToPendingSyncList = function(pendingSync) {
+    var addToPendingSyncList = function (pendingSync) {
       if (!angular.isString(pendingSync.dbName)) {
-        throw new Error('dbName is undefined or not a string');
+        throw new Error('dbName is undefined or not a string')
       }
       if (!angular.isString(pendingSync.uuid)) {
-        throw new Error('record.uuid is undefined or not a string.');
+        throw new Error('record.uuid is undefined or not a string.')
       }
-      return storageService.save(storageService.PENDING_SYNCS, pendingSync);
-    };
+      return storageService.save(storageService.PENDING_SYNCS, pendingSync)
+    }
 
     /**
      * @private
@@ -72,23 +70,23 @@ angular.module('lmisChromeApp')
      * @param {Object} doc
      * @returns {*|Promise|Promise|!Promise}
      */
-    var syncUpDoc = function(dbName, doc) {
-      var pendingSync = { dbName: dbName, uuid: doc.uuid };
+    var syncUpDoc = function (dbName, doc) {
+      var pendingSync = { dbName: dbName, uuid: doc.uuid }
       if (deviceInfoFactory.isOnline()) {
         return syncUpAndUpdateLocal(dbName, doc)
-          .catch(function(reason) {
+          .catch(function (reason) {
             return addToPendingSyncList(pendingSync)
-              .finally(function() {
-                return $q.reject(reason);
-              });
-          });
+              .finally(function () {
+                return $q.reject(reason)
+              })
+          })
       } else {
         return addToPendingSyncList(pendingSync)
-          .finally(function() {
-            return $q.reject('Device is offline.');
-          });
+          .finally(function () {
+            return $q.reject('Device is offline.')
+          })
       }
-    };
+    }
 
     /**
      * @public
@@ -96,35 +94,35 @@ angular.module('lmisChromeApp')
      * @param {Object} doc
      * @returns {*|Promise|Promise|!Promise}
      */
-    this.syncUpRecord = function(dbName, doc) {
-      return syncUpDoc(dbName, doc);
-    };
+    this.syncUpRecord = function (dbName, doc) {
+      return syncUpDoc(dbName, doc)
+    }
 
-    this.getSyncStatus = function(obj) {
+    this.getSyncStatus = function (obj) {
       if (obj !== 'undefined') {
         if ((obj.dateSynced && obj.modified) && (new Date(obj.dateSynced) >= new Date(obj.modified))) {
-          obj.synced = true;
+          obj.synced = true
         } else {
-          obj.synced = false;
+          obj.synced = false
         }
-        return obj;
+        return obj
       } else {
-        throw new Error('Object is undefined.');
+        throw new Error('Object is undefined.')
       }
-    };
+    }
 
-    this.addSyncStatus = function(objList) {
+    this.addSyncStatus = function (objList) {
       if (!angular.isArray(objList)) {
-        throw new Error('an array parameter is expected.');
+        throw new Error('an array parameter is expected.')
       }
-      return objList.map(this.getSyncStatus);
-    };
+      return objList.map(this.getSyncStatus)
+    }
 
     /**
      * @param {Object} pendingSync - with string dbName and uuid property.
      * @returns {*|Promise|Promise}
      */
-    this.addToPendingSync = function(pendingSync) {
-      return addToPendingSyncList(pendingSync);
-    };
-  });
+    this.addToPendingSync = function (pendingSync) {
+      return addToPendingSyncList(pendingSync)
+    }
+  })

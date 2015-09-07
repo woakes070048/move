@@ -1,25 +1,24 @@
-'use strict';
+'use strict'
 
-describe('Geo-Locations factory', function() {
+describe('Geo-Locations factory', function () {
+  beforeEach(module('lmisChromeApp'))
 
-  beforeEach(module('lmisChromeApp'));
-
-  var geolocationFactory;
+  var geolocationFactory
 
   beforeEach(inject(function (_geolocationFactory_) {
-    geolocationFactory = _geolocationFactory_;
-  }));
+    geolocationFactory = _geolocationFactory_
+  }))
 
-  it('i expect geolocationFactory to be defined.', function(){
-    expect(geolocationFactory).toBeDefined();
-  });
+  it('i expect geolocationFactory to be defined.', function () {
+    expect(geolocationFactory).toBeDefined()
+  })
 
-  it('i expect geolocationFactory to have a NO_GEO_POS object.', function(){
-    expect(geolocationFactory.NO_GEO_POS).toBeDefined();
-  });
+  it('i expect geolocationFactory to have a NO_GEO_POS object.', function () {
+    expect(geolocationFactory.NO_GEO_POS).toBeDefined()
+  })
 
-   it('i expect geolocationFactory.getCurrentGeoPosition() to return geoPosition.', function(){
-     var currentPosition = {
+  it('i expect geolocationFactory.getCurrentGeoPosition() to return geoPosition.', function () {
+    var currentPosition = {
       coords: {
         accuracy: 22,
         longitude: 15.091212,
@@ -30,17 +29,17 @@ describe('Geo-Locations factory', function() {
         altitudeAccuracy: null,
         timestamp: new Date().getTime()
       }
-     };
+    }
 
-     var expectedResult = {
-       accuracy: currentPosition.coords.accuracy,
-       latitude: currentPosition.coords.latitude,
-       longitude: currentPosition.coords.longitude
-     };
+    var expectedResult = {
+      accuracy: currentPosition.coords.accuracy,
+      latitude: currentPosition.coords.latitude,
+      longitude: currentPosition.coords.longitude
+    }
 
-     var miniGeoPosInfo = geolocationFactory.getMiniGeoPosition(currentPosition);
+    var miniGeoPosInfo = geolocationFactory.getMiniGeoPosition(currentPosition)
 
-     expect(miniGeoPosInfo).toEqual(expectedResult);
-   });
+    expect(miniGeoPosInfo).toEqual(expectedResult)
+  })
 
-});
+})

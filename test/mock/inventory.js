@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 angular.module('inventoriesMocks', [])
   .value('inventoriesMock', [
@@ -32,4 +32,4 @@ angular.module('inventoriesMocks', [])
         }
       }
     }
-  ]);
+  ])

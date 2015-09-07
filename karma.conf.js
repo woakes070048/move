@@ -1,5 +1,5 @@
+'use strict'
 /*eslint-env node */
-'use strict';
 
 // Karma configuration
 // http://karma-runner.github.io/0.10/config/configuration-file.html
@@ -7,9 +7,9 @@
 var bowerJS = require('wiredep')({
   exclude: [/jasmine$/],
   devDependencies: true
-}).js;
+}).js
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
     // base path, that will be used to resolve files and exclude
     basePath: '',
@@ -72,5 +72,5 @@ module.exports = function(config) {
     plugins: [
       'karma-*'
     ]
-  });
-};
+  })
+}

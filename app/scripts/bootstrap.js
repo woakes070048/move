@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-function bootAngular() {
+function bootAngular () {
   angular.bootstrap(document, [
     'lmisChromeApp'
-  ]);
+  ])
 }
 
 if (window.cordova) {
-  document.addEventListener('deviceready', bootAngular, false);
+  document.addEventListener('deviceready', bootAngular, false)
 } else {
-  bootAngular();
+  bootAngular()
 }

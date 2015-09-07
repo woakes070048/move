@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
 angular.module('idbServiceMocks', [])
-  .factory('idbMock', function($window) {
+  .factory('idbMock', function ($window) {
     $window.indexedDB = {
-      webkitGetDatabaseNames: function() { return {}; },
-      deleteDatabase: function() { return {}; }
-    };
-    return $window;
-  });
+      webkitGetDatabaseNames: function () { return {} },
+      deleteDatabase: function () { return {} }
+    }
+    return $window
+  })

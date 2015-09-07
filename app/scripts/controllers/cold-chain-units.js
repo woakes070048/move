@@ -1,138 +1,133 @@
-'use strict';
+'use strict'
 
 angular.module('lmisChromeApp')
-  .config(function($stateProvider) {
+  .config(function ($stateProvider) {
     $stateProvider.state('reportCcuBreakdown', {
       url: '/report-ccu',
       parent: 'root.index',
       templateUrl: 'views/cold-chain-units/report-ccu-breakdown.html',
       resolve: {
-        appConfig: function(appConfigService) {
-          return appConfigService.getCurrentAppConfig();
+        appConfig: function (appConfigService) {
+          return appConfigService.getCurrentAppConfig()
         },
-        breakdowns : function(ccuBreakdownFactory){
-          return ccuBreakdownFactory.getAll();
+        breakdowns: function (ccuBreakdownFactory) {
+          return ccuBreakdownFactory.getAll()
         }
       },
       controller: 'ReportCcuBreakdownCtrl'
-    });
+    })
   })
-  .controller('ReportCcuBreakdownCtrl', function($scope, appConfig, $modal, messages, $log, notificationService, ccuBreakdownFactory, $state, toastr, alertFactory, breakdowns) {
-
-    $scope.facilityCcuList = appConfig.selectedCcuProfiles;
-    $scope.breakdowns = [];
-    $scope.selectedProfile = '';
+  .controller('ReportCcuBreakdownCtrl', function ($scope, appConfig, $modal, messages, $log, notificationService, ccuBreakdownFactory, $state, toastr, alertFactory, breakdowns) {
+    $scope.facilityCcuList = appConfig.selectedCcuProfiles
+    $scope.breakdowns = []
+    $scope.selectedProfile = ''
     $scope.faults = [
       'Leaking',
       'Broken Seal',
-      "No Power Supply",
-      "Others"
-    ];
-    $scope.faultSortDate = 'asc';
-    $scope.toggleFaultSortDate = function(){
-
-      if($scope.faultSortDate ==='desc') {
-
+      'No Power Supply',
+      'Others'
+    ]
+    $scope.faultSortDate = 'asc'
+    $scope.toggleFaultSortDate = function () {
+      if ($scope.faultSortDate === 'desc') {
         $scope.previewCcuProfile.ccuStatus.sort(function (a, b) {
-          return (a.created > b.created);
-        });
-        $scope.faultSortDate = 'asc';
-      }else{
+          return (a.created > b.created)
+        })
+        $scope.faultSortDate = 'asc'
+      } else {
         $scope.previewCcuProfile.ccuStatus.sort(function (a, b) {
-          return (b.created > a.created);
-        });
-        $scope.faultSortDate = 'desc';
+          return (b.created > a.created)
+        })
+        $scope.faultSortDate = 'desc'
       }
-    };
+    }
 
-    $scope.breakdowns = breakdowns;
-    var c;
+    $scope.breakdowns = breakdowns
     $scope.ccuBreakdown = {
       ccuProfile: '',
       facility: appConfig.facility,
       isSubmitted: false
-    };
-    $scope.selectedProfile = "";
-    $scope.activeCCE ={
+    }
+    $scope.selectedProfile = ''
+    $scope.activeCCE = {
       ccuProfile: '',
-      ccuStatus:[],
+      ccuStatus: [],
       facility: appConfig.facility,
       created: new Date().getTime()
-    };
+    }
     $scope.formVal = {
-          fault:'',
-          status: 0,
-          created: new Date().getTime()
-         };
+      fault: '',
+      status: 0,
+      created: new Date().getTime()
+    }
 
-    $scope.switchActiveCCE = function(){
-      $scope.breakdowns.forEach(function(ccuBreakdown){
-        if(ccuBreakdown.ccuProfile.uuid === $scope.activeCCE.ccuProfile.uuid) {
-          $scope.activeCCE  = ccuBreakdown;
+    $scope.switchActiveCCE = function () {
+      $scope.breakdowns.forEach(function (ccuBreakdown) {
+        if (ccuBreakdown.ccuProfile.uuid === $scope.activeCCE.ccuProfile.uuid) {
+          $scope.activeCCE = ccuBreakdown
         }
-      });
-      $scope.activeCCE.ccuStatus.push($scope.formVal);
-    };
+      })
+      $scope.activeCCE.ccuStatus.push($scope.formVal)
+    }
 
-    $scope.save = function() {
-      $scope.isSaving = true;
-       $scope.activeCCE.ccuProfile = JSON.parse($scope.selectedProfile);
+    $scope.save = function () {
+      $scope.isSaving = true
+      $scope.activeCCE.ccuProfile = JSON.parse($scope.selectedProfile)
 
       var ccuBreakdownReport = {
         ccuProfile: $scope.activeCCE.ccuProfile,
         facility: $scope.activeCCE.facility
-      };
+      }
 
-      var ccuProfileInfo = ccuBreakdownReport.ccuProfile.Manufacturer + ' ' + ccuBreakdownReport.ccuProfile.ModelName;
-      var confirmationTitle = messages.confirmCcuBreakdownReportHeader(ccuProfileInfo);
-      var confirmationQuestion = messages.dialogConfirmationQuestion;
-      var buttonLabels = [messages.yes, messages.no];
+      var ccuProfileInfo = ccuBreakdownReport.ccuProfile.Manufacturer + ' ' + ccuBreakdownReport.ccuProfile.ModelName
+      var confirmationTitle = messages.confirmCcuBreakdownReportHeader(ccuProfileInfo)
+      var confirmationQuestion = messages.dialogConfirmationQuestion
+      var buttonLabels = [messages.yes, messages.no]
 
       notificationService.getConfirmDialog(confirmationTitle, confirmationQuestion, buttonLabels)
-        .then(function(isConfirmed) {
+        .then(function (isConfirmed) {
           if (isConfirmed === true) {
-            $scope.switchActiveCCE();
-            ccuBreakdownFactory.save($scope.activeCCE) //ccuBreakdownReport
-              .then(function(result) {
-                //move to home page send alert in the background
-                alertFactory.success(messages.ccuBreakdownReportSuccessMsg);
+            $scope.switchActiveCCE()
+            ccuBreakdownFactory.save($scope.activeCCE) // ccuBreakdownReport
+              .then(function (result) {
+                // move to home page send alert in the background
+                alertFactory.success(messages.ccuBreakdownReportSuccessMsg)
                 ccuBreakdownFactory.broadcast(result)
-                  .finally(function() {
-                    $state.go('home.mainActivity');
-                  });
+                  .finally(function () {
+                    $state.go('home.mainActivity')
+                  })
               })
-              .catch(function(reason) {
-                toastr.error(messages.ccuBreakdownReportFailedMsg);
-                $scope.isSaving = false;
-                $log.info(reason);
-              });
+              .catch(function (reason) {
+                toastr.error(messages.ccuBreakdownReportFailedMsg)
+                $scope.isSaving = false
+                $log.info(reason)
+              })
           } else {
-
           }
         })
-        .catch(function(reason) {
-          $scope.isSaving = false;
-          $log.info(reason);
-        });
-    };
-    $scope.inView = 1;
-    $scope.previewCcuProfile = {};
-    $scope.toggleInView = function(viewId){
-      $scope.inView = viewId;
-    };
+        .catch(function (reason) {
+          $scope.isSaving = false
+          $log.info(reason)
+        })
+    }
+    $scope.inView = 1
+    $scope.previewCcuProfile = {}
+    $scope.toggleInView = function (viewId) {
+      $scope.inView = viewId
+    }
 
-    $scope.showCcuHistory = function(ccu){
-        $scope.previewCcuProfile = ccu;
-    };
+    $scope.showCcuHistory = function (ccu) {
+      $scope.previewCcuProfile = ccu
+    }
 
-    $scope.toggleCCEStatus = function(breakdown){
-      breakdown.status = 1;
+    $scope.toggleCCEStatus = function (breakdown) {
+      breakdown.status = 1
       ccuBreakdownFactory.save($scope.previewCcuProfile)
-        .then(function(savedData){
+        .then(function (savedData) {
           ccuBreakdownFactory.broadcast(savedData)
-            .finally(function(){
-              alertFactory.success(messages.ccuBreakdownReportSuccessMsg);
+            .finally(function () {
+              alertFactory.success(messages.ccuBreakdownReportSuccessMsg)
             })
         })
     }
-  });
+  })

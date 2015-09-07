@@ -1,4 +1,12 @@
-extends: tlvince
+extends: standard
+env:
+  es6: false
+  node: false
+  browser: false
 rules:
-  lines-around-comment: 0
-  spaced-comment: 0
+  no-use-before-define: 2
+  spaced-comment:
+    - 2
+    - always
+    - markers:
+      - eslint-env

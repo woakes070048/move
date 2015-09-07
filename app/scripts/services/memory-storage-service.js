@@ -1,98 +1,99 @@
-'use strict';
+'use strict'
 
 angular.module('lmisChromeApp')
   .service('memoryStorageService', function ($rootScope, cacheService) {
+    $rootScope.memoryStore = {}
+    var MEMORY_STORE = 'memory_store'
 
-    $rootScope.memoryStore = {};
-    var MEMORY_STORE = 'memory_store';
+    var initialize = function (dbName) {
+      if (typeof $rootScope.memoryStore[dbName] === 'undefined') {
+        $rootScope.memoryStore[dbName] = {}
+      }
+    }
 
-    var initialize = function(dbName){
-      if(typeof $rootScope.memoryStore[dbName] === 'undefined'){
-        $rootScope.memoryStore[dbName] = {};
+    var initMemoryStore = function () {
+      if (typeof $rootScope.memoryStore === 'undefined') {
+        $rootScope.memoryStore = {}
       }
-    };
+    }
 
-    var initMemoryStore = function(){
-      if(typeof $rootScope.memoryStore === 'undefined'){
-        $rootScope.memoryStore = {};
+    this.put = function (dbName, data) {
+      if (typeof data.uuid !== 'string' || data.uuid === '') {
+        throw new Error('data.uuid is NOT a non-empty string..')
       }
-    };
+      if (typeof dbName !== 'string' || dbName === '') {
+        throw new Error([
+          'dbName is NOT a non-empty string. db name: ',
+          String(dbName)
+        ].join(' '))
+      }
+      initialize(dbName)
+      $rootScope.memoryStore[dbName][data.uuid] = data
+      cacheService.put(MEMORY_STORE, $rootScope.memoryStore)
+    }
 
-    this.put = function(dbName, data){
-      if(typeof data.uuid !== 'string' || data.uuid === ''){
-        throw 'data.uuid is NOT a non-empty string..';
+    this.get = function (dbName, key) {
+      if (typeof $rootScope.memoryStore !== 'object') {
+        console.error('memory store is not available.')
       }
-      if(typeof dbName !== 'string' || dbName === ''){
-        throw ['dbName is NOT a non-empty string. db name: ', String(dbName)].join(' ');
+      if (Object.keys($rootScope.memoryStore).length === 0) {
+        console.error('memory store is empty.')
       }
-      initialize(dbName);
-      $rootScope.memoryStore[dbName][data.uuid] = data;
-      cacheService.put(MEMORY_STORE, $rootScope.memoryStore);
-    };
+      dbName = String(dbName)
+      key = String(key)
+      var db = $rootScope.memoryStore[String(dbName)]
+      if (typeof db !== 'object') {
+        console.error('dbName: ' + dbName + ', does not exist, key: ' + key + ', db: ' + db)
+        $rootScope.memoryStore = cacheService.get(MEMORY_STORE) // reload memory store from cache.
+        db = $rootScope.memoryStore[String(dbName)]
+      }
+      var record = db[key]
+      return record
+    }
 
-    this.get = function(dbName, key){
-      if(typeof $rootScope.memoryStore !== 'object'){
-        console.error('memory store is not available.');
-      }
-      if(Object.keys($rootScope.memoryStore).length === 0){
-        console.error('memory store is empty.');
-      }
-      dbName = String(dbName);
-      key = String(key);
-      var db = $rootScope.memoryStore[String(dbName)];
-      if(typeof db !== 'object'){
-        console.error('dbName: '+dbName+', does not exist, key: '+key+', db: '+db);
-        $rootScope.memoryStore = cacheService.get(MEMORY_STORE);//reload memory store from cache.
-        db = $rootScope.memoryStore[String(dbName)];
-      }
-      var record = db[key];
-      return record;
-    };
-
-    this.delete = function(dbName, key){
-      delete $rootScope.memoryStore[dbName][key];
-      cacheService.put(MEMORY_STORE, $rootScope.memoryStore);
-    };
+    this.delete = function (dbName, key) {
+      delete $rootScope.memoryStore[dbName][key]
+      cacheService.put(MEMORY_STORE, $rootScope.memoryStore)
+    }
 
     /**
      * This sets a complete database on the memory storage.
      *  WARNING: call this only during app start up i.e inside fixture-loader-service.loadFiles
-     *  else you risk over-writing a database;
+     *  else you risk over-writing a database
      *
      * @param {String} dbName
      * @param {Object} db
      */
-    this.setDatabase = function(dbName, db){
+    this.setDatabase = function (dbName, db) {
       // filter design docs, they should not be in memory store
-      Object.keys(db).forEach(function(key) {
-          if(/^_design/.test(key)) {
-            delete db[key];
-          }
-        });
-      initMemoryStore();
-      $rootScope.memoryStore[dbName] = db;
-      cacheService.put(MEMORY_STORE, $rootScope.memoryStore);
-    };
+      Object.keys(db).forEach(function (key) {
+        if (/^_design/.test(key)) {
+          delete db[key]
+        }
+      })
+      initMemoryStore()
+      $rootScope.memoryStore[dbName] = db
+      cacheService.put(MEMORY_STORE, $rootScope.memoryStore)
+    }
 
-    this.getDatabase = function(dbName) {
-      var db = $rootScope.memoryStore[dbName];
+    this.getDatabase = function (dbName) {
+      var db = $rootScope.memoryStore[dbName]
       if (typeof db !== 'object') {
-        var mem = cacheService.get(MEMORY_STORE);
+        var mem = cacheService.get(MEMORY_STORE)
         if (typeof mem !== 'undefined') {
-          db = mem[dbName];
+          db = mem[dbName]
         }
       }
-      return db;
-    };
+      return db
+    }
 
-    this.deleteDatabase = function(dbName){
-      delete $rootScope.memoryStore[dbName];
-      cacheService.put(MEMORY_STORE, $rootScope.memoryStore);
-    };
+    this.deleteDatabase = function (dbName) {
+      delete $rootScope.memoryStore[dbName]
+      cacheService.put(MEMORY_STORE, $rootScope.memoryStore)
+    }
 
-    this.clearAll = function(){
-      $rootScope.memoryStore = {};
-      cacheService.put(MEMORY_STORE, $rootScope.memoryStore);
-    };
-
-  });
+    this.clearAll = function () {
+      $rootScope.memoryStore = {}
+      cacheService.put(MEMORY_STORE, $rootScope.memoryStore)
+    }
+  })

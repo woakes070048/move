@@ -1,5 +1,5 @@
+'use strict'
 /*eslint-env node */
-'use strict';
 
 exports.config = {
   specs: [
@@ -7,4 +7,4 @@ exports.config = {
   ],
   baseUrl: 'http://localhost:9000',
   chromeOnly: true
-};
+}

@@ -1,49 +1,47 @@
-'use strict';
+'use strict'
 
 describe('Service: memoryStorageService ', function () {
-
   // load the service's module
-  beforeEach(module('lmisChromeApp'));
+  beforeEach(module('lmisChromeApp'))
 
   // instantiate dependencies
-  var cacheService;
-  var memoryStorageService;
-  var dbName = 'testdb';
-  var obj = {uuid: '2345'};
+  var cacheService
+  var memoryStorageService
+  var dbName = 'testdb'
+  var obj = {uuid: '2345'}
 
   beforeEach(inject(function (_cacheService_, _memoryStorageService_) {
-    cacheService = _cacheService_;
-    memoryStorageService = _memoryStorageService_;
-  }));
+    cacheService = _cacheService_
+    memoryStorageService = _memoryStorageService_
+  }))
 
   describe('put', function () {
-
     it('should throw exception if called with non-string dbName parameter.', function () {
-      var nonStringDbName = {dbName: 'product_types'};
+      var nonStringDbName = {dbName: 'product_types'}
       expect(function () {
-        memoryStorageService.put(nonStringDbName, obj);
-      }).toThrow();
-    });
+        memoryStorageService.put(nonStringDbName, obj)
+      }).toThrow()
+    })
 
     it('should throw exception when called with empty string', function () {
-      var emptyString = '';
+      var emptyString = ''
       expect(function () {
-        memoryStorageService.put(emptyString, obj);
-      }).toThrow();
-    });
+        memoryStorageService.put(emptyString, obj)
+      }).toThrow()
+    })
 
-    it('should throw an exception when called non-string obj.uuid or empty string obj.uuid.', function(){
-      obj.uuid = '';
-     expect(function () {
-        memoryStorageService.put(dbName, obj);
-      }).toThrow();
+    it('should throw an exception when called non-string obj.uuid or empty string obj.uuid.', function () {
+      obj.uuid = ''
+      expect(function () {
+        memoryStorageService.put(dbName, obj)
+      }).toThrow()
 
       obj.uuid = {type: 'wrong uuid format'}
       expect(function () {
-        memoryStorageService.put(dbName, obj);
-      }).toThrow();
-    });
+        memoryStorageService.put(dbName, obj)
+      }).toThrow()
+    })
 
-  });
+  })
 
-});
+})

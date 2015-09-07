@@ -1,10 +1,10 @@
-describe('multiStockOutBroadcast', function(){
+describe('multiStockOutBroadcast', function () {
   var scope, ctrl, state, stateParams, appConfig, stockOutBroadcastFactory,
-      notificationService, $q;
+    notificationService, $q
 
-  beforeEach(module('lmisChromeApp', 'appConfigMocks', 'productTypeMocks', function($provide){
-    //$provide.value('facilityStockListProductTypes', []);
-  }));
+  beforeEach(module('lmisChromeApp', 'appConfigMocks', 'productTypeMocks', function ($provide) {
+    // $provide.value('facilityStockListProductTypes', [])
+  }))
 
   beforeEach(inject(function ($templateCache) {
     // Mock each template used by the state
@@ -17,23 +17,23 @@ describe('multiStockOutBroadcast', function(){
       'home/home',
       'index/loading-fixture-screen',
       'index/migration-screen'
-    ];
+    ]
 
     angular.forEach(templates, function (template) {
-      $templateCache.put('views/' + template + '.html', '');
-    });
-  }));
+      $templateCache.put('views/' + template + '.html', '')
+    })
+  }))
 
-  beforeEach(inject(function($controller, $state, $stateParams, productTypeMock, appConfigMock,
-      _stockOutBroadcastFactory_, _notificationService_, _$q_){
-    scope = {};
-    state = $state;
-    $q = _$q_;
-    notificationService = _notificationService_;
-    appConfig = appConfigMock;
-    stockOutBroadcastFactory = _stockOutBroadcastFactory_;
-    stateParams = $stateParams;
-    stateParams.productList = '0930b906-4802-4a65-8516-057bd839db3e,939d5e05-2aa4-4883-9246-35c60dfa06a5';
+  beforeEach(inject(function ($controller, $state, $stateParams, productTypeMock, appConfigMock,
+    _stockOutBroadcastFactory_, _notificationService_, _$q_) {
+    scope = {}
+    state = $state
+    $q = _$q_
+    notificationService = _notificationService_
+    appConfig = appConfigMock
+    stockOutBroadcastFactory = _stockOutBroadcastFactory_
+    stateParams = $stateParams
+    stateParams.productList = '0930b906-4802-4a65-8516-057bd839db3e,939d5e05-2aa4-4883-9246-35c60dfa06a5'
 
     ctrl = $controller('MultiStockOutBroadcastCtrl', {
       $scope: scope,
@@ -43,19 +43,19 @@ describe('multiStockOutBroadcast', function(){
       stockOutBroadcastFactory: stockOutBroadcastFactory,
       facilityStockListProductTypes: productTypeMock,
       notificationService: notificationService
-    });
-  }));
+    })
+  }))
 
-  it('should covert convert uuid from url to array', function(){
-    expect(scope.urlParams.length).toEqual(2);
-  });
+  it('should covert convert uuid from url to array', function () {
+    expect(scope.urlParams.length).toEqual(2)
+  })
 
-  it('should invoke notificationService.getConfirmDialog when saving stock out', function(){
-    spyOn(notificationService, 'getConfirmDialog').andCallFake(function(a, b, c){
-      return $q.when(true);
-    });
-    expect(notificationService.getConfirmDialog).not.toHaveBeenCalled();
-    scope.save();
-    expect(notificationService.getConfirmDialog).toHaveBeenCalled();
-  });
-});
+  it('should invoke notificationService.getConfirmDialog when saving stock out', function () {
+    spyOn(notificationService, 'getConfirmDialog').andCallFake(function (a, b, c) {
+      return $q.when(true)
+    })
+    expect(notificationService.getConfirmDialog).not.toHaveBeenCalled()
+    scope.save()
+    expect(notificationService.getConfirmDialog).toHaveBeenCalled()
+  })
+})

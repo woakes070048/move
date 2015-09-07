@@ -1,13 +1,12 @@
+'use strict'
 /*eslint-env node */
-'use strict';
 
-module.exports = function(grunt) {
-
+module.exports = function (grunt) {
   // Load grunt tasks automatically
-  require('load-grunt-tasks')(grunt);
+  require('load-grunt-tasks')(grunt)
 
   // Time how long tasks take. Can help when optimizing build times
-  require('time-grunt')(grunt);
+  require('time-grunt')(grunt)
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -445,9 +444,7 @@ module.exports = function(grunt) {
       }
     },
 
-    /*eslint-disable camelcase */
-    nggettext_extract: {
-    /*eslint-enable camelcase */
+    nggettext_extract: { // eslint-disable-line
       pot: {
         files: {
           'po/template.pot': [
@@ -458,9 +455,7 @@ module.exports = function(grunt) {
       }
     },
 
-    /*eslint-disable camelcase */
-    nggettext_compile: {
-    /*eslint-enable camelcase */
+    nggettext_compile: { // eslint-disable-line
       all: {
         options: {
           module: 'lmisChromeApp'
@@ -502,14 +497,14 @@ module.exports = function(grunt) {
         sourceMapIncludeSources: true
       }
     }
-  });
+  })
 
-  grunt.registerTask('serve', function(target) {
+  grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
       return grunt.task.run([
         'build',
         'connect:dist:keepalive'
-      ]);
+      ])
     }
 
     grunt.task.run([
@@ -522,21 +517,21 @@ module.exports = function(grunt) {
       'autoprefixer',
       'connect:livereload',
       'watch'
-    ]);
-  });
+    ])
+  })
 
-  grunt.registerTask('test', function(target) {
+  grunt.registerTask('test', function (target) {
     grunt.task.run([
       'ngconstant:test'
-    ]);
+    ])
     if (target === 'unit') {
       return grunt.task.run([
         'karma:unit'
-      ]);
+      ])
     } else if (target === 'e2e') {
       return grunt.task.run([
         'protractor:e2e'
-      ]);
+      ])
     }
 
     grunt.task.run([
@@ -546,15 +541,15 @@ module.exports = function(grunt) {
       'autoprefixer',
       'connect:test',
       'karma'
-    ]);
-  });
+    ])
+  })
 
-  grunt.registerTask('build', function(target) {
+  grunt.registerTask('build', function (target) {
     var common = [
       'clean:dist',
       'wiredep',
       'ehaFixtures'
-    ];
+    ]
 
     var release = [
       'useminPrepare',
@@ -570,7 +565,7 @@ module.exports = function(grunt) {
       'filerev',
       'usemin',
       'htmlmin'
-    ];
+    ]
 
     var snapshot = [
       'ngconstant:development',
@@ -578,40 +573,40 @@ module.exports = function(grunt) {
       'copy:snapshot',
       'wiredepCopy:snapshot',
       'toggleComments:index'
-    ];
+    ]
 
     var staging = [
       'ngconstant:staging'
-    ];
+    ]
 
     var production = [
       'ngconstant:production'
-    ];
+    ]
 
     if (target === 'release') {
-      return grunt.task.run(common.concat(production, release));
+      return grunt.task.run(common.concat(production, release))
     }
 
     if (target === 'staging') {
-      return grunt.task.run(common.concat(staging, release));
+      return grunt.task.run(common.concat(staging, release))
     }
 
-    grunt.task.run(common.concat(snapshot));
-  });
+    grunt.task.run(common.concat(snapshot))
+  })
 
   grunt.registerTask('default', [
     'test',
     'build'
-  ]);
+  ])
 
-  grunt.registerTask('release', function(versionType) {
-    var bump = 'bump';
+  grunt.registerTask('release', function (versionType) {
+    var bump = 'bump'
 
     if (versionType) {
-      bump += ':' + versionType;
+      bump += ':' + versionType
     }
     grunt.task.run([
       bump
-    ]);
-  });
-};
+    ])
+  })
+}

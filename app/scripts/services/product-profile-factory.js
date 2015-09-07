@@ -1,32 +1,31 @@
-'use strict';
+'use strict'
 
 angular.module('lmisChromeApp')
   .factory('productProfileFactory', function ($q, storageService, memoryStorageService, presentationFactory, productTypeFactory, productCategoryFactory, utility) {
-
-    var getByUuid = function(uuid) {
-      uuid = utility.getStringUuid(uuid);
-      var prodProfile = memoryStorageService.get(storageService.PRODUCT_PROFILES, uuid);
-      if(typeof prodProfile === 'object'){
-        prodProfile.presentation = presentationFactory.get(prodProfile.presentation);
-        prodProfile.product = productTypeFactory.get(prodProfile.product);
-        prodProfile.category = productCategoryFactory.get(prodProfile.category);
-      }else{
-        console.error('productProfile with uuid: '+uuid+' is not an object.');
+    var getByUuid = function (uuid) {
+      uuid = utility.getStringUuid(uuid)
+      var prodProfile = memoryStorageService.get(storageService.PRODUCT_PROFILES, uuid)
+      if (typeof prodProfile === 'object') {
+        prodProfile.presentation = presentationFactory.get(prodProfile.presentation)
+        prodProfile.product = productTypeFactory.get(prodProfile.product)
+        prodProfile.category = productCategoryFactory.get(prodProfile.category)
+      } else {
+        console.error('productProfile with uuid: ' + uuid + ' is not an object.')
       }
-      return prodProfile;
-    };
+      return prodProfile
+    }
 
-    var getAll = function() {
-      var prodProfileDb = memoryStorageService.getDatabase(storageService.PRODUCT_PROFILES);
-      var productProfiles = [];
-      for(var key in prodProfileDb){
-        var prodProfile = getByUuid(key);
-        if(typeof prodProfile === 'object'){
-          productProfiles.push(prodProfile);
+    var getAll = function () {
+      var prodProfileDb = memoryStorageService.getDatabase(storageService.PRODUCT_PROFILES)
+      var productProfiles = []
+      for (var key in prodProfileDb) {
+        var prodProfile = getByUuid(key)
+        if (typeof prodProfile === 'object') {
+          productProfiles.push(prodProfile)
         }
       }
-      return productProfiles;
-    };
+      return productProfiles
+    }
 
     /**
      * This function returns product profiles for a given product type
@@ -34,86 +33,86 @@ angular.module('lmisChromeApp')
      * @param productType
      * @returns {promise|promise|*|Function|promise}
      */
-    var getByProductType = function(productType) {
-      var ptUuid = utility.getStringUuid(productType);
-      var productProfiles = getAll();
-      return productProfiles.filter(function(p) { return utility.getStringUuid(p.product) === ptUuid; });
-    };
+    var getByProductType = function (productType) {
+      var ptUuid = utility.getStringUuid(productType)
+      var productProfiles = getAll()
+      return productProfiles.filter(function (p) {
+        return utility.getStringUuid(p.product) === ptUuid
+      })
+    }
 
-    var getProductProfileBatch = function(batch){
+    var getProductProfileBatch = function (batch) {
       if (!Array.isArray(batch)) {
-        throw 'expected argument to be an array. not array argument passed';
+        throw new Error('expected argument to be an array. not array argument passed')
       }
-      var productProfiles = [];
+      var productProfiles = []
       for (var index in batch) {
-        var obj = batch[index];
-        var uuid = utility.getStringUuid(obj);
-        var productProfile = getByUuid(uuid);
+        var obj = batch[index]
+        var uuid = utility.getStringUuid(obj)
+        var productProfile = getByUuid(uuid)
         if (typeof productProfile === 'object') {
-          productProfiles.push(productProfile);
+          productProfiles.push(productProfile)
         }
       }
-      return productProfiles;
-    };
+      return productProfiles
+    }
 
-    var getAllGroupedByProductCategory = function(){
-      var db = memoryStorageService.getDatabase(storageService.PRODUCT_PROFILES);
-      var keys = Object.keys(db);
-      return getBatchGroupedByProductCategory(keys);
-    };
-
-    var getBatchGroupedByProductCategory = function(productProfiles){
-      var groupedList = {};
-      var NOT_FOUND = -1;
-      var existingGroups = [];
+    function getBatchGroupedByProductCategory (productProfiles) {
+      var groupedList = {}
+      var NOT_FOUND = -1
+      var existingGroups = []
       for (var index in productProfiles) {
+        // TODO: use utility getStringUUid to get uuid.
+        var uuid = utility.getStringUuid(productProfiles[index])
+        var productProfile = getByUuid(uuid)
 
-        //TODO: use utility getStringUUid to get uuid.
-        var uuid = utility.getStringUuid(productProfiles[index]);
-        var productProfile = getByUuid(uuid);
-
-        //TODO: for debugging checks, remove later.
-        if(typeof productProfile === 'undefined' || productProfile === null){
-          console.error('product profile is undefined');
-          continue;
+        // TODO: for debugging checks, remove later.
+        if (typeof productProfile === 'undefined' || productProfile === null) {
+          console.error('product profile is undefined')
+          continue
         }
 
-        //TODO: add check for null or undefined category
-        if(typeof productProfile.category === 'undefined' || productProfile.category === null){
-          console.error('category is : '+productProfile);
-          continue;
+        // TODO: add check for null or undefined category
+        if (typeof productProfile.category === 'undefined' || productProfile.category === null) {
+          console.error('category is : ' + productProfile)
+          continue
         }
 
-        //TODO: add check for null or undefined category
-        if(typeof productProfile.category !== 'object' && ('uuid' in productProfile.category)){
-          console.error('Product Category: '+productProfile.category+', does not have uuid or is not an object ');
-          continue;
+        // TODO: add check for null or undefined category
+        if (typeof productProfile.category !== 'object' && ('uuid' in productProfile.category)) {
+          console.error('Product Category: ' + productProfile.category + ', does not have uuid or is not an object ')
+          continue
         }
-
 
         if (existingGroups.indexOf(productProfile.category.uuid) === NOT_FOUND) {
-          var categoryObj = productProfile.category;
+          var categoryObj = productProfile.category
           var group = {
             category: categoryObj,
             productProfiles: []
-          };
-          existingGroups.push(productProfile.category.uuid);
-          groupedList[productProfile.category.uuid] = group;
+          }
+          existingGroups.push(productProfile.category.uuid)
+          groupedList[productProfile.category.uuid] = group
         }
-        groupedList[productProfile.category.uuid].productProfiles.push(productProfile);
+        groupedList[productProfile.category.uuid].productProfiles.push(productProfile)
       }
-      return groupedList;
-    };
-    var expiryDates = function(productDate){
+      return groupedList
+    }
 
-        //if second argument is supplied, use to compare, else use new Date()
-        var compareDate = (Object.prototype.toString.call(arguments[1]) === '[object Date]') ? new Date(arguments[1]) : (new Date() - 86400000);//minus 24hrs
+    var getAllGroupedByProductCategory = function () {
+      var db = memoryStorageService.getDatabase(storageService.PRODUCT_PROFILES)
+      var keys = Object.keys(db)
+      return getBatchGroupedByProductCategory(keys)
+    }
 
-        if(new Date(productDate) < compareDate){
-          return true;
-        }
-        return false;
+    var expiryDates = function (productDate) {
+      // if second argument is supplied, use to compare, else use new Date()
+      var compareDate = (Object.prototype.toString.call(arguments[1]) === '[object Date]') ? new Date(arguments[1]) : (new Date() - 86400000) // minus 24hrs
+
+      if (new Date(productDate) < compareDate) {
+        return true
       }
+      return false
+    }
 
     return {
       get: getByUuid,
@@ -122,6 +121,6 @@ angular.module('lmisChromeApp')
       getBatch: getProductProfileBatch,
       getAllGroupedByCategory: getAllGroupedByProductCategory,
       getBatchGroupedByCategory: getBatchGroupedByProductCategory,
-      compareDates : expiryDates
-    };
-  });
+      compareDates: expiryDates
+    }
+  })

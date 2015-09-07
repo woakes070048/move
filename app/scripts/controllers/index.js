@@ -1,35 +1,35 @@
-'use strict';
+'use strict'
 
 angular.module('lmisChromeApp')
-  .config(function($stateProvider) {
-    $stateProvider.state('root', {
-      url: '',
-      abstract: true,
-      templateUrl: 'views/index/index.html'
-    })
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('root', {
+        url: '',
+        abstract: true,
+        templateUrl: 'views/index/index.html'
+      })
       .state('root.index', {
         abstract: true,
         views: {
           'header': {
             templateUrl: 'views/index/header.html',
-            controller: function($scope, $window, messages, appConfigService, deviceInfoFactory, backgroundSyncService) {
-              function backgroundSync() {
+            controller: function ($scope, $window, messages, appConfigService, deviceInfoFactory, backgroundSyncService) {
+              function backgroundSync () {
                 backgroundSyncService.startBackgroundSync()
-                  .finally(function() {
+                  .finally(function () {
                     console.log('updateAppConfigAndStartBackgroundSync  triggered on device connection ' +
-                      'status change has been completed.');
-                  });
-
+                      'status change has been completed.')
+                  })
               }
-              $window.addEventListener('online', backgroundSync);
+              $window.addEventListener('online', backgroundSync)
             }
           },
           'content': {},
           'footer': {
             templateUrl: 'views/index/footer.html',
-            controller: function($scope, config) {
-              $scope.year = new Date().getFullYear();
-              $scope.version = config.version;
+            controller: function ($scope, config) {
+              $scope.year = new Date().getFullYear()
+              $scope.version = config.version
             }
           }
         }
@@ -37,6 +37,6 @@ angular.module('lmisChromeApp')
       .state('loadingFixture', {
         parent: 'root.index',
         templateUrl: 'views/index/loading-fixture-screen.html',
-        url: '/loading-fixture',
-      });
-  });
+        url: '/loading-fixture'
+      })
+  })
