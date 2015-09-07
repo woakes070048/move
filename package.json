@@ -63,7 +63,7 @@
   "scripts": {
     "eslint": "eslint *.js app/scripts/**/*.js test/**/*.js",
     "postinstall": "bower install",
-    "pretest": "npm run eslint || true",
+    "pretest": "npm run eslint",
     "start": "grunt serve",
     "test": "grunt test",
     "test-watch": "./node_modules/karma/bin/karma start --autoWatch true --singleRun false"
