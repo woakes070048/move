@@ -16,7 +16,8 @@
     "angular-eha.retriable": "~0.1.0",
     "angular-eha.online-badge": "~1.0.0",
     "angular-eha.cordova.google-analytics": "~1.2.1",
-    "angular-toastr": "~1.5.0"
+    "angular-toastr": "~1.5.0",
+    "angular-eha.counter": "~1.2.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.1",

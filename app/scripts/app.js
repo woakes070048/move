@@ -13,7 +13,8 @@ angular.module('lmisChromeApp', [
   'eha.retriable',
   'eha.login-service',
   'eha.online-badge',
-  'eha.cordova.google-analytics'
+  'eha.cordova.google-analytics',
+  'eha.counter'
 ])
   .run(function (storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, toastr, utility) {
     function navigateToHome () {

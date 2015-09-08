@@ -145,19 +145,6 @@ accordion .panel-heading:hover {
     padding-right: 0
   }
 }
-.counter-btn {
-   font-size: 25.5pt;
-   padding: 0.1em 0.2em;
-   height: 2.2em;
-}
-.counter-input{
-  padding: 0em;
-  height: 4em;
-}
-input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 #wasteCountReason-1, #wasteCountReason-2{
     top: 10px;
 }

@@ -110,7 +110,7 @@
                       <div ng-repeat="reason in discardedReasons">
                         <div class="form-group">
                           <label>{{ reason }}</label>
-                          <counter bind="discardCount.reason[productKey][$index]"></counter>
+                          <eha-counter bind="discardCount.reason[productKey][$index]"></eha-counter>
                           <div ng-show="discardErrors[productKey][$index]" class="custom-error text-center">{{
                             discardErrorMsg[productKey][$index] }}
                           </div>
