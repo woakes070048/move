@@ -31,8 +31,6 @@ module.exports = function (config) {
 
     // list of files / patterns to exclude
     exclude: [
-      'app/scripts/main.js',
-      'app/scripts/chromereload.js'
     ],
 
     // web server port
