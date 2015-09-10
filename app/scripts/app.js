@@ -17,17 +17,17 @@ angular.module('lmisChromeApp', [
   'eha.counter'
 ])
   .run(function (
+    $state,
+    $window,
+    $rootScope,
+    toastr,
+    utility,
     storageService,
     facilityFactory,
     locationService,
-    $rootScope,
-    $state,
-    $window,
     appConfigService,
     backgroundSyncService,
-    fixtureLoaderService,
-    toastr,
-    utility
+    fixtureLoaderService
   ) {
     function navigateToHome () {
       $state.go('home.mainActivity')
