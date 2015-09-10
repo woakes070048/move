@@ -19,10 +19,12 @@ angular.module('lmisChromeApp')
 
     $scope.authenticate = function (username, passkey) {
       $scope.wrongPasskey = false
+      $scope.isAuthenticating = true
       $scope.cannotReachServer = false
 
       if (!username || !passkey) {
         $scope.wrongPasskey = true
+        $scope.isAuthenticating = false
         return
       }
 
@@ -41,6 +43,9 @@ angular.module('lmisChromeApp')
           }
 
           console.log('error', err)
+        })
+        .finally(function () {
+          $scope.isAuthenticating = false
         })
     }
 
