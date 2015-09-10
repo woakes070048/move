@@ -2,7 +2,9 @@
 
 angular.module('lmisChromeApp').service('appConfigService', function (
   $q,
+  $log,
   $http,
+  $state,
   storageService,
   pouchStorageService,
   config,
@@ -17,6 +19,8 @@ angular.module('lmisChromeApp').service('appConfigService', function (
   memoryStorageService,
   ehaRetriable
 ) {
+  var self = this
+
   this.APP_CONFIG = storageService.APP_CONFIG
   this.stockCountIntervals = [
     {name: 'Daily', value: reminderFactory.DAILY},
@@ -193,4 +197,27 @@ angular.module('lmisChromeApp').service('appConfigService', function (
         return saveAppConfig(config)
       })
   })
+
+  this.showSplashScreen = function () {
+    $state.go('loadingFixture')
+  }
+
+  this.hideSplashScreen = function () {
+    function redirect (cfg) {
+      if (angular.isObject(cfg) && !angular.isArray(cfg)) {
+        $state.go('home.mainActivity')
+      } else {
+        $state.go('appConfigWelcome')
+      }
+    }
+
+    function handleError (error) {
+      toastr.error('Loading of app config failed, please contact support.')
+      $log.error(error)
+    }
+
+    self.getCurrentAppConfig()
+      .then(redirect)
+      .catch(handleError)
+  }
 })

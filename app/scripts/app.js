@@ -28,27 +28,8 @@ angular.module('lmisChromeApp', [
         })
     }
 
-    $window.showSplashScreen = function () {
-      $state.go('loadingFixture')
-    }
-
-    $window.hideSplashScreen = function () {
-      appConfigService.getCurrentAppConfig()
-        .then(function (cfg) {
-          if (angular.isObject(cfg) && !angular.isArray(cfg)) {
-            $state.go('home.mainActivity')
-          } else {
-            $state.go('appConfigWelcome')
-          }
-        })
-        .catch(function (reason) {
-          toastr.error('loading of App. Config. failed, please contact support.')
-          console.error(reason)
-        })
-    }
-
-    $rootScope.$on('LOADING_COMPLETED', $window.hideSplashScreen)
-    $rootScope.$on('START_LOADING', $window.showSplashScreen)
+    $rootScope.$on('LOADING_COMPLETED', appConfigService.hideSplashScreen)
+    $rootScope.$on('START_LOADING', appConfigService.showSplashScreen)
 
     // TODO: see item:680
     if (!utility.has($window, 'PouchDB')) {
