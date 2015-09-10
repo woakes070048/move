@@ -1,6 +1,23 @@
 'use strict'
 
-angular.module('lmisChromeApp').service('appConfigService', function ($q, storageService, pouchStorageService, config, syncService, productProfileFactory, facilityFactory, utility, cacheService, $filter, reminderFactory, toastr, messages, $http, memoryStorageService, ehaRetriable) {
+angular.module('lmisChromeApp').service('appConfigService', function (
+  $q,
+  storageService,
+  pouchStorageService,
+  config,
+  syncService,
+  productProfileFactory,
+  facilityFactory,
+  utility,
+  cacheService,
+  $filter,
+  reminderFactory,
+  toastr,
+  messages,
+  $http,
+  memoryStorageService,
+  ehaRetriable
+) {
   this.APP_CONFIG = storageService.APP_CONFIG
   this.stockCountIntervals = [
     {name: 'Daily', value: reminderFactory.DAILY},
