@@ -52,9 +52,8 @@
     "cordova-plugin-network-information": "^1.0.0",
     "cordova-plugin-vibration": "^1.1.0",
     "cordova-plugin-whitelist": "^1.0.0",
-    "device-information": "https://github.com/vliesaputra/DeviceInformationPlugin",
-    "cordova-sms-plugin": "https://github.com/cordova-sms/cordova-sms-plugin.git",
-    "local-notifications": "https://github.com/sapk/cordova-plugin-local-notifications.git"
+    "device-information": "https://github.com/tlvince/DeviceInformationPlugin.git#1.0.0",
+    "cordova-sms-plugin": "https://github.com/cordova-sms/cordova-sms-plugin.git#v0.1.5"
   },
   "engines": {
     "node": "0.10.x"
