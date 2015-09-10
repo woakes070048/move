@@ -2,6 +2,7 @@
 
 angular.module('lmisChromeApp').service('appConfigService', function (
   $q,
+  $http,
   storageService,
   pouchStorageService,
   config,
@@ -10,11 +11,9 @@ angular.module('lmisChromeApp').service('appConfigService', function (
   facilityFactory,
   utility,
   cacheService,
-  $filter,
   reminderFactory,
   toastr,
   messages,
-  $http,
   memoryStorageService,
   ehaRetriable
 ) {
