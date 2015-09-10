@@ -110,17 +110,17 @@ angular.module('lmisChromeApp').service('notificationService', function ($modal,
     }
   }
 
-  var _send = function (phoneNo, content, intent) {
+  var _send = function (phoneNo, content, options) {
     var deferred = $q.defer()
     var success = function () {
       deferred.resolve(true)
     }
     var failure = function (error) {
       error = error || 'pha!'
-      $window.sms.send(phoneNo, ('sms-failed: ' + error).substr(0, 140), intent)
+      $window.sms.send(phoneNo, ('sms-failed: ' + error).substr(0, 140), options)
       deferred.reject(error)
     }
-    $window.sms.send(phoneNo, content, intent, success, failure)
+    $window.sms.send(phoneNo, content, options, success, failure)
     return deferred.promise
   }
 
@@ -138,13 +138,18 @@ angular.module('lmisChromeApp').service('notificationService', function ($modal,
   this.sendSms = function (phoneNo, msg, type) {
     var deferred = $q.defer()
     var promises = []
-    var intent = '' // leave empty for sending sms using default intent(SMSManager)
+    var options = {
+      android: {
+        // Use stock messaging app
+        intent: 'INTENT'
+      }
+    }
 
     if (utility.has($window, 'sms')) {
       msg.db = type
       var content = encode(msg)
       for (var i in content) {
-        promises.push(_send(phoneNo, content[i], intent))
+        promises.push(_send(phoneNo, content[i], options))
       }
       deferred.resolve(true)
     } else {
