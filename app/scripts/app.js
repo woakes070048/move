@@ -16,7 +16,19 @@ angular.module('lmisChromeApp', [
   'eha.cordova.google-analytics',
   'eha.counter'
 ])
-  .run(function (storageService, facilityFactory, locationService, $rootScope, $state, $window, appConfigService, backgroundSyncService, fixtureLoaderService, toastr, utility) {
+  .run(function (
+    storageService,
+    facilityFactory,
+    locationService,
+    $rootScope,
+    $state,
+    $window,
+    appConfigService,
+    backgroundSyncService,
+    fixtureLoaderService,
+    toastr,
+    utility
+  ) {
     function navigateToHome () {
       $state.go('home.mainActivity')
       backgroundSyncService.startBackgroundSync()
