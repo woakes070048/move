@@ -14,19 +14,17 @@ angular.module('lmisChromeApp', [
   'eha.login-service',
   'eha.online-badge',
   'eha.cordova.google-analytics',
-  'eha.counter'
+  'eha.counter',
+  'eha.login-dialog'
 ])
   .run(function (
     $window,
     $rootScope,
-    appService,
-    loginDialogService,
-    ehaLoginService
+    appService
   ) {
     // FIXME: horrible quickfix to get the test suite running
     if ($window.jasmine) {
       return
     }
-    ehaLoginService.config(loginDialogService)
     appService.init()
   })
