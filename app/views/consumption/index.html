@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Title Here</h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12 clearfix">
+        <a ui-sref="consumption-form" class="btn btn-default pull-right" style="margin-bottom: 10px;">
+          <i class="fa fa-plus-circle"></i> Create Consumption Report
+        </a>
+      </div>
+    </div>
+
+    <table class="table table-bordered table-responsive">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Modified</th>
+        <th>Synced</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody ng-repeat="report in consumptionReport">
+      <tr ng-click="toggleDetail(report)" class="pointer">
+        <td ng-bind="report.created | date: 'yyyy MMM d'"></td>
+        <td ng-bind="report.modified | date: 'yyyy MMM d'"></td>
+        <td></td>
+        <td><a ui-sref="consumption-form({_id: report._id})">edit</a></td>
+      </tr>
+      <tr ng-if="activeRow[report._id]">
+        <td colspan="4">
+          <div style="margin-bottom: 10px;" ng-repeat="product in products">
+            <div class="row">
+              <div class="col-xs-4" ng-bind="product.name">
+
+              </div>
+              <div class="col-xs-2" ng-bind="(consumptionData[product._id] || 0)+' '+product.presentation.uom.symbol">
+
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

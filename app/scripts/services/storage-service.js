@@ -19,6 +19,7 @@ angular.module('lmisChromeApp')
     var pendingSyncs = 'pending_syncs'
     var locations = 'locations'
     var batches = 'batches'
+    var consumption = 'consumption'
 
     var FIXTURE_NAMES = utility.values(collections)
 
@@ -77,7 +78,8 @@ angular.module('lmisChromeApp')
       appConfig,
       ccuBreakdown,
       ccuBreakdown2,
-      pendingSyncs
+      pendingSyncs,
+      consumption
     ].concat(FIXTURE_NAMES)
 
     /**
@@ -283,7 +285,8 @@ angular.module('lmisChromeApp')
       FIXTURE_NAMES: FIXTURE_NAMES,
       // TODO: remove, see item:751
       _COLLECTIONS: _collections,
-      BATCHES: batches
+      BATCHES: batches,
+      CONSUMPTION: consumption
     }
 
     return angular.extend(api, collections)

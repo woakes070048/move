@@ -1,0 +1,25 @@
+<form name="consumption-form">
+<div style="margin-bottom: 10px;" ng-repeat="product in cfCtrl.products">
+  <div class="row">
+    <div class="col-xs-4" ng-bind="product.name">
+
+    </div>
+    <div class="col-xs-1">
+      <input ng-model="cfCtrl.enteredValues[product._id]" ng-change="cfCtrl.valueToUnit(product)" class="form-control">
+    </div>
+    <div class="col-xs-1">
+      <span ng-bind="product.presentation.uom.symbol"></span><span ng-if="cfCtrl.enteredValues[product._id] !== '1'">s</span>
+    </div>
+    <div class="col-xs-2">
+      <span ng-bind="cfCtrl.consumptionData[product._id]+' '+product.product.base_uom.symbol"></span><span ng-if="cfCtrl.consumptionData[product._id] !== 1">s</span>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <button type="button" class="btn btn-success" ng-click="cfCtrl.save()">
+      Save
+    </button>
+  </div>
+</div>
+</form>
