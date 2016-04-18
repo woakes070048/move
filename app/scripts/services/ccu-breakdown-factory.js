@@ -35,16 +35,16 @@ angular.module('lmisChromeApp')
         .then(function (syncResult) {
           deferred.resolve(syncResult)
         }).catch(function () {
-        // online syncing failed, send offline sms alert.
-        var msg = generateSmsMsg(ccuBreakdown)
-        notificationService.sendSms(notificationService.alertRecipient, msg, 'ccu_breakdown')
+          // online syncing failed, send offline sms alert.
+          var msg = generateSmsMsg(ccuBreakdown)
+          notificationService.sendSms(notificationService.alertRecipient, msg, 'ccu_breakdown')
           .then(function (smsResult) {
             deferred.resolve(smsResult)
           })
           .catch(function (reason) {
             deferred.reject(reason)
           })
-      })
+        })
       return deferred.promise
     }
 
