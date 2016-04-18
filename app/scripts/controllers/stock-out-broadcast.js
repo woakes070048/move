@@ -138,9 +138,10 @@ angular.module('lmisChromeApp').config(function ($stateProvider) {
                 stockOutBroadcastFactory.broadcast(result)
                   .then(function (result) {
                     $log.info('stock-out broad-casted: ' + result)
-                  }).catch(function (reason) {
-                  console.error(reason)
-                })
+                  })
+                  .catch(function (reason) {
+                    console.error(reason)
+                  })
                   .finally(function () {
                     $state.go('home.mainActivity')
                   })

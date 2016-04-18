@@ -13,6 +13,7 @@ addons:
     packages:
       - libgnome-keyring-dev
 before_script:
+  - git config --global url.https://github.com/.insteadOf git://github.com/
   - npm config set spin false --global
   - npm install --global 'npm@~2.11.0'
   - npm install

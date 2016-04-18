@@ -36,9 +36,10 @@ angular.module('lmisChromeApp')
           doc._id = response._id
           doc._rev = response._rev
           return db.put(doc, response._id, response._rev)
-        }).catch(function () {
-        return db.put(doc, doc.uuid)
-      })
+        })
+        .catch(function () {
+          return db.put(doc, doc.uuid)
+        })
     })
 
     /**
