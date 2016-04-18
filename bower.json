@@ -47,6 +47,7 @@
     "angular-pouchdb": "~3.0.0",
     "angular": "~1.4.1",
     "d3": "~3.4.1",
-    "pouchdb": "~4.0.0"
+    "pouchdb": "~4.0.0",
+    "angular-bootstrap": "0.12.0"
   }
 }
