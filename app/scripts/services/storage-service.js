@@ -181,9 +181,10 @@ angular.module('lmisChromeApp')
           .then(function (data) {
             results = data.filter(fn)
             deferred.resolve(results)
-          }).catch(function (reason) {
-          deferred.reject(reason)
-        })
+          })
+          .catch(function (reason) {
+            deferred.reject(reason)
+          })
       } catch (e) {
         deferred.reject(e)
       } finally {
