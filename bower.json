@@ -12,7 +12,7 @@
     "angularjs-nvd3-directives": "~0.0.7",
     "angular-animate": "~1.4.1",
     "angular-gettext": "~2.1.0",
-    "angular-eha.login-service": "https://github.com/eHealthAfrica/angular-eha.login-service.git#~1.0.2",
+    "angular-eha.login-service": "https://github.com/eHealthAfrica/angular-eha.login-service.git#~1.0.1",
     "angular-eha.retriable": "~0.1.0",
     "angular-eha.online-badge": "~1.0.0",
     "angular-eha.cordova.google-analytics": "~1.2.1",
@@ -48,7 +48,6 @@
     "angular": "~1.4.1",
     "d3": "~3.4.1",
     "pouchdb": "~4.0.0",
-    "angular-eha.login-service": "https://github.com/eHealthAfrica/angular-eha.login-service.git#~1.0.2",
     "angular-bootstrap": "0.12.0"
   }
 }
