@@ -74,9 +74,8 @@ angular.module('lmisChromeApp')
     function reverseValue (value, product) {
       value = parseInt(value, 10)
       if (value !== 0 && !isNaN(value)) {
-        value = value/parseInt(product.presentation.value, 10)
+        value = value / parseInt(product.presentation.value, 10)
       }
       return value
     }
-
   })
