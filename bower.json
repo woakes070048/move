@@ -48,6 +48,7 @@
     "angular": "~1.4.1",
     "d3": "~3.4.1",
     "pouchdb": "~4.0.0",
-    "angular-eha.login-service": "~1.0.2"
+    "angular-eha.login-service": "~1.0.2",
+    "angular-bootstrap": "0.12.0"
   }
 }

@@ -85,7 +85,8 @@ angular.module('lmisChromeApp')
             }
           }
           deferred.resolve(count)
-        }, function (err) {
+        },
+        function (err) {
           deferred.reject(err)
         })
       return deferred.promise

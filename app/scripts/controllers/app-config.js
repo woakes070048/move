@@ -209,6 +209,16 @@ angular.module('lmisChromeApp')
       return hasOddElem
     }
 
+    function afterSave (forSerial) {
+      if (forSerial) {
+        toastr.success(messages.appConfigSuccessMsg)
+      }
+      if (!forSerial) {
+        alertFactory.success(messages.appConfigSuccessMsg)
+        $state.go('home.mainActivity')
+      }
+    }
+
     // Save Methods:
     $scope.save = function (forSerial) {
       $scope.isSaving = true
@@ -236,25 +246,26 @@ angular.module('lmisChromeApp')
           } else {
             toastr.error(messages.appConfigFailedMsg)
           }
-        }).catch(function (reason) {
-        if (!isEdit) {
-          return toastr.error(messages.appConfigFailedMsg)
-        }
-
-        if (utility.has(reason, 'type') && reason.type === 'SAVED_NOT_SYNCED') {
-          afterSave(forSerial)
-        } else {
-          toastr.error(messages.appConfigFailedMsg)
-        }
-      }).finally(function () {
-        $scope.isSaving = false
-        var facilityLgaIds = lgaList.filter(function (lga) {
-          return (lga._id && nearbyLgaIds.indexOf(lga._id) === -1)
-        }).map(function (lga) {
-          return lga._id
         })
-        facilityFactory.removeByLgaIds(facilityLgaIds)
-      })
+        .catch(function (reason) {
+          if (!isEdit) {
+            return toastr.error(messages.appConfigFailedMsg)
+          }
+
+          if (utility.has(reason, 'type') && reason.type === 'SAVED_NOT_SYNCED') {
+            afterSave(forSerial)
+          } else {
+            toastr.error(messages.appConfigFailedMsg)
+          }
+        }).finally(function () {
+          $scope.isSaving = false
+          var facilityLgaIds = lgaList.filter(function (lga) {
+            return (lga._id && nearbyLgaIds.indexOf(lga._id) === -1)
+          }).map(function (lga) {
+            return lga._id
+          })
+          facilityFactory.removeByLgaIds(facilityLgaIds)
+        })
     }
 
     $scope.addSerialNumber = function () {
@@ -324,16 +335,6 @@ angular.module('lmisChromeApp')
         if (selectedCCU.deSelected) {
           resetRowState()
         }
-      }
-    }
-
-    function afterSave (forSerial) {
-      if (forSerial) {
-        toastr.success(messages.appConfigSuccessMsg)
-      }
-      if (!forSerial) {
-        alertFactory.success(messages.appConfigSuccessMsg)
-        $state.go('home.mainActivity')
       }
     }
 

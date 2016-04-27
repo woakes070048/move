@@ -4,7 +4,7 @@ env:
   node: false
   browser: false
 rules:
-  no-use-before-define: 2
+  //no-use-before-define: 2
   spaced-comment:
     - 2
     - always
