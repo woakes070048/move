@@ -30,9 +30,6 @@ angular.module('lmisChromeApp')
         resolve: {
           appConfig: function (appConfigService) {
             return appConfigService.getCurrentAppConfig()
-          },
-          stockLevel: function (consumptionService, $stateParams) {
-            return consumptionService.getStockLevel($stateParams.date)
           }
         }
       })
