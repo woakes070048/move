@@ -59,7 +59,7 @@
     "cordova-plugin-whitelist": "^1.0.0",
     "device-information": "https://github.com/vliesaputra/DeviceInformationPlugin",
     "phonegap-sms": "https://github.com/aharris88/phonegap-sms-plugin.git",
-    "local-notifications": "https://github.com/eHealthAfrica/cordova-plugin-local-notifications"
+    "local-notifications": "https://github.com/katzer/cordova-plugin-local-notifications"
   },
   "engines": {
     "node": "0.10.x"
