@@ -7,7 +7,7 @@
     "bower": "^1.4.1",
     "change-case": "^2.1.1",
     "concat-map": "0.0.1",
-    "cordova-android": "^4.0.1",
+    "cordova-android": "^5.1.1",
     "eslint-no-exclusive-tests": "^0.1.0",
     "grunt": "^0.4.5",
     "grunt-angular-gettext-transifex": "^1.1.0",
@@ -53,13 +53,13 @@
   "cordovaPlugins": {
     "cordova-plugin-crosswalk-webview": "^1.2.0",
     "cordova-plugin-dialogs": "^1.1.0",
-    "cordova-plugin-google-analytics": "^0.8.1",
+    "cordova-plugin-google-analytics": "^0.7.1",
     "cordova-plugin-network-information": "^1.0.0",
     "cordova-plugin-vibration": "^1.1.0",
     "cordova-plugin-whitelist": "^1.0.0",
     "device-information": "https://github.com/vliesaputra/DeviceInformationPlugin",
     "phonegap-sms": "https://github.com/aharris88/phonegap-sms-plugin.git",
-    "local-notifications": "https://github.com/katzer/cordova-plugin-local-notifications"
+    "local-notifications": "https://github.com/eHealthAfrica/cordova-plugin-local-notifications"
   },
   "engines": {
     "node": "0.10.x"
