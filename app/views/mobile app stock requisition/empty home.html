@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVE app</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/move.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
+</head>
+
+<body>
+  <div class="container header bottom-aligner">
+    <div class="col-xs-6">
+    <img src = "assets/img/logo-Stock-1.jpg" width = "100%">
+    </div>
+    <div class="col-xs-6 text-right">
+    <h6 class="text-uppercase green"><i class="fa fa-check icon"></i><strong>online </strong></h6>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="col-xs-8">
+    <h4 class="">Stock Requisition</h4>
+    </div>
+    <div class="col-xs-4 text-right">
+    <h6 class="text-uppercase blue"><i class="fa fa-question-circle icon"></i><strong>help </strong></h6>
+    </div>
+  </div>
+
+  <div class="container">
+    <a href="/new stock request" class="btn btn-default request-new">
+      <i class="fa fa-plus icon"></i>Request New Stock
+    </a>
+    <h5>Previous Stock Requisitions</h5>
+  </div>
+
+  <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="tableheader">
+                    <tr class="tableheader">
+                        <th class="dark-grey">DATE </th>
+                        <th class="dark-grey text-center">DELIVERED? </th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tablecell">
+                        <td colspan="12" class="tablecell"><em>You do not have any stock requisitions yet.</em></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
