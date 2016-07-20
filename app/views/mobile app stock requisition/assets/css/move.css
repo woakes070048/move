@@ -54,7 +54,7 @@ body{
     display:block;
     color:white;
     background-color:#0387C8;
-    width:70%;
+    width:90%;
   }
 }
 
@@ -95,12 +95,13 @@ table{
 }
 
 .status{
-  border-top:1px solid #f3f4f5;
-  border-bottom:1px solid #0387c8;
+  /*border-top:1px solid #f3f4f5;
+  border-bottom:1px solid #0387c8; */
   padding-top:20px;
   padding-bottom:20px;
   margin-top:20px;
   margin-bottom:20px;
+  background-color: whitesmoke;
 }
 
 .backButton{
@@ -121,8 +122,8 @@ table{
   margin-left: 0px;
   margin-right: 0px;
   padding:10px;
-  padding-top:5px;
-  padding-bottom:15px;
+  padding-top:10px;
+  padding-bottom:0px;
   background-color:#F5F8FA;
 }
 
@@ -143,6 +144,7 @@ div.cat1.accordion{
   color:white;
   border: none;
   min-height: 50px;
+  height:auto;
   padding: 12.5px;
 }
 
@@ -165,7 +167,7 @@ div.cat2.accordion{
   background-color:#ff9f00;
   color:white;
   border: none;
-  min-height: inherit;
+  min-height: 50px;
   padding: 12.5px;
 }
 
@@ -197,9 +199,15 @@ div.cat3.accordion{
   border:none;
 }
 
+.category-parent {
+  display: flex;
+  flex-direction: row;
+  margin-bottom:2px;
+}
+
 .product-column{
   background-color:white;
-  margin-bottom:-10px;
+  margin-bottom:10px;
 }
 
 td.product-column.text-right{
@@ -220,7 +228,7 @@ td.product-column.text-right{
   padding-bottom:10px;
   margin-left: 0;
   margin-right: 0;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .qty-field {
@@ -232,7 +240,7 @@ td.product-column.text-right{
   margin-bottom:20px;
   margin-left:auto;
   margin-right:auto;
-  width:70%;
+  width:100%;
   border:1px solid #c8c8c8;
   border-radius:6px;
   padding:10px;

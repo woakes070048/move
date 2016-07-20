@@ -14,20 +14,30 @@
 
 <body>
   <div class="container header bottom-aligner">
-    <div class="col-xs-6">
-    <img src = "assets/img/logo-Stock-1.jpg" width = "100%">
-    </div>
-    <div class="col-xs-6 text-right">
-    <h6 class="text-uppercase green"><i class="fa fa-check icon"></i><strong>online </strong></h6>
+    <div class="row">
+      <div class="col-xs-6">
+        <img src = "assets/img/logo-Stock-1.jpg" width = "100%">
+      </div>
+      <div class="col-xs-6">
+        <h6 class="text-uppercase green text-right">
+          <i class="fa fa-check icon"></i>
+          <strong>online </strong>
+        </h6>
+      </div>
     </div>
   </div>
 
   <div class="container">
-    <div class="col-xs-8">
-    <h4 class="">Stock Requisition</h4>
-    </div>
-    <div class="col-xs-4 text-right">
-    <h6 class="text-uppercase blue"><i class="fa fa-question-circle icon"></i><strong>help </strong></h6>
+    <div class="row">
+      <div class="col-xs-8">
+        <h4 class="">Stock Requisition</h4>
+      </div>
+      <div class="col-xs-4">
+        <h6 class="text-uppercase blue text-right">
+          <i class="fa fa-question-circle icon"></i>
+          <strong>help </strong>
+        </h6>
+      </div>
     </div>
   </div>
 
@@ -35,29 +45,38 @@
     <a href="/new stock request" class="btn btn-default request-new">
       <i class="fa fa-plus icon"></i>Request New Stock
     </a>
-    <h5>Previous Stock Requisitions</h5>
   </div>
 
   <div class="container">
-        <div class="table-responsive">
-            <table class="table">
-                <thead class="tableheader">
-                    <tr class="tableheader">
-                        <th class="dark-grey">DATE </th>
-                        <th class="dark-grey text-center">DELIVERED? </th>
-                        <th> </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="tablecell">
-                        <td colspan="12" class="tablecell"><em>You do not have any stock requisitions yet.</em></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h5 class="text-center">Previous Stock Requisitions</h5>
+      </div>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
 
+    <div class="">
+
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 alert alert-info text-center">
+          <em>You do not have any stock requisitions yet.</em>
+        </div>
+      </div>
+
+      <!--table class="table table-responsive">
+        <thead class="tableheader">
+          <tr class="tableheader">
+            <th class="dark-grey">DATE </th>
+            <th class="dark-grey text-center">DELIVERED? </th>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table-->
+    </div>
+  </div>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
 </html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVE app</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/move.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
+</head>
+
+<body>
+
+<!--Header-->
+  <div class="container header bottom-aligner">
+    <div class="col-xs-6">
+    <img src = "assets/img/logo-Stock-1.jpg" width = "100%">
+  </div>
+
+  <div class="col-xs-6 text-right">
+    <h6 class="text-uppercase green"><i class="fa fa-check icon"></i><strong>online </strong></h6>
+    </div>
+  </div>
+
+<!--SubHeader-->
+  <div class="container">
+    <div class="col-xs-8">
+      <h4 class="">New Stock Request</h4>
+      <p class = "dark-grey"> 28 May 2016 </p>
+    </div>
+    <div class="col-xs-4 text-right">
+      <h6 class="text-uppercase blue"><i class="fa fa-question-circle icon"></i><strong>help </strong></h6>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="col-xs-12">
+  <div class="search-bar text-center">
+    <input type="text" name="search bar" placeholder="Type to search" autocomplete="on" class="text-center">
+    <i class="fa fa-search icon dark-grey"></i>
+  </div>
+  </div>
+</div>
+
+<!--Products-->
+<!--Correction-->
+<div class="container">
+
+  <!--Category 1-->
+
+  <div class="row category-parent">
+    <div class ="col-xs-2 category-color cat1 accordion text-center">
+      <i class="fa fa-chevron-down"></i>
+    </div>
+
+    <div class="col-xs-10 category-row">
+      <p class="text-uppercase cat1 heading">category name</p>
+    </div>
+  </div>
+
+  <!--Category2-->
+  <div class="row category-parent">
+    <div class ="col-xs-2 category-color cat2 accordion text-center">
+      <i class="fa fa-chevron-down"></i>
+    </div>
+
+    <div class="col-xs-10 category-row">
+      <p class="text-uppercase cat2 heading">category name</p>
+
+      <!--In Stock Product-->
+    <div class="product-column">
+      <div class="row product-name">
+        <div class = "col-xs-6">
+          <p><strong>Product Name</strong></p>
+        </div>
+        <div class="col-xs-6 text-right">
+          <p><strong>N9,600</strong></p>
+        </div>
+      </div>
+
+      <div class="row product-detail">
+        <div class="col-sm-6">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default btn-number red qty-field"  data-type="minus" data-field="quant[2]">
+              <span class="fa fa-minus"></span>
+              </button>
+            </span>
+
+            <input type="text" name="quant[2]" class="form-control input-number text-center qty-field" value="10 units" min="0 unit" max="100 units">
+
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default btn-number green qty-field" data-type="plus" data-field="quant[2]">
+              <span class="fa fa-plus"></span>
+              </button>
+            </span>
+          </div>
+          <p class="text-uppercase green"><i class="fa fa-check icon"></i><strong>10 units added to list</strong></p>
+        </div>
+
+        <div class="col-sm-6">
+          <button class="btn btn-default btn-green qty-field" type="button">Update List</button>
+          <a class="text-uppercase" href="#"><strong>EDIT</strong><i class="fa fa-chevron-right icon"></i></a>
+        </div>
+      </div>
+    </div>
+
+      <!--Out of Stock Product-->
+    <div class="product-column">
+      <div class="row product-name">
+        <div class = "col-xs-6">
+          <p><strong>Product Name</strong></p>
+        </div>
+        <div class="col-xs-6 text-right">
+          <p><strong>N9,600</strong></p>
+        </div>
+      </div>
+
+      <div class="row product-detail">
+        <div class="col-sm-6">
+          <p class="text-uppercase red">out of stock</p>
+          <p class="text-uppercase green"><i class="fa fa-check icon"></i><strong>restock alert requested</strong></p>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="checkbox">
+            <label>
+            <input type="checkbox">Notify me when available</label>
+          </div>
+          <a class="text-uppercase visible-xs-block visible-sm-block visible-md-block visible-lg-block blue" href="#">
+            <strong>EDIT</strong>
+            <i class="fa fa-chevron-right icon"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  <!--Category3-->
+  <div class="row category-parent">
+    <div class ="col-xs-2 category-color cat3 accordion text-center">
+      <i class="fa fa-chevron-down"></i>
+    </div>
+
+    <div class="col-xs-10 category-row">
+      <p class="text-uppercase cat3 heading">category name</p>
+    </div>
+  </div>
+
+</div>
+
+<!--
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr></tr>
+      </thead>
+
+      <tbody>
+
+    <!-Category 1->
+        <tr>
+          <td class="category-color cat1 accordion text-center">
+            <i class="fa fa-chevron-down"></i>
+          </td>
+          <td class="category-row">
+            <p class="text-uppercase cat1 heading">category name</p>
+          </td>
+        </tr>
+
+    <!-Category 2->
+        <tr>
+          <td class="category-color cat2 accordion text-center"><i class="fa fa-chevron-down"></i></td>
+          <td class="category-row">
+            <p class="text-uppercase cat2 heading">category name</p>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr></tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td><strong>Product Name</strong></td>
+                    <td class="text-right"><strong>N9,600</strong></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="input-group">
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default btn-number red"  data-type="minus" data-field="quant[2]">
+                          <span class="fa fa-minus"></span>
+                          </button>
+                        </span>
+
+                        <input type="text" name="quant[2]" class="form-control input-number text-center" value="10 units" min="0 unit" max="100 units">
+
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default btn-number green" data-type="plus" data-field="quant[2]">
+                          <span class="fa fa-plus"></span>
+                          </button>
+                        </span>
+                      </div>
+
+                      <p class="text-uppercase green"><i class="fa fa-check icon"></i><strong>10 units added to list</strong></p>
+                    </td>
+
+                    <td class="text-right">
+                      <button class="btn btn-default btn-green" type="button">Update List</button><a class="text-uppercase visible-xs-block visible-sm-block visible-md-block visible-lg-block blue" href="#"><strong>EDIT</strong><i class="fa fa-chevron-right icon"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-Out of Stock Product->
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr> </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td><strong>Product Name</strong></td>
+                    <td class="text-right"><strong>N9,600</strong></td>
+                  </tr>
+                  <tr class="middle-align">
+                    <td class="middle-align">
+                      <p class="text-uppercase red">out of stock</p>
+                      <p class="text-uppercase green"><i class="fa fa-check icon"></i><strong>restock alert requested</strong></p>
+                    </td>
+                    <td class="text-right">
+                      <div class="checkbox">
+                        <label>
+                        <input type="checkbox">Notify me when available</label>
+                      </div>
+                      <a class="text-uppercase visible-xs-block visible-sm-block visible-md-block visible-lg-block blue" href="#">
+                        <strong>EDIT</strong>
+                        <i class="fa fa-chevron-right icon"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </tr>
+
+      <!-Category 3->
+        <tr>
+          <td class="category-color cat3 accordion text-center"><i class="fa fa-chevron-down"></i></td>
+          <td class="category-row">
+            <p class="text-uppercase cat3 heading">category name</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+<!--Sticky Footer-->
+<footer class="footer">
+  <div class="container footer-container text-center">
+    <button class="btn btn-default" type="button">Preview Request List</button>
+  </div>
+</footer>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

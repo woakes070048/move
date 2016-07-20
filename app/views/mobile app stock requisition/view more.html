@@ -14,31 +14,67 @@
 </head>
 
 <body>
-    <header class="header"><img><span class="text-uppercase pull-right green"><i class="fa fa-check icon"></i><strong>online </strong></span></header>
-    <div class="container subHeader">
-        <p class="text-uppercase green backButton"><i class="glyphicon glyphicon-chevron-left icon left"></i>back</p>
-        <div class="row">
-            <div class="col-xs-8">
-                <h4>Stock Requisition for</h4></div>
-            <div class="col-xs-4" id="bottomAligner">
-                <h5 class="text-uppercase blue"><i class="fa fa-question-circle icon"></i>help</h5></div>
-        </div><span class="dark-grey"><strong>28 May 2016</strong></span></div>
-    <div class="container status"><span class="text-uppercase">status: </span><span class="text-uppercase blue"><i class="fa fa-spinner icon"></i><strong>awaiting payment</strong></span></div>
+
+
+  <!--Header-->
+
+    <div class="container header bottom-aligner">
+      <div class="row">
+      <div class="col-xs-6">
+        <img src = "assets/img/logo-Stock-1.jpg" width = "100%">
+      </div>
+
+      <div class="col-xs-6 text-right">
+        <h6 class="text-uppercase green"><i class="fa fa-check icon"></i><strong>online </strong></h6>
+      </div>
+    </div>
+    </div>
+
+    <div class="container">
+      <p class="text-uppercase blue backButton">
+        <i class="fa fa-chevron-left icon left"></i>back
+      </p>
+    </div>
+
+    <!--SubHeader-->
+    <div class="container">
+      <div class="row">
+      <div class="col-xs-8">
+        <h4 class="">Stock Requisition for</h4>
+        <p class = "dark-grey"> 28 May 2016 </p>
+      </div>
+      <div class="col-xs-4 text-right">
+        <h6 class="text-uppercase blue"><i class="fa fa-question-circle icon"></i><strong>help </strong></h6>
+      </div>
+    </div>
+    </div>
+
+    <div class="container status">
+      <span class="text-uppercase"> status: </span>
+      <span class="text-uppercase blue">
+        <i class="fa fa-spinner icon"></i>
+        <strong>awaiting payment</strong>
+      </span>
+    </div>
+
     <div class="dropdown text-center blue">
-        <button class="btn btn-default dropdown-toggle blue" data-toggle="dropdown" aria-expanded="false" type="button">Filter By <span class="caret"></span></button>
+      <button class="btn btn-default request-new dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Filter By 
+        <span class="caret"></span>
+      </button>
         <ul class="dropdown-menu" role="menu">
-            <li role="presentation"><a href="#">First Item</a></li>
-            <li role="presentation"><a href="#">Second Item</a></li>
-            <li role="presentation"><a href="#">Third Item</a></li>
+          <li role="presentation"><a href="#">First Item</a></li>
+          <li role="presentation"><a href="#">Second Item</a></li>
+          <li role="presentation"><a href="#">Third Item</a></li>
         </ul>
     </div>
+
     <div class="container">
         <div class="table-responsive">
             <table class="table">
                 <thead>
-                    <tr class="dark-grey">
-                        <th>PRODUCT </th>
-                        <th class="text-right">COST (N)</th>
+                    <tr>
+                        <th class="dark-grey">PRODUCT </th>
+                        <th class="dark-grey text-right">COST (N)</th>
                     </tr>
                 </thead>
                 <tbody>
