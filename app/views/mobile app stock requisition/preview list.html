@@ -8,81 +8,129 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/move-header2.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/move.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
 </head>
 
 <body>
-    <header class="header"><img><span class="text-uppercase pull-right green"><i class="fa fa-check icon"></i><strong>online </strong></span></header>
-    <div class="container subHeader">
-        <p class="text-uppercase green backButton"><i class="glyphicon glyphicon-chevron-left icon left"></i>back</p>
-        <div class="row">
-            <div class="col-xs-8">
-                <h4>Requisition List Preview</h4></div>
-            <div class="col-xs-4" id="bottomAligner">
-                <h5 class="text-uppercase blue"><i class="fa fa-question-circle icon"></i>help</h5></div>
-        </div>
+
+  <!--Header-->
+
+    <div class="container header bottom-aligner">
+      <div class="row">
+      <div class="col-xs-6">
+        <img src = "assets/img/logo-Stock-1.jpg" width = "100%">
+      </div>
+
+      <div class="col-xs-6 text-right">
+        <h6 class="text-uppercase green"><i class="fa fa-check icon"></i><strong>online </strong></h6>
+      </div>
     </div>
+    </div>
+
+    <div class="container">
+      <p class="text-uppercase blue backButton">
+        <i class="fa fa-chevron-left icon left"></i>back
+      </p>
+    </div>
+
+    <!--SubHeader-->
+    <div class="container">
+      <div class="row">
+      <div class="col-xs-8">
+        <h4 class="">Requisition List Preview</h4>
+      </div>
+      <div class="col-xs-4 text-right">
+        <h6 class="text-uppercase blue"><i class="fa fa-question-circle icon"></i><strong>help </strong></h6>
+      </div>
+    </div>
+    </div>
+
+    <div class="container status">
+      <em class="dark-grey">Please ensure the items on this list are the ones you want</em>
+    </div>
+
+    <!--Products Requested-->
     <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr class="dark-grey">
-                    <th>PRODUCT </th>
-                    <th class="text-right">COST (N)</th>
-                    <th class="text-right"> </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="category-row cat1">
-                    <td class="product-column">
-                        <p class="dark-grey"><strong>2 Units</strong></p>
-                        <p>Product Name</p>
-                    </td>
-                    <td class="product-column text-right">
-                        <p>3,700 </p>
-                    </td>
-                    <td class="product-column text-right blue"><a class="text-uppercase blue" href="#"><strong>EDIT</strong><i class="fa fa-chevron-right icon"></i></a></td>
-                </tr>
-                <tr class="category-row cat1">
-                    <td class="product-column">
-                        <p class="dark-grey"><strong>5 Vials</strong></p>
-                        <p>Product Name</p>
-                    </td>
-                    <td class="product-column text-right">
-                        <p>450,000 </p>
-                    </td>
-                    <td class="product-column text-right blue"><a class="text-uppercase blue" href="#"><strong>EDIT</strong><i class="fa fa-chevron-right icon"></i></a></td>
-                </tr>
-                <tr class="category-row cat2">
-                    <td class="product-column">
-                        <p class="dark-grey"><strong>10 Units</strong></p>
-                        <p>Long Product Name That Goes on Forever</p>
-                    </td>
-                    <td class="product-column text-right">
-                        <p>450,000 </p>
-                    </td>
-                    <td class="product-column text-right blue"><a class="text-uppercase blue" href="#"><strong>EDIT</strong><i class="fa fa-chevron-right icon"></i></a></td>
-                </tr>
-                <tr class="category-row">
-                    <td class="product-column">
-                        <p><strong>TOTAL </strong></p>
-                    </td>
-                    <td class="product-column text-right">
-                        <p><strong>453,700 </strong></p>
-                    </td>
-                    <td class="product-column text-right"></td>
-                </tr>
-            </tbody>
-        </table>
+      <table class="table">
+        <thead>
+          <tr class="dark-grey">
+            <th>PRODUCT </th>
+            <th class="text-right">COST(N)</th>
+            <th class="text-right"> </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="category-row cat1">
+            <td class="product-column">
+              <p class="dark-grey"><strong>2 Units</strong></p>
+              <p>Product Name</p>
+            </td>
+            <td class="product-column text-right">
+              <p>3,700 </p>
+            </td>
+            <td class="product-column text-right blue">
+              <p><a class="text-uppercase blue" href="#">
+                <strong>EDIT</strong><i class="fa fa-chevron-right icon"></i>
+              </a></p>
+            </td>
+          </tr>
+
+          <tr class="category-row cat1">
+            <td class="product-column">
+              <p class="dark-grey"><strong>5 Vials</strong></p>
+              <p>Product Name</p>
+            </td>
+            <td class="product-column text-right">
+              <p>450,000 </p>
+            </td>
+            <td class="product-column text-right blue">
+              <p><a class="text-uppercase blue" href="#">
+                <strong>EDIT</strong><i class="fa fa-chevron-right icon"></i>
+              </a></p>
+            </td>
+          </tr>
+
+          <tr class="category-row cat2">
+            <td class="product-column">
+              <p class="dark-grey"><strong>10 Units</strong></p>
+              <p>Long Product Name That Goes on Forever</p>
+            </td>
+            <td class="product-column text-right">
+              <p>450,000 </p>
+            </td>
+            <td class="product-column text-right blue">
+              <p><a class="text-uppercase blue" href="#">
+                <strong>EDIT</strong><i class="fa fa-chevron-right icon"></i>
+              </a></p>
+            </td>
+          </tr>
+
+          <tr class="category-row">
+            <td class="product-column">
+              <p><strong>TOTAL </strong></p>
+            </td>
+            <td class="product-column text-right">
+              <p><strong>453,700 </strong></p>
+            </td>
+            <td class="product-column text-right"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <footer class="footer">
-        <div class="container footer-container text-center">
-            <button class="btn btn-default btn-blue" type="button"><strong>SEND </strong></button>
-        </div>
-    </footer>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+  <!--Footer-->
+  <footer class="footer">
+    <div class="container footer-container text-center">
+      <button class="btn btn-default btn-blue" type="button"><strong>SEND </strong></button>
+    </div>
+  </footer>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

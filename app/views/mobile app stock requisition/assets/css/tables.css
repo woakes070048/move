@@ -211,7 +211,7 @@ table th[class*="col-"] {
   .table-responsive > .table > thead > tr > td,
   .table-responsive > .table > tbody > tr > td,
   .table-responsive > .table > tfoot > tr > td {
-    white-space: wrap;
+    white-space: normal;
   }
   .table-responsive > .table-bordered {
     border: 0;
