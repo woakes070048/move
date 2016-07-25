@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/move-header2.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/move.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
 </head>
 
 <body>
-    <header class="header"><img><span class="text-uppercase pull-right green"><i class="fa fa-check icon"></i><strong>online </strong></span></header>
+    <!-- <header class="header"><img><span class="text-uppercase pull-right green"><i class="fa fa-check icon"></i><strong>online </strong></span></header>
     <div class="container subHeader">
         <div class="row">
             <div class="col-xs-4">
@@ -23,18 +23,47 @@
                 <h5 class="text-uppercase visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline blue"><i class="fa fa-print icon"></i>print</h5>
                 <h5 class="text-uppercase visible-xs-inline visible-sm-inline visible-md-inline visible-lg-inline blue"><i class="fa fa-question-circle icon"></i>help</h5></div>
         </div>
-    </div>
+    </div> -->
+
+    <!--Header-->
+      <div class="container header bottom-aligner">
+        <div class="col-xs-6">
+          <h6 class="text-uppercase dark-grey"><i class="fa fa-chevron-left icon"></i>back</h6>
+        </div>
+
+        <div class="col-xs-6 text-right">
+          <h6 class="text-uppercase green"><i class="fa fa-check icon"></i><strong> online </strong></h6>
+        </div>
+      </div>
+
+      <!--SubHeader-->
+        <div class="container">
+          <div class="col-xs-8">
+            <h5 class="">Invoice</h5>
+            <p class = "dark-grey"> 28 May 2016 </p>
+          </div>
+          <div class="col-xs-4 text-right">
+            <h6 class="text-uppercase dark-grey"><i class="fa fa-question-circle icon"></i><strong>help </strong></h6>
+            <!-- <i class="fa fa-search dark-grey fa-border"></i> -->
+          </div>
+        </div>
+
+    <div class="container">
     <div class="col-xs-6">
-        <h5 class="text-uppercase green">invoiced to</h5>
+        <h6 class="text-uppercase green">invoiced to</h6>
         <p>Name of Health Facility</p>
         <p>Name of Pharmacist-in-Charge</p>
     </div>
-    <div class="col-xs-6">
-        <h5 class="text-uppercase green">Pay (cheque) to</h5>
+    <div class="col-xs-6 text-right">
+        <h6 class="text-uppercase green">Pay (cheque) to</h6>
         <p>Account Name of State Central Store</p>
     </div>
+  </div>
+
     <div class="clearfix"></div>
-    <div class="row total-amount">
+
+    <div class="container">
+    <div class="row total-amount text-center">
         <div class="col-xs-6">
             <p class="text-uppercase lightweight-font">total amount</p>
         </div>
@@ -42,45 +71,64 @@
             <p class="text-uppercase green"><strong>ngn 37,500 </strong></p>
         </div>
     </div>
+  </div>
+
+  <div class="container">
     <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="dark-grey">PRODUCT </th>
-                    <th class="dark-grey">COST (N)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="product-column">
-                        <p class="dark-grey"><strong>5 Vials</strong></p>
-                        <p><strong>Product Name</strong></p>
-                    </td>
-                    <td class="product-column text-right">
-                        <p><strong>N500,000 </strong></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="product-column">
-                        <p class="dark-grey"><strong>35 Doses</strong></p>
-                        <p><strong>Product Name</strong></p>
-                    </td>
-                    <td class="product-column text-right">
-                        <p><strong>N35,000 </strong></p>
-                    </td>
-                </tr>
-                <tr class="category-row">
-                    <td class="product-column">
-                        <p><strong>TOTAL </strong></p>
-                    </td>
-                    <td class="product-column text-right">
-                        <p><strong>535,000 </strong></p>
-                    </td>
-                    <td class="product-column text-right"></td>
-                </tr>
-            </tbody>
-        </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="dark-grey">PRODUCT </th>
+            <th class="dark-grey text-right">COST (N)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="product-column">
+              <p class="dark-grey"><strong>5 Vials</strong></p>
+              <p><strong>Product Name</strong></p>
+            </td>
+            <td class="product-column text-right">
+              <p><strong>N500,000 </strong></p>
+            </td>
+          </tr>
+          <tr>
+            <td class="product-column">
+              <p class="dark-grey"><strong>35 Doses</strong></p>
+              <p><strong>Product Name</strong></p>
+            </td>
+            <td class="product-column text-right">
+              <p><strong>N35,000 </strong></p>
+            </td>
+          </tr>
+          <tr class="category-row">
+            <td class="product-column">
+              <p><strong>TOTAL </strong></p>
+            </td>
+            <td class="product-column text-right">
+              <p><strong>535,000 </strong></p>
+            </td>
+            <td class="product-column text-right"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="push"></div>
+  <div class="footer">
+    <div class="col-xs-3 text-center">
+      <h6 class="text-uppercase dark-grey"><i class="fa fa-shopping-cart fa-border icon left"></i>cart</h6>
+    </div>
+    <div class="col-xs-4 text-center">
+      <h6 class="text-uppercase dark-grey"><i class="fa fa-file-o fa-border icon left"></i> invoices </h6>
+    </div>
+    <!-- <div class="col-xs-4 text-center">
+      <h6 class="text-uppercase dark-grey"><i class="fa fa-search fa-border icon left"></i> search </h6>
+    </div> -->
+  </div>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

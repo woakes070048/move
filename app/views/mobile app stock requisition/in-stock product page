@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVE app</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/move.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
+</head>
+
+<body>
+
+<!--Header-->
+  <div class="container header bottom-aligner">
+    <div class="col-xs-6">
+      <h6 class="text-uppercase dark-grey"><i class="fa fa-chevron-left icon"></i>back</h6>
+    </div>
+
+    <div class="col-xs-6 text-right">
+      <h6 class="text-uppercase green"><i class="fa fa-check icon"></i><strong> online </strong></h6>
+    </div>
+  </div>
+
+  <!--SubHeader-->
+    <div class="container">
+      <div class="col-xs-8">
+        <h5 class="">New Stock Request</h5>
+        <p class = "dark-grey"> 28 May 2016 </p>
+      </div>
+      <div class="col-xs-4 text-right">
+        <h6 class="text-uppercase dark-grey"><i class="fa fa-question-circle icon"></i><strong>help </strong></h6>
+        <!-- <i class="fa fa-search dark-grey fa-border"></i> -->
+      </div>
+    </div>
+
+    <div class = "col-xs-12 photo text-center">
+      <!-- <i class="fa fa-chevron-left greenicon"></i> -->
+      <img src = "assets/img/landscape-image.png" alt = "hospital image" width="128px">
+      <!-- <i class="fa fa-chevron-right greenicon"></i> -->
+    </div>
+
+    <!--In Stock Product-->
+  <div class="product-column">
+    <div class="row product-name">
+      <div class = "col-xs-6">
+        <p><strong>Product Name</strong></p>
+      </div>
+      <div class="col-xs-6 text-right">
+        <p><strong>N9,600</strong></p>
+      </div>
+    </div>
+
+    <div class="row product-detail">
+      <div class="col-xs-12">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default btn-number red qty-field"  data-type="minus" data-field="quant[2]">
+            <span class="fa fa-minus"></span>
+            </button>
+          </span>
+
+          <input type="text" name="quant[2]" class="form-control input-number text-center qty-field" value="10 units" min="0 unit" max="100 units">
+
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default btn-number green qty-field" data-type="plus" data-field="quant[2]">
+            <span class="fa fa-plus"></span>
+            </button>
+          </span>
+        </div>
+        <!-- <p class="text-uppercase green"><i class="fa fa-check icon"></i><strong>10 units added to list</strong></p> -->
+      </div>
+
+      <div class="col-xs-12">
+        <button class="btn btn-default btn-green qty-field" type="button">ADD TO CART</button>
+        <!-- <a class="text-uppercase" href="#"><strong>EDIT</strong><i class="fa fa-chevron-right icon"></i></a> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="push"></div>
+  <div class="footer">
+    <div class="col-xs-3 text-center">
+      <h6 class="text-uppercase dark-grey"><i class="fa fa-shopping-cart fa-border icon left"></i>cart</h6>
+    </div>
+    <div class="col-xs-4 text-center">
+      <h6 class="text-uppercase dark-grey"><i class="fa fa-file-o fa-border icon left"></i> invoices </h6>
+    </div>
+    <div class="col-xs-4 text-center">
+      <h6 class="text-uppercase dark-grey"><i class="fa fa-search fa-border icon left"></i> search </h6>
+    </div>
+  </div>
+
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    </body>
+    </html>

@@ -31,7 +31,7 @@
     </div>
 
     <div class="container">
-      <p class="text-uppercase blue backButton">
+      <p class="text-uppercase dark-grey backButton">
         <i class="fa fa-chevron-left icon left"></i>back
       </p>
     </div>
@@ -40,13 +40,22 @@
     <div class="container">
       <div class="row">
       <div class="col-xs-8">
-        <h4 class="">Stock Requisition for</h4>
-        <p class = "dark-grey"> 28 May 2016 </p>
+        <h5 class="">Stock Requisition for</h5>
       </div>
       <div class="col-xs-4 text-right">
-        <h6 class="text-uppercase blue"><i class="fa fa-question-circle icon"></i><strong>help </strong></h6>
+        <h6 class="text-uppercase dark-grey h6-subheader"><i class="fa fa-question-circle icon"></i><strong>help </strong></h6>
       </div>
     </div>
+
+    <div class="row">
+    <div class="col-xs-6">
+      <p class = "dark-grey"> 28 May 2016 </p>
+    </div>
+    <div class="col-xs-6 text-right">
+      <h6 class="text-uppercase dark-grey h6-subheader"><i class="fa fa-file-o icon"></i> <strong>view invoice </strong></h6>
+    </div>
+  </div>
+
     </div>
 
     <div class="container status">
@@ -58,7 +67,7 @@
     </div>
 
     <div class="dropdown text-center blue">
-      <button class="btn btn-default request-new dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Filter By
+      <button class="btn request-new dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Filter By
         <span class="caret"></span>
       </button>
         <ul class="dropdown-menu" role="menu">
@@ -135,17 +144,32 @@
           <tbody>
             <tr>
               <td>Product Name</td>
-              <td class="text-right green"><strong>ALERT SENT </strong></td>
+              <td class="text-right green"><p><strong>ALERT SENT </strong></p></td>
             </tr>
 
             <tr>
               <td>Longer Product Name</td>
-              <td class="text-right orange"><strong>ALERT PENDING </strong></td>
+              <td class="text-right orange"><p><strong>ALERT PENDING </strong></p></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+
+    <!-- Footer -->
+    <div class="push"></div>
+    <div class="footer">
+      <div class="col-xs-3 text-center">
+        <h6 class="text-uppercase dark-grey"><i class="fa fa-shopping-cart fa-border icon left"></i>cart</h6>
+      </div>
+      <div class="col-xs-4 text-center">
+        <h6 class="text-uppercase dark-grey"><i class="fa fa-file-o fa-border icon left"></i> invoices </h6>
+      </div>
+      <!-- <div class="col-xs-4 text-center">
+        <h6 class="text-uppercase dark-grey"><i class="fa fa-search fa-border icon left"></i> search </h6>
+      </div> -->
+    </div>
+
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
