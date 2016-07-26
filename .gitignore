@@ -1,0 +1,10 @@
+
+.android/
+.gitignore
+.gradle/
+.idea/
+.tmp/
+app/
+build/
+dist/
+node_modules/
