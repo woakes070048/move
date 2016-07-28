@@ -16,438 +16,532 @@
 </head>
 
 <body>
-    <section class="herosection">
-        <div class="content-wrap">
-            <nav class="navbar navbar-default move-nav">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand navbar-link navbar-brand.navbar-link" href="index.html"><img class="img-rounded brandlogo" src="assets/img/logo-Inventory-orange.jpg" width="100%"></a>
-                        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li role="presentation"><a href="index.html">Home </a></li>
-                            <li role="presentation"><a href="about.html">About </a></li>
-                            <li role="presentation"><a href="features.html">Features </a></li>
-                            <li class="active" role="presentation"><a href="api.html">API </a></li>
-                            <li role="presentation"><a href="#">Log In</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="container hero-container">
-            <h3 class="text-center h3">API </h3>
-            <p class="text-center heroparagraph">...Instructions... </p>
-        </div>
+  <section class="herosection">
+    <div class="content-wrap">
+      <nav class="navbar navbar-move">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand navbar-link navbar-brand.navbar-link" href="index.html"><img class="img-rounded brandlogo" src="assets/img/logo-Inventory-orange.jpg" width="100%"></a>
+            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1">
+              <span class="sr-only">Toggle navigation</span>
+              <i class="fa fa-bars fa-border"></i>
+              <!-- <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span> -->
+            </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li role="presentation"><a href="index.html">Home </a></li>
+                <li role="presentation"><a href="about.html">About </a></li>
+                <li role="presentation"><a href="features.html">Features </a></li>
+                <li class="active" role="presentation"><a href="api.html">API </a></li>
+                <li role="presentation"><a href="https://lomis.ehealth.org.ng/login">Log In</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="container hero-container">
+        <h3 class="text-center h3">API </h3>
+        <p class="text-center heroparagraph">...Instructions... </p>
+      </div>
     </section>
+
     <div class="container main-body">
-        <div class="content-wrap">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/app_config/all</p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline darkgreen"><span>put </span></li>
-                                <li class="list-group-item inline darkgreen"><span>patch </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>All application configurations, i.e. each application installation.</span></div>
+      <div class="content-wrap">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-sm-1 text-right">
+                <i class="fa fa-link"></i>
+              </div>
+              <div class="col-sm-6 text-left">
+                <p>/api/app_config/all</p>
+              </div>
+              <div class="col-sm-5 text-right">
+                <ul class="list-group">
+                  <li class="list-group-item inline green"><span>get </span></li>
+                  <li class="list-group-item inline darkgreen"><span>put </span></li>
+                  <li class="list-group-item inline darkgreen"><span>patch </span></li>
+                  <li class="list-group-item inline blue"><span>options </span></li>
+                  <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+                </ul>
+              </div>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/app_config/by-status/{status} </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Phone status for a given facility.&nbsp; </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/app_config/{id} </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline darkgreen"><span>put </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span> Update facility configuration. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/cceis </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns list of all CCE models uploaded to this particular instance.&nbsp; </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/bundles </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns list of all incoming and outgoing deliveries. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/ccu_breakdown/by_date </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span> </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/ccu_breakdown/all </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span> Returns all CCU breakdown information</span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/ccu_breakdown/within </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns all CCE breakdown within a given date range </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/ccu_breakdown/facilities </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns all facilities uploaded into agiven instance. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/ccu_breakdown/lgas </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns all lgas uploaded in a given instance. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/product_categories </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns all product categories uploaded in a given instance. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/product_presentations </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns all product presentations uploaded into an instance. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/product_types </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns all product types uploaded to an instance. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/report </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns report on number of facilities that reported, are stocked to plan (i.e have sufficient stocks), functional cold chain equipment within a give start and end date. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/states </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns all the states uploaded on a given instance. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/stock_count </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns all stock count. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/stock_count/in_range </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns all stock counts submitted within a given start and end date. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/stock_out/by_date </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns a list of all items that are out of stock on a certain date.</span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/uoms </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns a list of all Unit of Measurement categories configured on a given instance. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/wards </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns a list of all wards configured or loaded into a given instance. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/waste_count </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns a list of all waste counts loaded into a given instance. </span></div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
-                        <div class="col-sm-6 text-left">
-                            <p>/api/zones </p>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <ul class="list-group">
-                                <li class="list-group-item inline green"><span>get </span></li>
-                                <li class="list-group-item inline blue"><span>options </span></li>
-                                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body"><span>Returns a list of all zones loaded into a given instance. </span></div>
-            </div>
+          </div>
+        <div class="panel-body">
+          <span>All application configurations, i.e. each application installation.</span>
         </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-1 text-right">
+              <i class="fa fa-link"></i>
+            </div>
+            <div class="col-sm-6 text-left">
+              <p>/api/app_config/by-status/{status} </p>
+            </div>
+            <div class="col-sm-5 text-right">
+              <ul class="list-group">
+                <li class="list-group-item inline green"><span>get </span></li>
+                <li class="list-group-item inline blue"><span>options </span></li>
+                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <span>Phone status for a given facility.&nbsp; </span>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-1 text-right">
+              <i class="fa fa-link"></i>
+            </div>
+            <div class="col-sm-6 text-left">
+              <p>/api/app_config/{id} </p>
+            </div>
+            <div class="col-sm-5 text-right">
+              <ul class="list-group">
+                <li class="list-group-item inline darkgreen"><span>put </span></li>
+                <li class="list-group-item inline blue"><span>options </span></li>
+                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <span> Update facility configuration. </span>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
+            <div class="col-sm-6 text-left">
+              <p>/api/cceis </p>
+            </div>
+            <div class="col-sm-5 text-right">
+              <ul class="list-group">
+                <li class="list-group-item inline green"><span>get </span></li>
+                <li class="list-group-item inline blue"><span>options </span></li>
+                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <span>Returns list of all CCE models uploaded to this particular instance.&nbsp; </span>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
+            <div class="col-sm-6 text-left">
+              <p>/api/bundles </p>
+            </div>
+            <div class="col-sm-5 text-right">
+              <ul class="list-group">
+                <li class="list-group-item inline green"><span>get </span></li>
+                <li class="list-group-item inline blue"><span>options </span></li>
+                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <span>Returns list of all incoming and outgoing deliveries. </span>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
+            <div class="col-sm-6 text-left">
+              <p>/api/ccu_breakdown/by_date </p>
+            </div>
+            <div class="col-sm-5 text-right">
+              <ul class="list-group">
+                <li class="list-group-item inline green"><span>get </span></li>
+                <li class="list-group-item inline blue"><span>options </span></li>
+                <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body"><span> </span>
+        </div>
+      </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
+          <div class="col-sm-6 text-left">
+            <p>/api/ccu_breakdown/all </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body"><span> Returns all CCU breakdown information</span></div>
     </div>
-    <section class="footer-section">
-        <div class="content-wrap small"><img src="assets/img/eHealth - LogoIII.png" width="5%" class="footerlogo"><span>Proudly made in Nigeria by eHealth Africa </span></div>
-    </section>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right">
+            <i class="fa fa-link"></i>
+          </div>
+          <div class="col-sm-6 text-left">
+            <p>/api/ccu_breakdown/within </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns all CCE breakdown within a given date range </span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right">
+            <i class="fa fa-link"></i>
+          </div>
+          <div class="col-sm-6 text-left">
+            <p>/api/ccu_breakdown/facilities </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns all facilities uploaded into agiven instance. </span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right">
+            <i class="fa fa-link"></i>
+          </div>
+          <div class="col-sm-6 text-left">
+            <p>/api/ccu_breakdown/lgas </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns all lgas uploaded in a given instance. </span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right">
+            <i class="fa fa-link"></i>
+          </div>
+          <div class="col-sm-6 text-left">
+            <p>/api/product_categories </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body"><span>Returns all product categories uploaded in a given instance. </span></div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right">
+            <i class="fa fa-link"></i>
+          </div>
+          <div class="col-sm-6 text-left">
+            <p>/api/product_presentations </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns all product presentations uploaded into an instance. </span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
+          <div class="col-sm-6 text-left">
+            <p>/api/product_types </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body"><span>Returns all product types uploaded to an instance. </span></div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
+          <div class="col-sm-6 text-left">
+            <p>/api/report </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns report on number of facilities that reported, are stocked to plan (i.e have sufficient stocks), functional cold chain equipment within a give start and end date. </span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right">
+            <i class="fa fa-link"></i>
+          </div>
+          <div class="col-sm-6 text-left">
+            <p>/api/states </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns all the states uploaded on a given instance. </span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right">
+            <i class="fa fa-link"></i>
+          </div>
+          <div class="col-sm-6 text-left">
+            <p>/api/stock_count </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns all stock count. </span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
+          <div class="col-sm-6 text-left">
+            <p>/api/stock_count/in_range </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns all stock counts submitted within a given start and end date. </span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right"><i class="fa fa-link"></i>
+          </div>
+          <div class="col-sm-6 text-left">
+            <p>/api/stock_out/by_date </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns a list of all items that are out of stock on a certain date.</span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right">
+            <i class="fa fa-link"></i>
+          </div>
+          <div class="col-sm-6 text-left">
+            <p>/api/uoms </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns a list of all Unit of Measurement categories configured on a given instance. </span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right">
+            <i class="fa fa-link"></i>
+          </div>
+          <div class="col-sm-6 text-left">
+            <p>/api/wards </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns a list of all wards configured or loaded into a given instance. </span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right"><i class="fa fa-link"></i></div>
+          <div class="col-sm-6 text-left">
+            <p>/api/waste_count </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns a list of all waste counts loaded into a given instance. </span>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-1 text-right">
+            <i class="fa fa-link"></i>
+          </div>
+          <div class="col-sm-6 text-left">
+            <p>/api/zones </p>
+          </div>
+          <div class="col-sm-5 text-right">
+            <ul class="list-group">
+              <li class="list-group-item inline green"><span>get </span></li>
+              <li class="list-group-item inline blue"><span>options </span></li>
+              <li class="list-group-item inline circle text-center"><a href="#" class="a"><span><i class="fa fa-plug"></i> </span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <span>Returns a list of all zones loaded into a given instance. </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="footer-section">
+  <div class="content-wrap small"><img src="assets/img/eHealth - LogoIII.png" width="5%" class="footerlogo"><span>Proudly made in Nigeria by eHealth Africa </span></div>
+</section>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
