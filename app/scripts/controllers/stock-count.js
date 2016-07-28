@@ -81,6 +81,8 @@ angular.module('lmisChromeApp')
     var reminderDay = appConfig.facility.reminderDay
     var isMostRecentEditable = stockCountFactory.isEditable(mostRecentStockCount, mostRecentStockCount, scInterval, reminderDay)
 
+    $scope.radioModel = 'Vials';
+
     // TODO: refactor entire stock count controller to simpler more readable controller
     $scope.getCategoryColor = function (categoryName) {
       if ($scope.preview) {
@@ -131,6 +133,8 @@ angular.module('lmisChromeApp')
     function updateUIModel () {
       $scope.productProfileUom = $scope.facilityProducts[$scope.productKey]
       $scope.setPreviewButton = getPreviewButtonState()
+      $scope.originalpresentationvalue = $scope.productProfileUom.presentation.value
+      $scope.uomSelect = $scope.productProfileUom.presentation.uom.symbol + 's'
     }
 
     function updateCountValue () {
@@ -308,4 +312,13 @@ angular.module('lmisChromeApp')
       updateUIModel()
       utility.scrollToTop()
     }
+
+    $scope.updateUoM = function () {
+        if ($scope.uomSelect === "doses") {
+            $scope.productProfileUom.presentation.value = 1
+        } else {
+            $scope.productProfileUom.presentation.value = $scope.originalpresentationvalue
+        }
+    }
+
   })

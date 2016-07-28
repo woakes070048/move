@@ -34,6 +34,7 @@ angular.module('lmisChromeApp')
   })
   .controller('wasteCountHomeCtrl', function ($scope, wasteCountFactory, wasteCountList, appConfig, $state, $filter) {
     $scope.wasteCountList = wasteCountList
+    console.log(wasteCountList)
     $scope.today = $filter('date')(new Date(), 'yyyy-MM-dd')
     $scope.facilityProducts = wasteCountFactory.get.productObject(appConfig.facility.selectedProductProfiles)
 
