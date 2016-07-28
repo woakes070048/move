@@ -81,7 +81,7 @@ angular.module('lmisChromeApp')
     var reminderDay = appConfig.facility.reminderDay
     var isMostRecentEditable = stockCountFactory.isEditable(mostRecentStockCount, mostRecentStockCount, scInterval, reminderDay)
 
-    $scope.radioModel = 'Vials';
+    $scope.radioModel = 'Vials'
 
     // TODO: refactor entire stock count controller to simpler more readable controller
     $scope.getCategoryColor = function (categoryName) {
@@ -314,11 +314,10 @@ angular.module('lmisChromeApp')
     }
 
     $scope.updateUoM = function () {
-        if ($scope.uomSelect === "doses") {
-            $scope.productProfileUom.presentation.value = 1
-        } else {
-            $scope.productProfileUom.presentation.value = $scope.originalpresentationvalue
-        }
+      if ($scope.uomSelect === 'doses') {
+        $scope.productProfileUom.presentation.value = 1
+      } else {
+        $scope.productProfileUom.presentation.value = $scope.originalpresentationvalue
+      }
     }
-
   })
