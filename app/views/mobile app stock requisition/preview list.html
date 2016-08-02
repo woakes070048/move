@@ -16,42 +16,55 @@
 <body>
 
   <!--Header-->
-    <div class="container header bottom-aligner">
-      <div class="col-xs-6">
-        <h6 class="text-uppercase dark-grey"><i class="fa fa-chevron-left icon"></i>back</h6>
+    <div class="container header">
+      <div class="row">
+      <div class="col-xs-8">
+        <h6 class="text-uppercase dark-grey">
+          <i class="fa fa-chevron-left icon"></i>new stock request
+        </h6>
       </div>
 
-      <div class="col-xs-6 text-right">
+      <div class="col-xs-4 text-right">
         <h6 class="text-uppercase green"><i class="fa fa-check icon"></i><strong> online </strong></h6>
       </div>
     </div>
+    </div>
 
     <!--SubHeader-->
-      <div class="container">
+    <div class="container">
+      <div class="row">
         <div class="col-xs-8">
           <h5 class="">Requisition List Preview</h5>
-          <p class = "dark-grey"> 28 May 2016 </p>
+          <!-- <p class = "dark-grey"> 28 May 2016 </p> -->
         </div>
         <div class="col-xs-4 text-right">
           <h6 class="text-uppercase dark-grey"><i class="fa fa-question-circle icon"></i><strong>help </strong></h6>
           <!-- <i class="fa fa-search dark-grey fa-border"></i> -->
         </div>
       </div>
-
-    <div class="container status">
-      <em class="dark-grey">Please ensure the items on this list are the ones you want</em>
     </div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <div class="status">
+        <p class="p-status"><em class="dark-grey">Please ensure the items on this list are the ones you want</em></p>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!--Products Requested-->
+    <div class="container">
     <div class="table-responsive">
       <table class="table">
-        <thead>
+        <!-- <thead>
           <tr class="dark-grey">
             <th>PRODUCT </th>
             <th class="text-right">COST(N)</th>
             <th class="text-right"> </th>
           </tr>
-        </thead>
+        </thead> -->
 
         <tbody>
           <tr class="category-row cat1">
@@ -59,12 +72,14 @@
               <p class="dark-grey"><strong>2 Units</strong></p>
               <p>Product Name</p>
             </td>
-            <td class="product-column text-right">
-              <p>3,700 </p>
+            <td class="product-column">
+              <p>N3,700 </p>
             </td>
-            <td class="product-column text-right blue">
+            <td class="product-column  blue">
               <p><a class="text-uppercase blue" href="#">
-                <strong>EDIT</strong><i class="fa fa-chevron-right icon"></i>
+                <!-- <strong>EDIT</strong> -->
+                <!-- <i class="fa fa-chevron-right icon"></i> -->
+                <i class="fa fa-edit icon"></i>
               </a></p>
             </td>
           </tr>
@@ -74,12 +89,14 @@
               <p class="dark-grey"><strong>5 Vials</strong></p>
               <p>Product Name</p>
             </td>
-            <td class="product-column text-right">
-              <p>450,000 </p>
+            <td class="product-column">
+              <p>N450,000 </p>
             </td>
-            <td class="product-column text-right blue">
+            <td class="product-column blue">
               <p><a class="text-uppercase blue" href="#">
-                <strong>EDIT</strong><i class="fa fa-chevron-right icon"></i>
+                <!-- <strong>EDIT</strong> -->
+                <!-- <i class="fa fa-chevron-right icon"></i> -->
+                <i class="fa fa-edit icon"></i>
               </a></p>
             </td>
           </tr>
@@ -89,12 +106,34 @@
               <p class="dark-grey"><strong>10 Units</strong></p>
               <p>Long Product Name That Goes on Forever</p>
             </td>
-            <td class="product-column text-right">
-              <p>450,000 </p>
+            <td class="product-column">
+              <p>N450,000 </p>
             </td>
-            <td class="product-column text-right blue">
+            <td class="product-column blue">
               <p><a class="text-uppercase blue" href="#">
-                <strong>EDIT</strong><i class="fa fa-chevron-right icon"></i>
+                <!-- <strong>EDIT</strong> -->
+                <!-- <i class="fa fa-chevron-right icon"></i> -->
+                <i class="fa fa-edit icon"></i>
+              </a></p>
+            </td>
+          </tr>
+
+          <tr class="category-row cat3">
+            <td class="product-column">
+              <p class="orange">
+                <i class="icon left fa fa-clock-o"></i>
+                <strong>Restock Alert</strong>
+              </p>
+              <p>Longer Product Name</p>
+            </td>
+            <td class="product-column">
+              <p>N450,000 </p>
+            </td>
+            <td class="product-column blue">
+              <p><a class="text-uppercase blue" href="#">
+                <!-- <strong>EDIT</strong> -->
+                <!-- <i class="fa fa-chevron-right icon"></i> -->
+                <i class="fa fa-edit icon"></i>
               </a></p>
             </td>
           </tr>
@@ -103,29 +142,79 @@
             <td class="product-column">
               <p><strong>TOTAL </strong></p>
             </td>
-            <td class="product-column text-right">
-              <p><strong>453,700 </strong></p>
+            <td class="product-column">
+              <p><strong>N453,700 </strong></p>
             </td>
-            <td class="product-column text-right"></td>
+            <td class="product-column"></td>
           </tr>
         </tbody>
       </table>
     </div>
+  </div>
 
-  <!--Footer-->
-  <footer class="footer">
-    <div class="container footer-container text-center">
-      <button class="btn btn-blue" type="button"><strong>SEND </strong></button>
+  <!--Send-->
+    <div class="container text-center">
+      <button class="btn btn-blue" type="button" data-target="myModal" data-toggle="Modal">
+        SEND REQUEST
+      </button>
     </div>
-  </footer>
 
   <!-- Footer -->
   <div class="push"></div>
   <div class="footer">
-    <div class="col-md-4 text-center">
-      <button class="btn btn-blue" type="button">SEND REQUEST</button>
+    <!-- <div class="col-md-4 text-center">
+      <button class="btn btn-blue" type="button" data-toggle="modal" data-target="#myModal">SEND REQUEST</button>
+    </div> -->
+    <div class="push"></div>
+    <div class="footer">
+      <div class="col-xs-6 text-center">
+        <a role="button" href="preview list.html">
+          <h6 class="text-uppercase dark-grey">
+          <i class="fa fa-shopping-cart fa-border icon left"></i>
+          <strong>cart (4)</strong>
+          </h6>
+        </a>
+      </div>
+      <div class="col-xs-6 text-center">
+        <a role="button" href="all invoices.html">
+          <h6 class="text-uppercase dark-grey">
+          <i class="fa fa-file-o fa-border icon left"></i> invoices
+          </h6>
+        </a>
+      </div>
+      <!-- <div class="col-xs-4 text-center">
+        <h6 class="text-uppercase dark-grey"><i class="fa fa-search fa-border icon left"></i> search </h6>
+      </div> -->
     </div>
   </div>
+
+
+  <!-- Modal -->
+    <div  id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <!-- <div class="modal-header">
+            <p class="text-right"><i class= "fa fa-close icon"></i>CLOSE</p>
+          </div> -->
+
+          <div class="modal-body">
+            <div class="push"></div>
+            <div class="text-center">
+              <i class="fa fa-check-circle fa-2x"></i>
+            </div>
+            <h4 class="text-center"> Stock Requisition Sent! </h4>
+            <p class="text-center">You will receive an invoice for in-stock items in your registered email. </p>
+          </div>
+          <div class="modal-footer">
+            <a role="button" class="btn btn-white" href="home.html">OK</a>
+            <!-- <button type="button" class="btn btn-white" data-dismiss="modal">OK</button> -->
+          </div>
+        </div>
+
+      </div>
+    </div>
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>

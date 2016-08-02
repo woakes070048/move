@@ -6,6 +6,8 @@ body{
 
 p {
   font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .header{
@@ -65,7 +67,7 @@ p {
     display:block;
     color:white;
     background-color:#0387C8;
-    width:90%;
+    width:100%;
   }
 }
 
@@ -108,11 +110,14 @@ table{
 .status{
   /*border-top:1px solid #f3f4f5;
   border-bottom:1px solid #0387c8; */
-  padding-top:20px;
-  padding-bottom:20px;
+  padding: 15px;
   margin-top:20px;
-  margin-bottom:20px;
+  /*margin-bottom:20px;*/
   background-color: whitesmoke;
+}
+
+.p-status{
+  margin-bottom: 0px;
 }
 
 .backButton{
@@ -283,12 +288,28 @@ div.category-color{
   color:white;
   padding-left:20px;
   padding-right:20px;
-  width:50%;
+  width:100%;
 }
 
 .btn-red{
   background-color:#F56044;
   color:white;
+  padding-left:20px;
+  padding-right:20px;
+  width: 100%;
+}
+
+.btn-white{
+  background-color:#FFF;
+  color:#00b18b;
+  padding-left:20px;
+  padding-right:20px;
+  width: 100%;
+}
+
+.btn-grey{
+  background-color:#F9f9f9;
+  color:#00b18b;
   padding-left:20px;
   padding-right:20px;
   width: 100%;
@@ -308,9 +329,13 @@ div.category-color{
    bottom:0px;
    height:60px;
    width:100%;
-   padding-top: 15px;
-   padding-bottom: 15px;
+   padding-top: 10px;
+   padding-bottom: 10px;
    background:#f5f5f5;
+}
+
+.footer-divide {
+  border-right: 1px solid #9b9b9b;
 }
 
 .input-group {
@@ -350,4 +375,49 @@ padding-left: 0px;
   left: 200px;
   border-radius: 10px;
   z-index: 999;
+}
+
+.modal-dialog > div {
+  color: #f5f5f5;
+  width: 80%;
+  position: relative;
+  margin: 10% auto;
+  padding: 5px 10px 13px 10px;
+  border-radius: 10px;
+  background-color: rgba(11,180,144,0.95);
+  /*background: -moz-linear-gradient(#fff, #999);
+  background: -webkit-linear-gradient(#fff, #999);
+  background: -o-linear-gradient(#fff, #999);*/
+}
+
+.modal-header {
+  border-bottom: 0px;
+}
+
+.modal-body {
+  border-bottom: 0px;
+}
+
+.modal-footer {
+  border-top: 0px;
+}
+
+#imaginary_container{
+    margin-top:5%; /* Don't copy this */
+}
+.item-search .input-group-addon{
+    background: white !important;
+}
+.item-search .form-control{
+	border-right:0;
+	box-shadow:0 0 0;
+	border-color:#ccc;
+}
+.item-search button{
+    border:0;
+    background:transparent;
+}
+
+.input-group {
+  margin-top: 20px !important;
 }

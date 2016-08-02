@@ -44,7 +44,7 @@
     </div>
 
     <!--In Stock Product-->
-  <div class="product-column">
+  <div class="container product-column">
     <div class="row product-name">
       <div class = "col-xs-6">
         <p><strong>Product Name</strong></p>
@@ -75,7 +75,7 @@
       </div>
 
       <div class="col-xs-12">
-        <button class="btn btn-default btn-green qty-field" type="button">ADD TO CART</button>
+        <a href="item added to list.html" role="button" class="btn btn-green qty-field">ADD TO CART</a>
         <!-- <a class="text-uppercase" href="#"><strong>EDIT</strong><i class="fa fa-chevron-right icon"></i></a> -->
       </div>
     </div>
@@ -84,15 +84,23 @@
   <!-- Footer -->
   <div class="push"></div>
   <div class="footer">
-    <div class="col-xs-3 text-center">
-      <h6 class="text-uppercase dark-grey"><i class="fa fa-shopping-cart fa-border icon left"></i>cart</h6>
+    <div class="col-xs-6 text-center">
+      <a role="button" href="preview list.html">
+        <h6 class="text-uppercase dark-grey">
+        <i class="fa fa-shopping-cart fa-border icon left"></i>cart
+        </h6>
+      </a>
     </div>
-    <div class="col-xs-4 text-center">
-      <h6 class="text-uppercase dark-grey"><i class="fa fa-file-o fa-border icon left"></i> invoices </h6>
+    <div class="col-xs-6 text-center">
+      <a role="button" href="all invoices.html">
+        <h6 class="text-uppercase dark-grey">
+        <i class="fa fa-file-o fa-border icon left"></i> invoices
+        </h6>
+      </a>
     </div>
-    <div class="col-xs-4 text-center">
+    <!-- <div class="col-xs-4 text-center">
       <h6 class="text-uppercase dark-grey"><i class="fa fa-search fa-border icon left"></i> search </h6>
-    </div>
+    </div> -->
   </div>
 
 

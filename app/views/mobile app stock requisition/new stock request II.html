@@ -12,12 +12,12 @@
     <link rel="stylesheet" href="assets/css/tables.css">
 </head>
 
-<body>
+<body ng-controller="HomeController">
 
 <!--Header-->
-  <div class="container header bottom-aligner">
+  <div class="container header">
     <div class="col-xs-6">
-      <h6 class="text-uppercase dark-grey"><i class="fa fa-chevron-left icon"></i>back</h6>
+      <h6 class="text-uppercase dark-grey"><i class="fa fa-chevron-left icon"></i>home</h6>
     </div>
 
     <div class="col-xs-6 text-right">
@@ -29,7 +29,7 @@
     <div class="container">
       <div class="col-xs-8">
         <h5 class="">New Stock Request</h5>
-        <p class = "dark-grey"> 28 May 2016 </p>
+        <!-- <p class = "dark-grey"> 28 May 2016 </p> -->
       </div>
       <div class="col-xs-4 text-right">
         <h6 class="text-uppercase dark-grey"><i class="fa fa-question-circle icon"></i><strong>help </strong></h6>
@@ -37,14 +37,32 @@
       </div>
     </div>
 
-  <div class="container">
+  <!-- Search -->
+  <!-- <div class="container">
     <div class="col-xs-12">
     <div class="search-bar text-center">
       <em><input type="text" name="search bar" placeholder="Type to search" autocomplete="on" class="text-center">
       <i class="fa fa-search icon dark-grey"></i></em>
     </div>
     </div>
-  </div>
+  </div> -->
+
+  <div class="container">
+	<!-- <div class="row"> -->
+    <div class="col-xs-12">
+      <div id="imaginary_container">
+        <div class="input-group item-search">
+          <input type="text" class="form-control"  placeholder="Search for a product" >
+          <span class="input-group-addon">
+            <button type="submit">
+              <span class="fa fa-search"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+	<!-- </div> -->
+</div>
 
 <!--Category list-->
   <div class="container">
@@ -125,15 +143,23 @@
   <!-- Footer -->
   <div class="push"></div>
   <div class="footer">
-    <div class="col-xs-3 text-center">
-      <h6 class="text-uppercase dark-grey"><i class="fa fa-shopping-cart fa-border icon left"></i>cart</h6>
+    <div class="col-xs-6 text-center">
+      <a role="button" href="preview list.html">
+        <h6 class="text-uppercase dark-grey">
+        <i class="fa fa-shopping-cart fa-border icon left"></i>cart
+        </h6>
+      </a>
     </div>
-    <div class="col-xs-4 text-center">
-      <h6 class="text-uppercase dark-grey"><i class="fa fa-file-o fa-border icon left"></i> invoices </h6>
+    <div class="col-xs-6 text-center">
+      <a role="button" href="all invoices.html">
+        <h6 class="text-uppercase dark-grey">
+        <i class="fa fa-file-o fa-border icon left"></i> invoices
+        </h6>
+      </a>
     </div>
-    <div class="col-xs-4 text-center">
+    <!-- <div class="col-xs-4 text-center">
       <h6 class="text-uppercase dark-grey"><i class="fa fa-search fa-border icon left"></i> search </h6>
-    </div>
+    </div> -->
   </div>
 
 <script src="assets/js/jquery.min.js"></script>
