@@ -101,7 +101,7 @@ angular.module('lmisChromeApp')
     $scope.change = function () {
       if (angular.isDefined($scope.reasonQuantity)) {
         initReason()
-        $scope.wasteCountModel.discardedExtended[$scope.productKey] = { 'Count' :$scope.reasonQuantity, 'UoM' :$scope.uomSelect}
+        $scope.wasteCountModel.discardedExtended[$scope.productKey] = {'Count': $scope.reasonQuantity,'UoM': $scope.uomSelect}
         $scope.wasteCountModel.discarded[$scope.productKey] = $scope.reasonQuantity
         $scope.wasteCountModel.reason[$scope.productKey][$scope.selectedReason] = $scope.reasonQuantity
       }
