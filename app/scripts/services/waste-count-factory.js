@@ -56,7 +56,7 @@ angular.module('lmisChromeApp')
         if (wasteCount !== null) {
           object.uuid = wasteCount.uuid
         }
-        object.isUoMSpecified = true;
+        object.isUoMSpecified = true
         console.log(object)
         storageService.save(storageService.DISCARD_COUNT, object)
           .then(function (uuid) {
