@@ -91,13 +91,7 @@
             <option value="{{ $index }}" ng-repeat="(key, reason) in wasteReasons"> {{ reason }}</option>
           </select>
         </div>
-          <div class="form-group" ng-show="(selectedReason !== undefined &&  selectedReason !== '') && productKey !== ''">
-            <label translate>Select Unit of Measure</label>
-            <select class="form-control text-center-stock bold-text center-text" ng-model="uomSelect" ng-change="loadSelected()">
-                <option value="Dose" selected="selected">Doses</option>
-                <option value="Vial">Vials</option>
-            </select>
-          </div>
+
         <div class="form-group" ng-show="(selectedReason !== undefined &&  selectedReason !== '') && productKey !== ''">
           <label>{{ enterQuantityLabel }}</label>
           <eha-counter onChange="change()" bind="reasonQuantity"></eha-counter>
