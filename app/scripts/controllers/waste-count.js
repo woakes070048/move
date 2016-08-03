@@ -34,9 +34,10 @@ angular.module('lmisChromeApp')
   })
   .controller('wasteCountHomeCtrl', function ($scope, wasteCountFactory, wasteCountList, appConfig, $state, $filter) {
     $scope.wasteCountList = wasteCountList
+    console.log("waste count" , wasteCountList)
     $scope.today = $filter('date')(new Date(), 'yyyy-MM-dd')
     $scope.facilityProducts = wasteCountFactory.get.productObject(appConfig.facility.selectedProductProfiles)
-
+    
     $scope.takeAction = function (date) {
       wasteCountFactory.getWasteCountByDate(date).then(function (wasteCount) {
         if (wasteCount !== null) {
@@ -63,6 +64,7 @@ angular.module('lmisChromeApp')
     messages, syncService, alertFactory) {
     $scope.wasteCountModel = {}
     $scope.wasteCountModel.reason = {}
+    $scope.uomSelect = "Dose"
 
     var getCountDate = function () {
       return ($stateParams.countDate === null) ? new Date() : new Date($stateParams.countDate)
@@ -70,16 +72,21 @@ angular.module('lmisChromeApp')
     var initWasteCount = function (wasteCount) {
       if (wasteCount !== null && wasteCount !== undefined) {
         $scope.wasteCount = wasteCount
+        if (wasteCount.discardedExtended === null || wasteCount.discardedExtended === undefined) {
+          wasteCount.discardedExtended = {}
+        }
       } else {
         $scope.wasteCount = {}
         $scope.wasteCount.facility = appConfig.facility.uuid
         $scope.wasteCount.reason = {}
         $scope.wasteCount.discarded = {}
+        $scope.wasteCount.discardedExtended = {}
       }
     }
 
     var initReason = function () {
       $scope.wasteCountModel.discarded = {}
+      $scope.wasteCountModel.discardedExtended = {}
       $scope.wasteCountModel.reason = {}
       $scope.wasteCountModel.reason[$scope.productKey] = {}
     }
@@ -96,6 +103,7 @@ angular.module('lmisChromeApp')
     $scope.change = function () {
       if (angular.isDefined($scope.reasonQuantity)) {
         initReason()
+        $scope.wasteCountModel.discardedExtended[$scope.productKey] = { "Count": $scope.reasonQuantity, "UoM": $scope.uomSelect}
         $scope.wasteCountModel.discarded[$scope.productKey] = $scope.reasonQuantity
         $scope.wasteCountModel.reason[$scope.productKey][$scope.selectedReason] = $scope.reasonQuantity
       }
@@ -104,13 +112,19 @@ angular.module('lmisChromeApp')
     $scope.loadSelected = function () {
       initReason()
       $scope.reasonQuantity = $scope.wasteCountModel.reason[$scope.productKey][$scope.selectedReason]
-      var uom = $scope.productKey !== '' ? $scope.facilityProducts[$scope.productKey].presentation.uom.symbol : ''
-      $scope.enterQuantityLabel = messages.enterQuantity(uom)
+      //var uom = $scope.productKey !== '' ? $scope.facilityProducts[$scope.productKey].presentation.uom.symbol : ''
+      $scope.enterQuantityLabel = messages.enterQuantity($scope.uomSelect + 's')
     }
 
     $scope.save = function (type) {
       $scope.isSaving = true
       $scope.wasteCount.discarded[$scope.productKey] = $scope.wasteCountModel.discarded[$scope.productKey]
+      console.log("break point 1", $scope.wasteCount.discardedExtended)
+      $scope.wasteCount.discardedExtended[$scope.productKey] = {}
+      
+      console.log("break point 1", $scope.wasteCountModel)
+      $scope.wasteCount.discardedExtended[$scope.productKey] = $scope.wasteCountModel.discardedExtended[$scope.productKey]
+      console.log("$scope.wasteCountModel.discarded[$scope.productKey]", $scope.wasteCountModel.discardedExtended[$scope.productKey]);
       if (angular.isUndefined($scope.wasteCount.reason[$scope.productKey])) {
         $scope.wasteCount.reason[$scope.productKey] = {}
       }
@@ -118,6 +132,7 @@ angular.module('lmisChromeApp')
         $scope.wasteCountModel.reason[$scope.productKey][$scope.selectedReason]
       $scope.wasteCount.countDate = getCountDate()
       $scope.wasteCount.isComplete = 1
+      console.log("wasteCountModel - Client", $scope.wasteCountModel)
       wasteCountFactory.add($scope.wasteCount)
         .then(function (uuid) {
           $scope.wasteCount.uuid = uuid
