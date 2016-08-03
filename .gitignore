@@ -12,3 +12,6 @@ build
 nbproject/private/
 po/template.pot
 .android/
+.vs/
+move.sln
+
