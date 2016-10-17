@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVE app</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400,400i,500,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/move.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
+</head>
+
+<body class="pic">
+  <div class="">
+    <!--Header-->
+      <div class="container header-transparent">
+        <div class="push"></div>
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-xs-12">
+              <h4><img src="assets/img/logo-trim.png" width="20%"></img></h4>
+              <h4 class="">LOMIS STOCK</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="push"></div>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"><i class="fa fa-envelope icon left"></i>Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control dark" id="inputEmail3" placeholder="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label"><i class="fa fa-key icon left"></i>Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control dark" id="inputPassword3" placeholder="">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10 text-center">
+              <a href="home.html" class="colorless btn btn-login" type="submit" role="button"><p>Sign In</p></a>
+            </div>
+          </div>
+        </form>
+
+        <div class="row">
+          <div class="col-xs-8 col-sm-6">
+            <h5><i class="fa fa-key icon"></i>Forgot Password</h5>
+          </div>
+          <div class="col-xs-4 col-sm-6 text-right">
+            <a class="colorless" role="button" data-toggle="modal" data-target="#myModal">
+              <h5><i class="fa fa-info-circle icon"></i>Help</h5>
+            </a>
+          </div>
+        </div>
+
+        <div class="push"></div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content modal-intro">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">First time here?</h4>
+              </div>
+              <div class="modal-body">
+                <p>Welcome! Here's a brief overview of what you need to do:</p>
+                <p><ul class="fa-ul">
+                  <li class="spacer"> <i class="fa-li fa fa-info-circle"></i> Fill in contact information for this facility</li>
+                  <li class="spacer"> <i class="fa-li fa fa-briefcase"></i> Select and configure the programs this facility is currently participating in</li>
+                  <li class="spacer"> <i class="fa-li fa fa-asterisk"></i> Fill in Cold Chain equipment information</li>
+                  <li class="spacer"> <i class="fa-li fa fa-map-marker"></i> Configure locations this facility delivers or receives stock from</li>
+                </ul></p>
+              </div>
+              <div class="modal-footer">
+                <div class="row">
+                  <!-- <div class="col-xs-6">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div> -->
+                  <div class="col-xs-12">
+                    <a href="facility-profile.html" role="button" class="colorless btn btn-blue">Take me to Step 1</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

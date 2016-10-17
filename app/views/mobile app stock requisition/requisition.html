@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html ng-app="main">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVE app</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/move.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
+</head>
+
+<body>
+  <!--Header-->
+  <div class="header">
+    <div class="row">
+      <div class="col-xs-8">
+        <h5><a href="home.html" class="colorless"><i class="fa fa-chevron-left icon"></i></a>Stock Requisition</h5>
+      </div>
+
+      <div class="col-xs-4 text-right">
+        <h6 class="text-right">
+          <i class="fa fa-question-circle icon"></i>
+          <strong>HELP </strong>
+        </h6>
+      </div>
+    </div>
+  </div>
+
+  <div class="container subheader">
+    <div class="row">
+      <div class="col-xs-8">
+        <h6><a role="button" href="new stock request II.html" class="btn btn-block request-new">
+          <i class="fa fa-plus icon"></i>Request New Stock
+        </a></h6>
+      </div>
+      <div class="col-xs-4 text-right">
+        <h6 class="green"><i class="fa fa-check"></i><strong> ONLINE </strong></h6>
+        <!-- <h6 class="text-uppercase dark-grey text-right">
+          <i class="fa fa-question-circle icon"></i>
+          <strong>help </strong>
+        </h6> -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <div class="container">
+    <a role="button" href="new stock request II.html" class="btn request-new">
+      <i class="fa fa-plus icon"></i>Request New Stock
+    </a>
+  </div> -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+      <h4 class="orange">Previous Requisitions</h4>
+      </div>
+      <!-- <div class="col-xs-4 text-center">
+
+      </div> -->
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th class="">DATE</th>
+          <th class="text-center">DELIVERED? </th>
+          <th> </th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><p><strong>28 May 2016</strong></p></td>
+            <td class="text-center">
+              <i class="fa fa-close red"></i>
+              <!-- <p class="text-uppercase red">not delivered</p> -->
+            </td>
+            <td class="text-right"><p><i class="fa fa-chevron-right icon light-grey"></i></p></td>
+          </tr>
+
+          <tr>
+            <td><p><strong>01 Apr 2016</strong></p></td>
+            <td class="text-center">
+              <i class="fa fa-check green"></i>
+              <!-- <p class="text-uppercase green">delivered</p> -->
+            </td>
+            <td class="text-right"><p><i class="fa fa-chevron-right icon light-grey"></i></p></td>
+          </tr>
+
+          <tr>
+            <td><strong><p>16 Mar 2016</strong></p></td>
+            <td class="text-center">
+              <i class="fa fa-check green"></i>
+              <!-- <p class="text-uppercase green">delivered</p> -->
+            </td>
+            <td class="text-right"><p><i class="fa fa-chevron-right icon light-grey"></i></p></td>
+          </tr>
+
+          <tr>
+            <td><p><strong>22 Feb 2016</strong></p></td>
+            <td class="text-center">
+              <i class="fa fa-check green"></i>
+              <!-- <p class="text-uppercase green">delivered</p> -->
+            </td>
+            <td class="text-right"><p><i class="fa fa-chevron-right icon light-grey"></i></p></td>
+          </tr>
+
+          <tr>
+            <td><strong><p>09 Dec 2015</strong></p></td>
+            <td class="text-center">
+              <i class="fa fa-close red"></i>
+              <!-- <p class="text-uppercase red"> not delivered </p> -->
+            </td>
+            <td class="text-right"><p><i class="fa fa-chevron-right icon light-grey"></i></p></td>
+          </tr>
+
+          <tr>
+            <td><p><strong>17 Nov 2015</strong></p></td>
+            <td class="text-center">
+              <i class="fa fa-check green"></i>
+              <!-- <p class="text-uppercase green">delivered</p> -->
+            </td>
+            <td class="text-right"><p><i class="fa fa-chevron-right icon light-grey"></i></p></td>
+          </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Footer -->
+<!-- <div class="push"></div>
+<div class="footer">
+  <div class="col-xs-6 text-center">
+    <a role="button" href="preview list.html">
+      <h6 class="text-uppercase dark-grey">
+      <i class="fa fa-shopping-cart fa-border icon left"></i>cart
+      </h6>
+    </a>
+  </div>
+  <div class="col-xs-6 text-center">
+    <a role="button" href="all invoices.html">
+      <h6 class="text-uppercase dark-grey">
+      <i class="fa fa-file-o fa-border icon left"></i> invoices
+      </h6>
+    </a>
+  </div>
+  <div class="col-xs-4 text-center">
+    <h6 class="text-uppercase dark-grey"><i class="fa fa-search fa-border icon left"></i> search </h6>
+  </div>
+</div> -->
+
+
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/angular.js"></script>
+<script src="assets/js/ui-bootstrap-tpls-2.0.0.js"></script>
+<script src="assets/js/angular.js"></script>
+</body>
+
+</html>

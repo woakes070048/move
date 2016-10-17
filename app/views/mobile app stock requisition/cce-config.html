@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVE app</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/move.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
+</head>
+
+<body>
+  <!--Header-->
+    <div class="header">
+      <div class="row">
+        <div class="col-xs-8">
+          <h5><a href="settings.html" class="colorless"><i class="fa fa-chevron-left icon"></i></a>Cold Chain Equipment</h5>
+        </div>
+
+        <div class="col-xs-4 text-right">
+          <h6><i class="fa fa-question-circle icon left"></i><strong> HELP </strong></h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="container subheader">
+      <div class="row">
+        <div class="col-xs-8">
+          <h6>Select cold chain equipment available for this facility</h6>
+        </div>
+        <div class="col-xs-4 text-right">
+          <h6 class="green"><i class="fa fa-check"></i><strong> ONLINE </strong></h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="product-name">
+        <div class="input-group-product">
+          <input type="text" class="form-control" placeholder="search for..." aria-describedby="sizing-addon1">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><i class="fa fa-search orange"></i></button>
+          </span>
+        </div>
+      </div>
+      <div class="product-name">
+        <h5 class="orange">Upright Refrigerator</h5>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Dometic TCW 2000 SDD</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Dometic TCW 2000 DC</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Zero PR 265 EK</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Sibir V 170 GE</h6>
+        </div>
+      </div>
+
+      <div class="product-name">
+        <h5 class="orange">Ice Pack Freezer</h5>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Dometic TFW 800</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Vestfrost MF 114</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Vestfrost MF 314</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Dometic FCW 300</h6>
+        </div>
+      </div>
+
+      <div class="product-name">
+        <h5 class="orange">Others</h5>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Other</h6>
+        </div>
+      </div>
+
+      <div class="product-name">
+        <h5 class="orange">Chest Freezer</h5>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Haier HBD 116</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Dometic FCW 20 EK</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Vestfrost HF506</h6>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="push"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <button type="button" class="btn btn-default btn-block btn-cancel">CANCEL</button>
+        </div>
+        <div class="col-xs-6">
+          <button type="button" class="btn btn-default btn-block btn-save"><a class="colorless" role="button" data-toggle="modal" data-target="#myModal">SAVE</a></button>
+        </div>
+      </div>
+    </div>
+    <div class="push"></div>
+
+    <!-- Modal -->
+      <div  id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content modal-saved">
+
+            <div class="modal-body">
+              <div class="push"></div>
+              <div class="text-center">
+                <i class="fa fa-check-circle fa-2x"></i>
+              </div>
+              <h4 class="text-center"> Cold Chain Equipment Saved! </h4>
+            </div>
+            <div class="modal-footer">
+              <a role="button" class="btn btn-block btn-saved" href="settings.html"><h5>OK</h5></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

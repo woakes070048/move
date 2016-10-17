@@ -31,7 +31,7 @@ angular.module('lmisChromeApp')
         parent: 'root.index',
         url: '/stockCountForm?newStockCount&facility&reportMonth&reportYear&reportDay&uuid&productKey&detailView&editOff&showHistory',
         templateUrl: 'views/stock-count/stock-count-form.html',
-        controller: 'StockCountFormCtrl',
+        controller: 'myCtrl',
         resolve: {
           appConfig: function (appConfigService) {
             return appConfigService.getCurrentAppConfig()
@@ -309,3 +309,42 @@ angular.module('lmisChromeApp')
       utility.scrollToTop()
     }
   })
+
+  .controller('myCtrl', function ($scope) {
+    $scope.products = [
+        { stockItem: "BCG 20", count: 160, uom:"doses" },
+        { stockItem: "Measles 10", count: "", uom:"doses" },
+        { stockItem: "OPV 10", count: "", uom:"doses" },
+        { stockItem: "Penta 10", count: "", uom:"doses" },
+        { stockItem: "HepB 10", count: 70, uom:"doses" }
+    ];
+    $scope.hideInputBox = function (product) {
+      return angular.isNumber(product.count) && isFinite(product.count)
+    }
+    //$scope.show=false;
+    $scope.showMore = function(product) {
+    	product.show = true;
+    };
+    $scope.hideMore = function(product) {
+    	product.show = false;
+    };
+    $scope.showNext = function(product, index) {
+    	if((index+1) > ($scope.products.length - 1)) {
+        return;
+      }
+      else {
+      	product.show = false;
+      	$scope.products[index+1].show = true;
+      }
+
+    };
+    $scope.showPrevious = function(product, index) {
+      if((index-1) < 0) {
+        return;
+      }
+      else {
+        product.show = false;
+      	$scope.products[index-1].show = true;
+      }
+    };
+});

@@ -29,7 +29,7 @@ th {
 }
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 1px solid #0387c8;
+  border-bottom: 1px solid #ddd;
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,

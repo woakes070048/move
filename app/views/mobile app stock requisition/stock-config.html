@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVE app</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/move.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
+</head>
+
+<body>
+  <!--Header-->
+    <div class="header">
+      <div class="row">
+        <div class="col-xs-8">
+          <h5><a href="ri-program.html" class="colorless"><i class="fa fa-chevron-left icon"></i></a>RI Stock List</h5>
+        </div>
+
+        <div class="col-xs-4 text-right">
+          <h6><i class="fa fa-question-circle icon"></i><strong> HELP </strong></h6>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="container subheader">
+        <div class="row">
+          <div class="col-xs-8">
+            <h6>Select products usually kept in stock for this program</h6>
+          </div>
+          <div class="col-xs-4 text-right">
+            <h6 class="green"><i class="fa fa-check"></i><strong> ONLINE </strong></h6>
+          </div>
+        </div>
+      </div>
+
+    <div class="container">
+      <div class="">
+        <div class="input-group-product">
+          <input type="text" class="form-control" placeholder="search for..." aria-describedby="sizing-addon1">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><i class="fa fa-search orange"></i></button>
+          </span>
+        </div>
+      </div>
+      <div class="product-name">
+        <h5 class="orange">Cold Store Vaccines</h5>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  BCG 20</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  YF 5</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Hep A PFS</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  DT 10</h6>
+        </div>
+      </div>
+
+      <div class="product-name">
+        <h5 class="orange">Dry Store Syringes</h5>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  ADS 0.5ml</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  2ml Dil. Syringe</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  ADS 0.05ml</h6>
+        </div>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  5ml Dil. Syringe</h6>
+        </div>
+      </div>
+
+      <div class="product-name">
+        <h5 class="orange">Dry Store Safety Boxes</h5>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  Safety Box 2.5L</h6>
+        </div>
+      </div>
+
+      <div class="product-name">
+        <h5 class="orange">Dry Store Medicine</h5>
+        <div class="input-group">
+          <h6><input type="checkbox" aria-label="...">  P151</h6>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="push"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <button type="button" class="btn btn-default btn-block btn-cancel">CANCEL</button>
+        </div>
+        <div class="col-xs-6">
+          <button type="button" class="btn btn-default btn-block btn-save"><a class="colorless" role="button" data-toggle="modal" data-target="#myModal">SAVE</a></button>
+        </div>
+      </div>
+    </div>
+    <div class="push"></div>
+
+    <!-- Modal -->
+      <div  id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content modal-saved">
+
+            <div class="modal-body">
+              <div class="push"></div>
+              <div class="text-center">
+                <i class="fa fa-check-circle fa-2x"></i>
+              </div>
+              <h4 class="text-center"> Stock List Saved! </h4>
+            </div>
+            <div class="modal-footer">
+              <a role="button" class="btn btn-block btn-saved" href="programs.html"><h5>OK</h5></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
