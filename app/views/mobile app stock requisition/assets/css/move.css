@@ -123,6 +123,9 @@ h5.online {
 .icon.right{
   margin-right:0px;
 }
+.icon-nav {
+  margin: 0 5px;
+}
 
 .green{
   color:#00B18B;
@@ -514,7 +517,7 @@ div.category-color{
 
 .btn-grey{
   background-color:#F9f9f9;
-  color:#00b18b;
+  /*color:#00b18b;*/
   padding-left:20px;
   padding-right:20px;
   width: 100%;
@@ -526,6 +529,7 @@ div.category-color{
   font-weight: 500;
   border: 1px solid #EF8D00;
   height: 48px;
+  margin-bottom: 20px;
 }
 
 .btn-saved {
@@ -541,6 +545,7 @@ div.category-color{
   /*border: 1px solid #EF8D00;
   color: #EF8D00;*/
   font-weight: 500;
+  margin-bottom: 20px;
 }
 
 .btn-inactive {
@@ -777,4 +782,30 @@ padding-left: 0px;
 /*body{ background: #EDECEC; padding:50px}*/
 h6.mobile-tab {
   font-size: 60%;
+}
+
+.panel-config {
+  border: none !important;
+  border-radius: none !important;
+}
+.panel .panel-equipment {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.panel-equipment .no-padding {
+  padding: 0 !important;
+}
+
+input.equipment {
+  margin: 0 !important;
+}
+
+.equipment-modal {
+  margin: 60px 15px;
+}
+
+#sessionAccordion.panel .panel-default {
+   overflow: visible;
 }

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVE app</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/move.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
+</head>
+
+<body>
+
+  <div class="product-name">
+    <a class="colorless" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+    </a>
+    <div class="collapse" id="collapseExample">
+      <div class="well">
+        All the things!
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <div class="row">
+            <div class="col-xs-1">
+              <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+            </div>
+            <div class="col-xs-8"><h6>Dometic FCW 300</h6></div>
+            <div class="col-xs-2 text-right">
+              <h6>
+                <a class="colorless" role="button" data-toggle="collapse" data-parent="#equipmentAccordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                  <i class="fa fa-edit"></i>
+                </a>
+              </h6>
+            </div>
+          </div>
+          <!-- <a role="button" data-toggle="collapse" data-parent="#equipmentAccordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Collapsible Group Item #1
+          </a> -->
+        </h4>
+      </div>
+      <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <h5>Add Serial Numbers</h5>
+          <div class="product-name">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Enter a serial number">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Add</button>
+              </span>
+            </div>
+          </div>
+
+          <div class="container">
+            <h5 class="orange">Dometic FCW 300</h5>
+            <div class="product-name">
+              <div class="row">
+                <div class="col-xs-8"><p>TC201456ERT</p></div>
+                <div class="col-xs-2"><p><i class="fa fa-trash"></i></p></div>
+                <div class="col-xs-2"><p><i class="fa fa-edit"></i></p></div>
+              </div>
+            </div>
+            <div class="product-name">
+              <div class="row">
+                <div class="col-xs-8"><p>TC200356VXT</p></div>
+                <div class="col-xs-2"><p><i class="fa fa-trash"></i></p></div>
+                <div class="col-xs-2"><p><i class="fa fa-edit"></i></p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Dropdown
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
