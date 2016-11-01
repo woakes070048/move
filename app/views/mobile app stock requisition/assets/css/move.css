@@ -479,6 +479,9 @@ li.spacer {
 td.category-color{
   width:40px;
 }
+tr.no-border {
+  border-bottom: none !important;
+}
 
 div.category-color{
   width: 12.5%;

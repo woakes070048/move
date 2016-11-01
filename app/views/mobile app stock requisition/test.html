@@ -27,62 +27,183 @@
   </div>
 
 
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel">
-      <div class="panel-heading" role="tab" id="headingOne">
-        <h4 class="panel-title">
-          <div class="row">
-            <div class="col-xs-1">
-              <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
-            </div>
-            <div class="col-xs-8"><h6>Dometic FCW 300</h6></div>
-            <div class="col-xs-2 text-right">
-              <h6>
-                <a class="colorless" role="button" data-toggle="collapse" data-parent="#equipmentAccordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
-                  <i class="fa fa-edit"></i>
-                </a>
-              </h6>
-            </div>
-          </div>
-          <!-- <a role="button" data-toggle="collapse" data-parent="#equipmentAccordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Collapsible Group Item #1
-          </a> -->
-        </h4>
-      </div>
-      <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body">
-          <h5>Add Serial Numbers</h5>
-          <div class="product-name">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Enter a serial number">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Add</button>
-              </span>
-            </div>
-          </div>
+  <div class="product-name">
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><h5>HEP A PFS</h5></td>
+            <td>
+              <p>E.D: 15.12.2016</p>
+              <p>VVM Stage 4</p>
+            </td>
+            <td>
+              <p>15 doses</p>
+              <p>SDF4128QZ</p>
+            </td>
+          </tr>
 
-          <div class="container">
-            <h5 class="orange">Dometic FCW 300</h5>
-            <div class="product-name">
-              <div class="row">
-                <div class="col-xs-8"><p>TC201456ERT</p></div>
-                <div class="col-xs-2"><p><i class="fa fa-trash"></i></p></div>
-                <div class="col-xs-2"><p><i class="fa fa-edit"></i></p></div>
+          <tr>
+            <td><h5>BCG 20</h5></td>
+            <td>
+              <p>E.D: 04.12.2018</p>
+              <p>VVM Stage 1</p>
+            </td>
+            <td>
+              <p>20 doses</p>
+              <p>SDF4128QZ</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="product-name">
+      <div class="row">
+        <div class="col-xs-12"><h4>HEP A PFS</h4></div>
+        <div class="col-xs-6"><p>15 doses</p></div>
+        <div class="col-xs-6"><p>VVM Stage 4</p></div>
+        <div class="col-xs-12"><p>Expires: 15.12.2016</p></div>
+        <div class="col-xs-12"><p>Batch number: SDF4128QZ458ER4</p></div>
+      </div>
+    </div>
+    <div class="product-name">
+      <div class="row">
+        <div class="col-xs-12"><h4>BCG 20</h4></div>
+        <div class="col-xs-6"><p>22 doses</p></div>
+        <div class="col-xs-6"><p>VVM Stage 1</p></div>
+        <div class="col-xs-12"><p>Expires: 09.10.2019</p></div>
+        <div class="col-xs-12"><p>Batch number: SDF4128QZ67E451</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="product-name">
+      <h4>HEP A PFS</h4>
+      <p>15 doses</p>
+      <p>VVM Stage 4</p>
+      <p><strong>Expires:</strong> 15.12.2016</p>
+      <p><strong>Batch number:</strong> SDF4128QZ458ER4</p>
+    </div>
+
+    <div class="product-name">
+      <h4>BCG 20</h4>
+      <p>22 doses</p>
+      <p>VVM Stage 1</p>
+      <p><strong>Expires:</strong> 09.10.2019</p>
+      <p><strong>Batch number:</strong> SDF4128QZ67E451</p>
+    </div>
+  </div>
+
+  <div class="product-name">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Batch No.</th>
+          <th>VVM Status</th>
+          <th>Expiry Date</th>
+        </thead>
+        <tbody>
+          <tr class="no-border">
+            <td><h5>HEP A PFS</h5></td>
+            <td><p>15 doses</p></td>
+            <td><p>SDF4128QZ67E451</p></td>
+            <td><p>VVM Stage 4</p></td>
+            <td><p>15.12.2016</p></td>
+          </tr>
+          <tr class="no-border">
+            <td><h5>BCG 20</h5></td>
+            <td><p>22 doses</p></td>
+            <td><p>SDF4128QZ458ER4</p></td>
+            <td><p>No VVM Status</p></td>
+            <td><p>15.12.2016</p></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-equipment">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <div class="row">
+              <div class="col-xs-6"><h4>Hep A PFS</h4></div>
+              <div class="col-xs-4"><h6><img src="~/../../../images/vvm-icons/1.jpg" class="img-responsive" style="height: 1.5em"></h6></div>
+              <div class="col-xs-2 text-right">
+                <h6>
+                  <a class="colorless" role="button" data-toggle="collapse" data-parent="" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                    <i class="fa fa-chevron-down"></i>
+                  </a>
+                </h6>
               </div>
             </div>
-            <div class="product-name">
-              <div class="row">
-                <div class="col-xs-8"><p>TC200356VXT</p></div>
-                <div class="col-xs-2"><p><i class="fa fa-trash"></i></p></div>
-                <div class="col-xs-2"><p><i class="fa fa-edit"></i></p></div>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <p><strong>Quantity:</strong> 15 doses</p>
+            <p><strong>Expires:</strong> 15.12.2016</p>
+            <p><strong>Batch number:</strong> SDF4128QZ458ER4</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-equipment">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <div class="row">
+              <div class="col-xs-6"><h4>BCG 20</h4></div>
+              <div class="col-xs-4"><h6><img src="~/../../../images/vvm-icons/3.jpg" class="img-responsive" style="height: 1.5em"></h6></div>
+              <div class="col-xs-2 text-right">
+                <h6>
+                  <a class="colorless" role="button" data-toggle="collapse" data-parent="" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                    <i class="fa fa-chevron-down"></i>
+                  </a>
+                </h6>
               </div>
             </div>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <p><strong>Quantity:</strong> 22 doses</p>
+            <p><strong>Expires:</strong> 30.11.2019</p>
+            <p><strong>Batch number:</strong> SDF4128QZ4BER86</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-equipment">
+        <div class="panel-heading red" role="tab" id="headingOne">
+            <div class="row">
+              <div class="col-xs-6"><h4>*YF 5</h4></div>
+              <div class="col-xs-4"><h6><img src="~/../../../images/vvm-icons/4.jpg" class="img-responsive" style="height: 1.5em"></h6></div>
+              <div class="col-xs-2 text-right">
+                <h6>
+                  <a class="colorless" role="button" data-toggle="collapse" data-parent="" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                    <i class="fa fa-chevron-down"></i>
+                  </a>
+                </h6>
+              </div>
+            </div>
+        </div>
+        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <p><strong>Quantity:</strong> 80 vials</p>
+            <p><strong>Expires:</strong> 11.11.2019</p>
+            <p><strong>Batch number:</strong> SDF4128QZ4BER86</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 
   <div class="dropdown">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
