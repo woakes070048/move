@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('lmisChromeApp')
-  .factory('storageService', function ($q, $window, utility, collections, pouchStorageService) {
+  .factory('storageService', function ($q, $window, utility, collections, pouchStorageService, config) {
     /**
      *  Global variables used to define table names, with this there will be one
      *  point in the code to add and/or update local storage table names.
@@ -256,7 +256,12 @@ angular.module('lmisChromeApp')
       return $q.all(promises)
     }
 
+    function getById (id) {
+      return pouchStorageService.get(config.localDB, id);
+    }
+
     var api = {
+      getById: getById,
       all: getAllFromTable,
       add: setData,
       get: getData,

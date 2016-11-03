@@ -9,66 +9,89 @@ angular.module('lmisChromeApp')
     appConfigService,
     fixtureLoaderService,
     backgroundSyncService,
-    storageService
+    storageService,
+    config
   ) {
+
+    var self = this;
+
+    self.getDeviceAppUser = function () {
+      return storageService.getById(config.deviceUserId);
+    };
+
+    self.gotoLogin = function () {
+      $state.go('Login');
+    };
+
     function loadAppConfig () {
-      function handleError (message, error) {
-        // TODO: make these strings translatable
-        message += '. Please contact support.'
-        var options = {
-          timeOut: 0
-        }
-        toastr.error(message, options)
-        $log.error(error)
-      }
+      // function handleError (message, error) {
+      //   // TODO: make these strings translatable
+      //   message += '. Please contact support.'
+      //   var options = {
+      //     timeOut: 0
+      //   }
+      //   toastr.error(message, options)
+      //   $log.error(error)
+      // }
+      //
+      // function loadRemoteFixture () {
+      //   var errorMessage = 'Local databases and memory storage setup failed'
+      //   return fixtureLoaderService
+      //     .setupLocalAndMemoryStore(fixtureLoaderService.REMOTE_FIXTURES)
+      //     .catch(handleError.bind(null, errorMessage))
+      // }
+      //
+      // function fetchRemoteConfig () {
+      //   var errorMessage = 'Fresh install setup failed'
+      //   return storageService.clear()
+      //     .then(loadRemoteFixture)
+      //     .catch(handleError.bind(null, errorMessage))
+      // }
+      //
+      // function goHomeAndSync () {
+      //   var prefix = 'updateAppConfigAndStartBackgroundSync triggered on start up'
+      //   $rootScope.$emit('MEMORY_STORAGE_LOADED')
+      //   $state.go('home.mainActivity')
+      //   backgroundSyncService.startBackgroundSync()
+      //     .then($log.info.bind($log, prefix + ' has completed'))
+      //     .catch($log.error.bind($log, prefix + ' failed'))
+      // }
+      //
+      // function primeMemoryStore () {
+      //   var errorMessage = 'Loading storage into memory failed'
+      //   fixtureLoaderService
+      //     .loadLocalDatabasesIntoMemory(fixtureLoaderService.REMOTE_FIXTURES)
+      //     .then(goHomeAndSync)
+      //     .catch(handleError.bind(null, errorMessage))
+      // }
+      //
+      // function loadConfig (res) {
+      //   if (!res.length) {
+      //     fetchRemoteConfig()
+      //     return
+      //   }
+      //   primeMemoryStore()
+      // }
 
-      function loadRemoteFixture () {
-        var errorMessage = 'Local databases and memory storage setup failed'
-        return fixtureLoaderService
-          .setupLocalAndMemoryStore(fixtureLoaderService.REMOTE_FIXTURES)
-          .catch(handleError.bind(null, errorMessage))
-      }
+      $state.go('loadingFixture');
 
-      function fetchRemoteConfig () {
-        var errorMessage = 'Fresh install setup failed'
-        return storageService.clear()
-          .then(loadRemoteFixture)
-          .catch(handleError.bind(null, errorMessage))
-      }
-
-      function goHomeAndSync () {
-        var prefix = 'updateAppConfigAndStartBackgroundSync triggered on start up'
-        $rootScope.$emit('MEMORY_STORAGE_LOADED')
-        $state.go('home.mainActivity')
-        backgroundSyncService.startBackgroundSync()
-          .then($log.info.bind($log, prefix + ' has completed'))
-          .catch($log.error.bind($log, prefix + ' failed'))
-      }
-
-      function primeMemoryStore () {
-        var errorMessage = 'Loading storage into memory failed'
-        fixtureLoaderService
-          .loadLocalDatabasesIntoMemory(fixtureLoaderService.REMOTE_FIXTURES)
-          .then(goHomeAndSync)
-          .catch(handleError.bind(null, errorMessage))
-      }
-
-      function loadConfig (res) {
-        if (!res.length) {
-          fetchRemoteConfig()
-          return
-        }
-        primeMemoryStore()
-      }
-
-      $state.go('loadingFixture')
+      self.getDeviceAppUser()
+        .then(self.loadAppConfig)
+        .catch(self.gotoLogin);
 
       // TODO: figure out a better way of knowing if the app has been configured
       // or not.
-      storageService.all(storageService.APP_CONFIG)
-        .then(loadConfig)
-        .catch(handleError.bind(null, 'Loading app-config failed'))
+      // storageService.all(storageService.APP_CONFIG)
+      //   .then(loadConfig)
+      //   .catch(handleError.bind(null, 'Loading app-config failed'))
     }
+
+    self.loadAppConfig = function () {
+      console.info('Loading App config ....');
+      //TODO: check if  app config exists on device
+      // if it exists, trigger background sync and move to home page
+      //  else take to config page
+    };
 
     function showSplashScreen () {
       $state.go('loadingFixture')

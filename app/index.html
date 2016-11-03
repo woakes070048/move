@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Nigeria LMIS</title>
+  <title>LoMIS Stock</title>
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:35729; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' ws://localhost:35729 http://lomis.ehealth.org.ng:5984 http://lomis-stage.ehealth.org.ng:5984 http://dev.lomis.ehealth.org.ng:5984 blob:">
   <!-- build:css styles/vendor.css -->
@@ -17,6 +17,7 @@
   <!-- endbuild -->
   <!-- build:css({.tmp,app}) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/table.css">
   <!-- endbuild -->
 </head>
 <body>
@@ -63,6 +64,8 @@
   <script src="scripts/states/home/index.js"></script>
   <script src="scripts/states/home/contact.js"></script>
   <script src="scripts/states/home/main-activity.js"></script>
+  <script src="scripts/states/login/login.js"></script>
+  <script src="scripts/states/loading-fixture/loading-fixture.js"></script>
   <script src="scripts/controllers/stock-count.js"></script>
   <script src="scripts/controllers/app-config.js"></script>
   <script src="scripts/controllers/cold-chain-units.js"></script>
@@ -72,6 +75,8 @@
   <script src="scripts/controllers/index.js"></script>
   <script src="scripts/controllers/stock-out-broadcast.js"></script>
   <script src="scripts/controllers/waste-count.js"></script>
+  <script src="scripts/controllers/login.js"></script>
+  <script src="scripts/controllers/onboarding.js"></script>
   <script src="scripts/services/bundle-service.js"></script>
   <script src="scripts/services/batch-service.js"></script>
   <script src="scripts/services/notification-service.js"></script>
@@ -110,6 +115,7 @@
   <script src="scripts/services/messages.js"></script>
   <script src="scripts/services/vvm-options.js"></script>
   <script src="scripts/services/app-service.js"></script>
+  <script src="scripts/services/login-service.js"></script>
   <script src="scripts/bootstrap.js"></script>
   <!-- endbuild -->
 </body>

@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('lmisChromeApp').service('notificationService', function ($modal, $q, messages, $window, utility) {
+angular.module('lmisChromeApp').service('notificationService', function ($q, messages, $window, utility) {
   var noSmsSupportMsg = 'SMS support not available!'
   this.NO_SMS_SUPPORT = noSmsSupportMsg
   this.alertRecipient = '08176671738' // FIXME: pull this from local or remote db later, dont hardcode.
@@ -26,7 +26,7 @@ angular.module('lmisChromeApp').service('notificationService', function ($modal,
    * @returns {promise |*|}
    */
   var getConfirmDialogBox = function (title, bodyText, buttonLabels) {
-    var confirmDialog = $modal.open({
+    /*var confirmDialog = $modal.open({
       templateUrl: 'views/notification-service/confirm-dialog.html',
       backdrop: 'static',
       keyboard: false,
@@ -56,7 +56,7 @@ angular.module('lmisChromeApp').service('notificationService', function ($modal,
         $scope.dismissMessage = 'Cancel confirm dialog'
       }
     })
-    return confirmDialog.result
+    return confirmDialog.result*/
   }
 
   var isMobileDialogAvailable = function () {

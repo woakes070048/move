@@ -14,8 +14,7 @@ angular.module('lmisChromeApp', [
   'eha.login-service',
   'eha.online-badge',
   'eha.cordova.google-analytics',
-  'eha.counter',
-  'eha.login-dialog'
+  'eha.counter'
 ])
   .run(function (
     $window,

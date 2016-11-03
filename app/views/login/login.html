@@ -1,0 +1,69 @@
+<div class="pic">
+  <div class="">
+    <!--Header-->
+    <div class="container header-transparent">
+      <div class="push"></div>
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-xs-12">
+            <h4><img src="images/logo-trim.png" width="20%"/></h4>
+            <h4 class="">LOMIS STOCK</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="push"></div>
+      <form class="form-horizontal" ng-submit="loginForm.$valid && loginCtrl.submit()" name="loginForm"
+            novalidate>
+        <div class="form-group">
+          <label for="username" class="col-sm-2 control-label"><i class="fa fa-envelope icon left"></i>Email</label>
+          <div class="col-sm-10">
+            <input type="text" ng-model="loginCtrl.username" ng-required="true"
+                   ng-disabled="loginCtrl.isAuthenticating"
+                   class="form-control dark" id="username" placeholder="email or username">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-sm-2 control-label"><i class="fa fa-key icon left"></i>Password</label>
+          <div class="col-sm-10">
+            <input type="password" ng-model="loginCtrl.password" ng-required="true"
+                   ng-disabled="loginCtrl.isAuthenticating"
+                   class="form-control dark" id="password" placeholder="">
+          </div>
+        </div>
+
+        <div>
+          <h6 class="alert alert-danger" ng-show="loginCtrl.wrongCredential">Incorrect username or password.</h6>
+          <h6 class="alert alert-warning" ng-show="loginCtrl.cannotReachServer">
+            Remote server is not reachable, please check your network setting to be sure you are online and try again.
+            If this persists, contact support.
+          </h6>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10 text-center">
+            <button type="submit" class="colorless btn btn-login" ng-disabled="loginForm.$invalid || loginCtrl.isAuthenticating">
+              <span>Sign In</span>
+              <span ng-show="loginCtrl.isAuthenticating"><i class="fa fa-spinner fa-spin"></i></span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="col-xs-8 col-sm-6">
+          <h5><i class="fa fa-key icon"></i>Forgot Password</h5>
+        </div>
+        <div class="col-xs-4 col-sm-6 text-right">
+          <a class="colorless" role="button" data-toggle="modal" ng-click="loginCtrl.openOnboardingModal()">
+            <h5><i class="fa fa-info-circle icon"></i>Help</h5>
+          </a>
+        </div>
+      </div>
+
+      <div class="push"></div>
+    </div>
+  </div>
+</div>
