@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVE app</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/move.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
+</head>
+
+<body>
+
+  <!--Header-->
+    <div class="header">
+      <div class="row">
+        <div class="col-xs-8">
+          <h5><a href="stock-count.html" class="colorless"><i class="fa fa-chevron-left icon"></i></a>Stock Count</h5>
+        </div>
+
+        <div class="col-xs-4 text-right">
+          <h6 class=""><i class="fa fa-question-circle icon"></i><strong>HELP </strong></h6>
+        </div>
+      </div>
+    </div>
+
+    <!--SubHeader-->
+    <div class="container subheader">
+      <div class="row">
+        <div class="col-xs-8">
+          <h6 class="dark-grey">3/5 COMPLETED</h6>
+          <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+              <span class="sr-only">60% Complete</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4 text-right green">
+          <h6><i class="fa fa-check"></i><strong> ONLINE </strong></h6>
+          <!-- <i class="fa fa-search dark-grey fa-border"></i> -->
+        </div>
+      </div>
+    </div>
+
+    <!--Products-->
+    <div class="container">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr class="dark-grey">
+            <th width="50%">STOCK ITEM </th>
+            <th width="30%">COUNT</th>
+            <th width="20%">UoM </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="category-row">
+            <td class="product-column" onclick="input" data-toggle="modal" href="#myModal"><p>BCG 20</p></td>
+            <td class="product-column blue"><p>20</p></td>
+            <td class="product-column  blue"><p>doses</p></td>
+          </tr>
+
+          <tr class="category-row">
+            <td class="product-column" onclick="input" data-toggle="modal" href=""><p>Measles 10</p></td>
+            <td class="product-column blue">
+              <p>
+                <div class="input-group">
+                  <input type="number" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                </div>
+              </p>
+            </td>
+            <td class="product-column blue"><p>doses</p></td>
+          </tr>
+
+          <tr class="category-row">
+            <td class="product-column" onclick="input" data-toggle="modal" href=""><p>OPV 10</p></td>
+            <td class="product-column blue"><p>20</p></td>
+            <td class="product-column blue"><p>vials</p></td>
+          </tr>
+
+          <tr class="category-row">
+            <td class="product-column" onclick="input" data-toggle="modal" href=""><p>Penta 10</p></td>
+            <td class="product-column blue"><p>40</p></td>
+            <td class="product-column blue"><p>doses</p></td>
+          </tr>
+
+          <tr class="category-row">
+            <td class="product-column" onclick="input" data-toggle="modal" href=""><p>HepB 10</p></td>
+            <td class="product-column blue">
+              <p>
+                <div class="input-group">
+                  <input type="number" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                </div>
+              </p>
+            </td>
+            <td class="product-column blue"><p>doses</p></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!--Save-->
+    <div class="container text-center">
+      <button type="button" class="btn btn-block btn-save"><a class="colorless" role="button" data-toggle="modal" data-target="#myModal">SAVE</a></button>
+    </div>
+
+    <!-- Modal -->
+      <div  id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content modal-saved">
+
+            <div class="modal-body">
+              <div class="push"></div>
+              <div class="text-center">
+                <i class="fa fa-check-circle fa-2x"></i>
+              </div>
+              <h4 class="text-center"> Stock Count Saved! </h4>
+            </div>
+            <div class="modal-footer">
+              <a role="button" class="btn btn-block btn-saved" href="stock-count.html"><h5>OK</h5></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/src/jquery-bootstrap-modal-steps.js"></script>
+
+<script>
+  $('#myModal').modalSteps();
+
+  $('.btn-minus').on('click', function(){
+   var value = parseInt($(this).parent().siblings('input').val())
+   if (isNaN(value) || !isFinite(value)) {
+      value = 1
+   }
+
+   if (value < 1) {
+      value = 1
+   }
+$(this).parent().siblings('input').val(value - 1 + ' Vials')
+})
+
+$('.btn-plus').on('click', function(){
+   var value = parseInt($(this).parent().siblings('input').val())
+   if (isNaN(value) || !isFinite(value)) {
+      value = -1
+   }
+$(this).parent().siblings('input').val(value + 1 + ' Vials')
+})
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVE app</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/move.css">
+    <link rel="stylesheet" href="assets/css/tables.css">
+</head>
+
+<body>
+  <!--Header-->
+    <div class="header">
+      <div class="row">
+        <div class="col-xs-8">
+          <h5><a href="settings.html" class="colorless"><i class="fa fa-chevron-left icon"></i></a>Settings</h5>
+        </div>
+
+        <div class="col-xs-4 text-right">
+          <h6 class=""><i class="fa fa-question-circle icon left"></i><strong>HELP</strong></h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="container subheader">
+      <div class="row">
+        <div class="col-xs-8">
+          <h6 class="dark-grey">50% COMPLETED</h6>
+          <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+              <span class="sr-only">50% Complete</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4 text-right">
+          <h6 class="green"><i class="fa fa-check"></i><strong> ONLINE </strong></h6>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div  class="">
+      <div class="row">
+        <div class="col-xs-3">
+
+          <ul class="nav nav-tabs tabs-left sideways">
+           <li class="active"><a href="#facility" data-toggle="tab" class="colorless"><span class="fa fa-hospital-o"></span></a></li>
+           <li><a href="#programs" data-toggle="tab" class="colorless"><span class="fa fa-suitcase"></span></a></li>
+           <li><a href="#cold-chain-equipment" data-toggle="tab" class="colorless"><span class="fa fa-asterisk"></span></a></li>
+           <li><a href="#location" data-toggle="tab" class="colorless"><span class="fa fa-map-marker"></span></a></li>
+          </ul>
+        </div>
+
+         <div class="col-xs-9">
+
+           <div class="tab-content">
+             <div class="tab-pane active" id="facility">Facility Profile
+               <div class="container">
+                 <div class="product-name">
+                   <h5 class="orange">Facility Name</h5>
+                   <div class="input-group-product">
+                     <input type="text" class="form-control" placeholder="Tiga General Hospital" aria-describedby="sizing-addon1">
+                   </div>
+                 </div>
+
+                 <div class="product-name">
+                   <h5 class="orange">Contact Details</h5>
+                   <div class="input-group-product">
+                     <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1">
+                   </div>
+                   <div class="input-group-product">
+                     <input type="number" class="form-control" placeholder="Phone number" aria-describedby="sizing-addon1">
+                   </div>
+                   <div class="input-group-product">
+                     <input type="email" class="form-control" placeholder="Email address" aria-describedby="sizing-addon1">
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <div class="tab-pane" id="programs">Programs</div>
+             <div class="tab-pane" id="cold-chain-equipment">CCE</div>
+             <div class="tab-pane" id="location">Location</div>
+           </div>
+         </div>
+      </div>
+
+       <div class="clearfix"></div>
+
+     </div> -->
+
+   <div class="">
+   	<div class="row">
+      <div class="col-md-6">
+     <!-- Nav tabs -->
+        <div class="">
+         <ul class="nav nav-tabs text-center" role="tablist">
+           <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab"><span class="fa fa-home fa-2x icon-nav"></span></a></li>
+           <li role="presentation" class=""><a href="#facility-profile" aria-controls="facility-profile" role="tab" data-toggle="tab"><span class="fa fa-building fa-2x icon-nav"></span></a></li>
+           <li role="presentation"><a href="#programs" aria-controls="programs" role="tab" data-toggle="tab"><span class="fa fa-medkit fa-2x icon-nav"></span></a></li>
+           <li role="presentation"><a href="#equipment" aria-controls="equipment" role="tab" data-toggle="tab"><span class="fa fa-gears fa-2x icon-nav"></span></a></li>
+           <li role="presentation"><a href="#delivery-locations" aria-controls="deliver-locations" role="tab" data-toggle="tab"><span class="fa fa-map-marker fa-2x icon-nav"></span></a></li>
+         </ul>
+
+       <!-- Tab panes -->
+         <div class="tab-content">
+           <div role="tabpanel" class="tab-pane active" id="overview">
+             <div class="">
+               <div class="product-name">
+                 <div class="row">
+                   <div class="col-xs-3 text-center">
+                     <span class="fa fa-check-circle fa-3x green"></span>
+                   </div>
+                   <div class="col-xs-9">
+                     <h5> Facility Profile </h5>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="product-name">
+                 <div class="row">
+                   <div class="col-xs-3 text-center">
+                     <span class="fa fa-check-circle fa-3x green"></span>
+                   </div>
+                   <div class="col-xs-9">
+                     <h5> Programs </h5>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="product-name">
+                 <div class="row">
+                   <div class="col-xs-3 text-center">
+                     <span class="fa fa-check-circle fa-3x light-grey"></span>
+                   </div>
+                   <div class="col-xs-9">
+                     <h5> Equipment </h5>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="product-name">
+                 <div class="row">
+                   <div class="col-xs-3 text-center">
+                     <span class="fa fa-check-circle fa-3x light-grey"></span>
+                   </div>
+                   <div class="col-xs-9">
+                     <h5> Locations </h5>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <div role="tabpanel" class="tab-pane" id="facility-profile">
+             <div class="container">
+               <div class="product-name">
+                 <h5 class="orange">Facility Name</h5>
+                 <div class="input-group-product">
+                   <input type="text" class="form-control" placeholder="Tiga General Hospital" aria-describedby="sizing-addon1">
+                 </div>
+               </div>
+
+               <div class="product-name">
+                 <h5 class="orange">Contact Details</h5>
+                 <div class="input-group-product">
+                   <input type="text" class="form-control" placeholder="Name" aria-describedby="sizing-addon1">
+                 </div>
+                 <div class="input-group-product">
+                   <input type="number" class="form-control" placeholder="Phone number" aria-describedby="sizing-addon1">
+                 </div>
+                 <div class="input-group-product">
+                   <input type="email" class="form-control" placeholder="Email address" aria-describedby="sizing-addon1">
+                 </div>
+               </div>
+             </div>
+
+             <!-- Facility Modal -->
+               <div  id="facilityModal" class="modal fade" role="dialog">
+                 <div class="modal-dialog">
+
+                   <!-- Modal content-->
+                   <div class="modal-content modal-saved">
+
+                     <div class="modal-body">
+                       <div class="push"></div>
+                       <div class="text-center">
+                         <i class="fa fa-check-circle fa-2x"></i>
+                       </div>
+                       <h4 class="text-center">Facility Profile Saved! </h4>
+                     </div>
+                     <div class="modal-footer">
+                       <a role="button" class="btn btn-block btn-saved" href="onboarding.html"><h5>OK</h5></a>
+                     </div>
+                   </div>
+
+                 </div>
+               </div>
+
+               <!-- Facility Footer -->
+               <div class="container">
+                 <div class="row">
+                   <div class="col-xs-6">
+                     <button type="button" class="btn btn-default btn-block btn-cancel"><a class="colorless" role="button" href="#overview">BACK</a></button>
+                   </div>
+                   <div class="col-xs-6">
+                     <button type="button" class="btn btn-default btn-block btn-save"><a class="colorless" role="button" data-toggle="modal" data-target="#facilityModal">SAVE</a></button>
+                   </div>
+                 </div>
+               </div>
+           </div>
+
+           <!-- Programs -->
+           <div role="tabpanel" class="tab-pane" id="programs">
+             <div class="container">
+               <div class="product-name">
+                 <a href="onboarding-ri-program.html" class="colorless">
+                 <div class="row">
+                   <div class="col-xs-1">
+                     <div class="input-group">
+                       <h6><input type="checkbox" aria-label="..." checked class="equipment"></h6>
+                     </div>
+                   </div>
+                   <div class="col-xs-8">
+                     <h6>RI</h6>
+                   </div>
+                   <div class="col-xs-2 text-right">
+                     <h6><i class="fa fa-chevron-right"></i></h6>
+                   </div>
+                 </div>
+                 </a>
+
+                 <a href="onboarding-pharm-program.html" class="colorless">
+                 <div class="row">
+                   <div class="col-xs-1">
+                     <div class="input-group">
+                       <h6><input type="checkbox" aria-label="..." checked class="equipment"></h6>
+                     </div>
+                   </div>
+                   <div class="col-xs-8">
+                     <h6>Pharmaceuticals</h6>
+                   </div>
+                   <div class="col-xs-2 text-right">
+                     <h6><i class="fa fa-chevron-right"></i></h6>
+                   </div>
+                 </div>
+                 </a>
+
+                 <div class="row">
+                   <div class="col-xs-1">
+                     <div class="input-group">
+                       <h6><input type="checkbox" aria-label="..." class="equipment"></h6>
+                     </div>
+                   </div>
+                   <div class="col-xs-8">
+                     <h6>Other</h6>
+                   </div>
+                   <div class="col-xs-2 text-right">
+                     <h6><i class="fa fa-chevron-right"></i></h6>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <!-- Equipment -->
+           <div role="tabpanel" class="tab-pane" id="equipment">
+             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+               <div class="panel panel-default panel-config">
+                 <div class="panel-heading" role="tab" id="headingOne">
+                   <p class="panel-title">
+                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                       Cold Chain Equipment
+                     </a>
+                   </p>
+                 </div>
+                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                   <div class="panel-body">
+                     <div class="container">
+                       <div class="product-name">
+                         <div class="input-group-product">
+                           <input type="text" class="form-control" placeholder="search for..." aria-describedby="sizing-addon1">
+                           <span class="input-group-btn">
+                             <button class="btn btn-default" type="button"><i class="fa fa-search orange"></i></button>
+                           </span>
+                         </div>
+                       </div>
+                       <div class="product-name">
+                         <h5 class="orange">Upright Refrigerator</h5>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Dometic TCW 2000 SDD</h6></div>
+                           <div class="col-xs-2 text-right"><h6><i class="fa fa-edit"></i></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Dometic TCW 2000 DC</h6></div>
+                           <div class="col-xs-2 text-right"><h6><i class="fa fa-edit"></i></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Zero PR 265 EK</h6></div>
+                           <div class="col-xs-2 text-right"><h6><i class="fa fa-edit"></i></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Sibir V 170 GE</h6></div>
+                           <div class="col-xs-2 text-right"><h6><i class="fa fa-edit"></i></h6></div>
+                         </div>
+                       </div>
+
+                       <div class="product-name">
+                         <h5 class="orange">Ice Pack Freezer</h5>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Dometic TFW 800</h6></div>
+                           <div class="col-xs-2 text-right"><h6><i class="fa fa-edit"></i></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Vestfrost MF 114</h6></div>
+                           <div class="col-xs-2 text-right"><h6><i class="fa fa-edit"></i></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Vestfrost MF 314</h6></div>
+                           <div class="col-xs-2 text-right"><h6><i class="fa fa-edit"></i></h6></div>
+                         </div>
+                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                           <div class="panel panel-equipment">
+                             <div class="panel-heading no-padding" role="tab" id="headingOne">
+                               <h4 class="panel-title">
+                                 <div class="row">
+                                   <div class="col-xs-1">
+                                     <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                                   </div>
+                                   <div class="col-xs-8"><h6>Dometic FCW 300</h6></div>
+                                   <div class="col-xs-2 text-right">
+                                     <h6>
+                                       <a class="colorless" role="button" data-toggle="collapse" data-parent="#equipmentAccordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                                         <i class="fa fa-edit"></i>
+                                       </a>
+                                     </h6>
+                                   </div>
+                                 </div>
+                               </h4>
+                             </div>
+                             <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                               <div class="panel-body">
+                                 <h5>Add Serial Numbers</h5>
+                                 <div class="product-name">
+                                   <div class="input-group">
+                                     <input type="text" class="form-control" placeholder="Enter a serial number">
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-default" type="button">Add</button>
+                                     </span>
+                                   </div>
+                                 </div>
+
+                                 <div class="container">
+                                   <h5 class="orange">Dometic FCW 300</h5>
+                                   <div class="product-name">
+                                     <div class="row">
+                                       <div class="col-xs-8"><p>TC201456ERT</p></div>
+                                       <div class="col-xs-2"><p><i class="fa fa-trash"></i></p></div>
+                                       <div class="col-xs-2"><p><i class="fa fa-edit"></i></p></div>
+                                     </div>
+                                   </div>
+                                   <div class="product-name">
+                                     <div class="row">
+                                       <div class="col-xs-8"><p>TC200356VXT</p></div>
+                                       <div class="col-xs-2"><p><i class="fa fa-trash"></i></p></div>
+                                       <div class="col-xs-2"><p><i class="fa fa-edit"></i></p></div>
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+
+                       <div class="product-name">
+                         <h5 class="orange">Others</h5>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Other</h6></div>
+                           <div class="col-xs-2 text-right"><h6><a class="colorless" role="button" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-edit"></i></a></h6></div>
+                         </div>
+                       </div>
+
+                       <div class="product-name">
+                         <h5 class="orange">Chest Freezer</h5>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Haier HBD 116</h6></div>
+                           <div class="col-xs-2 text-right"><h6><a class="colorless" role="button" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-edit"></i></a></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Dometic FCW 20 EK</h6></div>
+                           <div class="col-xs-2 text-right"><h6><a class="colorless" role="button" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-edit"></i></a></h6></div>
+                         </div>
+                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                           <div class="panel panel-equipment">
+                             <div class="panel-heading no-padding" role="tab" id="headingOne">
+                               <h4 class="panel-title">
+                                 <div class="row">
+                                   <div class="col-xs-1">
+                                     <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                                   </div>
+                                   <div class="col-xs-8"><h6>Vestfrost HF506</h6></div>
+                                   <div class="col-xs-2 text-right">
+                                     <h6>
+                                       <a class="colorless" role="button" data-toggle="collapse" data-parent="#equipmentAccordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                         <i class="fa fa-edit"></i>
+                                       </a>
+                                     </h6>
+                                   </div>
+                                 </div>
+                               </h4>
+                             </div>
+                             <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
+                               <div class="panel-body">
+                                 <h5>Add Serial Numbers</h5>
+                                 <div class="product-name">
+                                   <div class="input-group">
+                                     <input type="text" class="form-control" placeholder="Enter a serial number">
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-default" type="button">Add</button>
+                                     </span>
+                                   </div>
+                                 </div>
+
+                                 <div class="container">
+                                   <h5 class="orange">Vestfrost HF506</h5>
+                                   <div class="product-name">
+                                     <div class="row">
+                                       <div class="col-xs-8"><p>TC201456ERT</p></div>
+                                       <div class="col-xs-2"><p><i class="fa fa-trash"></i></p></div>
+                                       <div class="col-xs-2"><p><i class="fa fa-edit"></i></p></div>
+                                     </div>
+                                   </div>
+                                   <div class="product-name">
+                                     <div class="row">
+                                       <div class="col-xs-8"><p>TC200356VXT</p></div>
+                                       <div class="col-xs-2"><p><i class="fa fa-trash"></i></p></div>
+                                       <div class="col-xs-2"><p><i class="fa fa-edit"></i></p></div>
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="panel panel-default panel-config">
+                 <div class="panel-heading" role="tab" id="headingTwo">
+                   <p class="panel-title">
+                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                       Generators
+                     </a>
+                   </p>
+                 </div>
+                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                   <div class="panel-body">
+                     <div class="container">
+                       <div class="">
+                         <div class="input-group-product">
+                           <input type="text" class="form-control" placeholder="search for..." aria-describedby="sizing-addon1">
+                           <span class="input-group-btn">
+                             <button class="btn btn-default" type="button"><i class="fa fa-search orange"></i></button>
+                           </span>
+                         </div>
+                       </div>
+                       <div class="product-name">
+                         <h5 class="orange">Petrol Generators</h5>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Honda</h6></div>
+                           <div class="col-xs-2 text-right"><h6><a class="colorless" role="button" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-edit"></i></a></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Tiger</h6></div>
+                           <div class="col-xs-2 text-right"><h6><a class="colorless" role="button" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-edit"></i></a></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Clarke</h6></div>
+                           <div class="col-xs-2 text-right"><h6><a class="colorless" role="button" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-edit"></i></a></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Yamaha</h6></div>
+                           <div class="col-xs-2 text-right"><h6><a class="colorless" role="button" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-edit"></i></a></h6></div>
+                         </div>
+                       </div>
+
+                       <div class="product-name">
+                         <h5 class="orange">Diesel Generators</h5>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Cummins</h6></div>
+                           <div class="col-xs-2 text-right"><h6><a class="colorless" role="button" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-edit"></i></a></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Kholer</h6></div>
+                           <div class="col-xs-2 text-right"><h6><a class="colorless" role="button" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-edit"></i></a></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>Marapco</h6></div>
+                           <div class="col-xs-2 text-right"><h6><a class="colorless" role="button" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-edit"></i></a></h6></div>
+                         </div>
+                         <div class="row">
+                           <div class="col-xs-1">
+                             <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                           </div>
+                           <div class="col-xs-8"><h6>JMG</h6></div>
+                           <div class="col-xs-2 text-right"><h6><a class="colorless" role="button" data-toggle="modal" data-target="#equipmentModal"><i class="fa fa-edit"></i></a></h6></div>
+                         </div>
+                       </div>
+
+                     </div>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="panel panel-default panel-config">
+                 <div class="panel-heading" role="tab" id="headingThree">
+                   <p class="panel-title">
+                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                       Solar Panels
+                     </a>
+                   </p>
+                 </div>
+                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                   <div class="panel-body">
+                     <div class="container">
+                       <div class="">
+                         <div class="input-group-product">
+                           <input type="text" class="form-control" placeholder="search for..." aria-describedby="sizing-addon1">
+                           <span class="input-group-btn">
+                             <button class="btn btn-default" type="button"><i class="fa fa-search orange"></i></button>
+                           </span>
+                         </div>
+                       </div>
+                       <div class="product-name">
+                         <h5 class="orange">Solar panel types</h5>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
+             <!-- Footer -->
+             <div class="home-heading spacer"></div>
+             <div class="container">
+               <div class="row">
+                 <div class="col-xs-6">
+                   <button type="button" class="btn btn-default btn-block btn-cancel"><a href="onboarding.html" class="colorless" role="button">BACK</a></button>
+                 </div>
+                 <div class="col-xs-6">
+                   <button type="button" class="btn btn-default btn-block btn-inactive"><a class="colorless" role="button" data-toggle="modal" data-target="#location">CONTINUE</a></button>
+                 </div>
+               </div>
+             </div>
+
+             <!-- Equipment Modal -->
+               <div  id="equipmentModal" class="modal fade" role="dialog">
+                 <div class="modal-dialog equipment-modal">
+
+                   <!-- Equipment Modal content-->
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                       <h5 class="modal-title" id="equipmentModalLabel">Serial Numbers</h5>
+                     </div>
+
+                     <div class="modal-body">
+                       <div class="product-name">
+                         <div class="input-group">
+                           <input type="text" class="form-control" placeholder="Enter a serial number">
+                           <span class="input-group-btn">
+                             <button class="btn btn-default" type="button">Add</button>
+                           </span>
+                         </div>
+                       </div>
+
+                       <div class="container">
+                         <h5 class="orange">Dometic FCW 300</h5>
+                         <div class="product-name">
+                           <div class="row">
+                             <div class="col-xs-8"><p>TC201456ERT</p></div>
+                             <div class="col-xs-2"><p><i class="fa fa-trash"></i></p></div>
+                             <div class="col-xs-2"><p><i class="fa fa-edit"></i></p></div>
+                           </div>
+                         </div>
+                         <div class="product-name">
+                           <div class="row">
+                             <div class="col-xs-8"><p>TC200356VXT</p></div>
+                             <div class="col-xs-2"><p><i class="fa fa-trash"></i></p></div>
+                             <div class="col-xs-2"><p><i class="fa fa-edit"></i></p></div>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                     <!-- <div class="modal-footer">
+                       <a role="button" class="btn btn-block btn-saved" href="onboarding.html"><h5>OK</h5></a>
+                     </div> -->
+                   </div>
+                 </div>
+               </div>
+           </div>
+
+           <!-- Location -->
+           <div role="tabpanel" class="tab-pane" id="delivery-locations">
+             <div class="container">
+               <div class="product-name">
+                 <h5 class="orange">Facility Location</h5>
+                 <div class="input-group">
+                   <input type="text" class="form-control" placeholder="Bichi" aria-describedby="sizing-addon1">
+                 </div>
+               </div>
+
+               <div class="product-name">
+                 <h5 class="orange">Select delivery network for this facility</h5>
+                 <div class="row">
+                   <div class="col-xs-1">
+                     <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                   </div>
+                   <div class="col-xs-10"><h6>Ajingi</h6></div>
+                 </div>
+                 <div class="row">
+                   <div class="col-xs-1">
+                     <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                   </div>
+                   <div class="col-xs-10"><h6>Albasu</h6></div>
+                 </div>
+                 <div class="row">
+                   <div class="col-xs-1">
+                     <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                   </div>
+                   <div class="col-xs-10"><h6>Bagwai</h6></div>
+                 </div>
+                 <div class="row">
+                   <div class="col-xs-1">
+                     <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                   </div>
+                   <div class="col-xs-10"><h6>Bebeji</h6></div>
+                 </div>
+                 <div class="row">
+                   <div class="col-xs-1">
+                     <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                   </div>
+                   <div class="col-xs-10"><h6>Bichi</h6></div>
+                 </div>
+                 <div class="row">
+                   <div class="col-xs-1">
+                     <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                   </div>
+                   <div class="col-xs-10"><h6>Doguwa</h6></div>
+                 </div>
+                 <div class="row">
+                   <div class="col-xs-1">
+                     <div class="input-group"><h6><input type="checkbox" aria-label="..." class="equipment"></h6></div>
+                   </div>
+                   <div class="col-xs-10"><h6>Fagge</h6></div>
+                 </div>
+               </div>
+             </div>
+
+             <!-- Location Footer -->
+             <div class="push"></div>
+             <div class="container">
+               <div class="row">
+                 <div class="col-xs-6">
+                   <button type="button" class="btn btn-default btn-block btn-cancel">BACK</button>
+                 </div>
+                 <div class="col-xs-6">
+                   <button type="button" class="btn btn-default btn-block btn-save"><a class="colorless" role="button" data-toggle="modal" data-target="#locationModal">SAVE</a></button>
+                 </div>
+               </div>
+             </div>
+             <div class="push"></div>
+
+             <!-- Location Modal -->
+               <div  id="locationModal" class="modal fade" role="dialog">
+                 <div class="modal-dialog">
+
+                   <!-- Location Modal content-->
+                   <div class="modal-content modal-saved">
+
+                     <div class="modal-body">
+                       <div class="push"></div>
+                       <div class="text-center">
+                         <i class="fa fa-check-circle fa-2x"></i>
+                       </div>
+                       <h4 class="text-center"> Location Saved! </h4>
+                     </div>
+                     <div class="modal-footer">
+                       <a role="button" class="btn btn-block btn-saved" href="onboarding.html"><h5>OK</h5></a>
+                     </div>
+                   </div>
+
+                 </div>
+               </div>
+           </div>
+         </div>
+        </div>
+      </div>
+ 	  </div>
+  </div>
+
+  <!-- Footer -->
+  <!-- <div class="home-heading spacer"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <button type="button" class="btn btn-default btn-block btn-cancel">CANCEL</button>
+      </div>
+      <div class="col-xs-6">
+        <button type="button" class="btn btn-default btn-block btn-save"><a class="colorless" role="button" data-toggle="modal" data-target="#myModal">SAVE</a></button>
+      </div>
+    </div>
+  </div>
+  <div class="push"></div> -->
+
+
+
+
+  <script>
+      $(document).ready(function() {
+      $("div.wizard-tab-menu>div.list-group>a").click(function(e) {
+          e.preventDefault();
+          $(this).siblings('a.active').removeClass("active");
+          $(this).addClass("active");
+          var index = $(this).index();
+          $("div.wizard-tab>div.wizard-tab-content").removeClass("active");
+          $("div.wizard-tab>div.wizard-tab-content").eq(index).addClass("active");
+      });
+    });
+  </script>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
