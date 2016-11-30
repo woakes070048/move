@@ -6,5 +6,6 @@
   "analytics": {
     "propertyID": "UA-52016752-4"
   },
-  "deviceUserId": "DEVICE_APP_USER_ID"
+  "deviceUserId": "DEVICE_APP_USER_ID",
+  "localDB": "move_db"
 }
