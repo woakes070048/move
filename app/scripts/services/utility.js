@@ -1,7 +1,32 @@
 'use strict'
 
 angular.module('lmisChromeApp')
-  .service('utility', function ($location, $anchorScroll, $filter) {
+  .service('utility', function ($location, $anchorScroll, $filter, lodash) {
+
+    var self = this;
+
+    self.pluckDocs = function (resultSet) {
+       var docs = [];
+      if(resultSet && angular.isArray(resultSet.rows)) {
+        lodash.forEach(resultSet.rows, function (row) {
+          if (row && row.doc) {
+            docs.push(row.doc)
+          }
+        });
+      }
+      return docs;
+    };
+
+    self.pluckDocsFromResultSets = function (resultSets) {
+      var docs = [];
+      resultSets.forEach(function (resultSet) {
+        docs = docs.concat(self.pluckDocs(resultSet));
+      });
+      return docs;
+    };
+
+
+
     /**
      * This spaces out string concatenated by -
      * @param {string} name - string to be re-formatted
