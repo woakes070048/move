@@ -2,6 +2,22 @@
 
 angular.module('lmisChromeApp')
   .service('pouchStorageService', function (pouchDB, utility, config) {
+
+    var _localDB = pouchDB(config.localDB);
+
+    this.getRemoteDB = function (dbName) {
+      var remoteDBName = (dbName || config.localDB);
+      var REMOTE_URI = [config.api.url, '/', remoteDBName].join('');
+      return pouchDB(REMOTE_URI)
+    };
+
+    this.forceSave = function (dbName, doc) {
+      var db = pouchDB(dbName || config.localDB);
+      //TODO: implement this
+    };
+
+    //Old codes below
+
     this.put = function (db, data) {
       db = pouchDB(db)
       return db.put(data, data.uuid)
@@ -35,11 +51,6 @@ angular.module('lmisChromeApp')
     this.bulkDocs = function (db, docs) {
       db = pouchDB(db)
       return db.bulkDocs(docs)
-    }
-
-    this.getRemoteDB = function (dbName) {
-      var REMOTE_URI = [config.api.url, '/', dbName].join('')
-      return pouchDB(REMOTE_URI)
     }
 
     this.compact = function (db) {

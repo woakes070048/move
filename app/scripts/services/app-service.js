@@ -10,7 +10,8 @@ angular.module('lmisChromeApp')
     fixtureLoaderService,
     backgroundSyncService,
     storageService,
-    config
+    config,
+    LoginService
   ) {
 
     var self = this;
@@ -20,70 +21,15 @@ angular.module('lmisChromeApp')
     };
 
     self.gotoLogin = function () {
-      $state.go('Login');
+      $state.go('login', {redirectTo: 'loadingFixture', onboarding: true});
     };
 
-    function loadAppConfig () {
-      // function handleError (message, error) {
-      //   // TODO: make these strings translatable
-      //   message += '. Please contact support.'
-      //   var options = {
-      //     timeOut: 0
-      //   }
-      //   toastr.error(message, options)
-      //   $log.error(error)
-      // }
-      //
-      // function loadRemoteFixture () {
-      //   var errorMessage = 'Local databases and memory storage setup failed'
-      //   return fixtureLoaderService
-      //     .setupLocalAndMemoryStore(fixtureLoaderService.REMOTE_FIXTURES)
-      //     .catch(handleError.bind(null, errorMessage))
-      // }
-      //
-      // function fetchRemoteConfig () {
-      //   var errorMessage = 'Fresh install setup failed'
-      //   return storageService.clear()
-      //     .then(loadRemoteFixture)
-      //     .catch(handleError.bind(null, errorMessage))
-      // }
-      //
-      // function goHomeAndSync () {
-      //   var prefix = 'updateAppConfigAndStartBackgroundSync triggered on start up'
-      //   $rootScope.$emit('MEMORY_STORAGE_LOADED')
-      //   $state.go('home.mainActivity')
-      //   backgroundSyncService.startBackgroundSync()
-      //     .then($log.info.bind($log, prefix + ' has completed'))
-      //     .catch($log.error.bind($log, prefix + ' failed'))
-      // }
-      //
-      // function primeMemoryStore () {
-      //   var errorMessage = 'Loading storage into memory failed'
-      //   fixtureLoaderService
-      //     .loadLocalDatabasesIntoMemory(fixtureLoaderService.REMOTE_FIXTURES)
-      //     .then(goHomeAndSync)
-      //     .catch(handleError.bind(null, errorMessage))
-      // }
-      //
-      // function loadConfig (res) {
-      //   if (!res.length) {
-      //     fetchRemoteConfig()
-      //     return
-      //   }
-      //   primeMemoryStore()
-      // }
-
+    function startApp () {
       $state.go('loadingFixture');
 
       self.getDeviceAppUser()
         .then(self.loadAppConfig)
         .catch(self.gotoLogin);
-
-      // TODO: figure out a better way of knowing if the app has been configured
-      // or not.
-      // storageService.all(storageService.APP_CONFIG)
-      //   .then(loadConfig)
-      //   .catch(handleError.bind(null, 'Loading app-config failed'))
     }
 
     self.loadAppConfig = function () {
@@ -91,6 +37,10 @@ angular.module('lmisChromeApp')
       //TODO: check if  app config exists on device
       // if it exists, trigger background sync and move to home page
       //  else take to config page
+
+      // fetch from remote
+      // return appConfigService.getCoreAppData()
+      // .then()
     };
 
     function showSplashScreen () {
@@ -116,9 +66,29 @@ angular.module('lmisChromeApp')
         .catch(handleError)
     }
 
+    function onLoginSuccess (event, data) {
+      if (data && data.redirectTo === 'loadingFixture') {
+        showSplashScreen();
+        appConfigService.getStartUpData(data.username)
+          .then(function(responseKey) {
+            var docs = responseKey.coreData;
+            var userInfo = responseKey.userInfo;
+            userInfo.password = data.password;
+
+            return appConfigService.saveAppUserProfile(userInfo)
+              .then(function () {
+                return appConfigService
+              });
+          }).catch(function (error) {
+            console.info('Error : ', error);
+          });
+      }
+    }
+
     this.init = function () {
       $rootScope.$on('START_LOADING', showSplashScreen)
       $rootScope.$on('LOADING_COMPLETED', hideSplashScreen)
-      loadAppConfig()
-    }
+      $rootScope.$on(LoginService.EVENT.LOGIN_SUCCESS, onLoginSuccess);
+      startApp()
+    };
   })
