@@ -8,6 +8,7 @@ angular.module('lmisChromeApp', [
   'nvd3ChartDirectives',
   'toastr',
   'ngAnimate',
+  'ngLodash',
   'db',
   'gettext',
   'eha.retriable',
