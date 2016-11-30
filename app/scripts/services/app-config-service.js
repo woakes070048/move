@@ -16,15 +16,77 @@ angular.module('lmisChromeApp').service('appConfigService', function (
   toastr,
   messages,
   memoryStorageService,
-  ehaRetriable
+  ehaRetriable,
+  lodash
 ) {
+
+  var self = this;
+
+  self.getUserFacilityConfiguration = function (userId) {
+    // fetch facility user i.e contacts
+  }
+
+  self.getCoreAppData = function () {
+    var remoteDB = pouchStorageService.getRemoteDB();
+    var remoteRequests = [];
+
+    var designDocsQuery = {startkey: '_design/', endkey: '_design0', include_docs: true};
+    remoteRequests.push(remoteDB.allDocs(designDocsQuery));
+
+    var coreDocTypes = utility.values(storageService.DOC_TYPE_MAP);
+    var coreDocQuery = {include_docs: true, keys: coreDocTypes};
+    remoteRequests.push(remoteDB.query(storageService.VIEW_MAP.byDocType, coreDocQuery));
+
+    return $q.all(remoteRequests)
+      .then(utility.pluckDocsFromResultSets);
+  }
+
+  self.getUserDataFromRemote = function (username) {
+    var remoteDB = pouchStorageService.getRemoteDB();
+    var queryOptions = {include_docs: true, key: username};
+    return remoteDB.query(storageService.VIEW_MAP.contactByUsername, queryOptions)
+      .then(utility.pluckDocs);
+  }
+
+  self.getStartUpData = function (username) {
+    var dataRequests = [
+      self.getCoreAppData(),
+      self.getUserDataFromRemote(username)
+    ];
+    return $q.all(dataRequests)
+      .then(function (response) {
+        return {
+          coreData: response[0],
+          userInfo: response[1]
+        };
+      });
+  }
+
+  self.saveAppUserProfile = function (userProfile) {
+    return self.getAppUserProfile()
+      .then(function (_userInfo) {
+        userProfile._rev = _userInfo._rev;
+        return pouchStorageService.put(config.localDB, userProfile);
+      }).catch(function () {
+        // does not exists currently, create new copy
+        var doc = lodash.omit(userProfile, ['_rev']);
+        return pouchStorageService.put(config.localDB, doc);
+      });
+  }
+
+  self.getAppUserProfile = function () {
+    return pouchStorageService.get(config.localDB, config.deviceUserId)
+  }
+
+
   this.APP_CONFIG = storageService.APP_CONFIG
+  // TODO: pull this from the server
   this.stockCountIntervals = [
     {name: 'Daily', value: reminderFactory.DAILY},
     {name: 'Weekly', value: reminderFactory.WEEKLY},
     {name: 'Bi-Weekly', value: reminderFactory.BI_WEEKLY},
     {name: 'Monthly', value: reminderFactory.MONTHLY}
-  ]
+  ];
 
   this.weekDays = [
     'Sunday',
@@ -34,7 +96,7 @@ angular.module('lmisChromeApp').service('appConfigService', function (
     'Thursday',
     'Friday',
     'Saturday'
-  ]
+  ];
 
   function getAppConfigFromMemory () {
     var appConfigDb = memoryStorageService.getDatabase(storageService.APP_CONFIG)
@@ -193,5 +255,6 @@ angular.module('lmisChromeApp').service('appConfigService', function (
         // save the config locally
         return saveAppConfig(config)
       })
-  })
-})
+  });
+
+});
