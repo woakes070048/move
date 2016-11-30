@@ -3,8 +3,8 @@
 angular.module('lmisChromeApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('Login', {
-        url: '/login',
+      .state('login', {
+        url: '/login/:redirectTo/:onboarding',
         templateUrl: 'views/login/login.html',
         controller: 'LoginController as loginCtrl'
       });
