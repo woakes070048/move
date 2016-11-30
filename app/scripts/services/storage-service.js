@@ -2,6 +2,26 @@
 
 angular.module('lmisChromeApp')
   .factory('storageService', function ($q, $window, utility, collections, pouchStorageService, config) {
+
+    var DOC_TYPE_MAP = {
+      equipmentFaultType: 'equipment-fault-type',
+      equipmentType: 'equipment-type',
+      productCategory: 'product-category',
+      productPresentation: 'product-presentation',
+      adminLevel: 'admin-level',
+      productProfile: 'product-profile',
+      productType: 'product-type',
+      program: 'program',
+      stockCountInterval: 'stock-count-interval',
+      uom: 'uom',
+      wasteReason: 'waste-reason'
+    };
+
+    var VIEW_MAP = {
+      byDocType: 'doctypes/by-type',
+      contactByUsername: 'contact/by-username',
+    };
+
     /**
      *  Global variables used to define table names, with this there will be one
      *  point in the code to add and/or update local storage table names.
@@ -261,6 +281,9 @@ angular.module('lmisChromeApp')
     }
 
     var api = {
+      DOC_TYPE_MAP: DOC_TYPE_MAP,
+      VIEW_MAP: VIEW_MAP,
+
       getById: getById,
       all: getAllFromTable,
       add: setData,
