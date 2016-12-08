@@ -1,5 +1,5 @@
 <accordion>
-    <accordion-group is-open="openMain">
+    <!-- <accordion-group is-open="openMain">
         <accordion-heading>
             <span><i class="fa fa-user"></i></span>
             <span translate>Main Activities</span>
@@ -62,8 +62,74 @@
             </a>
         </div>
 
-    </accordion-group>
+    </accordion-group> -->
 
 </accordion>
 
 <ui-view/>
+
+<div style="">
+  <div class="subheader" style="">
+    <div class="row">
+      <div class="col-xs-6">
+        <h6>Select component</h6>
+      </div>
+      <div class="col-xs-6">
+      </div>
+    </div>
+  </div>
+
+  <div class="test">
+    <div class="row text-center" style="">
+      <!-- <div class="col-xs-12"> -->
+        <div class="left col-xs-6">
+          <div class="white-column mg-5-top mg-5-left mg-5-right"><a eha-ga-click="stock_count" ui-sref="stockCountHome" id="t2" class="colorless">
+            <span class="fa fa-calculator fa-3x"></span>
+            <h5 translate class="main-activity-link">Stock Count</h5>
+            <p class="dark-grey">Due in 7 days</p>
+          </a></div>
+        </div>
+        <div class="right col-xs-6">
+          <div class="white-column mg-5-top mg-5-right"><a eha-ga-click="discard_count_home" ui-sref="wasteCountHome" class="colorless">
+            <span class="fa fa-trash fa-3x"></span>
+            <h5 translate class="main-activity-link">Waste Count</h5>
+          </a></div>
+        </div>
+      <!-- </div> -->
+    </div>
+
+    <div class="row text-center" style="">
+      <!-- <div class="col-xs-12"> -->
+        <div class="left col-xs-6">
+          <div class="white-column mg-5-top mg-5-left mg-5-right"><a eha-ga-click="stock_out_alert" ui-sref="broadcastStockOut" class="colorless">
+            <span class="fa fa-bell fa-3x"></span>
+            <h5 translate class="main-activity-link">Stock Out</h5>
+          </a></div>
+        </div>
+        <div class="right col-xs-6">
+          <div class="white-column mg-5-top mg-5-right"><a ui-sref="logBundleHome({ type: 0 })" class="colorless">
+            <span class="fa fa-arrow-down fa-3x"></span>
+            <h5 translate class="main-activity-link">Incoming Delivery</h5>
+          </a></div>
+        </div>
+      <!-- </div> -->
+    </div>
+
+    <div class="row text-center" style="">
+      <!-- <div class="col-xs-12"> -->
+        <div class="left col-xs-6">
+          <div class="white-column mg-5-top mg-5-left mg-5-right mg-5-bottom"><a ui-sref="logBundleHome({ type: 1 })" class="colorless">
+            <span class="fa fa-arrow-up fa-3x"></span>
+            <h5 translate class="main-activity-link">Outgoing Delivery</h5>
+          </a></div>
+        </div>
+        <div class="right col-xs-6">
+          <div class="white-column mg-5-top mg-5-right mg-5-bottom"><a eha-ga-click="app_config" ui-sref="appConfig.edit" class="colorless">
+            <span class="fa fa-gears fa-3x"></span>
+            <h5 translate class="main-activity-link">Settings</h5>
+          </a></div>
+        </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
