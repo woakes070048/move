@@ -56,6 +56,8 @@ angular.module('lmisChromeApp')
         if (wasteCount !== null) {
           object.uuid = wasteCount.uuid
         }
+        object.isUoMSpecified = true;
+        console.log(object)
         storageService.save(storageService.DISCARD_COUNT, object)
           .then(function (uuid) {
             deferred.resolve(uuid)
@@ -98,7 +100,6 @@ angular.module('lmisChromeApp')
       },
       wasteCountByType: function (wasteCount, facilityProductProfiles) {
         var arr = []
-
         if (Object.prototype.toString.call(wasteCount) === '[object Object]') {
           for (var i in wasteCount.discarded) {
             if (angular.isDefined(facilityProductProfiles[i])) {
