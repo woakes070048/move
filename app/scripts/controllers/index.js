@@ -8,6 +8,10 @@ angular.module('lmisChromeApp')
         abstract: true,
         templateUrl: 'views/index/index.html'
       })
+      .state('login', {
+          url: '/login',
+          templateUrl: 'views/login/index.html'
+      })
       .state('root.index', {
         abstract: true,
         views: {
