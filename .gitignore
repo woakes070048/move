@@ -12,6 +12,8 @@ build
 nbproject/private/
 po/template.pot
 .android/
+move.jsproj.user
+move.jsproj
+taco.json
 .vs/
 move.sln
-

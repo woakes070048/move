@@ -32,7 +32,8 @@
     "Musa Musa <musa.musa@ehealthnigeria.org>",
     "Justin Lorenzon <justin.lorenzon@ehealthnigeria.org>",
     "Karl Westin <karl.westin@ehealthnigeria.org>",
-    "Femi Oni <oluwafemi.oni@ehealthnigeria.org>"
+    "Femi Oni <oluwafemi.oni@ehealthnigeria.org>",
+    "Lord-Mallam Nugwan <lord-mallam.nugwan@ehealthnigeria.org>"
   ],
   "description": "LMIS Chrome packaged app",
   "main": "app/scripts/main.js",

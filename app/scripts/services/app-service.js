@@ -39,7 +39,10 @@ angular.module('lmisChromeApp')
       function goHomeAndSync () {
         var prefix = 'updateAppConfigAndStartBackgroundSync triggered on start up'
         $rootScope.$emit('MEMORY_STORAGE_LOADED')
-        $state.go('home.mainActivity')
+          /* Prevent redirect to mainActivity to allow dev on login page
+           * Uncomment to function correctly
+           */
+        // $state.go('home.mainActivity')
         backgroundSyncService.startBackgroundSync()
           .then($log.info.bind($log, prefix + ' has completed'))
           .catch($log.error.bind($log, prefix + ' failed'))
