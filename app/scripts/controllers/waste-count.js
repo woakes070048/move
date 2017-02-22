@@ -35,7 +35,7 @@ angular.module('lmisChromeApp')
   .controller('wasteCountHomeCtrl', function ($scope, wasteCountFactory, wasteCountList, appConfig, $state, $filter) {
     $scope.wasteCountList = wasteCountList
     $scope.today = $filter('date')(new Date(), 'yyyy-MM-dd')
-    $scope.facilityProducts = wasteCountFactory.get.productObject(appConfig.facility.selectedProductProfiles)    
+    $scope.facilityProducts = wasteCountFactory.get.productObject(appConfig.facility.selectedProductProfiles)
     $scope.takeAction = function (date) {
       wasteCountFactory.getWasteCountByDate(date).then(function (wasteCount) {
         if (wasteCount !== null) {
@@ -115,11 +115,8 @@ angular.module('lmisChromeApp')
     $scope.save = function (type) {
       $scope.isSaving = true
       $scope.wasteCount.discarded[$scope.productKey] = $scope.wasteCountModel.discarded[$scope.productKey]
-      console.log('break point 1', $scope.wasteCount.discardedExtended)
-      $scope.wasteCount.discardedExtended[$scope.productKey] = {}      
-      console.log('break point 1', $scope.wasteCountModel)
+      $scope.wasteCount.discardedExtended[$scope.productKey] = {}
       $scope.wasteCount.discardedExtended[$scope.productKey] = $scope.wasteCountModel.discardedExtended[$scope.productKey]
-      console.log('$scope.wasteCountModel.discarded[$scope.productKey]', $scope.wasteCountModel.discardedExtended[$scope.productKey]);
       if (angular.isUndefined($scope.wasteCount.reason[$scope.productKey])) {
         $scope.wasteCount.reason[$scope.productKey] = {}
       }
